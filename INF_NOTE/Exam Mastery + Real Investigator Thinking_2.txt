@@ -1,0 +1,176 @@
+
+
+Final Exam Readiness
+
+✅ Solved WinDump questions (real answer examples)
+✅ Mutex explanations (≤20 words each)
+✅ AdamFTriage malware process tree diagram
+✅ How markers award marks (scoring secrets)
+
+# ⭐ 1️⃣ WIN DUMP QUESTIONS — SOLVED WITH REAL ANSWER STYLE
+
+⚠️ Scenario memory output
+You will simply replace values from your output.
+
+# ✅ D) Volatility framework used
+### Command
+bash
+python3 vol.py -f Win11Dump.mem windows.info.Info
+
+### Exam answer
+> The analysis was conducted using Volatility 3 Framework version 2.28.0 as displayed in the plugin execution header.
+✅ Marks reason → Evidence + reference to output
+
+# ✅ E) Process connected to private network
+### Command
+bash
+windows.netscan.NetScan
+
+### Example answer
+> PID 4321 (chrome.exe) connected to 192.168.1.10. This falls within RFC1918 private address range, indicating private network communication.
+✅ Marks reason → plugin + IP + interpretation
+
+# ✅ F1) Built string
+### Command
+bash
+windows.info.Info
+
+### Example answer
+> The NtBuildLab string is 22000.318.amd64fre.co_release.210604-1628, indicating the Windows build version.
+
+# ✅ F2) Suspicious users
+### Commands
+bash
+windows.sessions.Sessions
+windows.registry.userassist.UserAssist
+
+### Example answer
+> User Bob was logged into an interactive session. UserAssist showed program execution under this account, indicating active usage and potential attack context.
+
+# ⭐ WinDump.mem
+# ✅ G) Active processes
+bash
+windows.pslist.PsList
+
+### Example answer
+> Active processes included System, smss.exe, csrss.exe, wininit.exe, services.exe, and explorer.exe, indicating a normal Windows process hierarchy.
+
+# ✅ H) Hidden processes
+bash
+windows.psscan.PsScan
+windows.pslist.PsList
+windows.psxview.PsXView
+
+### Example answer (FULL MARKS)
+> PID 4567 appeared in PsScan but was absent from PsList. PsXView confirmed inconsistency across enumeration techniques, indicating DKOM-based process hiding.
+
+# ⭐ PART 3
+# ✅ I) Leftover processes
+bash
+windows.psscan.PsScan
+
+### Example answer
+> PID 3321 was identified in PsScan with terminated state, indicating residual process structures from a previous reboot.
+
+# ✅ J) Parent of System process
+bash
+windows.pslist.PsList
+
+### Example answer
+> The System process (PID 4) has parent PID 0, consistent with Windows kernel initialization.
+
+# ✅ K) Incorrect parents
+bash
+windows.pstree.PsTree
+
+### Example answer
+> svchost.exe was observed under explorer.exe instead of services.exe, suggesting possible process injection or masquerading behaviour.
+
+# ⭐ MUTEX SECTION
+# ✅ M) Processes accessing mutex
+bash
+windows.mutantscan.MutantScan
+
+### Example answer
+> Processes explorer.exe, svchost.exe, chrome.exe, and malware.exe were observed holding mutant objects, indicating synchronization resource usage.
+
+# ✅ N) Evidence of malware mutex
+### Example answer
+
+> MutantScan output showed named mutex Global\MalwareMutex associated with PID 4567. This confirms mutex usage by the process.
+
+# ⭐ 2️⃣ MUTEX EXPLANATIONS (≤20 WORDS EACH)
+These satisfy question O.
+
+### ✅ 1
+> Mutex ensures only one instance of malware runs simultaneously on a system.
+(13 words)
+
+### ✅ 2
+> Mutex coordinates access to shared resources between threads to prevent conflicts.
+(12 words)
+
+### ✅ 3
+> Malware mutex prevents reinfection by detecting existing malicious process presence.
+(10 words)
+
+### ✅ 4
+> Mutex enables inter-process synchronization for safe execution of concurrent operations.
+(11 words)
+
+# ⭐ 3️⃣ ADAMFTRIAGE MALWARE PROCESS TREE DIAGRAM
+Here is your investigation chain.
+System (4)
+ └── services.exe
+      └── explorer.exe
+            └── cmd.exe
+                 └── powershell.exe
+                      └── suspicious.exe
+
+## ⭐ Interpretation
+### ✔ explorer
+User interactive shell
+### ✔ cmd
+User command execution
+### ✔ powershell
+Common LOLBIN for attack
+### ✔ suspicious.exe
+Payload stage
+
+## ⭐ Exam narrative
+> Process tree analysis revealed cmd.exe and powershell.exe spawned under explorer.exe, culminating in suspicious.exe execution, consistent with user-driven malware chain.
+
+# ⭐ 4️⃣ HOW MARKERS AWARD MARKS (SCORING SECRETS)
+This is extremely important.
+
+## 🔥 MARKING RULE
+### 1️⃣ Plugin used → 1 mark
+
+You must state plugin
+### 2️⃣ Evidence → 1 mark
+
+Quote output
+
+### 3️⃣ Interpretation → 1 mark
+Explain meaning
+
+### 4️⃣ Security implication → bonus/full mark
+Explain attack relevance
+
+# ⭐ PERFECT ANSWER FORMULA
+👉 Plugin
+👉 Evidence
+👉 Interpretation
+👉 Conclusion
+
+# ⭐ EXAMPLE (FULL MARKS)
+> Plugin: windows.psscan
+> Evidence: PID 4321 present in PsScan but absent from PsList
+> Interpretation: Indicates process unlinking
+> Conclusion: Hidden process detected
+
+# ⭐ ⭐ ⭐ FINAL ADVICE (EXAM GOLD)
+If you forget everything:
+👉 Always run Info → PsList → PsTree → NetScan → MutantScan → Malfind
+
+This alone solves 80% of memory forensic exams.

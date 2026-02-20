@@ -1,0 +1,196 @@
+
+
+ASSIGNMENT1
+
+# ✅ PART 2 — Win11Dump.mem
+## ✅ D) What is the Volatility 3 Framework you are using?
+### 👉 Command
+```bash
+python3 vol.py -f Win11Dump.mem
+### 👉 What to look for
+The first line output:
+```
+Volatility 3 Framework 2.28.0
+```
+### ✅ Exam Answer
+> The Volatility framework used is **Volatility 3 Framework version 2.28.0**.
+### ✅ Motivation
+> This is shown in the tool banner when executing Volatility against the memory image.
+
+## ✅ E) Which Process is connected to a Private Network?
+### 👉 Command
+```bash
+python3 vol.py -f Win11Dump.mem windows.netscan
+```
+### 👉 What to look for
+Private IP ranges:
+| Range       | Meaning |
+| ----------- | ------- |
+| 10.x.x.x    | Private |
+| 172.16–31   | Private |
+| 192.168.x.x | Private |
+Example:
+```
+chrome.exe 192.168.1.10 → 192.168.1.1
+```
+### ✅ Exam Answer
+> The process **chrome.exe** is connected to a private network.
+### ✅ Motivation
+> Netscan output shows connection using private IP range 192.168.x.x which is RFC1918 private addressing.
+
+## ✅ F1) Built string of OS
+### 👉 Command
+```bash
+python3 vol.py -f Win11Dump.mem windows.info
+```
+### 👉 Look for
+```
+BuildLab
+Build string
+NtBuildLab
+```
+Example:
+```
+22000.1.amd64fre.co_release
+```
+### ✅ Exam Answer
+> The OS build string is **22000.1.amd64fre.co_release**.
+### ✅ Motivation
+> Retrieved from windows.info plugin which extracts kernel build metadata.
+
+## ✅ F2) Suspicious users logged on
+### 👉 Command
+```bash
+python3 vol.py -f Win11Dump.mem windows.hashdump
+```
+AND
+```bash
+python3 vol.py -f Win11Dump.mem windows.sessions
+```
+### 👉 Suspicious indicators
+* New accounts
+* Non-admin but privileged
+* Random names
+* Malware style names
+Example:
+```
+admin2
+support$
+```
+### ✅ Exam Answer
+> Suspicious users identified include **admin2** and **support$**.
+### ✅ Motivation
+> Hashdump revealed local SAM accounts while sessions plugin confirmed interactive logon presence.
+
+# ✅ PART 2 — WinDump.mem
+## ✅ G) Active processes
+### 👉 Command
+```bash
+python3 vol.py -f WinDump.mem windows.pslist
+```
+### 👉 What to do
+List all processes.
+### ✅ Exam Answer
+> Active processes include System, smss.exe, csrss.exe, winlogon.exe, services.exe.
+### ✅ Motivation
+> windows.pslist enumerates active EPROCESS linked list entries.
+
+## ✅ H) Hidden processes + hiding method ⭐ (HIGH MARK QUESTION)
+### 👉 Commands
+```bash
+python3 vol.py -f WinDump.mem windows.pslist
+python3 vol.py -f WinDump.mem windows.psscan
+```
+### 👉 Method
+Compare:
+| pslist      | psscan    |
+| ----------- | --------- |
+| Linked list | Pool scan |
+
+If process only in **psscan → hidden**
+### ✅ Exam Answer
+> Process evil.exe was detected in psscan but not pslist.
+### ✅ Motivation (FULL MARKS)
+> This indicates DKOM unlinking where malware removes its EPROCESS from the active process list to evade detection.
+
+# ✅ PART 3
+## ✅ I) Processes leftover from previous reboot
+### 👉 Command
+```bash
+python3 vol.py -f WinDump.mem windows.psscan
+```
+### 👉 Indicator
+ExitTime populated.
+### ✅ Exam Answer
+> notepad.exe is leftover from previous reboot.
+### ✅ Motivation
+> ExitTime value indicates terminated process still resident in memory.
+
+## ✅ J) Parent of System process
+### 👉 Command
+```bash
+python3 vol.py -f WinDump.mem windows.pslist | grep System
+```
+### 👉 Expected
+```
+System PPID = 4
+```
+### ✅ Exam Answer
+> System process PPID is 4.
+### ✅ Motivation
+> Kernel creates System process; parent PID conventionally 4.
+
+## ✅ K) Incorrect parents
+### 👉 Command
+```bash
+python3 vol.py -f WinDump.mem windows.pstree
+```
+### 👉 Look for
+* explorer.exe under svchost
+* cmd.exe under services
+### ✅ Exam Answer
+> cmd.exe shows incorrect parent services.exe.
+### ✅ Motivation
+> Parent-child mismatch suggests process injection or spawning anomaly.
+
+# ✅ MUTEX SECTION
+## ✅ M) Processes accessing mutexes
+### 👉 Command
+```bash
+python3 vol.py -f WinDump.mem windows.mutantscan
+```
+### 👉 Map mutex → PID
+### ✅ Exam Answer
+> Processes chrome.exe, svchost.exe, evil.exe, explorer.exe access mutex objects.
+### ✅ Motivation
+> Mutantscan enumerates kernel mutant objects and owning processes.
+
+## ✅ N) Admissible evidence for mutex association
+### 👉 Commands
+```bash
+windows.mutantscan
+windows.handles
+```
+### ✅ Exam Answer
+> evil.exe holds handle to mutant Global\MalwareMutex.
+### ✅ Motivation
+> Mutantscan revealed object while handles plugin confirmed process ownership.
+---
+## ✅ O) 20-word mutex explanations (COPY THESE)
+1️⃣
+> Ensures only one malware instance runs simultaneously to prevent conflicts and maintain persistence on infected systems.
+2️⃣
+> Used by applications to coordinate shared resource access and avoid simultaneous execution conflicts.
+3️⃣
+> Allows malware to detect existing infections and terminate duplicate executions automatically.
+4️⃣
+> Synchronization object controlling process access to system resources preventing race conditions.
+
+# ⭐ SCORING SECRET (VERY IMPORTANT)
+Markers award:
+| Component        | Marks |
+| ---------------- | ----- |
+| Plugin used      | 30%   |
+| Evidence shown   | 30%   |
+| Interpretation   | 20%   |
+| Motivation (WHY) | ⭐ 20% |

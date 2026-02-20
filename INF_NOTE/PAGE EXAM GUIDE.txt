@@ -1,0 +1,160 @@
+
+PAGE EXAM GUIDE
+
+✅ 1-Page Memory Forensics Cheat Sheet
+✅ Question → Plugin → Interpretation table
+✅ How to motivate answers for marks (EXAM GOLD)
+✅ Full investigation methodology diagram
+
+# ⭐ 1️⃣ MEMORY FORENSICS CHEAT SHEET (1-PAGE EXAM GUIDE)
+## 🟢 STEP 1 — Basic system identification
+| Goal              | Command                                   |
+| ----------------- | ----------------------------------------- |
+| Framework version | python3 vol.py -f mem windows.info.Info |
+| OS info           | windows.info.Info                       |
+| Sessions          | windows.sessions.Sessions               |
+
+👉 Understand environment before investigating
+
+## 🟢 STEP 2 — Process investigation
+| Goal                 | Command                   |
+| -------------------- | ------------------------- |
+| Active processes     | windows.pslist.PsList   |
+| Hidden processes     | windows.psscan.PsScan   |
+| Process tree         | windows.pstree.PsTree   |
+| Cross-view detection | windows.psxview.PsXView |
+
+👉 Detect malware, rootkits
+
+## 🟢 STEP 3 — Malware detection
+| Goal               | Command                                        |
+| ------------------ | ---------------------------------------------- |
+| Injected code      | windows.malfind.Malfind                      |
+| Suspicious threads | windows.suspicious_threads.SuspiciousThreads |
+| Hollow processes   | windows.hollowprocesses.HollowProcesses      |
+
+👉 Strong compromise evidence
+
+## 🟢 STEP 4 — Network investigation
+| Goal           | Command                   |
+| -------------- | ------------------------- |
+| Connections    | windows.netscan.NetScan |
+| Net statistics | windows.netstat.NetStat |
+
+👉 Detect C2 communication
+
+## 🟢 STEP 5 — User activity
+| Goal             | Command                                  |
+| ---------------- | ---------------------------------------- |
+| Console history  | windows.cmdscan.CmdScan                |
+| Console sessions | windows.consoles.Consoles              |
+| UserAssist       | windows.registry.userassist.UserAssist |
+
+👉 Reconstruct attacker actions
+
+## 🟢 STEP 6 — Credential investigation
+| Goal      | Command                              |
+| --------- | ------------------------------------ |
+| Hive list | windows.registry.hivelist.HiveList |
+| Dump SAM  | external secretsdump                 |
+
+👉 Password hashes
+
+## 🟢 STEP 7 — Persistence
+| Goal            | Command                                  |
+| --------------- | ---------------------------------------- |
+| Scheduled tasks | windows.scheduled_tasks.ScheduledTasks |
+| Services        | windows.svcscan.SvcScan                |
+| Autoruns        | windows.registry.printkey.PrintKey     |
+
+👉 Malware survival
+
+## 🟢 STEP 8 — Artefact extraction
+| Goal       | Command                       |
+| ---------- | ----------------------------- |
+| Dump files | windows.dumpfiles.DumpFiles |
+| File scan  | windows.filescan.FileScan   |
+| Memory map | windows.memmap.Memmap       |
+
+👉 Evidence collection
+
+# ⭐ 2️⃣ QUESTION → PLUGIN → INTERPRETATION TABLE
+| Question type        | Plugin                   | Interpretation            |
+| -------------------- | ------------------------ | ------------------------- |
+| What OS?             | Info                     | Identify OS version       |
+| Active processes     | PsList                   | Legit running processes   |
+| Hidden processes     | PsScan                   | Rootkit indicator         |
+| Parent relationships | PsTree                   | Process spawning pattern  |
+| Network connection   | NetScan                  | External communication    |
+| Suspicious user      | Sessions                 | Interactive user activity |
+| Injected malware     | Malfind                  | Memory injection          |
+| Password evidence    | HiveList                 | Credential artefacts      |
+| Persistence          | ScheduledTasks / SvcScan | Survival mechanism        |
+| User execution       | UserAssist               | Program execution history |
+
+👉 This table alone answers most exam questions.
+
+# ⭐ 3️⃣ HOW TO MOTIVATE ANSWERS (EXAM GOLD ⭐)
+Markers want:
+👉 Plugin evidence
+👉 Output interpretation
+👉 Security meaning
+
+## ✅ Example 1 — Suspicious process
+❌ BAD
+> process suspicious
+✅ GOOD
+> Using PsList, process evil.exe was observed. PsTree shows explorer.exe spawned it, which is abnormal. This suggests possible malware execution.
+
+## ✅ Example 2 — Network connection
+❌ BAD
+> connected to IP
+✅ GOOD
+> NetScan shows PID 1234 connected to 185.x.x.x, an external address. This indicates possible command-and-control communication.
+
+## ✅ Example 3 — Hidden process
+✅ PERFECT
+> PsScan identified PID 5555 not visible in PsList. This indicates DKOM hiding technique.
+
+## ⭐ UNIVERSAL ANSWER TEMPLATE
+Plugin used:
+Evidence observed:
+Interpretation:
+Security implication:
+
+
+👉 Use this every time.
+# ⭐ 4️⃣ FULL INVESTIGATION METHODOLOGY DIAGRAM
+## 🔥 PROFESSIONAL DFIR FLOW
+
+                MEMORY IMAGE
+                     ↓
+              SYSTEM IDENTIFICATION
+                     ↓
+              PROCESS ENUMERATION
+                     ↓
+        PROCESS RELATIONSHIP ANALYSIS
+                     ↓
+             NETWORK INVESTIGATION
+                     ↓
+              USER ACTIVITY ANALYSIS
+                     ↓
+              MALWARE DETECTION
+                     ↓
+             PERSISTENCE ANALYSIS
+                     ↓
+             CREDENTIAL ANALYSIS
+                     ↓
+              ARTEFACT EXTRACTION
+                     ↓
+                 TIMELINE
+                     ↓
+                 REPORT
+
+## ⭐ THINK LIKE THIS
+👉 WHO — user sessions
+👉 WHAT — processes
+👉 WHERE — network
+👉 HOW — persistence
+👉 WHEN — timeline
+👉 WHY — attacker objective

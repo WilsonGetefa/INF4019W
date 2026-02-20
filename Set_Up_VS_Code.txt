@@ -1,0 +1,63 @@
+
+
+## ✅ Method 1 — Official Microsoft repository (Recommended)
+
+This method allows automatic updates.
+
+### Step 1 — Update Kali
+
+```bash
+sudo apt update && sudo apt upgrade y
+```
+
+### Step 2 — Install dependencies
+
+```bash
+sudo apt install y wget gpg apttransporthttps
+```
+
+### Step 3 — Add Microsoft GPG key
+
+```bash
+wget qO https://packages.microsoft.com/keys/microsoft.asc | gpg dearmor > packages.microsoft.gpg
+sudo install D o root g root m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+```
+
+### Step 4 — Add VS Code repository
+
+```bash
+echo "deb [arch=amd64 signedby=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+```
+
+### Step 5 — Update package list
+
+```bash
+sudo apt update
+```
+
+### Step 6 — Install VS Code
+
+```bash
+sudo apt install code y
+```
+
+### Step 7 — Launch VS Code
+
+```bash
+code
+```
+
+Or open from Applications → Development → Visual Studio Code
+
+## ✅ Method 2 — Quick Kali repo install (Alternative)
+
+Sometimes Kali provides Code OSS.
+
+```bash
+sudo apt install codeoss y
+```
+
+👉 Difference:
+
+ code → Microsoft build (extensions marketplace full)
+ codeoss → Opensource build (limited marketplace)

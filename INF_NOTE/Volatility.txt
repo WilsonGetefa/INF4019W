@@ -8,55 +8,34 @@ This is exactly how investigators think when analysing a memory image.
 
 # ⭐ 1. PASSWORD INVESTIGATION (Credential Forensics)
 ## 🎯 Goal
-
 Recover credentials, authentication artefacts, or evidence of password usage.
-
----
-
 ## ✅ Step 1 — Locate registry hives
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.registry.hivelist.HiveList
-```
 
 ### Why
-
-* Password hashes are stored in **SAM**
-* Encryption key is in **SYSTEM**
+ Password hashes are stored in SAM
+ Encryption key is in SYSTEM
 
 👉 This is exactly what you did earlier.
 
----
-
 ## ✅ Step 2 — Dump registry hives
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.registry.hivelist.HiveList --dump
-```
 
 ### Why
-
-* Extract SAM + SYSTEM to disk so external tools can use them
-
----
+ Extract SAM + SYSTEM to disk so external tools can use them
 
 ## ✅ Step 3 — Extract password hashes
-
-```bash
+bash
 impacket-secretsdump -sam SAM.hive -system SYSTEM.hive LOCAL
-```
 
 ### Why
-
-* Converts registry data into NTLM hashes
-
----
+ Converts registry data into NTLM hashes
 
 ## ✅ Step 4 — Crack hashes (optional)
-
-```bash
+bash
 hashcat -m 1000 hash.txt rockyou.txt
-```
 
 ### What you achieve
 
@@ -64,219 +43,131 @@ hashcat -m 1000 hash.txt rockyou.txt
 ✔ Password hashes
 ✔ Possible cracked passwords
 
----
-
 ## ⭐ 2. MALWARE INVESTIGATION
-
 ## 🎯 Goal
-
 Find malicious processes, injected code, persistence, payloads.
-
----
-
 ## ✅ Step 1 — List processes
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.pslist.PsList
-```
 
 👉 Look for:
-
-* Unknown names
-* Wrong parent
-* Suspicious start time
-
----
+ Unknown names
+ Wrong parent
+ Suspicious start time
 
 ## ✅ Step 2 — Process tree
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.pstree.PsTree
-```
 
 👉 Detect:
-
-* Malware spawning from explorer
-* Office spawning cmd/powershell
-* Orphan processes
-
----
+ Malware spawning from explorer
+ Office spawning cmd/powershell
+ Orphan processes
 
 ## ✅ Step 3 — Malware injection detection
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.malfind.Malfind
-```
 
 ### Why
-
-* Detect injected executable memory
-
+ Detect injected executable memory
 ✔ Strong malware evidence
 
----
-
 ## ✅ Step 4 — Dump suspicious process
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.dumpfiles.DumpFiles --pid <PID>
-```
 
 ### Why
-
-* Extract malware binary
-
+ Extract malware binary
 ---
 
 ## ⭐ 3. VIRUS INVESTIGATION
-
 👉 Virus = specific malware type (self-replicating)
-
 ### Steps are similar but focus on persistence + replication.
 
----
-
 ## ✅ Step 1 — Scheduled tasks
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.scheduled_tasks.ScheduledTasks
-```
 
 👉 Virus persistence mechanism
 
----
-
 ## ✅ Step 2 — Services
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.svcscan.SvcScan
-```
 
 👉 Malicious service installation
 
----
-
 ## ✅ Step 3 — Autoruns via registry
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.registry.printkey.PrintKey --key "Software\Microsoft\Windows\CurrentVersion\Run"
-```
 
 👉 Startup virus behaviour
-
 ---
 
 ## ⭐ 4. ATTACK INVESTIGATION (Intrusion analysis)
-
 ## 🎯 Goal
-
 Understand attacker behaviour.
 
----
-
 ## ✅ Step 1 — Network connections
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.netscan.NetScan
-```
 
 👉 Detect:
-
-* C2 communication
-* Lateral movement
-* Suspicious IP
-
----
+ C2 communication
+ Lateral movement
+ Suspicious IP
 
 ## ✅ Step 2 — Command history
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.cmdscan.CmdScan
-```
 
 👉 Attacker typed commands
-
 ---
 
 ## ✅ Step 3 — Console sessions
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.consoles.Consoles
-```
 
 👉 Interactive attacker sessions
 
----
-
 ## ✅ Step 4 — Privilege escalation
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.privileges.Privs
-```
 
 👉 Token abuse
 
----
-
 ## ⭐ 5. OTHER IMPORTANT INVESTIGATION AREAS (Exam gold ⭐)
-
----
-
 ## 🔎 User activity
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.registry.userassist.UserAssist
-```
 
 👉 Programs executed by user
 
----
-
 ## 🔎 File artefacts
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.filescan.FileScan
-```
 
 👉 Deleted or hidden files
-
 ---
-
 ## 🔎 DLL injection
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.dlllist.DllList
-```
+
 
 👉 Suspicious DLLs
-
----
-
 ## 🔎 Hidden processes
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.psscan.PsScan
-```
+
 
 👉 DKOM rootkits
-
----
-
 ## 🔎 Mutex malware detection
-
-```bash
+bash
 python3 vol.py -f memory.mem windows.mutantscan.MutantScan
-```
+
 
 👉 Malware coordination objects
-
----
-
 # ⭐ ⭐ REAL WORLD INVESTIGATION FLOW (Very important)
-
 Professional DFIR flow:
-
-```
 1. OS info
 2. Process listing
 3. Process tree
@@ -287,33 +178,13 @@ Professional DFIR flow:
 8. Credentials
 9. Timeline
 10. Evidence extraction
-```
-
----
 
 # ⭐ ⭐ ⭐ EXAM SECRET (What markers want)
-
 If you remember this sentence — you pass.
-
-👉 **"Identify → Correlate → Extract → Validate → Motivate"**
-
+👉 "Identify → Correlate → Extract → Validate → Motivate"
 Example:
-
-* Identify suspicious process
-* Correlate with network
-* Extract binary
-* Validate malicious behaviour
-* Motivate with evidence
-
----
-
-# ⭐ If you want (highly recommended)
-
-I can next:
-
-✅ Build you a **memory forensics cheat sheet (1 page exam guide)**
-✅ Create **question → plugin → interpretation table**
-✅ Show **how to motivate answers for marks**
-✅ Create **full investigation methodology diagram**
-
-Just tell me 👍
+ Identify suspicious process
+ Correlate with network
+ Extract binary
+ Validate malicious behaviour
+ Motivate with evidence

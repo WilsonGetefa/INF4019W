@@ -1,0 +1,233 @@
+
+Exam Mastery + Real Investigator Thinking
+This give you:
+✅ Exam answer templates (copy-paste ready)
+✅ WinDump questions solved step-by-step (method to get answers)
+✅ Hidden process detection with FULL marks motivation
+✅ Malware investigation story (AdamFTriage case)
+
+This is exactly how investigators and students present memory forensic work.
+
+# ⭐ 1️⃣ EXAM ANSWER TEMPLATES (COPY-PASTE)
+Use this structure for every question.
+
+## ✅ TEMPLATE — IDENTIFICATION QUESTION:
+Plugin used:
+windows.info.Info
+
+Evidence:
+The plugin output shows OS version/build information.
+
+Interpretation:
+This identifies the operating system used in the memory image.
+
+Conclusion:
+The system is running <INSERT OS>.
+
+## ✅ TEMPLATE — PROCESS QUESTION:
+Plugin used:
+windows.pslist.PsList
+
+Evidence:
+The plugin lists active processes including <PROCESS>.
+
+Interpretation:
+This confirms that <PROCESS> was active at acquisition time.
+
+Conclusion:
+The system had <PROCESS> running.
+
+## ✅ TEMPLATE — HIDDEN PROCESS QUESTION
+Plugin used:
+windows.pslist.PsList
+windows.psscan.PsScan
+
+Evidence:
+PID <X> appears in PsScan but not in PsList.
+
+Interpretation:
+This indicates the process was unlinked from active lists.
+
+Security implication:
+This behaviour is consistent with rootkit hiding techniques.
+
+Conclusion:
+PID <X> is a hidden process.
+
+## ✅ TEMPLATE — NETWORK QUESTION
+Plugin used:
+windows.netscan.NetScan
+
+Evidence:
+PID <X> connected to IP <IP>.
+
+Interpretation:
+This indicates network communication.
+
+Security implication:
+Connection to external/private address suggests possible attacker activity.
+
+Conclusion:
+Process <X> maintained network connectivity.
+
+## ✅ TEMPLATE — USER QUESTION
+Plugin used:
+windows.sessions.Sessions
+
+Evidence:
+User <NAME> logged into session.
+
+Interpretation:
+This indicates interactive logon.
+
+Conclusion:
+User <NAME> was active.
+
+## ✅ TEMPLATE — MALWARE QUESTION
+Plugin used:
+windows.malfind.Malfind
+
+Evidence:
+Executable memory region with PAGE_EXECUTE_READWRITE.
+
+Interpretation:
+This suggests injected code.
+
+Security implication:
+Strong evidence of malware.
+
+Conclusion:
+Process <X> contains injected code.
+
+# ⭐ 2️⃣ WIN DUMP QUESTIONS — STEP-BY-STEP SOLUTION METHOD
+You must run these.
+
+# ✅ D) Volatility framework version
+### Command
+python3 vol.py -f Win11Dump.mem windows.info.Info
+
+### What to answer
+👉 Look at header:
+Volatility 3 Framework X.X
+
+### Motivation
+> The framework version is displayed in plugin output header.
+
+# ✅ E) Process connected to private network
+### Command
+windows.netscan.NetScan
+
+### What to look for
+Private ranges:
+ 10.x.x.x
+ 172.16-31.x.x
+ 192.168.x.x
+
+### Motivation
+> PID X connected to 192.168.x.x which falls within RFC1918 private addressing.
+
+# ✅ F1) Built string OS
+### Command
+windows.info.Info
+
+### Look for
+NtBuildLab
+
+# ✅ F2) Suspicious users
+### Commands
+windows.sessions.Sessions
+windows.registry.userassist.UserAssist
+
+### Suspicious indicators
+ Non-admin interactive session
+ Unknown username
+ Execution history
+
+# ⭐ WinDump.mem section
+# ✅ G) Active processes
+windows.pslist.PsList
+
+# ✅ H) Hidden processes
+windows.psscan.PsScan
+windows.pslist.PsList
+windows.psxview.PsXView
+
+Compare lists.
+# ⭐ PART 3
+
+# ✅ I) Leftover processes
+windows.psscan.PsScan
+Look for exit time or terminated processes.
+
+# ✅ J) Parent of System process
+windows.pslist.PsList
+System PID = 4
+PPID = 0
+
+# ✅ K) Incorrect parents
+windows.pstree.PsTree
+
+Look for:
+ svchost under explorer
+ cmd under services
+
+# ⭐ MUTEX section
+
+# ✅ M) Processes accessing mutex
+windows.mutantscan.MutantScan
+
+# ✅ N) Evidence
+Show:
+ PID
+ Mutex name
+ Mutant object
+
+# ⭐ 3️⃣ HIDDEN PROCESS DETECTION — FULL MARKS EXPLANATION
+## 🔥 Investigator logic
+### Step 1
+PsList
+Active processes
+
+### Step 2
+PsScan
+
+Memory scan
+### Step 3
+
+Compare
+
+## ⭐ WHY THIS WORKS
+PsList → OS view
+PsScan → Memory view
+
+Mismatch = hiding
+
+## ⭐ PERFECT EXAM ANSWER
+> PsList did not display PID 4321. PsScan identified the process in memory. This indicates DKOM unlinking used to hide the process.
+
+# ⭐ 4️⃣ MALWARE INVESTIGATION STORY (ADAMFTRIAGE)
+## 🔥 INVESTIGATION NARRATIVE
+### Step 1 — Initial environment
+Info plugin revealed Windows system with active interactive session.
+
+### Step 2 — Process enumeration
+PsList showed multiple service processes.
+PsTree revealed suspicious child under explorer.
+
+👉 Malware likely user-executed.
+### Step 3 — Session analysis
+Sessions plugin showed user Bob interactive.
+
+👉 User context attack.
+### Step 4 — Malware detection
+Malfind detected executable memory region.
+
+👉 Injection confirmed.
+### Step 5 — Network
+NetScan revealed external communication.
+
+👉 Possible C2.
+
+## ⭐ FINAL STORY
+> Memory analysis identified suspicious process execution under user Bob. Injected executable memory regions were detected, consistent with malware. Network connections indicate possible command-and-control communication, confirming system compromise.
+# ⭐ ⭐ ⭐ NEXT (HIGH VALUE)
