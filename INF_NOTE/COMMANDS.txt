@@ -1,6 +1,8 @@
 
 COMMANDS
 
+cd run/media/kaliwg/'TOSHIBA EXT$'
+
 find
 find /home -name "AdamFTriage*"
 find / -name "AdamFTriage*" 2>/dev/null

@@ -58,6 +58,17 @@ cat ~/.ssh/id_ed25519.pub
 ```
 Copy the output.
 
+=======================================================
+kaliwg@kali:~/Downloads/INF4019W$ eval "$(ssh-agent -s)"
+Agent pid 73008
+                                                                                                                    
+kaliwg@kali:~/Downloads/INF4019W$ ssh-add ~/.ssh/id_ed25519
+Identity added: /home/kaliwg/.ssh/id_ed25519 (willsonsisimi@gmail.com)
+                                                                                                                    
+kaliwg@kali:~/Downloads/INF4019W$ cat ~/.ssh/id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBH3ciY7U0U6FymWTKxu4tULycgiu9YIuzC7Ve4UcsGg willsonsisimi@gmail.com
+                                                                                                         
+=======================================================
 
 # ✅ STEP 6 — Add key to GitHub
 1. Open → GitHub
