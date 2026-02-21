@@ -1,0 +1,88 @@
+
+
+
+PowerShell / Windows commands for session checking, process scanning, process listing, and network scanning — with short explanations.
+
+## 🔹 1. Check Logged-in Sessions
+### Show active user sessions
+```powershell
+query user
+```
+Shows users currently logged into the system (local or RDP).
+
+```powershell
+qwinsta
+```
+Displays Remote Desktop session information.
+
+```powershell
+Get-CimInstance -ClassName Win32_LogonSession
+```
+Lists all logon sessions (more detailed).
+
+
+## 🔹 2. Process List
+### Basic process list
+```powershell
+Get-Process
+```
+Lists all running processes.
+
+```powersshell
+tasklist
+```
+CMD-based process list (works inside PowerShell too).
+
+### Detailed view
+```powershell
+Get-Process | Select-Object Name, Id, CPU, WorkingSet
+```
+Shows process name, PID, CPU usage, and memory.
+
+
+## 🔹 3. Process Scan (Find suspicious or specific process)
+### Find specific process
+```powershell
+Get-Process -Name notepad
+```
+```powershell
+tasklist | findstr chrome
+```
+
+### Get process with full path
+```powershell
+Get-CimInstance Win32_Process | Select-Object Name, ProcessId, ExecutablePath
+```
+
+### Check process owner
+```powershell
+Get-CimInstance Win32_Process | Invoke-CimMethod -MethodName GetOwner
+```
+
+## 🔹 4. Network Scan / Netstat (PowerShell)
+### Show active network connections
+```powershell
+netstat -ano
+```
+Shows active connections with PID.
+```powersshell
+Get-NetTCPConnection
+```
+
+PowerShell native command for TCP connections.
+### Match connection with process
+```powershell
+Get-Process -Id <PID>
+```
+### Show listening ports only
+```powershell
+netstat -ano | findstr LISTENING
+```
+
+## 🔹 5. Basic Network Scanning (Local Network)
+### Ping sweep (simple example)
+```powershell
+1..254 | ForEach-Object {Test-Connection 192.168.1.$_ -Count 1 -Quiet}
+```
+Scans live hosts in subnet (change IP range as needed).
+
