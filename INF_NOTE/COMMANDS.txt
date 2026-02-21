@@ -48,13 +48,17 @@ WindowsVersion
 
 Volatility 3 does not have a plugin called windows.registry.hashdump.Hashdump. That was a Volatility 2 plugin.
 In Volatility 3, the equivalent functionality is split into different plugins under windows.registry.*. For extracting user hashes (SAM + SYSTEM), you should use:
-windows.registry.hivelist.HiveList
-windows.registry.getcellroutine.GetCellRoutine
-windows.registry.printkey.PrintKey
+windows.registry.hivelist.HiveList   (A list of Windows Registry hive files loaded in memory RAM {SYSTEM, SOFTWARE, SAM, SECURITY, NTUSER.DAT})
+windows.registry.getcellroutine.GetCellRoutine      (An internal Windows Registry function that retrieves a registry cell (data structure) from memory for processing.)
+windows.registry.printkey.PrintKey   (breakdown of hivelist)(A Volatility plugin used to display registry keys and their values from a specific registry hive.)
 
 Step 2 — Find registry hives
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.registry.hivelist.HiveList
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.registry.hivelist.HiveList --dump     "This auto‑dumps all hives"
+
+Suspicious User Account
+python3 vol.py -f WinDump.mem windows.registry.printkey.PrintKey --key "Microsoft\\Windows NT\\CurrentVersion\\ProfileList"
+
 SAM - \SystemRoot\System32\Config\SAM
 SYSTEM - \SystemRoot\System32\Config\SYSTEM
 
@@ -64,14 +68,53 @@ mv dumps/file* SAM
 mv dumps/file* SYSTEM
 
 Dump SAM:
-0xf8a000e66010  \SystemRoot\System32\Config\SAM Disabled
-python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem -o dumps windows.dumpfiles.DumpFiles --virtaddr 0xf8a000e66010
-python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem -o dumps windows.registry.dumpfiles.DumpFiles --virtaddr OFFSET_SAM
+(DumpFiles scans the entire memory image for all file objects in Windows memory (processes, cache, registry hives, mapped files, etc.) and attempts to dump them to disk)
+python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem -o dumps windows.registry.dumpfiles.DumpFiles
+
+python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam dumps/file.0xd98df9d07080*.vacb -system dumps/file.0xd98df989b3e0*.vacb LOCAL
+
+windows.registry.printkey.PrintKey                  (What your printkey output proves/This print and confirm the )
+windows.sessions.Sessions                           (Logged-on sessions)
+windows.getsids.GetSIDs                             (Users SID mapping)
+windows.registry.amcache.Amcache                    (Installed programs)
+windows.registry.userassist.UserAssist              (User activity (very strong evidence))
+timeliner.Timeliner                                 (Timeline (gold for report))
+
+===========================================================================================
+Step A: Enumerate all user accounts in SAM:
+python3 vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem  windows.registry.printkey.PrintKey --offset 0x8b853db26000 --key "SAM\Domains\Account\Users"
+
+000001F4
+000001F5
+000001F7
+000003E9
+
+Step B: Enumerate usernames (look under F subkeys for RID → username mapping):
+python3 vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem  windows.registry.printkey.PrintKey --offset 0x8b853db26000 --key "SAM\Domains\Account\Users\Names"
+
+Administrator
+DefaultAccount
+Guest
+passmark
+
+| Username       | RID (hex) | Account type   | Suspicious? | Reason                   |
+| -------------- | --------- | -------------- | ----------- | ------------------------ |
+| Administrator  | 000001F4  | Built‑in admin | ❌ No        | Default Windows account  |
+| Guest          | 000001F5  | Built‑in guest | ❌ No        | Default Windows account  |
+| DefaultAccount | 000001F7  | System managed | ❌ No        | Windows internal account |
+| passmark       | 000003E9  | Regular user   | ⚠️ Possible | Non-default human user   |
+
+Command history
+python3 vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem  windows.cmdscan.CmdScan
+
+Interactive console
+python3 vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem  windows.consoles.Consoles
+
+=====================================================================================================================
 
 Dump SYSTEM:
 0xf8a000024010  \REGISTRY\MACHINE\SYSTEM        Disabled
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem -o dumps windows.dumpfiles.DumpFiles --virtaddr 0xf8a000024010
-python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem -o dumps windows.registry.dumpfiles.DumpFiles --virtaddr OFFSET_SYSTEM
 
 Step 4 — Extract hashes (external tool)
 impacket-secretsdump -sam SAM -system SYSTEM LOCAL
