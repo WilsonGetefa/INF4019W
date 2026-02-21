@@ -35,6 +35,16 @@ Another:
 | PE TimeDateStamp     | Feb 3 2015                      | Kernel build timeframe                  |
 | KeNumberProcessors   | 2                               | System had 2 logical processors         |
 
+WindowsVersion
+| NT Version | Windows Version |
+| ---------- | --------------- |
+| 5.1        | Windows XP      |
+| 6.0        | Windows Vista   |
+| 6.1        | Windows 7       |
+| 6.2        | Windows 8       |
+| 6.3        | Windows 8.1     |
+| 10.0       | Windows 10 / 11 |
+
 
 Volatility 3 does not have a plugin called windows.registry.hashdump.Hashdump. That was a Volatility 2 plugin.
 In Volatility 3, the equivalent functionality is split into different plugins under windows.registry.*. For extracting user hashes (SAM + SYSTEM), you should use:
