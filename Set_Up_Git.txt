@@ -312,3 +312,6 @@ Yes — you can:
 ✔ Repeat as many times as you want
 
 That’s the normal Git workflow.
+
+Force merging branches
+git pull --no-rebase
