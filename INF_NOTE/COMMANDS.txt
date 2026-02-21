@@ -15,13 +15,13 @@ windows.registry.hivelist.HiveList
 windows.registry.getcellroutine.GetCellRoutine
 windows.registry.printkey.PrintKey
 
-Step 1 — Find registry hives
+Step 2 — Find registry hives
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.registry.hivelist.HiveList
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.registry.hivelist.HiveList --dump     "This auto‑dumps all hives"
 SAM - \SystemRoot\System32\Config\SAM
 SYSTEM - \SystemRoot\System32\Config\SYSTEM
 
-Step 2 — Dump SAM + SYSTEM
+Step 3 — Dump SAM + SYSTEM
 mkdir dumps
 mv dumps/file* SAM
 mv dumps/file* SYSTEM
@@ -36,15 +36,15 @@ Dump SYSTEM:
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem -o dumps windows.dumpfiles.DumpFiles --virtaddr 0xf8a000024010
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem -o dumps windows.registry.dumpfiles.DumpFiles --virtaddr OFFSET_SYSTEM
 
-Step 3 — Extract hashes (external tool)
+Step 4 — Extract hashes (external tool)
 impacket-secretsdump -sam SAM -system SYSTEM LOCAL
 impacket-secretsdump -sam SAM_FILE -system SYSTEM_FILE LOCAL
 
-Step 2 — Use printkey test (verify access)
+Step 5 — Use printkey test (verify access)
 0xf8a000e66010  \SystemRoot\System32\Config\SAM Disabled
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.registry.printkey.PrintKey --offset 0xf8a000e66010
 
-Step A — Dump hives using hive extraction plugin
+Step 6 — Dump hives using hive extraction plugin
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.registry.hivelist.HiveList --dump-dir dumps
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.registry.hivelist.HiveList --dump
 SAM
@@ -52,28 +52,28 @@ SYSTEM
 SECURITY
 SOFTWARE
 
-Step B — Use impacket secretsdump
+Step 7 — Use impacket secretsdump
 impacket-secretsdump -sam SAM -system SYSTEM LOCAL
 
-Step → credential extraction - Use Impacket secretsdump (This command print the password NTLM hash)
+Step 8 → credential extraction - Use Impacket secretsdump (This command print the password NTLM hash)
 0xf8a000024010  \REGISTRY\MACHINE\SYSTEM        Disabled
 impacket-secretsdump -sam registry.SAM.0xf8a000e66010.hive -system registry.SYSTEM.0xf8a000024010.hive LOCAL
 
-Step - Who was logged in? (To check Session)
+Step 9 - Who was logged in? (To check Session)
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.sessions.Sessions
 
-Step - Process tree (attack detection) (Running Process)
+Step 10 - Process tree (attack detection) (Running Process)
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.pstree.PsTree
 
-Step - Command history (goldmine) (What commands was used)
+Step 11 - Command history (goldmine) (What commands was used)
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.cmdscan.CmdScan
 
-Step - Network connections (attacker IP) (Scanning the IP IN/OUT)
+Step 12 - Network connections (attacker IP) (Scanning the IP IN/OUT)
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.netscan.NetScan
 
-Step - Malware detection
+Step 13 - Malware detection
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.malfind.Malfind
 
-Step - Persistence detection
+Step 14 - Persistence detection
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.svcscan.SvcScan
 
