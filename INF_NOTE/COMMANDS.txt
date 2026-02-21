@@ -10,6 +10,31 @@ find /home -name "AdamFTriange*" 2>/dev/null
 
 Step 1 — Memory Info for mem file
 python3 ~/volatility3/vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.info.Info
+| **Volatility Field** | **Value Observed** | **Interpretation**                           |
+| -------------------- | ------------------ | -------------------------------------------- |
+| NtMajorVersion       | 10                 | Indicates Windows 10 family                  |
+| NtMinorVersion       | 0                  | Confirms Windows 10                          |
+| Major/Minor          | 15.15063           | Kernel build number                          |
+| Build mapping        | 15063              | Corresponds to Windows 10 Version 1703       |
+| Is64Bit              | True               | 64-bit architecture                          |
+| NtSystemRoot         | C:\WINDOWS         | Standard Windows OS root directory           |
+| PE TimeDateStamp     | Apr 28 2018        | Kernel build timeframe supporting OS version |
+| KeNumberProcessors   | 4                  | System had 4 logical processors              |
+
+Another:
+| **Volatility Field** | **Value Observed**              | **Interpretation**                      |
+| -------------------- | ------------------------------- | --------------------------------------- |
+| NtMajorVersion       | 6                               | Indicates Windows 6.x family            |
+| NtMinorVersion       | 1                               | Version 6.1 corresponds to Windows 7    |
+| Major/Minor          | 15.7601                         | Kernel build number                     |
+| NTBuildLab           | 7601.18741.amd64fre.win7sp1_gdr | Explicit build string showing Win7 SP1  |
+| CSDVersion           | 1                               | Service Pack 1 installed                |
+| Build mapping        | 7601                            | Corresponds to Windows 7 Service Pack 1 |
+| Is64Bit              | True                            | 64-bit architecture                     |
+| NtSystemRoot         | C:\Windows                      | Standard Windows installation path      |
+| PE TimeDateStamp     | Feb 3 2015                      | Kernel build timeframe                  |
+| KeNumberProcessors   | 2                               | System had 2 logical processors         |
+
 
 Volatility 3 does not have a plugin called windows.registry.hashdump.Hashdump. That was a Volatility 2 plugin.
 In Volatility 3, the equivalent functionality is split into different plugins under windows.registry.*. For extracting user hashes (SAM + SYSTEM), you should use:
