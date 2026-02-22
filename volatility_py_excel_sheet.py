@@ -12,7 +12,6 @@ volatility_path = "/home/kaliwg/volatility3/vol.py"         # <-- Update the pat
 plugins = {
     "user_info": "windows.info.Info",                 # <--Show OS & kernel details of the memory sample being analyzed.-->  
     "user_assist": "windows.registry.userassist.UserAssist",            # <--Print userassist registry keys and information.-->
-    "print_key": "windows.registry.printkey.PrintKey",                # <--Print registry key and values.-->
     "amcache": "windows.amcache.Amcache",                          # <--Extract information on executed applications from the AmCache (deprecated).-->
     "cmdline": "windows.cmdline.CmdLine",                          # <--Lists process command line arguments.-->
     "cmdscan": "windows.cmdscan.CmdScan",                          # <--Looks for Windows Command History lists-->
@@ -29,7 +28,7 @@ plugins = {
     "sessions": "windows.sessions.Sessions",                         # <--lists Processes with Session information extracted from Environmental Variables-->
     "svcscan": "windows.svcscan.SvcScan",                           # <--Scans for windows services.-->
     #"timeliner": "timeliner.Timeliner",                             # <--Runs all relevant plugins that provide time related information and orders the results by time.-->
-    "timers": "windows.timers.Timers",                           # <--Print kernel timers and associated module DPCs-->
+    #"timers": "windows.timers.Timers",                           # <--Print kernel timers and associated module DPCs-->
 }
 
 output_folder = "forensic_outputs_excel_sheet"

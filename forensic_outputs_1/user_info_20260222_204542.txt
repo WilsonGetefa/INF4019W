@@ -1,0 +1,22 @@
+Volatility 3 Framework 2.28.0
+  |                       Variable |                                                                                                               Value
+* |                    Kernel Base |                                                                                                      0xf8021ec0f000
+* |                            DTB |                                                                                                            0x1aa000
+* |                        Symbols | file:///home/kaliwg/volatility3/volatility3/symbols/windows/ntkrnlmp.pdb/0C9CC659210046EC84231597DADFDB3B-1.json.xz
+* |                        Is64Bit |                                                                                                                True
+* |                          IsPAE |                                                                                                               False
+* |                     layer_name |                                                                                                   0 WindowsIntel32e
+* |                   memory_layer |                                                                                                         1 FileLayer
+* |                 KdVersionBlock |                                                                                                      0xf8021ef510a0
+* |                    Major/Minor |                                                                                                            15.15063
+* |                    MachineType |                                                                                                               34404
+* |             KeNumberProcessors |                                                                                                                   4
+* |                     SystemTime |                                                                                           2018-06-21 06:50:50+00:00
+* |                   NtSystemRoot |                                                                                                          C:\WINDOWS
+* |                  NtProductType |                                                                                                      NtProductWinNt
+* |                 NtMajorVersion |                                                                                                                  10
+* |                 NtMinorVersion |                                                                                                                   0
+* | PE MajorOperatingSystemVersion |                                                                                                                  10
+* | PE MinorOperatingSystemVersion |                                                                                                                   0
+* |                     PE Machine |                                                                                                               34404
+* |               PE TimeDateStamp |                                                                                            Sat Apr 28 04:13:12 2018

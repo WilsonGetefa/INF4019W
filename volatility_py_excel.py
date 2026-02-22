@@ -12,7 +12,6 @@ volatility_path = "/home/kaliwg/volatility3/vol.py"          # <-- Update the pa
 plugins = {
     "user_info": "windows.info.Info",                 # <--Show OS & kernel details of the memory sample being analyzed.-->  
     "user_assist": "windows.registry.userassist.UserAssist",            # <--Print userassist registry keys and information.-->
-    #"print_key": "windows.registry.printkey.PrintKey",                # <--Print registry key and values.-->
     #"amcache": "windows.amcache.Amcache",                          # <--Extract information on executed applications from the AmCache (deprecated).-->
     #"cmdline": "windows.cmdline.CmdLine",                          # <--Lists process command line arguments.-->
     #"cmdscan": "windows.cmdscan.CmdScan",                          # <--Looks for Windows Command History lists-->

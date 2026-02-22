@@ -1,11 +1,11 @@
 import subprocess
 from datetime import datetime
 import os
-from tabulate import tabulate
 
-# === CONFIGURATION ===
-memory_image = "/home/kaliwg/Downloads/windump/WinDump.mem" # <-- Update the path -->
-volatility_path = "/home/kaliwg/volatility3/vol.py"         # <-- Update the path -->
+# ================= CONFIGURATION =================
+
+memory_image   = "/home/kaliwg/Downloads/windump/WinDump.mem"
+volatility_path = "/home/kaliwg/volatility3/vol.py"
 
 plugins = {
     "user_info": "windows.info.Info",                 # <--Show OS & kernel details of the memory sample being analyzed.-->  
@@ -29,52 +29,58 @@ plugins = {
     "timers": "windows.timers.Timers",                           # <--Print kernel timers and associated module DPCs-->
 }
 
-output_folder = "forensic_outputs"
+# Output directory
+output_folder = "forensic_outputs_1"
 os.makedirs(output_folder, exist_ok=True)
 
-# === FUNCTION TO FORMAT OUTPUT USING TABULATE ===
-def format_with_tabulate(text):
-    """
-    Converts stdout text into a tabulated table using tabulate.
-    Splits lines by multiple spaces.
-    """
-    lines = text.strip().splitlines()
-    if not lines:
-        return "No output\n"
+# Timestamp for this run
+run_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
 
-    # Split each line by 2+ spaces to infer columns
-    table = [line.split() for line in lines]
-    if len(table) < 2:
-        # Not enough rows to format nicely
-        return text
+print("\n========== VOLATILITY AUTOMATION START ==========\n")
 
-    # Use the first row as header
-    headers = table[0]
-    data = table[1:]
+# ================= EXECUTION =================
 
-    return tabulate(data, headers=headers, tablefmt="rounded_grid")
-
-# === RUN PLUGINS ===
 for name, plugin in plugins.items():
-    print(f"Running plugin: {plugin}")
 
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    output_file = os.path.join(output_folder, f"{name}_{timestamp}.txt")
+    print(f"Running → {name:18} ({plugin})")
 
-    cmd = ["python3", volatility_path, "-f", memory_image, plugin]
+    output_file = os.path.join(output_folder, f"{name}_{run_timestamp}.txt")
+
+    # ⭐ Correct renderer usage
+    cmd = [
+        "python3",
+        volatility_path,
+        "-f", memory_image,
+        "-r", "pretty",      # <-- KEY FIX
+        plugin
+    ]
 
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        output_text = result.stdout
-        formatted_text = format_with_tabulate(output_text)
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=900,   # 15 min per plugin
+            check=False
+        )
 
+        # Always capture something
+        output = result.stdout if result.stdout else result.stderr
+
+        # Save output
         with open(output_file, "w", encoding="utf-8") as f:
-            f.write(formatted_text)
+            f.write(output)
 
-        print(f"Plugin output saved to {output_file}\n")
-    except subprocess.CalledProcessError as e:
-        print(f"Plugin {plugin} failed: {e}\n")
-        with open(output_file, "w", encoding="utf-8") as f:
-            f.write(f"Error running plugin:\n{e.stderr}")
+        print(f"  ✔ Saved → {output_file}\n")
 
-print("All plugin outputs saved successfully.")
+    except subprocess.TimeoutExpired:
+        print(f"  ⏱ TIMEOUT → {name}")
+        with open(output_file, "w") as f:
+            f.write("Plugin timed out after 15 minutes.\n")
+
+    except Exception as exc:
+        print(f"  ❌ Failed → {name}: {exc}")
+        with open(output_file, "w") as f:
+            f.write(str(exc))
+
+print("\n========== ALL PLUGINS FINISHED ==========\n")
