@@ -4,13 +4,30 @@ import os
 from tabulate import tabulate
 
 # === CONFIGURATION ===
-memory_image = "/home/kaliwg/Downloads/windump/WinDump.mem"
-volatility_path = "/home/kaliwg/volatility3/vol.py"  # <-- update if needed
+memory_image = "/home/kaliwg/Downloads/windump/WinDump.mem" # <-- Update the path -->
+volatility_path = "/home/kaliwg/volatility3/vol.py"         # <-- Update the path -->
 
 plugins = {
-    "os_info": "windows.info.Info",
-    "user_assist": "windows.registry.userassist.UserAssist",
-    "print_key": "windows.registry.printkey.PrintKey",
+    "user_info": "windows.info.Info",                 # <--Show OS & kernel details of the memory sample being analyzed.-->  
+    "user_assist": "windows.registry.userassist.UserAssist",            # <--Print userassist registry keys and information.-->
+    "print_key": "windows.registry.printkey.PrintKey",                # <--Print registry key and values.-->
+    "amcache": "windows.amcache.Amcache",                          # <--Extract information on executed applications from the AmCache (deprecated).-->
+    "cmdline": "windows.cmdline.CmdLine",                          # <--Lists process command line arguments.-->
+    "cmdscan": "windows.cmdscan.CmdScan",                          # <--Looks for Windows Command History lists-->
+    "getcellroutine": "windows.registry.getcellroutine.GetCellRoutine",   # <--Reports registry hives with a hooked GetCellRoutine handler-->
+    "getsids": "windows.getsids.GetSIDs",                           # <--Print the SIDs owning each process-->
+    "hivelist": "windows.registry.hivelist.HiveList",                # <--Lists the registry hives present in a particular memory image-->
+    "malfind": "windows.malware.malfind.Malfind",                   # <--Lists process memory ranges that potentially contain injected code.-->
+    "N": "windows.netscan.NetScan",                           # <--Scans for network objects present in a particular windows memory image.-->
+    "suspicious_threads": "windows.suspicious_threads.SuspiciousThreads",      # <--Lists suspicious userland process threads (deprecated).-->
+    "printkey": "windows.registry.printkey.PrintKey",                # <--Lists the registry keys under a hive or specific key value.-->
+    "pslist": "windows.pslist.PsList",                           # <--Lists the processes present in a particular windows memory image.-->
+    "psscan": "windows.psscan.PsScan",                           # <--Scans for processes present in a particular windows memory image.-->
+    "pstree": "windows.pstree.PsTree",                           # <--Plugin for listing processes in a tree based on their parent process ID.-->
+    "sessions": "windows.sessions.Sessions",                         # <--lists Processes with Session information extracted from Environmental Variables-->
+    "svcscan": "windows.svcscan.SvcScan",                           # <--Scans for windows services.-->
+    #"timeliner": "timeliner.Timeliner",                             # <--Runs all relevant plugins that provide time related information and orders the results by time.-->
+    "timers": "windows.timers.Timers",                           # <--Print kernel timers and associated module DPCs-->
 }
 
 output_folder = "forensic_outputs"
