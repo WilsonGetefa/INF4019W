@@ -157,3 +157,15 @@ python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.malfind.Malfind
 Step 14 - Persistence detection
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.svcscan.SvcScan
 
+
+⭐ What is a mutex (exam definition)
+A mutex (mutant) is:
+👉 A Windows synchronization object
+👉 Used to ensure only one process accesses a resource
+BUT…
+
+🔥 Malware commonly creates unique mutex names to:
+prevent reinfection
+coordinate malware threads
+identify active infection
+So mutex names are strong malware indicators.
