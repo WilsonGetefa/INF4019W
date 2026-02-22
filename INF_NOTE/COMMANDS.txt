@@ -152,7 +152,7 @@ Step 12 - Network connections (attacker IP) (Scanning the IP IN/OUT)
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.netscan.NetScan
 
 Step 13 - Malware detection
-python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.malfind.Malfind
+python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.malware.malfind.Malfind
 
 Step 14 - Persistence detection
 python3 vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem windows.svcscan.SvcScan
