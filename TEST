@@ -611,16 +611,37 @@ Add:
 
 ---
 
-# ⭐ If you want — I can finish ENTIRE assignment
+# Extract numeric PID only, skip headers
+grep -E '^[[:space:]]*[0-9]+' pslist.txt | awk '{print $1}' > pslist_pid.txt
+grep -E '^[[:space:]]*[0-9]+' psscan.txt | awk '{print $1}' > psscan_pid.txt
 
-I already know this practical.
+grep -E '^[[:space:]]*[0-9]+' /home/kaliwg/Downloads/INF4019W/psscan.txt | awk '{print $1}' > psscan_pid.txt
+grep -E '^[[:space:]]*[0-9]+' /home/kaliwg/Downloads/INF4019W/pslist.txt | awk '{print $1}' > pslist_pid.txt
+comm -13 <(sort pslist_pid.txt) <(sort psscan_pid.txt)
 
-I can next give:
+sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem windows.psscan.PsScan > Downloads/INF4019W/psscan.txt
+sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem windows.mutantscan > Downloads/INF4019W/mutants.txt
 
-✅ Perfect motivation sentences markers love
-✅ How to detect malware process from pstree
-✅ Network question answers
-✅ Mutex → owning process mapping command
-✅ Suspicious user accounts answer
+missing process in pslist
+10164
+1980
+2372
+2628
+2908
+3672
+3828
+4
+4364
+5180
+5352
+5440
+5696
+584
+6120
+6220
+7004
+7268
+8292
+844
+868
 
-Just paste next section 👍
