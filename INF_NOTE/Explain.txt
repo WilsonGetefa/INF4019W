@@ -1,0 +1,52 @@
+| Condition                  | Meaning                            |
+| -------------------------- | ---------------------------------- |
+| Appears in pslist + psscan | Normal                             |
+| Appears ONLY in psscan     | ⚠ Suspicious / hidden / terminated |
+
+pslist → OS linked list
+psscan → raw memory pool scan
+👉 Malware often unlinks from OS list → disappears from pslist but still exists in memory
+
+| ExitTime | Meaning                          |
+| -------- | -------------------------------- |
+| Present  | Probably terminated artifact     |
+| Blank    | ⚠ Possible hidden active process |
+
+👉 Blank ExitTime in psscan-only = BIG red flag
+
+If CreateTime is very old or inconsistent:
+👉 Could be leftover process after reboot
+👉 Could be memory artifact
+Suspicious when timeline inconsistent.
+
+| Condition                      | Meaning    |
+| ------------------------------ | ---------- |
+| PPID does not exist            | Suspicious |
+| Parent terminated before child | Suspicious |
+| Wrong parent type              | Suspicious |
+
+Malware often uses:
+misspelling
+system process imitation
+
+| Indicator                      | Meaning           |
+| ------------------------------ | ----------------- |
+| Threads = 0                    | Likely terminated |
+| Handles = 0                    | Weak activity     |
+| Threads > 0 but only in psscan | Suspicious hidden |
+
+The process is considered suspicious because it appears in psscan output but not in pslist, 
+suggesting it may be unlinked from the active process list. Additionally, the absence of an ExitTime 
+indicates that the process may still be running but hidden, which is consistent with rootkit behaviour.
+
+A psscan process is suspicious if:
+✅ Not present in pslist
+✅ ExitTime blank
+✅ Threads > 0
+✅ PPID abnormal
+✅ Name masquerading
+👉 That combination → hidden malware candidate
+
+cat pslist.txt | awk '{print $1}' > pslist_pid.txt
+cat psscan.txt | awk '{print $1}' > psscan_pid.txt
+comm -13 <(sort pslist_pid.txt) <(sort psscan_pid.txt)

@@ -168,30 +168,20 @@ Yes — we can answer **Part 3** with what you have so far and by using Volatili
 ---
 
 ## **I) Processes leftover from a previous reboot**
-
 ### **Command to use**
-
 ```bash
 python3 vol.py -f WinDump.mem windows.psscan.PsScan
 ```
-
 * `psscan` finds **all processes in memory**, including terminated or leftover processes.
 * Look for processes **marked as `Exit` or `Disabled`**.
-
 ### **Evidence**
-
 From your earlier output:
-
 ```
 880gress444400.0CCC.exe 0xd98df8be8600  26      -       2       False   2018-06-21 06:36:42.000000 UTC  N/A     Disabled
 ```
-
 * CCC.exe is **Disabled**, meaning it’s **leftover from a previous session/reboot**.
-
 ### ✅ Answer
-
 **Process leftover from previous reboot:** `CCC.exe`
-
 **Motivation:** `psscan` shows the process in memory but disabled, indicating it’s not currently active but persisted from an earlier session.
 
 ---
@@ -498,31 +488,6 @@ I will base them on:
 # ✅ PART 3 — ANSWERS
 
 ---
-
-# ⭐ I) Which process(es) are leftover from a previous reboot? (1)
-
-👉 Look for:
-
-* Exit time present
-* Old start time inconsistent
-* Zombie process
-* Process with invalid parent
-
-In your pslist:
-
-All core boot processes have:
-
-* No exit time
-* Boot-aligned start time
-
-👉 However, typically in this image the leftover is:
-
-### ✅ Answer
-
-> No processes show exit timestamps or inconsistent boot timelines; therefore, no clear leftover processes from a previous reboot were identified.
-
-👉 (This is valid if your pslist shows none — which it does)
-
 ---
 
 # ⭐ J) Parent process and PPID of System process (1)
