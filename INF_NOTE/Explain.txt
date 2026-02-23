@@ -185,3 +185,39 @@ Mutex = mutual exclusion object in Windows
 Used to prevent multiple instances of the same program
 Malware often creates uniquely named Mutexes to prevent multiple infections
 Detecting unusual Mutex names helps identify malware
+
+
+# Extract numeric PID only, skip headers
+grep -E '^[[:space:]]*[0-9]+' pslist.txt | awk '{print $1}' > pslist_pid.txt
+grep -E '^[[:space:]]*[0-9]+' psscan.txt | awk '{print $1}' > psscan_pid.txt
+
+grep -E '^[[:space:]]*[0-9]+' /home/kaliwg/Downloads/INF4019W/psscan.txt | awk '{print $1}' > psscan_pid.txt
+grep -E '^[[:space:]]*[0-9]+' /home/kaliwg/Downloads/INF4019W/pslist.txt | awk '{print $1}' > pslist_pid.txt
+comm -13 <(sort pslist_pid.txt) <(sort psscan_pid.txt)
+
+sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem windows.psscan.PsScan > Downloads/INF4019W/psscan.txt
+sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem windows.mutantscan > Downloads/INF4019W/mutants.txt
+
+missing process in pslist
+10164
+1980
+2372
+2628
+2908
+3672
+3828
+4
+4364
+5180
+5352
+5440
+5696
+584
+6120
+6220
+7004
+7268
+8292
+844
+868
+
