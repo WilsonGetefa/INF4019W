@@ -50,3 +50,138 @@ A psscan process is suspicious if:
 cat pslist.txt | awk '{print $1}' > pslist_pid.txt
 cat psscan.txt | awk '{print $1}' > psscan_pid.txt
 comm -13 <(sort pslist_pid.txt) <(sort psscan_pid.txt)
+psscan PID AND NOT pslist PID
+
+Hidden processes are identified by comparing pslist and psscan outputs. A process appearing in psscan but absent 
+from pslist indicates that it may be unlinked from the active process list. If such a process also lacks an ExitTime, 
+it suggests the process may still be running but hidden.
+
+| PID  | pslist | psscan | ExitTime | Meaning    |
+| ---- | ------ | ------ | -------- | ---------- |
+| 1200 | ❌      | ✅      | blank    | Hidden     |
+| 1300 | ❌      | ✅      | present  | Terminated |
+| 500  | ✅      | ✅      | blank    | Normal     |
+
+Windows Boot Process: Visual mental model
+Windows boot
+   ↓
+Kernel creates System (PID 4) (PPID 0)
+   ↓
+smss
+   ↓
+csrss + wininit
+   ↓
+services + lsass + winlogon
+   ↓
+user login
+   ↓
+explorer
+   ↓
+user apps
+
+
+# ✅ **⭐ 1️⃣ Windows boot → first processes**
+When **Microsoft Windows** boots, processes start in a **fixed order**.
+
+### ✔ Core boot sequence
+1️⃣ **System (PID 4)**
+* Kernel process
+* Not created like normal processes
+* Root of many kernel activities
+
+2️⃣ **smss.exe (Session Manager)**
+* First user-mode process
+* Creates sessions
+* Starts csrss and wininit
+
+3️⃣ **csrss.exe (Client Server Runtime)**
+* Windows subsystem
+* Console + GUI management
+
+4️⃣ **wininit.exe**
+* Starts service control manager
+* Starts lsass and services
+
+5️⃣ **services.exe**
+* Service Control Manager
+* Starts background services
+
+6️⃣ **lsass.exe**
+* Security + authentication
+
+7️⃣ **winlogon.exe**
+* User logon process
+
+8️⃣ **explorer.exe** (after login)
+* User shell
+
+# ⭐ **2️⃣ How process list exists internally**
+Windows keeps active processes in a **kernel linked list**:
+👉 EPROCESS structures
+👉 Doubly-linked list
+👉 Maintained by kernel scheduler
+This is what **pslist reads**.
+
+# ⭐ **3️⃣ What Volatility plugins read**
+Using **Volatility 3**:
+| Plugin | Source                       |
+| ------ | ---------------------------- |
+| pslist | Active kernel linked list    |
+| pstree | Same list but hierarchical   |
+| psscan | Raw memory scan for EPROCESS |
+
+# ⭐ **4️⃣ What happens during runtime**
+As Windows runs:
+* Processes created → inserted into list
+* Processes terminate → removed from list
+* Memory may still contain structure → psscan finds
+👉 This is why hidden/leftover detection works.
+
+# ⭐ **6️⃣ Why this matters in forensics**
+Because you can detect anomalies:
+👉 Wrong parent
+👉 Missing parent
+👉 Boot-order violation
+👉 Hidden process
+
+Example:
+```id="3shm4k"
+explorer parent = svchost
+```
+👉 Suspicious
+
+# ⭐ **7️⃣ Exam-style answer**
+> During Windows startup, core system processes are created in a predefined order beginning with the System process, 
+followed by smss.exe, csrss.exe, wininit.exe, services.exe, lsass.exe, and winlogon.exe. These processes are maintained 
+in a kernel-linked list which represents the active process list used by forensic tools such as Volatility.
+
+# Let say PID 460 missing
+✔ If PID 460 missing
+👉 Parent terminated → artifact
+
+✔ If PID 460 exists but wrong process
+👉 PID reuse → artifact
+
+The csrss.exe and wininit.exe processes are observed with parent PID 460 instead of smss.exe (PID 356), 
+which is inconsistent with the expected Windows boot process hierarchy. This suggests that the original 
+parent process may have terminated or that the process structure represents a memory artifact.
+
+The anomaly may be attributed to session manager process termination after spawning child processes, 
+resulting in stale parent references within memory.
+
+✔ Normal shutdown
+App → Service → Session → Kernel → Power off
+
+❌ Abrupt shutdown
+System running → Power loss → Memory freeze
+
+During a normal Windows shutdown, user processes, services, and core system processes terminate in an orderly 
+sequence with corresponding ExitTime values recorded. However, abrupt power loss prevents this sequence, 
+leaving process structures in memory without proper termination metadata, resulting in artifacts such as 
+incorrect parent relationships, leftover processes, and incomplete process termination records.
+
+1️⃣ What is a Mutex
+Mutex = mutual exclusion object in Windows
+Used to prevent multiple instances of the same program
+Malware often creates uniquely named Mutexes to prevent multiple infections
+Detecting unusual Mutex names helps identify malware
