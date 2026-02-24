@@ -192,3 +192,87 @@ Simple Classification Table
 | Logs          | System events         |
 | Web/network   | Internet activity     |
 | Memory        | Live system state     |
+
+
+Major/Minor = X.YYYYY
+Built string = YYYYY
+15 → internal kernel generation
+22000 → OS build string
+Examiners expect you to extract 22000.
+
+Wrong User
+windows.getsids
+windows.logonsessions
+windows.pslist
+
+Process → SID → Username
+
+Interactive logons
+Network logons
+Service logons
+
+Explorer.exe
+User applications
+Browser processes
+
+Difference from other plugins (EXAM FAVOURITE)
+| Plugin  | Shows                        |
+| ------- | ---------------------------- |
+| pslist  | Active processes             |
+| psscan  | Active + terminated + hidden |
+| pstree  | Parent-child view            |
+| psxview | Cross-check detection        |
+
+⭐ Practical tip for your assignment
+If next question is:
+👉 Leftover process from previous reboot
+Then you compare:
+pslist vs psscan
+
+Leftover
+ExitTime = 2018-06-08 00:26:24
+✔ Terminated
+✔ Not active
+✔ Historical session manager
+
+⭐What is a hidden process?
+Exists in memory but does NOT appear in the standard active process list (pslist), OR
+Appears in pslist but has abnormal attributes (wrong parent, wrong session, no handles), OR
+Is only found in psscan (raw memory scan for EPROCESS structures) but not in pslist.
+Present in psscan (memory scan)
+Missing from pslist (standard process enumeration)
+
+This is from WinDump
+| PID   | ImageFileName  | PPID | CreateTime (UTC)    | Reason / Notes                                |
+| ----- | -------------- | ---- | ------------------- | --------------------------------------------- |
+| 9932  | remsh.exe      | 1568 | 2018-06-21 06:00:29 | Not in pslist; DKOM hidden                    |
+| 6492  | ngentask.exe   | 7252 | 2018-06-21 06:43:20 | Not in pslist; hidden service                 |
+| 7048  | taskhostw.exe  | 1568 | 2018-06-21 06:35:53 | Not in pslist; multiple hidden instances      |
+| 7220  | RuntimeBroker. | 868  | 2018-06-21 06:36:00 | Not in pslist; abnormal PPID                  |
+| 10084 | SystemSettings | 868  | 2018-06-21 06:36:42 | Not in pslist; possibly system hidden         |
+| 8892  | osf64.exe      | 5352 | 2018-06-21 06:49:21 | Not in pslist; short-lived hidden execution   |
+| 5352  | OSForensics.ex | 8264 | 2018-06-21 06:49:20 | Forensic tool; may hide intentionally         |
+| 9312  | csrss.exe      | 6920 | 2018-06-08 00:26:24 | Duplicate/abnormal PPID; DKOM hiding possible |
+
+PID 6920 (smss.exe) exists in memory but does not appear in pslist, which only shows active processes from the current session.
+This indicates it is a residual process from a previous system reboot.
+| PID  | Name     | PPID | CreateTime (UTC)    | Reason                                                                                          |
+| ---- | -------- | ---- | ------------------- | ----------------------------------------------------------------------------------------------- |
+| 6920 | smss.exe | 356  | 2018-06-08 00:26:24 | Present in memory (psscan) but not in active process list (pslist); leftover from previous boot |
+
+Which is the Parent process and (PPID) of System process?
+Parent Process: None (PPID = 0)
+Reasoning: The System process (PID 4) is a core Windows kernel process. Its parent PID is 0, which indicates it is directly started by the Windows kernel 
+at boot and has no “user-mode” parent process.
+| Process Name | PID | PPID | Notes                                     |
+| ------------ | --- | ---- | ----------------------------------------- |
+| System       | 4   | 0    | Kernel process, parent is kernel (PPID 0) |
+
+Which other process(es) have incorrect parents and what does this suggest
+| Process Name | PID  | PPID | Notes / Reason for Incorrect Parent         |
+| ------------ | ---- | ---- | ------------------------------------------- |
+| smss.exe     | 6920 | 356  | Leftover from previous reboot               |
+| NisSrv.exe   | 5020 | 716  | PPID unusual, could indicate hiding/malware |
+| atiesrxx.exe | 1288 | 716  | PPID unexpected for driver                  |
+| ngentask.exe | 6492 | 7252 | PPID unusual, possible hiding               |
+
