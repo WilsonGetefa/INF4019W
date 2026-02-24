@@ -180,3 +180,15 @@ prevent reinfection
 coordinate malware threads
 identify active infection
 So mutex names are strong malware indicators.
+
+Windows artifacts are digital traces left on a Windows system that provide evidence of user and system activity, used in digital forensic investigations.
+Simple Classification Table
+| Artifact Type | What it shows         |
+| ------------- | --------------------- |
+| File system   | File activity         |
+| Registry      | Configuration & usage |
+| User activity | User interaction      |
+| Execution     | Program runs          |
+| Logs          | System events         |
+| Web/network   | Internet activity     |
+| Memory        | Live system state     |
