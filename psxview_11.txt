@@ -1,0 +1,95 @@
+Volatility 3 Framework 2.28.0
+
+Offset(Virtual)	Name	PID	pslist	psscan	thrdscan	csrss	Exit Time
+
+0xde8ce701a080	msedge.exe	7788	True	True	True	True	
+0xde8ce590b080	svchost.exe	1744	True	True	True	True	
+0xde8ceb39b080	svchost.exe	2740	True	True	True	True	
+0xde8cebc3f080	svchost.exe	5548	True	True	True	True	
+0xde8cead5f080	svchost.exe	2560	True	True	True	True	
+0xde8ceafc3080	MsMpEng.exe	2316	True	True	True	True	
+0xde8cebfef080	msteams.exe	6248	True	True	True	True	
+0xde8ceb5f3080	svchost.exe	3708	True	True	True	True	
+0xde8ce59d7080	svchost.exe	1812	True	True	True	True	
+0xde8ce9a27080	msedge.exe	2720	True	True	True	True	
+0xde8ce58c4040	System	4	True	False	True	False	
+0xde8ce78bc040	smss.exe	376	True	True	True	False	
+0xde8ce5973040	MemCompression	1604	True	True	True	False	
+0xde8cebc3d0c0	msedge.exe	6104	True	True	False	False	2022-07-18 23:14:58+00:00
+0xde8ceb9110c0	WmiPrvSE.exe	2792	True	True	True	True	
+0xde8ceb5a90c0	Widgets.exe	7548	True	True	True	True	
+0xde8ce592e080	Registry	124	True	True	True	False	
+0xde8ce9dbd080	wininit.exe	568	True	True	True	True	
+0xde8ceaa17080	winlogon.exe	668	True	True	True	True	
+0xde8ceaa2e080	services.exe	712	True	True	True	True	
+0xde8ceaa36080	lsass.exe	736	True	True	True	True	
+0xde8ceaa95080	svchost.exe	856	True	True	True	True	
+0xde8ceab25080	svchost.exe	988	True	True	True	True	
+0xde8ceabaa080	dwm.exe	564	True	True	True	True	
+0xde8ceabef080	svchost.exe	488	True	True	True	True	
+0xde8ceac5a080	svchost.exe	1120	True	True	True	True	
+0xde8ceb4e0080	taskhostw.exe	732	True	True	True	True	
+0xde8cebc40080	SearchIndexer.	5532	True	True	True	True	
+0xde8ceb6c0080	NisSrv.exe	5832	True	True	True	True	
+0xde8ceb5e0080	SgrmBroker.exe	1760	True	True	True	True	
+0xde8cead04080	sihost.exe	2924	True	True	True	True	
+0xf986992860b0	svchost.exe	1744	False	True	False	False	
+0xde8ce92aa0c0	msedge.exe	6524	True	True	True	True	
+0xde8ce94ed0c0	msedge.exe	2260	True	True	True	True	
+0xde8cec1540c0	ApplicationFra	7796	True	True	True	True	
+0xde8ceaba70c0	LogonUI.exe	484	True	True	False	False	2022-07-18 23:11:56+00:00
+0xde8ceabc00c0	svchost.exe	760	True	True	True	True	
+0xde8ceaec50c0	svchost.exe	1928	True	True	True	True	
+0xde8ceaee70c0	svchost.exe	1156	True	True	True	True	
+0xde8ceb0340c0	svchost.exe	2228	True	True	True	True	
+0xde8ceb8b70c0	SearchHost.exe	3376	True	True	True	True	
+0xde8ceb94d0c0	RuntimeBroker.	4172	True	True	True	True	
+0xde8ceb7020c0	SecurityHealth	6056	True	True	True	True	
+0xde8cec8020c0	FileCoAuth.exe	7904	True	True	True	True	
+0xde8cec16d080	svchost.exe	3180	True	True	True	True	
+0xde8ceb510080	explorer.exe	3244	True	True	True	True	
+0xde8ceb418080	svchost.exe	816	True	True	True	True	
+0xde8cebb18080	smartscreen.ex	3456	True	True	True	True	
+0xde8ced890100	SearchProtocol	464	True	True	True	True	
+0xde8ce5975080	svchost.exe	1596	True	True	True	True	
+0xde8ce59dd080	svchost.exe	1828	True	True	True	True	
+0xde8ceb5a1080	svchost.exe	3420	True	True	True	True	
+0xde8cebc41080	RuntimeBroker.	5392	True	True	True	True	
+0xde8cec705080	svchost.exe	5104	True	True	True	True	
+0xde8cebb09080	dllhost.exe	4556	True	True	True	True	
+0xde8ceb50d080	userinit.exe	3208	True	True	False	False	2022-07-18 23:10:25+00:00
+0xde8ceb8b1080	StartMenuExper	3732	True	True	True	True	
+0xde8ceba31080	svchost.exe	4312	True	True	True	True	
+0xde8ceaf75080	svchost.exe	1752	True	True	True	True	
+0xde8ce7f24080	autochk.exe	416	False	True	False	False	2022-07-18 23:09:59+00:00
+0xde8ce9c6d140	csrss.exe	496	True	True	True	False	
+0xde8ce9dc8140	csrss.exe	588	True	True	True	False	
+0xde8ceaa9c140	fontdrvhost.ex	884	True	True	True	True	
+0xde8ceaab2140	fontdrvhost.ex	892	True	True	True	True	
+0xde8ceba230c0	RuntimeBroker.	4256	True	True	True	True	
+0xde8ceb6870c0	msedge.exe	7764	True	True	True	True	
+0xde8cec3db0c0	MoUsoCoreWorke	516	True	True	True	True	
+0xde8cebd3f0c0	Microsoft.Shar	1948	True	True	False	False	2022-07-18 23:10:24+00:00
+0xde8cec1430c0	OneDrive.exe	4788	True	True	True	True	
+0xde8cec7870c0	RuntimeBroker.	7412	True	True	True	True	
+0xde8cebb870c0	msiexec.exe	6088	True	True	True	True	
+0xde8ce90530c0	RuntimeBroker.	1292	True	True	True	True	
+0xde8ced791080	SystemSettings	5840	True	True	True	True	
+0xde8ceac62080	svchost.exe	1180	True	True	True	True	
+0xde8ceacda080	svchost.exe	1300	True	True	True	True	
+0xde8cead0a080	svchost.exe	1360	True	True	True	True	
+0xde8cebc42080	LockApp.exe	5316	True	True	True	True	
+0xde8cec6ea080	msedge.exe	6664	True	True	True	True	
+0xde8ceb1a6080	AggregatorHost	2688	True	True	True	True	
+0xde8ceb95a080	svchost.exe	4248	True	True	True	True	
+0xde8cec0ca080	RuntimeBroker.	6356	True	True	True	True	
+0xde8ceaef6080	spoolsv.exe	2004	True	True	True	True	
+0xde8ceb596080	ctfmon.exe	3404	True	True	True	True	
+0xde8ced821080	UserOOBEBroker	2500	True	True	True	True	
+0xde8ceb3980c0	SecurityHealth	6032	True	True	True	True	
+0xde8cec7980c0	ShellExperienc	7272	True	True	True	True	
+0xde8ce93580c0	dllhost.exe	2708	True	True	True	True	
+0xde8cebc240c0	msedge.exe	8076	True	True	True	True	
+0xde8ce94740c0	Calculator.exe	2180	True	True	True	True	
+0xde8ce736c0c0	msedge.exe	1736	True	True	True	True	
+0xde8ceb035080	svchost.exe	2240	True	True	True	True	

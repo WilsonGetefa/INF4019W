@@ -45,6 +45,17 @@ WindowsVersion
 | 6.3        | Windows 8.1     |
 | 10.0       | Windows 10 / 11 |
 
+Windows 11 still reports version 10.0 internally
+This is for application compatibility so old software that checks version numbers does not break.
+The REAL Windows version indicator
+Major/Minor 15.22000
+| Build   | OS         |
+| ------- | ---------- |
+| < 22000 | Windows 10 |
+| ≥ 22000 | Windows 11 |
+
+Build 22000 = Windows 11 (21H2 initial release)
+SystemTime 2022-07-18
 
 Volatility 3 does not have a plugin called windows.registry.hashdump.Hashdump. That was a Volatility 2 plugin.
 In Volatility 3, the equivalent functionality is split into different plugins under windows.registry.*. For extracting user hashes (SAM + SYSTEM), you should use:

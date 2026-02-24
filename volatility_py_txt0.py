@@ -30,7 +30,7 @@ plugins = {
 }
 
 # Output directory
-output_folder = "forensic_outputs_1"
+output_folder = "forensic_outputs_10"
 os.makedirs(output_folder, exist_ok=True)
 
 # Timestamp for this run
