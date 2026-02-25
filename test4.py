@@ -9,14 +9,15 @@ os.makedirs(output_folder, exist_ok=True)
 
 # Plugins to run
 plugins = {
-    "pslist": "windows.pslist",
-    "psscan": "windows.psscan",
-    "psxview": "windows.psxview"
+    #"pslist": "windows.pslist",
+    #"psscan": "windows.psscan",
+    #"psxview": "windows.psxview"
+    "hashdump_7": "windows.hashdump",
 }
 
 # Paths
 volatility_path = "/home/kaliwg/volatility3/vol.py"
-memory_image = "/home/kaliwg/Downloads/windump/WinDump.mem"
+memory_image = "/home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem"
 
 for name, plugin in plugins.items():
     print(f"\nRunning plugin: {plugin}")
@@ -32,7 +33,7 @@ for name, plugin in plugins.items():
             rows.append(line.split())
 
     # Tabulate and print
-    table = tabulate(rows, tablefmt="grid")
+    table = tabulate(rows, tablefmt="rounded_grid")
     print(table)
 
     # Save to TXT
