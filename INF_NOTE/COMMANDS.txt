@@ -277,3 +277,107 @@ Which other process(es) have incorrect parents and what does this suggest
 | ngentask.exe | 6492 | 7252 | PPID unusual, possible hiding               |
 
 To Investigate Crypto use pycryptodome package
+
+Volatility2
+# Identify OS profile
+sudo vol.py -f /home/kaliwg/Downloads/WinDump.mem imageinfo
+
+# List processes
+sudo vol.py -f /home/kaliwg/Downloads/WinDump.mem --profile=Win10x64_15063 pslist
+
+# Command history
+sudo vol.py -f /home/kaliwg/Downloads/WinDump.mem --profile=Win10x64_15063 cmdscan
+
+# Loaded drivers
+sudo vol.py -f /home/kaliwg/Downloads/WinDump.mem --profile=Win10x64_15063 modules
+
+kaliwg@kali:~$ sudo  vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem kdbgscan
+Volatility Foundation Volatility Framework 2.6.1
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP1x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP0x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP0x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP1x64_24000
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP1x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP1x64_23418
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP1x64_23418
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP1x64_24000
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+kaliwg@kali:~$ sudo  vol.py -f /home/kaliwg/Downloads/AdamFTriage.mem imageinfo
+Volatility Foundation Volatility Framework 2.6.1
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/kaliwg/Downloads/AdamFTriage.mem)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf800029f80a0L
+          Number of Processors : 2
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff800029f9d00L
+                KPCR for CPU 1 : 0xfffff880009ee000L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2019-03-22 05:46:00 UTC+0000
+     Image local date and time : 2019-03-22 01:46:00 -0400

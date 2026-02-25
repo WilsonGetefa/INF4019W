@@ -1,12 +1,13 @@
 import subprocess
+from tabulate import tabulate
 from datetime import datetime
 import os
 
-# ================= CONFIGURATION =================
+# Output folder
+output_folder = "Volatility_Reports_New_7"
+os.makedirs(output_folder, exist_ok=True)
 
-memory_image   = "/home/kaliwg/Downloads/AdamFTriage.mem"
-volatility_path = "/home/kaliwg/volatility3/vol.py"
-
+# Plugins to run
 plugins = {
     "user_info": "windows.info.Info",                 # <--Show OS & kernel details of the memory sample being analyzed.-->  
     "user_assist": "windows.registry.userassist.UserAssist",            # <--Print userassist registry keys and information.-->
@@ -17,7 +18,7 @@ plugins = {
     "getsids": "windows.getsids.GetSIDs",                           # <--Print the SIDs owning each process-->
     "hivelist": "windows.registry.hivelist.HiveList",                # <--Lists the registry hives present in a particular memory image-->
     "malfind": "windows.malware.malfind.Malfind",                   # <--Lists process memory ranges that potentially contain injected code.-->
-    "N": "windows.netscan.NetScan",                           # <--Scans for network objects present in a particular windows memory image.-->
+    "Netscan": "windows.netscan.NetScan",                           # <--Scans for network objects present in a particular windows memory image.-->
     "suspicious_threads": "windows.suspicious_threads.SuspiciousThreads",      # <--Lists suspicious userland process threads (deprecated).-->
     "printkey": "windows.registry.printkey.PrintKey",                # <--Lists the registry keys under a hive or specific key value.-->
     "pslist": "windows.pslist.PsList",                           # <--Lists the processes present in a particular windows memory image.-->
@@ -31,58 +32,31 @@ plugins = {
     "hashdump": "windows.registry.hashdump.HashDump",                # <--Extracts password hashes from the SAM registry hive.-->
 }
 
-# Output directory
-output_folder = "forensic_outputs_7"
-os.makedirs(output_folder, exist_ok=True)
-
-# Timestamp for this run
-run_timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-
-print("\n========== VOLATILITY AUTOMATION START ==========\n")
-
-# ================= EXECUTION =================
+# Paths
+volatility_path = "/home/kaliwg/volatility3/vol.py"
+memory_image = "/home/kaliwg/Downloads/AdamFTriage.mem"
 
 for name, plugin in plugins.items():
+    print(f"\nRunning plugin: {plugin}")
 
-    print(f"Running → {name:18} ({plugin})")
+    # Build command
+    cmd = ["python3", volatility_path, "-f", memory_image, plugin]
+    result = subprocess.run(cmd, capture_output=True, text=True)
 
-    output_file = os.path.join(output_folder, f"{name}_{run_timestamp}.txt")
+    # Parse output into rows using simple split()
+    rows = []
+    for line in result.stdout.splitlines():
+        if line.strip() and "Progress:" not in line:  # skip progress
+            rows.append(line.split())
 
-    # ⭐ Correct renderer usage
-    cmd = [
-        "python3",
-        volatility_path,
-        "-f", memory_image,
-        "-r", "pretty",      # <-- KEY FIX
-        plugin
-    ]
+    # Tabulate and print
+    table = tabulate(rows, tablefmt="grid")
+    print(table)
 
-    try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=900,   # 15 min per plugin
-            check=False
-        )
+    # Save to TXT
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    output_file = os.path.join(output_folder, f"{name}_{timestamp}.txt")
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(table)
 
-        # Always capture something
-        output = result.stdout if result.stdout else result.stderr
-
-        # Save output
-        with open(output_file, "w", encoding="utf-8") as f:
-            f.write(output)
-
-        print(f"  ✔ Saved → {output_file}\n")
-
-    except subprocess.TimeoutExpired:
-        print(f"  ⏱ TIMEOUT → {name}")
-        with open(output_file, "w") as f:
-            f.write("Plugin timed out after 15 minutes.\n")
-
-    except Exception as exc:
-        print(f"  ❌ Failed → {name}: {exc}")
-        with open(output_file, "w") as f:
-            f.write(str(exc))
-
-print("\n========== ALL PLUGINS FINISHED ==========\n")
+    print(f"Plugin output saved to {output_file}")
