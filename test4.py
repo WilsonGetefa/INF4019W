@@ -12,12 +12,13 @@ plugins = {
     #"pslist": "windows.pslist",
     #"psscan": "windows.psscan",
     #"psxview": "windows.psxview"
-    "hashdump_7": "windows.hashdump",
+    "mutantscan_10": "windows.mutantscan",
 }
 
 # Paths
 volatility_path = "/home/kaliwg/volatility3/vol.py"
-memory_image = "/home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem"
+
+memory_image = "/home/kaliwg/Downloads/windump/WinDump.mem"
 
 for name, plugin in plugins.items():
     print(f"\nRunning plugin: {plugin}")

@@ -1,7 +1,7 @@
 import subprocess
 from tabulate import tabulate
 
-cmd = ["python3","/home/kaliwg/volatility3/vol.py","-f","/home/kaliwg/Downloads/windump/WinDump.mem","windows.hashdump"]
+cmd = ["python3","/home/kaliwg/volatility3/vol.py","-f","/home/kaliwg/Downloads/windump/WinDump.mem","windows.mutantscan"]
 result = subprocess.run(cmd, capture_output=True, text=True)
 
 rows = []
