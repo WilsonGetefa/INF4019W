@@ -276,3 +276,4 @@ Which other process(es) have incorrect parents and what does this suggest
 | atiesrxx.exe | 1288 | 716  | PPID unexpected for driver                  |
 | ngentask.exe | 6492 | 7252 | PPID unusual, possible hiding               |
 
+To Investigate Crypto use pycryptodome package

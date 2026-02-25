@@ -79,6 +79,28 @@ explorer
    ↓
 user apps
 
+For Windows7
+Process Explorer lists processes in a tree structure to
+represent the relation of which process is invoked by which
+process. The top level processes are processes invoked by system
+boot program.
+System Idle Process
+   ↓
+System
+   ↓
+csrss.exe
+   ↓
+csrss.exe
+   ↓
+wininit.exe
+   ↓
+winlogon.exe
+   ↓
+explorer.exe
+   ↓
+AdobeARM.exe
+   ↓
+procexp.exe
 
 # ✅ **⭐ 1️⃣ Windows boot → first processes**
 When **Microsoft Windows** boots, processes start in a **fixed order**.

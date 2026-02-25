@@ -27,6 +27,7 @@ plugins = {
     "svcscan": "windows.svcscan.SvcScan",                           # <--Scans for windows services.-->
     #"timeliner": "timeliner.Timeliner",                             # <--Runs all relevant plugins that provide time related information and orders the results by time.-->
     "timers": "windows.timers.Timers",                           # <--Print kernel timers and associated module DPCs-->
+    "processView": "windows.pxview",                            # <--Prints the process list by using the Windows EPROCESS ActiveProcessLinks and ActiveProcessHead lists.-->
 }
 
 # Output directory
