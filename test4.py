@@ -12,20 +12,25 @@ plugins = {
     #"pslist": "windows.pslist",
     #"psscan": "windows.psscan",
     #"psxview": "windows.psxview"
-    "mutantscan_10": "windows.mutantscan",
+    "handles_10": "windows.handles",
 }
 
 # Paths
 volatility_path = "/home/kaliwg/volatility3/vol.py"
 
-memory_image = "/home/kaliwg/Downloads/windump/WinDump.mem"
+memory_image = "/home/kaliwg/Downloads/win11dump/Win11Dump.mem"
 
 for name, plugin in plugins.items():
     print(f"\nRunning plugin: {plugin}")
 
     # Build command
-    cmd = ["python3", volatility_path, "-f", memory_image, plugin]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    #cmd = ["python3", volatility_path, "-f", memory_image, plugin]         # Enabled this line for normal execution without grep
+    cmd = (
+    f"python3 {volatility_path} -f {memory_image} {plugin} "                # I am greping for mutexes, so I want to use shell=True
+    "| grep -i mutex"                                                       #
+        )                                                                   #
+    result = subprocess.run(cmd, capture_output=True, text=True, shell=True) #  to allow the pipe and grep command to work.
+    #result = subprocess.run(cmd, capture_output=True, text=True)           # Enabled this line for normal execution without grep
 
     # Parse output into rows using simple split()
     rows = []
