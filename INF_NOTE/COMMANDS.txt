@@ -381,3 +381,20 @@ INFO    : volatility.debug    : Determining profile based on KDBG search...
              KUSER_SHARED_DATA : 0xfffff78000000000L
            Image date and time : 2019-03-22 05:46:00 UTC+0000
      Image local date and time : 2019-03-22 01:46:00 -0400
+
+##windows.mutantscan only lists mutex objects
+InputServiceHostMutex
+CommunicationManager_Mutex
+SmartScreen_ClientId_Mutex
+SearchServiceMUT
+
+This gives direct process → mutex ownership.
+sudo python3 volatility3/vol.py -f WinDump.mem windows.pslist
+sudo python3 volatility3/vol.py -f WinDump.mem windows.handles | grep -i mutex
+
+5368 SearchUI.exe Mutant CommunicationManager_Mutex
+5380 SearchIndexer Mutant WindowsSearchService_EfsRegKeysMutex
+7048 taskhostw.exe  Mutant  InputServiceHostMutex
+5368 SearchUI.exe Mutant SmartScreen_ClientId_Mutex
+
+
