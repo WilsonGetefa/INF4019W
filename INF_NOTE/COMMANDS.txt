@@ -193,6 +193,14 @@ Simple Classification Table
 | Web/network   | Internet activity     |
 | Memory        | Live system state     |
 
+In cybersecurity, an artifact is any piece of digital data that provides evidence of user activity, system interactions, or malicious behavior, 
+crucial for forensic investigations and incident analysis.
+Definition and Scope
+An artifact in cybersecurity refers to data or traces left behind on digital systems that can reveal actions performed by users, applications, or attackers. 
+These are not limited to files; they include system logs, memory dumps, registry entries, browser histories, file timestamps, network traffic captures, metadata, 
+and remnants of deleted items. Artifacts serve as digital footprints that help investigators reconstruct events and understand the sequence of actions on a device 
+or network.
+
 
 Major/Minor = X.YYYYY
 Built string = YYYYY
