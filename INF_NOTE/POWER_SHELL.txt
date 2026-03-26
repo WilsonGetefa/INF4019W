@@ -134,3 +134,7 @@ Name    ExecutablePath                                                          
 pet.exe c:\Users\Wilson.sisimi\.vscode\extensions\ms-python.python-2026.2.0-win32-x64\python-env-tools\bin\pet.exe c:\Users\Wilson.sisimi\.vscode\extens...
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+tasklist
+tasklist /?
+tlist -t
+.tlist
