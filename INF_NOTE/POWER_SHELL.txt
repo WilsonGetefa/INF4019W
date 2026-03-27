@@ -138,3 +138,23 @@ tasklist
 tasklist /?
 tlist -t
 .tlist
+
+--Registry Exporer installation
+Download from Eric Website
+https://ericzimmerman.github.io/#!index.md
+
+Unzip the folders from Download
+
+Then install from powershell with admin right
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+C:\Users\Wilson.sisimi\Downloads\Get-ZimmermanTools\Get-Z
+Use -NetVersion to control which version of the software you get (4 or 9). Default is 9. Use 0 to get all
+.\Get-ZimmermanTools.ps1 -Dest 'C:\Users\Wilson.sisimi\Pictures\MAIN' -NetVersion 6
+.\Get-ZimmermanTools.ps1 -Dest 'C:\Users\Wilson.sisimi\Pictures\MAIN'
+.\Get-ZimmermanTools.ps1 -NetVersion 0
+.\Get-ZimmermanTools.ps1 -NetVersion 4
+.\Get-ZimmermanTools.ps1 -NetVersion 6
+.\Get-ZimmermanTools.ps1 -NetVersion 9
