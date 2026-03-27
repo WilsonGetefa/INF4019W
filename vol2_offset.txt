@@ -1,0 +1,324 @@
+KDGB: Kernel Debugger Data Block
+
+
+kaliwg@kali:~/volatility$ sudo  python2 vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem kdbgscan
+Volatility Foundation Volatility Framework 2.6.1
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP1x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP0x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP1x64_24000
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP1x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP1x64_23418
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2008R2SP1x64_23418
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP1x64_24000
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+**************************************************
+Instantiating KDBG using: /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem WinXPSP2x86 (5.1.0 32bit)
+Offset (P)                    : 0x29f80a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win7SP0x64
+PsActiveProcessHead           : 0x2a2e590
+PsLoadedModuleList            : 0x2a4c890
+KernelBase                    : 0xfffff80002808000
+
+                                                                                                                                                                                                                                            
+kaliwg@kali:~/volatility$ sudo  python2 vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem kdbgscan
+Volatility Foundation Volatility Framework 2.6.1
+**************************************************
+Instantiating KDBG using: Unnamed AS Win10x64_10586 (6.4.10586 64bit)
+Offset (V)                    : 0xf8021ef4e4f0
+Offset (P)                    : 0x13214e4f0
+KdCopyDataBlock (V)           : 0xf8021ee0dfbc
+Block encoded                 : Yes
+Wait never                    : 0x590684014ebb2aa5
+Wait always                   : 0x29d770f1620d6800
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win10x64_10586
+Version64                     : 0xf8021ef510a0 (Major: 15, Minor: 15063)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 15063.0.amd64fre.rs2_release.170
+PsActiveProcessHead           : 0xfffff8021ef5c120 (138 processes)
+PsLoadedModuleList            : 0xfffff8021ef62720 (179 modules)
+KernelBase                    : 0xfffff8021ec0f000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff8021dd70000 (CPU 0)
+KPCR                          : 0xffffb50086020000 (CPU 1)
+KPCR                          : 0xffffb500860a2000 (CPU 2)
+KPCR                          : 0xffffb500860e6000 (CPU 3)
+
+**************************************************
+Instantiating KDBG using: Unnamed AS Win10x64_17134 (6.4.17134 64bit)
+Offset (V)                    : 0xf8021ef4e4f0
+Offset (P)                    : 0x13214e4f0
+KdCopyDataBlock (V)           : 0xf8021ee0dfbc
+Block encoded                 : Yes
+Wait never                    : 0x590684014ebb2aa5
+Wait always                   : 0x29d770f1620d6800
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win10x64_17134
+Version64                     : 0xf8021ef510a0 (Major: 15, Minor: 15063)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 15063.0.amd64fre.rs2_release.170
+PsActiveProcessHead           : 0xfffff8021ef5c120 (138 processes)
+PsLoadedModuleList            : 0xfffff8021ef62720 (179 modules)
+KernelBase                    : 0xfffff8021ec0f000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff8021dd70000 (CPU 0)
+KPCR                          : 0xffffb50086020000 (CPU 1)
+KPCR                          : 0xffffb500860a2000 (CPU 2)
+KPCR                          : 0xffffb500860e6000 (CPU 3)
+
+**************************************************
+Instantiating KDBG using: Unnamed AS Win10x64_14393 (6.4.14393 64bit)
+Offset (V)                    : 0xf8021ef4e4f0
+Offset (P)                    : 0x13214e4f0
+KdCopyDataBlock (V)           : 0xf8021ee0dfbc
+Block encoded                 : Yes
+Wait never                    : 0x590684014ebb2aa5
+Wait always                   : 0x29d770f1620d6800
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win10x64_14393
+Version64                     : 0xf8021ef510a0 (Major: 15, Minor: 15063)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 15063.0.amd64fre.rs2_release.170
+PsActiveProcessHead           : 0xfffff8021ef5c120 (138 processes)
+PsLoadedModuleList            : 0xfffff8021ef62720 (179 modules)
+KernelBase                    : 0xfffff8021ec0f000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff8021dd70000 (CPU 0)
+KPCR                          : 0xffffb50086020000 (CPU 1)
+KPCR                          : 0xffffb500860a2000 (CPU 2)
+KPCR                          : 0xffffb500860e6000 (CPU 3)
+
+**************************************************
+Instantiating KDBG using: Unnamed AS Win10x64_16299 (6.4.16299 64bit)
+Offset (V)                    : 0xf8021ef4e4f0
+Offset (P)                    : 0x13214e4f0
+KdCopyDataBlock (V)           : 0xf8021ee0dfbc
+Block encoded                 : Yes
+Wait never                    : 0x590684014ebb2aa5
+Wait always                   : 0x29d770f1620d6800
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win10x64_16299
+Version64                     : 0xf8021ef510a0 (Major: 15, Minor: 15063)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 15063.0.amd64fre.rs2_release.170
+PsActiveProcessHead           : 0xfffff8021ef5c120 (138 processes)
+PsLoadedModuleList            : 0xfffff8021ef62720 (179 modules)
+KernelBase                    : 0xfffff8021ec0f000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff8021dd70000 (CPU 0)
+KPCR                          : 0xffffb50086020000 (CPU 1)
+KPCR                          : 0xffffb500860a2000 (CPU 2)
+KPCR                          : 0xffffb500860e6000 (CPU 3)
+
+**************************************************
+Instantiating KDBG using: Unnamed AS Win2016x64_14393 (6.4.14393 64bit)
+Offset (V)                    : 0xf8021ef4e4f0
+Offset (P)                    : 0x13214e4f0
+KdCopyDataBlock (V)           : 0xf8021ee0dfbc
+Block encoded                 : Yes
+Wait never                    : 0x590684014ebb2aa5
+Wait always                   : 0x29d770f1620d6800
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win2016x64_14393
+Version64                     : 0xf8021ef510a0 (Major: 15, Minor: 15063)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 15063.0.amd64fre.rs2_release.170
+PsActiveProcessHead           : 0xfffff8021ef5c120 (138 processes)
+PsLoadedModuleList            : 0xfffff8021ef62720 (179 modules)
+KernelBase                    : 0xfffff8021ec0f000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff8021dd70000 (CPU 0)
+KPCR                          : 0xffffb50086020000 (CPU 1)
+KPCR                          : 0xffffb500860a2000 (CPU 2)
+KPCR                          : 0xffffb500860e6000 (CPU 3)
+
+**************************************************
+Instantiating KDBG using: Unnamed AS Win10x64_17763 (6.4.17763 64bit)
+Offset (V)                    : 0xf8021ef4e4f0
+Offset (P)                    : 0x13214e4f0
+KdCopyDataBlock (V)           : 0xf8021ee0dfbc
+Block encoded                 : Yes
+Wait never                    : 0x590684014ebb2aa5
+Wait always                   : 0x29d770f1620d6800
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win10x64_17763
+Version64                     : 0xf8021ef510a0 (Major: 15, Minor: 15063)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 15063.0.amd64fre.rs2_release.170
+PsActiveProcessHead           : 0xfffff8021ef5c120 (138 processes)
+PsLoadedModuleList            : 0xfffff8021ef62720 (179 modules)
+KernelBase                    : 0xfffff8021ec0f000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff8021dd70000 (CPU 0)
+KPCR                          : 0xffffb50086020000 (CPU 1)
+KPCR                          : 0xffffb500860a2000 (CPU 2)
+KPCR                          : 0xffffb500860e6000 (CPU 3)
+
+**************************************************
+Instantiating KDBG using: Unnamed AS Win10x64_15063 (6.4.15063 64bit)
+Offset (V)                    : 0xf8021ef4e4f0
+Offset (P)                    : 0x13214e4f0
+KdCopyDataBlock (V)           : 0xf8021ee0dfbc
+Block encoded                 : Yes
+Wait never                    : 0x590684014ebb2aa5
+Wait always                   : 0x29d770f1620d6800
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win10x64_15063
+Version64                     : 0xf8021ef510a0 (Major: 15, Minor: 15063)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 15063.0.amd64fre.rs2_release.170
+PsActiveProcessHead           : 0xfffff8021ef5c120 (138 processes)
+PsLoadedModuleList            : 0xfffff8021ef62720 (179 modules)
+KernelBase                    : 0xfffff8021ec0f000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff8021dd70000 (CPU 0)
+KPCR                          : 0xffffb50086020000 (CPU 1)
+KPCR                          : 0xffffb500860a2000 (CPU 2)
+KPCR                          : 0xffffb500860e6000 (CPU 3)
+
+kaliwg@kali:~/volatility$ sudo  python2 vol.py -f /home/kaliwg/Downloads/win11dump/Win11Dump.mem kdbgscan 
+[sudo] password for kaliwg: 
+Volatility Foundation Volatility Framework 2.6.1
+**************************************************
+Instantiating KDBG using: Unnamed AS Win10x64_19041 (6.4.19041 64bit)
+Offset (V)                    : 0xf8002a402190
+Offset (P)                    : 0xdd202190
+KdCopyDataBlock (V)           : 0xf80029d610cc
+Block encoded                 : Yes
+Wait never                    : 0xd80f420017d30156
+Wait always                   : 0x5f4c280743d0a0
+KDBG owner tag check          : True
+Profile suggestion (KDBGHeader): Win10x64_19041
+Version64                     : 0xf8002a409750 (Major: 15, Minor: 22000)
+Service Pack (CmNtCSDVersion) : 0
+Build string (NtBuildLab)     : 22000.1.amd64fre.co_release.2106
+PsActiveProcessHead           : 0xfffff8002a41bea0 (103 processes)
+PsLoadedModuleList            : 0xfffff8002a429650 (156 modules)
+KernelBase                    : 0xfffff80029800000 (Matches MZ: True)
+Major (OptionalHeader)        : 10
+Minor (OptionalHeader)        : 0
+KPCR                          : 0xfffff800269e7000 (CPU 0)
+KPCR                          : 0xffff878064f8e000 (CPU 1)
+KPCR                          : 0xffff878064f0b000 (CPU 2)
+KPCR                          : 0xffff8780650c0000 (CPU 3)
+
+aliwg@kali:~/volatility$ sudo  python2 vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem imageinfo
+[sudo] password for kaliwg: 
+Volatility Foundation Volatility Framework 2.6.1
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf800029f80a0L
+          Number of Processors : 2
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff800029f9d00L
+                KPCR for CPU 1 : 0xfffff880009ee000L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2019-03-22 05:46:00 UTC+0000
+     Image local date and time : 2019-03-22 01:46:00 -0400
+                                                                                                                                                                                                                                            
+kaliwg@kali:~/volatility$ sudo  python2 vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem imageinfo        
+Volatility Foundation Volatility Framework 2.6.1
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win10x64_17134, Win10x64_14393, Win10x64_10586, Win10x64_16299, Win2016x64_14393, Win10x64_17763, Win10x64_15063 (Instantiated with Win10x64_15063)
+                     AS Layer1 : SkipDuplicatesAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/kaliwg/Downloads/windump/WinDump.mem)
+                      PAE type : No PAE
+                           DTB : 0x1aa000L
+                          KDBG : 0xf8021ef4e4f0L
+          Number of Processors : 4
+     Image Type (Service Pack) : 0
+                KPCR for CPU 0 : 0xfffff8021dd70000L
+                KPCR for CPU 1 : 0xffffb50086020000L
+                KPCR for CPU 2 : 0xffffb500860a2000L
+                KPCR for CPU 3 : 0xffffb500860e6000L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2018-06-21 06:50:50 UTC+0000
+     Image local date and time : 2018-06-20 23:50:50 -0700
+                                                                                                                                                                                                                                            
+kaliwg@kali:~/volatility$ sudo  python2 vol.py -f /home/kaliwg/Downloads/win11dump/Win11Dump.mem imageinfo
+[sudo] password for kaliwg: 
+Volatility Foundation Volatility Framework 2.6.1
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win10x64_19041
+                     AS Layer1 : SkipDuplicatesAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/kaliwg/Downloads/win11dump/Win11Dump.mem)
+                      PAE type : No PAE
+                           DTB : 0x1ae000L
+                          KDBG : 0xf8002a402190L
+          Number of Processors : 4
+     Image Type (Service Pack) : 0
+                KPCR for CPU 0 : 0xfffff800269e7000L
+                KPCR for CPU 1 : 0xffff878064f8e000L
+                KPCR for CPU 2 : 0xffff878064f0b000L
+                KPCR for CPU 3 : 0xffff8780650c0000L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2022-07-18 23:26:00 UTC+0000
+     Image local date and time : 2022-07-19 09:26:00 +1000
+                                                                                                                              
