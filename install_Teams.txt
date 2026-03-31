@@ -1,0 +1,13 @@
+sudo apt install flatpak -y
+flatpak install flathub com.github.IsmaelMartinez.teams_for_linux
+flatpak run com.github.IsmaelMartinez.teams_for_linux
+
+
+-Flatpak is installed, but the Flathub repository is NOT added
+-error: No remote refs found for ‘flathub’
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.github.IsmaelMartinez.teams_for_linux
+
+--run teams
+flatpak run com.github.IsmaelMartinez.teams_for_linux
+

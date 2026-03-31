@@ -1,0 +1,214 @@
+## At the Beginning (Sender)
+
+* Encoding: Converts the human message into a machine-readable format for usability.
+* Hashing: Creates a unique fingerprint of the data to ensure future integrity.
+* Encryption: Scrambles the data with a public key to ensure confidentiality during transit.
+
+------------------------------
+## At the End (Receiver)
+
+* Decryption: Unlocks the scrambled data using a private key to restore confidentiality.
+* Verification: Compares hashes to provide authentication and prove data integrity.
+* Decoding: Translates the machine-readable data back into a human message for usability.
+
+Good question—this is where people often get confused 👍
+
+---
+
+# 🌐 What format is data “on the wire”?
+
+When your message travels across the network (e.g., in WhatsApp):
+
+> **“Data is transmitted as encrypted binary packets (ciphertext), not readable text.”**
+
+* After encryption (AES), your message becomes **ciphertext**
+* Then it is packaged into **network packets (TCP/IP)**
+* What actually moves: **bits (0s and 1s)**
+
+---
+
+# 🔐 Does it include TLS/SSL?
+
+👉 **Short answer: YES—but it’s an extra layer**
+
+> **“TLS/SSL encrypts the connection, while end-to-end encryption encrypts the message itself.”**
+
+---
+
+# 🧠 Two Layers of Protection (VERY IMPORTANT)
+
+### 1. End-to-End Encryption (E2EE)
+
+Uses:
+
+* AES
+* RSA
+* SHA-256
+
+> **“Encrypts the message so only sender and receiver can read it.”**
+
+✔ Even the server **cannot read the message**
+
+---
+
+### 2. Transport Encryption (TLS/SSL)
+
+Uses:
+
+* Transport Layer Security
+* (older: Secure Sockets Layer)
+
+> **“Encrypts the communication channel between your device and the server.”**
+
+✔ Protects against:
+
+* Wi-Fi sniffing
+* MITM attacks
+
+---
+
+# 🔁 What actually happens in transit?
+
+> **“Ciphertext (E2EE) is wrapped inside TLS and sent as encrypted network packets.”**
+
+So the stack looks like:
+
+```
+[ Your Message ]
+      ↓
+[ E2EE Encryption (AES) → Ciphertext ]
+      ↓
+[ TLS Encryption Layer ]
+      ↓
+[ TCP/IP Packets → Internet ]
+```
+
+---
+
+# 🧠 Exam One-Liner
+
+> **“Data travels as encrypted binary packets, protected by both end-to-end encryption and TLS in transit.”**
+
+
+📤 SENDER
+   |
+   | 1. Encoding
+   v
+[ Plaintext Message ]
+   |
+   | 2. Hash (Integrity - SHA)
+   v
+[ Message + Hash ]
+   |
+   | 3. Encryption (Confidentiality - AES with shared key)
+   v
+[ Ciphertext ]
+   |
+   | 4. Key Exchange (Authentication - RSA)
+   v
+------------------- 🌐 NETWORK -------------------
+   |
+   v
+📥 RECEIVER
+   |
+   | 5. Decryption (AES)
+   v
+[ Message + Hash ]
+   |
+   | 6. Hash Verification (SHA)
+   v
+[ Verified Message ]
+   |
+   | 7. Decoding
+   v
+[ Readable Plaintext ]
+
+Great—now let’s translate that exact diagram into a **banking system scenario** (this is very exam-friendly and practical).
+
+---
+
+# 🏦 Banking Example (Online Transfer)
+
+Imagine you log into your bank app and send money.
+
+---
+
+## 📤 Sender (You – Customer)
+
+* **Encoding:**
+  *“Your payment details (amount, account number) are converted into digital format.”*
+
+* **Hash (Integrity):**
+  *“A hash using SHA-256 is created to detect any tampering.”*
+
+* **Encryption (Confidentiality):**
+  *“The data is encrypted using AES so no one can read it.”*
+
+* **Key Exchange (Authentication):**
+  *“Encryption keys are securely exchanged using RSA to verify the bank server.”*
+
+---
+
+## 🌐 Network (In Transit)
+
+* **TLS Layer:**
+  *“The entire session is protected using Transport Layer Security to prevent interception.”*
+
+* **Data Format:**
+  *“Your request travels as encrypted binary packets (ciphertext inside TLS).”*
+
+---
+
+## 🏦 Receiver (Bank Server)
+
+* **Decryption:**
+  *“The bank decrypts the data using AES to retrieve your transaction details.”*
+
+* **Hash Verification (Integrity):**
+  *“The server recomputes the SHA-256 hash to ensure the data was not altered.”*
+
+* **Authentication (Server Trust):**
+  *“The bank verifies your identity and session using certificates and secure keys.”*
+
+* **Processing:**
+  *“The transaction is executed only after all security checks pass.”*
+
+---
+
+# 🔁 Real-World Difference vs Messaging (Important Insight)
+
+* In WhatsApp:
+
+  > *Only sender and receiver can read the message (true end-to-end encryption).*
+
+* In Banking:
+
+  > *The bank **must decrypt** the data to process your transaction.*
+
+✔ So banking uses:
+
+* **TLS (very strong)**
+* **Encryption in transit + at rest**
+* **Authentication (certificates, login, OTP)**
+
+❌ But NOT strict E2EE like WhatsApp
+
+---
+
+# 🧠 Exam One-Liner
+
+> *“Banking systems use TLS-secured encrypted packets with AES, RSA, and SHA-256 to ensure confidentiality, integrity, and authentication, while allowing the server to decrypt and process transactions.”*
+
+---
+**Non-repudiation** means a sender **cannot deny** having sent a message or performed a transaction.
+
+In cryptography:
+
+* Usually achieved using **digital signatures**.
+* The sender signs a message with their **private key**.
+* Anyone can verify it with the sender’s **public key**.
+
+✅ Ensures **accountability**: the sender **cannot later claim they didn’t send it**.
+
+**Example:** In banking, if you digitally sign a money transfer, the bank can prove it was **you** who authorized it.
+
