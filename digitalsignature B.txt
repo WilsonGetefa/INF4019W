@@ -1,0 +1,505 @@
+
+┌──(mk001㉿mikayili)-[~]
+└─$ sudo su 
+[sudo] password for mk001: 
+┌──(root💀mikayili)-[/home/mk001]
+└─# openssl version
+OpenSSL 3.3.2 3 Sep 2024
+latest: OpenSSL 3.4.1
+                                                                                                           
+PUBLIC KEY ENCRYPTION AND DIGITAL SIGNATURE USING OpenSSL
+
+Scenario:
+Two people A & B
+Both would like to communicate some confidential information
+Both will generate their public keys and private keys
+They will use RSA as the public key cryptography algorithm to generate the keys (RSA (Rivest–Shamir–Adleman) is a public-key cryptosystem)
+User A will create a confidential message, sign that message to create a digital signature (for the message). A will also encrypt the message using RSA algorithm. A will send the message to B. 
+Upon reception of the message, B will decrypt the message and also verify the hash (in the digital signature), making sure they came from A.
+
+Note the following:
+A uses his private key to produce his public key
+B uses his private key to produce his public key
+A uses his private key to produce a digital signature
+The digital signature is the encrypted Hash. So A uses his private key to encrypt the Hash, resulting in a digital signature 
+A uses B's public key to encrypt the message
+A sends the digital signature and the encrypted message to B
+B uses his (i.e. B's) private key to decrypt the message
+B uses A's public key to decrypt the digital signature (created by A) (When he does so he gets the HASH sent by A)
+B uses A's public key to verify the digital signature (created by A) (he will do so by encrypting the (decrypted) message (again) using A's public key.
+If the digital signature sent by A to B is similar to the digital signature B produces, then the digital signature is verified
+Both A and B should never know the other's private key
+Both A and B should know each other's public key, and the cryptography algorithm used (e.g. RSA)
+
+Note in the steps above, A can also combine (the digital signature and the message) and encrypt them together using B's public key (let us call that
+DM). A will then send the DM to B.
+If done that way, then B will have to use his (i.e., B's) private key to decrypt the (DM ). Note, B will now get the digital signature and the message).
+Further, B will have to use A's public key to decrypt the digital signature (sent by A), which he has just extracted from the DM.
+B will then use the extracted Message and A's public key to reproduce the Digital signature. If his digital signature = A's digital signature
+Then the digital signature is verified and the message has not been tampered with.
+
+                                                                                                    
+(step 1)                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-A.pem
+
+...............................................................................................................................................................................................+++++*............+++++
+.+++++
+                                                                                                           
+type:   man openssl (at the command line to see all the commands)
+genpkey -generate private keys or parameters.
+RSA      RSA  key management
+genpkey ➝ generate a private key 
+ genpkey   generate a private key
+-algorithm RSA   use the RSA algorithm (can also take “EC” for elliptic-curve)
+-pkeyopt opt:value   set opt to value (see items below)
+rsa_keygen_bits:2048   sets the size of the key to 2048 bits (the default is 1024)
+rsa_keygen_pubexp:3   sets the public exponent e to 3 (default is 65, 537)
+-out privkey-A.pem   outputs to the file privkey-A.pem
+
+Privacy Enhanced Mail (PEM). PEM is a file format that may consist of a certificate for private/public key.
+
+
+
+algorithm alg
+public key algorithm to use such as RSA, DSA or DH. If used this option must precede any -pkeyopt options. The options -paramfile and -algorithm are mutually exclusive.
+-pkeyopt opt:value
+set the public key algorithm option opt to value. The precise set of options supported depends on the public key algorithm used and its implementation. See KEY GENERATION OPTIONS below for more details.
+-text  Print an (unencrypted) text representation of private and public keys and parameters along with the PEM or DER structure.
+
+KEY GENERATION OPTIONS
+The options supported by each algorith and indeed each implementation of an algorithm can vary. The options for the OpenSSL implementations are detailed below.
+
+RSA KEY GENERATION OPTIONS
+rsa_keygen_bits:numbits
+The number of bits in the generated key. If not specified 1024 is used.
+rsa_keygen_pubexp:value
+The RSA public exponent value. This can be a large decimal or hexadecimal value if preceded by 0x. Default value is 65537.
+
+The core mathematical operation in RSA encryption and decryption is modular exponentiation. This involves raising a number to a power and then taking the modulus. For instance, during encryption, the plaintext message m is raised to the power e and then taken modulo n. Similarly, during decryption, the ciphertext c is raised to the power d and then taken modulo n.
+
+https://eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/introduction-to-public-key-cryptography/the-rsa-cryptosystem-and-efficient-exponentiation/what-is-the-exponentiation-function-in-the-rsa-cipher/#:~:text=Exponentiation%20in%20RSA,power%20and%20then%20taken%20modulo%20.
+
+https://docs.openssl.org/3.1/man1/openssl-pkey/
+
+
+
+RSA Key Generation: RSA (Rivest–Shamir–Adleman) is an asymmetric encryption algorithm that relies on two keys: a public key for encryption and a private key for decryption. 
+Public Key Components: The public key consists of two values: the modulus (n) and the public exponent (e). 
+Modulus (n): The modulus is the product of two large prime numbers (p and q). 
+Public Exponent (e): The public exponent is an odd integer, typically small (e.g., 65537). Public exponent (e) is the exponent used on signed / encoded data to decode the original value.
+Why Small Exponents? Using a small public exponent (like 65537) makes the encryption and signature verification processes computationally faster due to the properties of modular exponentiation. 
+Common Values: While 65537 is the most common choice, other small odd numbers like 3, 5, 17, and 257 are also used. 
+Security Considerations: While small exponents offer efficiency, they can also be vulnerable to certain attacks if not used with proper padding schemes. 
+Private Exponent (d): The private exponent (d) is calculated based on the modulus (n) and the public exponent (e) and must be kept secret. 
+ 
+
+(step 2)                                                                                                      
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# ls -l
+total 4
+-rw------- 1 root root 1704 Mar 17 08:05 privkey-A.pem
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# cat privkey-A.pem | less
+
+To exit press q
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# cat privkey-A.pem > privkey-base64encode.txt
+
+
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDAA7Zk2kpVLaHs
+HMHxqmh8/611XDx/O7VPz8xfeHp4PhAn31MymTAN2nOFuFEQd6jN8pGgPTtvK7Pk
+C5ZE43zm5ME3jOIPhAXhFujCWm7qbAxlvzvr48EuCoFW/eRgjdaJsccoG1t9mImz
+catQBUnNJ4fr7ynwuVDFkuy8VNPwvb4GmjhcRd6ap1GTmEdNZjzTRsJhZ+ggAa9/
+8O7TvMkCLuCWp1ElJ/qVfktz3hYyNCol4q1normxPfAosEe4aOT7rgvolzDTgeYc
+g87nEvUMbafh1qFHtIo15yDkgTcZZCfyjQi/FvM6nxEs8AEpT4FStQZhNVB/Uta1
+nyfToc/nAgEDAoIBAQCAAnmYkYbjc8FIEyv2cZr9/8j46ChU0njf392U+vxQKWAa
+lOIhu3VekaJZJYtgT8XeobZq03z0x81CsmQt7P3vQyt6XewKWAPrZJssPEnxnV2Z
+Kifyl9YesauPU+2Vs+Rby9oavOepEFvM9nI1WNveGlqdShv10OCDt0h9jeKgfVWA
+K9Pc9vSx5eBy0UXLVowr8gXg9L1iiyQ8GVHzUKhG2XAcahs7Na3+VVsACUru6KRe
+K+vNTkbnltM4RFf+JXLZb4oZHvMMU2+5Zr7fS//O93r878sOX0JR6/Tunc0kzlnz
+IgY14WNDAgo8CN8OvsGhUmWzXedM/WDK4mycPhBbAoGBAPXCHzVCQ6xAtg0gyWVV
+iviUh8huaPTKOXN5ZtenDv5RtVW8D5sl705/MsJl2nZRq2kBD8gmwuGLVb+a1QOC
+4c2rvrL47N4kepUXRbrKD30vnH3qerJ6PiLHgvgYOSRiy4ytpPgg9G/6wDGZh9et
+tiZoTjBD1mGFUnhXM7jjrjY1AoGBAMgEOUVOj8NPGHPGlPlG2XH80/Ehj9dB94Ws
+ZBw/tM5GM2Kv+I0maCcYy4CN9a96K8qXkQOM6m3KhfO5dMA4TusJyAnJ++Yciilv
+I/XOEXgmXfF79D4354PzgjlmW17/YxRYNQdNUG5bW9A5Wtrlezh4az2QUhQGhE0u
+F8wFloErAoGBAKPWv3jW18grJAjAhkOOXKW4WoWe8KMxe6JQ7zpvX1Q2eOPStRIZ
+SjRUzIGZPE7hHPCrX9rEgeuyOSpnOK0B695yfyH7SJQYUbi6LnyGtP4fvalG/Hb8
+KWyFAfq60MLsh7MebfrAovVR1XZmWo/JJBma3srX5EEDjFA6IntCdCQjAoGBAIVY
+Ji40X9eKEE0vDfuEkPaojUtrtTor+lkdmBLVIzQuzOx1UF4ZmsS7MlWz+R+mx9xl
+C1ezRvPcWU0mTdV630db2rExUploXBufbU6JYPrEPqD9TX7P761NAXuZkj9U7Lg6
+zgTeNZ7nkorQ5zyY/NBQR35gNrgEWDN0D91ZDwDHAoGBAJ0KnJG9WbvASEkHMy8w
+I8CSTO9UR8qfIx6u+7p7hwdNJVVAYTa5Hb2uV1UYAcRCsx13aADImWpcCU0JrAZW
+SJefA1oOPubPQgDGao7cbL+Elgb2r3JXP+lQsEyPdFUHFSQpWevlCMnNyerHi2H5
+AL8cR/vOknpFDb67NhJI++FF
+-----END PRIVATE KEY-----
+
+(Step 3)
+                                                                                                       
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl pkey -in privkey-A.pem -text | less
+
+press q  to exit
+
+
+  -text    Print an (unencrypted) text representation of private and public keys and parameters along with the PEM or DER structure. 
+                                                                                                        
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl pkey -in privkey-A.pem -text > privkey-actualvalues.txt 
+
+Now run this:
+cat privkey-actualvalues.txt
+
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDAA7Zk2kpVLaHs
+HMHxqmh8/611XDx/O7VPz8xfeHp4PhAn31MymTAN2nOFuFEQd6jN8pGgPTtvK7Pk
+C5ZE43zm5ME3jOIPhAXhFujCWm7qbAxlvzvr48EuCoFW/eRgjdaJsccoG1t9mImz
+catQBUnNJ4fr7ynwuVDFkuy8VNPwvb4GmjhcRd6ap1GTmEdNZjzTRsJhZ+ggAa9/
+8O7TvMkCLuCWp1ElJ/qVfktz3hYyNCol4q1normxPfAosEe4aOT7rgvolzDTgeYc
+g87nEvUMbafh1qFHtIo15yDkgTcZZCfyjQi/FvM6nxEs8AEpT4FStQZhNVB/Uta1
+nyfToc/nAgEDAoIBAQCAAnmYkYbjc8FIEyv2cZr9/8j46ChU0njf392U+vxQKWAa
+lOIhu3VekaJZJYtgT8XeobZq03z0x81CsmQt7P3vQyt6XewKWAPrZJssPEnxnV2Z
+Kifyl9YesauPU+2Vs+Rby9oavOepEFvM9nI1WNveGlqdShv10OCDt0h9jeKgfVWA
+K9Pc9vSx5eBy0UXLVowr8gXg9L1iiyQ8GVHzUKhG2XAcahs7Na3+VVsACUru6KRe
+K+vNTkbnltM4RFf+JXLZb4oZHvMMU2+5Zr7fS//O93r878sOX0JR6/Tunc0kzlnz
+IgY14WNDAgo8CN8OvsGhUmWzXedM/WDK4mycPhBbAoGBAPXCHzVCQ6xAtg0gyWVV
+iviUh8huaPTKOXN5ZtenDv5RtVW8D5sl705/MsJl2nZRq2kBD8gmwuGLVb+a1QOC
+4c2rvrL47N4kepUXRbrKD30vnH3qerJ6PiLHgvgYOSRiy4ytpPgg9G/6wDGZh9et
+tiZoTjBD1mGFUnhXM7jjrjY1AoGBAMgEOUVOj8NPGHPGlPlG2XH80/Ehj9dB94Ws
+ZBw/tM5GM2Kv+I0maCcYy4CN9a96K8qXkQOM6m3KhfO5dMA4TusJyAnJ++Yciilv
+I/XOEXgmXfF79D4354PzgjlmW17/YxRYNQdNUG5bW9A5Wtrlezh4az2QUhQGhE0u
+F8wFloErAoGBAKPWv3jW18grJAjAhkOOXKW4WoWe8KMxe6JQ7zpvX1Q2eOPStRIZ
+SjRUzIGZPE7hHPCrX9rEgeuyOSpnOK0B695yfyH7SJQYUbi6LnyGtP4fvalG/Hb8
+KWyFAfq60MLsh7MebfrAovVR1XZmWo/JJBma3srX5EEDjFA6IntCdCQjAoGBAIVY
+Ji40X9eKEE0vDfuEkPaojUtrtTor+lkdmBLVIzQuzOx1UF4ZmsS7MlWz+R+mx9xl
+C1ezRvPcWU0mTdV630db2rExUploXBufbU6JYPrEPqD9TX7P761NAXuZkj9U7Lg6
+zgTeNZ7nkorQ5zyY/NBQR35gNrgEWDN0D91ZDwDHAoGBAJ0KnJG9WbvASEkHMy8w
+I8CSTO9UR8qfIx6u+7p7hwdNJVVAYTa5Hb2uV1UYAcRCsx13aADImWpcCU0JrAZW
+SJefA1oOPubPQgDGao7cbL+Elgb2r3JXP+lQsEyPdFUHFSQpWevlCMnNyerHi2H5
+AL8cR/vOknpFDb67NhJI++FF
+
+-----END PRIVATE KEY-----
+RSA Private-Key: (2048 bit, 2 primes)
+modulus:
+    00:c0:03:b6:64:da:4a:55:2d:a1:ec:1c:c1:f1:aa:
+    68:7c:ff:ad:75:5c:3c:7f:3b:b5:4f:cf:cc:5f:78:
+    7a:78:3e:10:27:df:53:32:99:30:0d:da:73:85:b8:
+    51:10:77:a8:cd:f2:91:a0:3d:3b:6f:2b:b3:e4:0b:
+    96:44:e3:7c:e6:e4:c1:37:8c:e2:0f:84:05:e1:16:
+    e8:c2:5a:6e:ea:6c:0c:65:bf:3b:eb:e3:c1:2e:0a:
+    81:56:fd:e4:60:8d:d6:89:b1:c7:28:1b:5b:7d:98:
+    89:b3:71:ab:50:05:49:cd:27:87:eb:ef:29:f0:b9:
+    50:c5:92:ec:bc:54:d3:f0:bd:be:06:9a:38:5c:45:
+    de:9a:a7:51:93:98:47:4d:66:3c:d3:46:c2:61:67:
+    e8:20:01:af:7f:f0:ee:d3:bc:c9:02:2e:e0:96:a7:
+    51:25:27:fa:95:7e:4b:73:de:16:32:34:2a:25:e2:
+    ad:67:a2:b9:b1:3d:f0:28:b0:47:b8:68:e4:fb:ae:
+    0b:e8:97:30:d3:81:e6:1c:83:ce:e7:12:f5:0c:6d:
+    a7:e1:d6:a1:47:b4:8a:35:e7:20:e4:81:37:19:64:
+    27:f2:8d:08:bf:16:f3:3a:9f:11:2c:f0:01:29:4f:
+    81:52:b5:06:61:35:50:7f:52:d6:b5:9f:27:d3:a1:
+    cf:e7
+publicExponent: 3 (0x3)
+privateExponent:
+    00:80:02:79:98:91:86:e3:73:c1:48:13:2b:f6:71:
+    9a:fd:ff:c8:f8:e8:28:54:d2:78:df:df:dd:94:fa:
+    fc:50:29:60:1a:94:e2:21:bb:75:5e:91:a2:59:25:
+    8b:60:4f:c5:de:a1:b6:6a:d3:7c:f4:c7:cd:42:b2:
+    64:2d:ec:fd:ef:43:2b:7a:5d:ec:0a:58:03:eb:64:
+    9b:2c:3c:49:f1:9d:5d:99:2a:27:f2:97:d6:1e:b1:
+    ab:8f:53:ed:95:b3:e4:5b:cb:da:1a:bc:e7:a9:10:
+    5b:cc:f6:72:35:58:db:de:1a:5a:9d:4a:1b:f5:d0:
+    e0:83:b7:48:7d:8d:e2:a0:7d:55:80:2b:d3:dc:f6:
+    f4:b1:e5:e0:72:d1:45:cb:56:8c:2b:f2:05:e0:f4:
+    bd:62:8b:24:3c:19:51:f3:50:a8:46:d9:70:1c:6a:
+    1b:3b:35:ad:fe:55:5b:00:09:4a:ee:e8:a4:5e:2b:
+    eb:cd:4e:46:e7:96:d3:38:44:57:fe:25:72:d9:6f:
+    8a:19:1e:f3:0c:53:6f:b9:66:be:df:4b:ff:ce:f7:
+    7a:fc:ef:cb:0e:5f:42:51:eb:f4:ee:9d:cd:24:ce:
+    59:f3:22:06:35:e1:63:43:02:0a:3c:08:df:0e:be:
+    c1:a1:52:65:b3:5d:e7:4c:fd:60:ca:e2:6c:9c:3e:
+    10:5b
+prime1:
+    00:f5:c2:1f:35:42:43:ac:40:b6:0d:20:c9:65:55:
+    8a:f8:94:87:c8:6e:68:f4:ca:39:73:79:66:d7:a7:
+    0e:fe:51:b5:55:bc:0f:9b:25:ef:4e:7f:32:c2:65:
+    da:76:51:ab:69:01:0f:c8:26:c2:e1:8b:55:bf:9a:
+    d5:03:82:e1:cd:ab:be:b2:f8:ec:de:24:7a:95:17:
+    45:ba:ca:0f:7d:2f:9c:7d:ea:7a:b2:7a:3e:22:c7:
+    82:f8:18:39:24:62:cb:8c:ad:a4:f8:20:f4:6f:fa:
+    c0:31:99:87:d7:ad:b6:26:68:4e:30:43:d6:61:85:
+    52:78:57:33:b8:e3:ae:36:35
+prime2:
+    00:c8:04:39:45:4e:8f:c3:4f:18:73:c6:94:f9:46:
+    d9:71:fc:d3:f1:21:8f:d7:41:f7:85:ac:64:1c:3f:
+    b4:ce:46:33:62:af:f8:8d:26:68:27:18:cb:80:8d:
+    f5:af:7a:2b:ca:97:91:03:8c:ea:6d:ca:85:f3:b9:
+    74:c0:38:4e:eb:09:c8:09:c9:fb:e6:1c:8a:29:6f:
+    23:f5:ce:11:78:26:5d:f1:7b:f4:3e:37:e7:83:f3:
+    82:39:66:5b:5e:ff:63:14:58:35:07:4d:50:6e:5b:
+    5b:d0:39:5a:da:e5:7b:38:78:6b:3d:90:52:14:06:
+    84:4d:2e:17:cc:05:96:81:2b
+exponent1:
+    00:a3:d6:bf:78:d6:d7:c8:2b:24:08:c0:86:43:8e:
+    5c:a5:b8:5a:85:9e:f0:a3:31:7b:a2:50:ef:3a:6f:
+    5f:54:36:78:e3:d2:b5:12:19:4a:34:54:cc:81:99:
+    3c:4e:e1:1c:f0:ab:5f:da:c4:81:eb:b2:39:2a:67:
+    38:ad:01:eb:de:72:7f:21:fb:48:94:18:51:b8:ba:
+    2e:7c:86:b4:fe:1f:bd:a9:46:fc:76:fc:29:6c:85:
+    01:fa:ba:d0:c2:ec:87:b3:1e:6d:fa:c0:a2:f5:51:
+    d5:76:66:5a:8f:c9:24:19:9a:de:ca:d7:e4:41:03:
+    8c:50:3a:22:7b:42:74:24:23
+exponent2:
+    00:85:58:26:2e:34:5f:d7:8a:10:4d:2f:0d:fb:84:
+    90:f6:a8:8d:4b:6b:b5:3a:2b:fa:59:1d:98:12:d5:
+    23:34:2e:cc:ec:75:50:5e:19:9a:c4:bb:32:55:b3:
+    f9:1f:a6:c7:dc:65:0b:57:b3:46:f3:dc:59:4d:26:
+    4d:d5:7a:df:47:5b:da:b1:31:52:99:68:5c:1b:9f:
+    6d:4e:89:60:fa:c4:3e:a0:fd:4d:7e:cf:ef:ad:4d:
+    01:7b:99:92:3f:54:ec:b8:3a:ce:04:de:35:9e:e7:
+    92:8a:d0:e7:3c:98:fc:d0:50:47:7e:60:36:b8:04:
+    58:33:74:0f:dd:59:0f:00:c7
+coefficient:
+    00:9d:0a:9c:91:bd:59:bb:c0:48:49:07:33:2f:30:
+    23:c0:92:4c:ef:54:47:ca:9f:23:1e:ae:fb:ba:7b:
+    87:07:4d:25:55:40:61:36:b9:1d:bd:ae:57:55:18:
+    01:c4:42:b3:1d:77:68:00:c8:99:6a:5c:09:4d:09:
+    ac:06:56:48:97:9f:03:5a:0e:3e:e6:cf:42:00:c6:
+    6a:8e:dc:6c:bf:84:96:06:f6:af:72:57:3f:e9:50:
+    b0:4c:8f:74:55:07:15:24:29:59:eb:e5:08:c9:cd:
+    c9:ea:c7:8b:61:f9:00:bf:1c:47:fb:ce:92:7a:45:
+    0d:be:bb:36:12:48:fb:e1:45
+
+
+(Step 4)
+
+HERE I USED A's PRIVATE KEY TO CREATE A' PUBLIC KEY
+
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl pkey -in privkey-A.pem -out pubkey-A.pem -pubout       
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# ls   
+privkey-actualvalues.txt  privkey-A.pem  privkey-base64encode.txt  pubkey-A.pem
+
+
+This is how A's public key looks like in base64 encode
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# cat pubkey-A.pem                            
+-----BEGIN PUBLIC KEY-----
+MIIBIDANBgkqhkiG9w0BAQEFAAOCAQ0AMIIBCAKCAQEAwAO2ZNpKVS2h7BzB8apo
+fP+tdVw8fzu1T8/MX3h6eD4QJ99TMpkwDdpzhbhREHeozfKRoD07byuz5AuWRON8
+5uTBN4ziD4QF4Rbowlpu6mwMZb876+PBLgqBVv3kYI3WibHHKBtbfZiJs3GrUAVJ
+zSeH6+8p8LlQxZLsvFTT8L2+Bpo4XEXemqdRk5hHTWY800bCYWfoIAGvf/Du07zJ
+Ai7glqdRJSf6lX5Lc94WMjQqJeKtZ6K5sT3wKLBHuGjk+64L6Jcw04HmHIPO5xL1
+DG2n4dahR7SKNecg5IE3GWQn8o0IvxbzOp8RLPABKU+BUrUGYTVQf1LWtZ8n06HP
+5wIBAw==
+-----END PUBLIC KEY-----
+
+
+
+THIS is how A's public key looks like first in base64 encode, and further below, in Hexadecimal form:                                                                                                           
+
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl pkey -in pubkey-A.pem -pubin -text                                                         1 ⨯
+-----BEGIN PUBLIC KEY-----
+MIIBIDANBgkqhkiG9w0BAQEFAAOCAQ0AMIIBCAKCAQEAwAO2ZNpKVS2h7BzB8apo
+fP+tdVw8fzu1T8/MX3h6eD4QJ99TMpkwDdpzhbhREHeozfKRoD07byuz5AuWRON8
+5uTBN4ziD4QF4Rbowlpu6mwMZb876+PBLgqBVv3kYI3WibHHKBtbfZiJs3GrUAVJ
+zSeH6+8p8LlQxZLsvFTT8L2+Bpo4XEXemqdRk5hHTWY800bCYWfoIAGvf/Du07zJ
+Ai7glqdRJSf6lX5Lc94WMjQqJeKtZ6K5sT3wKLBHuGjk+64L6Jcw04HmHIPO5xL1
+DG2n4dahR7SKNecg5IE3GWQn8o0IvxbzOp8RLPABKU+BUrUGYTVQf1LWtZ8n06HP
+5wIBAw==
+-----END PUBLIC KEY-----
+RSA Public-Key: (2048 bit)
+Modulus:
+    00:c0:03:b6:64:da:4a:55:2d:a1:ec:1c:c1:f1:aa:
+    68:7c:ff:ad:75:5c:3c:7f:3b:b5:4f:cf:cc:5f:78:
+    7a:78:3e:10:27:df:53:32:99:30:0d:da:73:85:b8:
+    51:10:77:a8:cd:f2:91:a0:3d:3b:6f:2b:b3:e4:0b:
+    96:44:e3:7c:e6:e4:c1:37:8c:e2:0f:84:05:e1:16:
+    e8:c2:5a:6e:ea:6c:0c:65:bf:3b:eb:e3:c1:2e:0a:
+    81:56:fd:e4:60:8d:d6:89:b1:c7:28:1b:5b:7d:98:
+    89:b3:71:ab:50:05:49:cd:27:87:eb:ef:29:f0:b9:
+    50:c5:92:ec:bc:54:d3:f0:bd:be:06:9a:38:5c:45:
+    de:9a:a7:51:93:98:47:4d:66:3c:d3:46:c2:61:67:
+    e8:20:01:af:7f:f0:ee:d3:bc:c9:02:2e:e0:96:a7:
+    51:25:27:fa:95:7e:4b:73:de:16:32:34:2a:25:e2:
+    ad:67:a2:b9:b1:3d:f0:28:b0:47:b8:68:e4:fb:ae:
+    0b:e8:97:30:d3:81:e6:1c:83:ce:e7:12:f5:0c:6d:
+    a7:e1:d6:a1:47:b4:8a:35:e7:20:e4:81:37:19:64:
+    27:f2:8d:08:bf:16:f3:3a:9f:11:2c:f0:01:29:4f:
+    81:52:b5:06:61:35:50:7f:52:d6:b5:9f:27:d3:a1:
+    cf:e7
+Exponent: 3 (0x3)
+
+
+(step 5)
+
+NOW, let us repeat the steps above by creating a Private and public key for B. First, the private key:
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-B.pem 
+
+.........................................................................+++++
+...........................................................................................................................+++++*..........................................................+++++
+
+
+(step 6)
+                                                                                                 
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl pkey -in privkey-B.pem -out pubkey-B.pem -pubout 
+
+
+-pubout  By default the private and public key is output; this option restricts the output to the public components. This option is automatically set if the input is a public key.  When combined with -text, this is equivalent to -text_pub.
+
+https://docs.openssl.org/3.1/man1/openssl-pkey/#output-options
+
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# ls -l
+total 28
+-rw-r--r-- 1 root root 5718 Mar 17 08:12 privkey-actualvalues.txt
+-rw------- 1 root root 1704 Mar 17 08:05 privkey-A.pem
+-rw-r--r-- 1 root root 1704 Mar 17 08:08 privkey-base64encode.txt
+-rw------- 1 root root 1704 Mar 17 08:38 privkey-B.pem
+-rw-r--r-- 1 root root  451 Mar 17 08:30 pubkey-A.pem
+-rw-r--r-- 1 root root  451 Mar 17 08:40 pubkey-B.pem
+
+
+(step 7)
+
+Now use an editing application to create a confidendential message (assuming the message is created by A)
+
+
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# nano messageAB.txt 
+
+Content of the message in messageAB.txt  is;
+
+"Hi this is a message about our secrets. NO one should evr get to know them"
+
+(step 8)
+
+Then create a Hash for this messageAB.txt  using Sha1
+                                                                                                          
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl dgst -sha1 messageAB.txt                                   
+SHA1(messageAB.txt)= 294f11ebb7f49a5b08a584c18d9c26a2cb9cfdb5
+
+
+(step 9)
+
+Then A, creates a digital signature using his Private key and the messageAB.txt
+Note, the following instructions would produce the hash, then encrypt it to get a digital signature. 
+A digital signature is encrpted (hash or Digest). The hash is produced using A's private key and the message - i.e., messageAB.txt).
+You can see we did not use "294f11ebb7f49a5b08a584c18d9c26a2cb9cfdb5" anywhere in the following instruction.  
+The instruction below generates it and then encrypts it.
+                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl dgst -sha1 -sign privkey-A.pem -out signature.bin messageAB.txt
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# ls -l
+total 36
+-rw-r--r-- 1 root root   76 Mar 17 08:42 messageAB.txt
+-rw-r--r-- 1 root root 5718 Mar 17 08:12 privkey-actualvalues.txt
+-rw------- 1 root root 1704 Mar 17 08:05 privkey-A.pem
+-rw-r--r-- 1 root root 1704 Mar 17 08:08 privkey-base64encode.txt
+-rw------- 1 root root 1704 Mar 17 08:38 privkey-B.pem
+-rw-r--r-- 1 root root  451 Mar 17 08:30 pubkey-A.pem
+-rw-r--r-- 1 root root  451 Mar 17 08:40 pubkey-B.pem
+-rw-r--r-- 1 root root  256 Mar 17 08:51 signature.bin
+
+
+(step 10)
+
+In the step above, A encrypted the "Hash or digest" (NOT the message), using his "Private key" to get a digital signature. However,  
+A will have to send to B 2 things (i) the digital signature (ii) the message (messageAB.txt). Since 
+he does not want the message to be hacked, A encrypts it also, but this time using B's "public key".  
+
+Encrypt the message (messageAB.txt) using B's public key. The encrypted message is saved in file Ciphertext.bin
+(NOTE: IN SOME CASES ONE MAY ENCRYPT THE MESSAGE + DIGITAL SIGNATURE) using B's public key  (see Digital signature lecture slides). However,
+in the present demo, we did not do that.  
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl pkeyutl -encrypt -in messageAB.txt -pubin -inkey pubkey-B.pem  -out ciphertext.bin
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# ls -l
+total 40
+-rw-r--r-- 1 root root  256 Mar 17 08:59 ciphertext.bin
+-rw-r--r-- 1 root root   76 Mar 17 08:42 messageAB.txt
+-rw-r--r-- 1 root root 5718 Mar 17 08:12 privkey-actualvalues.txt
+-rw------- 1 root root 1704 Mar 17 08:05 privkey-A.pem
+-rw-r--r-- 1 root root 1704 Mar 17 08:08 privkey-base64encode.txt
+-rw------- 1 root root 1704 Mar 17 08:38 privkey-B.pem
+-rw-r--r-- 1 root root  451 Mar 17 08:30 pubkey-A.pem
+-rw-r--r-- 1 root root  451 Mar 17 08:40 pubkey-B.pem
+-rw-r--r-- 1 root root  256 Mar 17 08:51 signature.bin
+
+(step 11)
+
+When the message is received by B, B uses his private key to decrypt the message in the document ciphertext.bin, and the result is stored in 
+file 'received-message.txt'.
+
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl pkeyutl -decrypt -in ciphertext.bin -inkey privkey-B.pem -out received-message.txt
+
+
+(step 12)
+
+Now let us look at the message in "received-message.txt". should be similar to the original message A sent
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# cat received-message.txt
+Hi this is a message about our secrets. NO one should evr get to know them
+
+
+(step 13)
+                                                                                                           
+Let us ask the software to compare the two files (messages), using the diff command
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# diff received-message.txt messageAB.txt         
+                                                                                                           
+They are the same - the diff command does not return any queries.
+
+
+(step 14)
+
+Now B would like to verify the digital signature. He uses A's public key, and the received-message.txt  to verify the "HASH" or
+("DIGEST") (i.e., to reproduce the Hash A sent to him and confirm if they are the same). The following 
+instruction will first decrypt the digital signature to get the HASH (A sent, remember the Hash was included in the digital signature).
+B will then use A's public key and the message A sent (i.e. received-message.txt), to reproduce the Hash
+if the two Hashes are the same, then verification is OK.
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl dgst -sha1 -verify pubkey-A.pem -signature signature.bin received-message.txt              2 ⨯
+Verified OK
+
+The digital signature is verified - so everything is correct.
+
+
+If say you used an incorrect Key, verification will fail.
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001/opensslnotes]
+└─# openssl dgst -sha1 -verify pubkey-B.pem -signature signature.bin received-message.txt 
+Verification Failure
+                                                                                                           
+
+
+
+
+
+
+

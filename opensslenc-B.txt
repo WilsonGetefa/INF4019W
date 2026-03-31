@@ -1,0 +1,163 @@
+
+──(mk001㉿mikayili)-[~]
+└─$ sudo su 
+[sudo] password for mk001: 
+
+(a)FIRST I CREATED A secret document AND SAVED IT AS studentps.txt
+
+┌──(root💀mikayili)-[/home/mk001]
+
+└─# echo -e "Hi Students, this file contains our secret passwords and user names. \n We need to encrypt it today." > studentps.txt       
+ 
+b) I Listed the content of the file studentps.txt
+                                                                                                 
+┌──(root💀mikayili)-[/home/mk001]
+└─# cat studentps.txt   
+Hi Students, this file contains our secret passwords and user names. 
+ We need to encrypt it today.
+                                                                                                           
+c) Then i generated random numbers i could use to create a KEY. I saved the output as randonbytes.bin (head -1  means i only took the first line of
+   the random numbers
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001]
+└─# cat /dev/urandom | head -1 > randombytes.bin
+
+d) Since the file created is a bin (i.e. binary file), i used an editor (xxd) to look at it in hexadecimal. It is a big file therefore again i listed only the first line in the header 
+                                                                            
+┌──(root💀mikayili)-[/home/mk001]
+└─# xxd randombytes.bin | head -1                  
+00000000: 1e6c 4c47 4741 71d8 a305 dc7b db22 28cd  .lLGGAq....{."(.
+
+if you do not have xxd install, run:  apt install xxd
+
+
+e) 000000000 JUST REFERS TO THE ADDRESS in Memory where it is stored.  I decided not to use all the numbers to create my Key. I selected the first 16, i.e.,
+  so i used 1e6c 4c47 4741 71d8  as my KEY. (do not include spaces). When this key is used to encrypt our secret document "studentps.txt", a ciphertext "ciphertext.enc" is produced.
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001]
+└─# openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8  
+
+Please see manual for openssl and enc   e.g. type without quotes ("man openssl"   and "man enc" 
+                                                                                                           
+ f) we can list the files in the folder and you can see our ciphertext.enc is also listed                                                                                                        
+┌──(root💀mikayili)-[/home/mk001]
+└─# ls -l              
+
+-rw-r--r--  1 root  root        104 Mar 16 18:38 ciphertext.enc
+-rw-r--r--  1 root  root         81 Mar 16 18:32 randombytes.bin
+-rw-r--r--  1 root  root        100 Mar 16 18:28 studentps.txt
+
+g) Now let us see how it looks like:  I use xxd which allow us to see the "encrypted document or ciphertext.enc" in hexadecimal (i.e. base 16).
+
+-b = -bits (Switch to bits (binary digits) dump, rather than hexdump). This option writes octets as eight digits "1"s and "0"s instead of 
+      a normal hexadecimal dump. Each line is preceded by a line number in hexadecimal and followed by an ascii (or ebcdic) representation.
+                                                                                                         
+┌──(root💀mikayili)-[/home/mk001]
+└─# xxd -b ciphertext.enc                                   
+00000000: 01000100 01010100 01001101 10111001 01000001 00011110  DTM.A.
+00000006: 11110110 00011010 00001111 01101101 00100110 11010011  ...m&.
+0000000c: 01000000 00110010 01101000 01110000 10111100 01010010  @2hp.R
+00000012: 11011000 01001001 00000110 00111010 10001011 01011101  .I.:.]
+00000018: 01001111 10001111 01110001 00011000 11100111 00001001  O.q...
+0000001e: 11000110 11100011 00110001 11110000 10110010 00101001  ..1..)
+00000024: 01001000 10011101 00110111 11000001 11110101 11000110  H.7...
+0000002a: 10010101 01100001 00111010 01101001 11110001 11011000  .a:i..
+00000030: 01001110 00001111 10010000 00100000 11001110 00000111  N.. ..
+00000036: 00110000 10101110 11000110 11100011 10110100 11111111  0.....
+0000003c: 01111101 10110100 11010101 11010100 01011010 00110101  }...Z5
+00000042: 01011100 00111011 00111100 00011001 00101100 10001111  \;<.,.
+00000048: 10000011 00011010 00111101 01110101 10101010 10110000  ..=u..
+0000004e: 00011010 01111111 11000001 11010100 10111000 10001000  ......
+00000054: 00010011 01000001 11000001 10101101 11011101 01001011  .A...K
+0000005a: 10001100 11101001 00010000 01011111 11000101 11011100  ..._..
+00000060: 10100001 01010111 01100110 10111011 11100000 01111000  .Wf..x
+00000066: 11101010 00111100                                      .<
+                                                                                                           
+h) Now we want to see base64 equivalent of the ciphertext. We change to base64 because that is the one used to transmit
+   documents securely via email
+
+Base64 encoding:
+https://stackoverflow.com/questions/201479/what-is-base-64-encoding-used-for
+
+When you have some binary data that you want to ship across a network, you generally don't do it by just streaming the bits and bytes over the wire in a raw format. Why? because some media are made for streaming text. You never know -- some protocols may interpret your binary data as control characters (like a modem), or your binary data could be screwed up because the underlying protocol might think that you've entered a special character combination (like how FTP translates line endings).
+
+So to get around this, people encode the binary data into characters. Base64 is one of these types of encodings.
+
+Why 64?
+Because you can generally rely on the same 64 characters being present in many character sets, and you can be reasonably 
+confident that your data's going to end up on the other side of the wire uncorrupted.
+
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001]
+└─# openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8 -a
+
+enc = encoding with ciphers (please see manual for enc,  type without quotes "man enc"
+des-cbc = DES in CBC mode
+DES = Data Encryption Standard. CBC =Cipher Block Chaining Mode (Multiples of 64 bits are enciphered at a time.
+Blocks cannot be rearranged. Each ciphertext block depends on the current and all preceding plaintext blocks.
+A plaintext block always produces the same ciphertext block for the same key and starting variable.
+
+-a  = Base64 process the data. This means that if encryption is taking place the data is base64 encoded after encryption. 
+      if decryption is set then the input data is base64 decoded before being decrypted.
+
+https://blog.fpmurphy.com/2010/04/openssl-des-api.html#:~:text=DES%20uses%20a%2056%2Dbit,by%20a%20sequence%20of%20permutations.
+
+In cryptography, a salt is random data that is used as an additional input to a one-way function that hashes data, a password or passphrase.
+Salts are used to safeguard passwords in storage. Without a salt, identical inputs lead to identical outputs, 
+which leaks information (namely the fact that the messages are the same).
+Salts defend against attacks that use precomputed tables (e.g. rainbow tables)as they can make the size of table needed 
+for a successful attack prohibitively large without burdening users.
+
+Without the -salt option it is possible to perform efficient dictionary attacks on the password and to attack stream cipher encrypted data. 
+The reason for this is that without the salt the same password always generates the same encryption key. 
+When the salt is being used the first eight bytes of the encrypted data are reserved for the salt: it is generated at random when 
+encrypting a file and read from the encrypted file when it is decrypted.
+
+-nosalt
+don't use a salt in the key derivation routines. This option SHOULD NOT be used except for test purposes or 
+compatibility with ancient versions of OpenSSL and SSLeay.  We have used -nosalt since we are doing basic training/testing.
+
+
+An IV or initialization vector is, in its broadest sense, just the initial value used to start some iterated process. 
+An IV makes the same plain text produce different cipher texts. This prevents an attacker from exploiting patterns 
+in the plain text to garner information from a set of encrypted messages.
+
+Read more: https://blog.fpmurphy.com/2010/04/openssl-des-api.html#ixzz6qBckGItl 
+
+i) This is our ciphertext in Base64
+                                                                                                       
+┌──(root💀mikayili)-[/home/mk001]
+└─# cat ciphertext.enc                          
+RFRNuUEe9hoPbSbTQDJocLxS2EkGOotdT49xGOcJxuMx8LIpSJ03wfXGlWE6afHY
+Tg+QIM4HMK7G47T/fbTV1Fo1XDs8GSyPgxo9daqwGn/B1LiIE0HBrd1LjOkQX8Xc
+oVdmu+B46jw=
+
+
+j) our encrypted document is now ready to be sent via email
+k) Now let us suppose it was sent and received by one student. That student would like to decrypt it and read the content. 
+   The student can only do so if he/she (i) has the encrypted document (ciphertext.enc) and also the KEY we used to encrypt it
+   1e6c4c47474171d8.  Because the document is in Base64, the student will also have to tell the application that it is in base64
+   (hence the use of -a). Note -d  stands for decryption. The decrypted document is saved as "received.txt"
+                                                                                        
+┌──(root💀mikayili)-[/home/mk001]
+└─# openssl enc -des-cbc -d -in  ciphertext.enc -out received.txt -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8 -a
+
+l) let us list the files in the folder to see the decrypted document is produced. Yes, received.txt is there. Note also the size.
+   it is of the same size like the original secret document "studentps.txt"
+                                                                                                           
+┌──(root💀mikayili)-[/home/mk001]
+└─# ls -l
+
+-rw-r--r--  1 root  root        143 Mar 16 18:52 ciphertext.enc
+-rw-r--r--  1 root  root         81 Mar 16 18:32 randombytes.bin
+-rw-r--r--  1 root  root        100 Mar 16 18:55 received.txt
+-rw-r--r--  1 root  root        100 Mar 16 18:28 studentps.txt
+ 
+m) NOW the BIG TEST. Does the decrypted document contain the same information like our original secret document?
+                                                                                                          
+┌──(root💀mikayili)-[/home/mk001]
+└─# cat received.txt  
+Hi Students, this file contains our secret passwords and user names. 
+ We need to encrypt it today.
+                                                                                                           
+n) Note also: This is symmetrical encryption because we have used the same KEY 1e6c4c47474171d8  to encrypt and decrypt

@@ -1,0 +1,55 @@
+OPENSSL_COMMANDS
+
+sudo su 
+echo -e "Hi Students, this file contains our secret passwords and user names. \n We need to encrypt it today." > studentps.txt
+cat studentps.txt
+cat /dev/urandom | head -1 > randombytes.bin
+cat randombytes.bin
+xxd randombytes.bin | head -1
+
+openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K dc654371aa6d025cc99354209ed8
+rm -rf ciphertext.enc
+openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K dc654371aa6d025c
+xxd -b ciphertext.enc
+openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K  dc654371aa6d025c -a
+cat ciphertext.enc
+openssl enc -des-cbc -d -in  ciphertext.enc -out received.txt -nosalt -iv 0000000000000000 -K dc654371aa6d025c -a
+cat received.txt
+
+
+DIGITAL_SIGNATURE
+
+openssl version
+
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-A.pem
+ls -l
+cat privkey-A.pem | less
+cat privkey-A.pem > privkey-base64encode.txt
+cat privkey-base64encode.txt
+openssl pkey -in privkey-A.pem -text | less
+openssl pkey -in privkey-A.pem -text > privkey-actualvalues.txt
+cat privkey-actualvalues.txt
+openssl pkey -in privkey-A.pem -out pubkey-A.pem -pubout
+ls -l
+cat privkey-A.pem
+openssl pkey -in pubkey-A.pem -pubin -text
+
+-now repeat by creating PRIVATE KEY
+-NOW, let us repeat the steps above by creating a Private and public key for B. First, the private key:
+
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-B.pem
+openssl pkey -in privkey-B.pem -out pubkey-B.pem -pubout
+nano messageAB.txt
+cat messageAB.txt
+openssl dgst -sha1 messageAB.txt
+openssl dgst -sha1 -sign privkey-A.pem -out signature.bin messageAB.txt
+ls -l
+openssl pkeyutl -encrypt -in messageAB.txt -pubin -inkey pubkey-B.pem  -out ciphertext.bin
+ls -l
+openssl pkeyutl -decrypt -in ciphertext.bin -inkey privkey-B.pem -out received-message.txt
+cat received-message.txt
+diff received-message.txt messageAB.txt
+openssl dgst -sha1 -verify pubkey-A.pem -signature signature.bin received-message.txt
+
+-If you use it agai incorrect Key, verification will fail.
+openssl dgst -sha1 -verify pubkey-B.pem -signature signature.bin received-message.txt
