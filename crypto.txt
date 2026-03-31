@@ -212,3 +212,11 @@ In cryptography:
 
 **Example:** In banking, if you digitally sign a money transfer, the bank can prove it was **you** who authorized it.
 
+from this add sender and receiver, with encryption, hash, encoding and decrytion, explain it with one line each steps
+when data transit on the network in which format , does also include TLS/SSL?
+in the images, puth each steps on both side and the transit steps, don't forget to demonstate the key part from receiver, transit, and receiver
+integrity: MD5, Sha
+authentication: HMAC-MD5, HMAC-SHA-1, RSA and DSA
+Confidentiality: DES, 3DES, AES
+
+do an image for Bank and like whatsap
