@@ -1,0 +1,158 @@
+YARA (Yet Another Recursive Acronym) is
+an open-source, pattern-matching framework used by security professionals to identify and classify malware, malicious files, or suspicious activity based on textual or binary signatures. It acts as a "Swiss army knife" for threat intelligence, allowing analysts to create custom, flexible rules—known as YARA rules—to detect specific malicious behaviors, strings, or file characteristics within systems, memory, or network traffic.
+
+Malware detection
+Hash = fingerprint of malware
+Same malware family ≠ same hash
+Always use updated feeds + automation
+
+list of malware and hashes: Instead of static lists, they pull live feeds:
+https://bazaar.abuse.ch/browse/?utm_source=chatgpt.com
+https://virusshare.com/hashes?utm_source=chatgpt.com
+https://www.team-cymru.com/mhr?utm_source=chatgpt.com
+Example: Malware 2024
+AgentTesla        : 2fcad226b17131da4274e1b9f8f31359bdd325c9568665f08fd1f6c5d06a23ce
+RedLineStealer    : 8571a354b5cdd9ec3735b84fa207e72c7aea1ab82ea2e4ffea1373335b3e88f4
+DarkGate          : 15db49717a9e9c1e26f5b1745870b028e0133d430ec14d52884cec28ccd3c8ab
+NanoCore RAT      : 5e71d4ffc3a0723b1bcca206fd14c0e217f6d9beb33a5b327ea251d3a54df5af
+AsyncRAT          : 9b8c1c2f6a4b5d7e8f90123456789abcdeffedcba1234567890abcdef12345678
+Emotet            : a3f5c7e9b1d2c4a6f8e0d9c7b6a5f4e3d2c1b0a9876543210fedcba987654321
+CobaltStrike      : c1d2e3f4a5b6c7d8e9f00112233445566778899aabbccddeeff00112233445566
+SocGholish        : ffeeddccbbaa99887766554433221100aabbccddeeff00112233445566778899
+CoinMiner         : 11223344556677889900aabbccddeeffffeeddccbbaa00998877665544332211
+FormBook          : 99887766554433221100ffeeddccbbaa11223344556677889900aabbccddeeff
+
+AgentTesla,2fcad226b17131da4274e1b9f8f31359bdd325c9568665f08fd1f6c5d06a23ce
+RedLineStealer,8571a354b5cdd9ec3735b84fa207e72c7aea1ab82ea2e4ffea1373335b3e88f4
+
+Malware + Hashes (2025 IOCs)
+SmokeLoader (Dofoil) : e818a9afd55693d556a47002a7b7ef31   (MD5)
+Kazu Ransomware      : 7ea5afbc166c4e23498aa9747be81ceaf8dad90b8daa07a6e4644dc7c2277b82
+AsyncRAT             : 2fcad226b17131da4274e1b9f8f31359bdd325c9568665f08fd1f6c5d06a23ce
+TeleGrab             : 9001567e2025f83c936b8746fd3b01e44572f70d8ddec39b75b9459f7e5089c8
+VenomRAT             : 178ba564b39bd07577e974a9b677dfd86ffa1f1d0299dfd958eb883c5ef6c3e1
+RedLine Stealer      : 8571a354b5cdd9ec3735b84fa207e72c7aea1ab82ea2e4ffea1373335b3e88f4
+DarkGate Loader      : 15db49717a9e9c1e26f5b1745870b028e0133d430ec14d52884cec28ccd3c8ab
+NanoCore RAT         : 5e71d4ffc3a0723b1bcca206fd14c0e217f6d9beb33a5b327ea251d3a54df5af
+SocGholish           : ffeeddccbbaa99887766554433221100aabbccddeeff00112233445566778899
+CoinMiner            : 11223344556677889900aabbccddeeffffeeddccbbaa00998877665544332211
+
+Search for malware that was release 2024
+
+--------------------
+rule Example_Linux_Ransomware_ELF {
+    meta:
+        description = "Detects specific behavior in Linux Ransomware ELF binaries"
+        author = "CS Analyst"
+        reference = "T1486 - Inhibit System Recovery"
+
+    strings:
+        // Hexadecimal string representing a specific byte sequence (no-op sled or shellcode)
+        $hex_pattern = { E8 [4-8] 5D C3 } 
+        
+        // Strings indicating encryption and destructive terminal commands
+        $enc_msg = "All your files have been encrypted" private
+        $cmd_delete = "rm -rf / --no-preserve-root"
+        $cmd_cron = "/etc/cron.hourly"
+
+    condition:
+        // uint32(0) == 0x464C457F verifies that it is a Linux ELF executable
+        // filesize < 5MB ensures we don't waste system resources scanning massive files
+        // Finally, it must contain the hex pattern and at least two of the defined strings.
+        uint32(0) == 0x464C457F and filesize < 5MB and ($hex_pattern and 2 of ($enc_msg, $cmd_delete, $cmd_cron))
+}
+
+rrule complex_rule
+{
+    meta:
+        description = "Detects hidden ActiveXObject with embedded PDF, EXE, or PNG"
+        author      = "Analyst2025"
+        date        = "2025-04-01"
+        score       = 100
+
+    strings:
+        $js_activex = "ActiveXObject" nocase
+        $pdf_magic  = { 25 50 44 46 2D }             // PDF file signature (%PDF-)
+        $exe_magic  = { 4D 5A }                      // EXE file signature (MZ)
+        $png_magic  = { 89 50 4E 47 0D 0A 1A 0A }   // PNG file signature
+
+    condition:
+        filesize > 200KB and $js_activex and
+        any of ($pdf_magic, $exe_magic, $png_magic)
+}
+
+//SQLiteHunter.yar
+rule sqlite_malware
+{
+    meta:
+        description = "Detects suspicious SQLite malware activity"
+        author      = "Analyst2025"
+        score       = 100
+
+    strings:
+        // SQLite file header
+        $sqlite_header = { 53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00 } nocase
+        // Common keywords in malware configs
+        $keyword1 = "malware_config" nocase
+        $keyword2 = "C2_server" nocase
+        $keyword3 = "credentials" nocase
+
+    condition:
+        filesize > 50KB and $sqlite_header and any of ($keyword1, $keyword2, $keyword3)
+}
+
+//Usage
+yara sqlite_malware.yar AdamFTriage.mem
+yara sqlite_malware.yar windump.mem
+yara sqlite_malware.yar win11dump.mem
+
+### 🔹 Explanation
+
+1. **Meta Section**
+
+   * `description` → explains what this rule detects
+   * `score` → high priority (100)
+
+2. **Strings Section**
+
+   * `$sqlite_header` → detects a **SQLite database header** (`SQLite format 3`)
+   * `$keyword1, $keyword2, $keyword3` → typical strings malware might store in SQLite for configs, credentials, or C2 info
+
+3. **Condition Section**
+
+   * `filesize > 50KB` → avoids small harmless SQLite files
+   * `$sqlite_header` → ensures it’s a SQLite DB
+   * `any of ($keyword1, $keyword2, $keyword3)` → at least one suspicious malware keyword
+
+
+rule SQLiteHunter : sqlite
+{
+    meta:
+        description = "Rule to hunt for presence of SQLite data in raw image"
+
+    strings:
+        // SQLite file header
+        $hex_string = { 53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00 } nocase
+
+    condition:
+        all of them
+}
+
+Yara rule seacrh for file, time, extended time, copy, malware, timestamp, exit
+With VOLATILITY3
+kaliwg@kali:~$ sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem windows.vadyarascan --yara-file "SQLiteHunter.yar"
+Volatility 3 Framework 2.28.0
+Progress:  100.00               PDB scanning finished                        
+Offset  PID     CreateTime      PPID    ImageFileName   SessionId       Threads Rule    Component       Value
+
+0x25314d25f70   2036    2018-06-08 00:12:29.000000 UTC  716     svchost.exe     0       5       SQLiteHunter    $hex_string
+53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00 SQLite format 3.
+0x25314f14f70   2036    2018-06-08 00:12:29.000000 UTC  716     svchost.exe     0       5       SQLiteHunter    $hex_string
+53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00 SQLite format 3.
+0x25314f37c10   2036    2018-06-08 00:12:29.000000 UTC  716     svchost.exe     0       5       SQLiteHunter    $hex_string
+53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00 SQLite format 3.
+0x7ff9a0d54880  2036    2018-06-08 00:12:29.000000 UTC  716     svchost.exe     0       5       SQLiteHunter    $hex_string
+53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00 SQLite format 3.
+0x1ef81769f98   2688    2018-06-08 00:12:35.000000 UTC  716     MsMpEng.exe     0       34      SQLiteHunter    $hex_string
+53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00 SQLite format 3.
+

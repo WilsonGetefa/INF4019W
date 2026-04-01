@@ -321,4 +321,22 @@ INFO    : volatility.debug    : Determining profile based on KDBG search...
              KUSER_SHARED_DATA : 0xfffff78000000000L
            Image date and time : 2022-07-18 23:26:00 UTC+0000
      Image local date and time : 2022-07-19 09:26:00 +1000
-                                                                                                                              
+
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/memory/memory.img imageinfo
+[sudo] password for kaliwg: 
+Volatility Foundation Volatility Framework 2.6.1
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_24000, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_24000, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/kaliwg/Downloads/memory/memory.img)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf80002e020f0L
+          Number of Processors : 1
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff80002e03d00L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2015-10-12 11:41:31 UTC+0000
+     Image local date and time : 2015-10-12 07:41:31 -0400
+
+                                                                   
