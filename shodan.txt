@@ -1,0 +1,51 @@
+(echo "IP,Port,Org,Hostnames,ISP,Location"; \
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30) \
+| column -s, -t
+
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30) \
+| column -s, -t
+IP               Port   Org                                        Hostnames                                                              ISP                                    Location                                                                                                                                                                     
+41.133.201.157   20002  Dimension Data                                                                                                    Dimension Data                         {'city': 'Cape Town'      'region_code': 'WC'    'area_code': None   'longitude': 18.42322   'latitude': -33.92584   'country_code': 'ZA'   'country_name': 'South Africa'}  
+155.93.196.204   22     CI155_93_196_0                             udl8-cust.coolideas.co.za                                              Cool Ideas Service Provider (Pty) Ltd  {'city': 'Durban'         'region_code': 'KZN'   'area_code': None   'longitude': 31.0292    'latitude': -29.8579    'country_code': 'ZA'   'country_name': 'South Africa'}  
+197.97.95.32     161    Dimension Data                                                                                                    Dimension Data                         {'city': 'Cape Town'      'region_code': 'WC'    'area_code': None   'longitude': 18.42322   'latitude': -33.92584   'country_code': 'ZA'   'country_name': 'South Africa'}  
+41.193.250.46    80     YahSat Luxembourg solution of Vox Telecom                                                                         Vox Telecom Ltd                        {'city': 'eMbalenhle'     'region_code': 'MP'    'area_code': None   'longitude': 29.06667   'latitude': -26.53333   'country_code': 'ZA'   'country_name': 'South Africa'}  
+20.87.17.52      3389   Microsoft Corporation                                                                                             Microsoft Corporation                  {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.04363   'latitude': -26.20227   'country_code': 'ZA'   'country_name': 'South Africa'}  
+196.41.21.195    3389   DataPro Infrastructure                     jhb-dial-41-21-195.bol.co.za                                           Vox Telecom Ltd                        {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.04363   'latitude': -26.20227   'country_code': 'ZA'   'country_name': 'South Africa'}  
+129.232.191.43   3001   xneelo-tscolo                              43.191.232.129.reverse.xneelo.net                                      Xneelo (Pty) Ltd                       {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.04363   'latitude': -26.20227   'country_code': 'ZA'   'country_name': 'South Africa'}  
+196.208.200.72   541    Dimension Data                             196-208-200-72.ip.broadband.ddii.network                               Dimension Data                         {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.06034   'latitude': -26.1163    'country_code': 'ZA'   'country_name': 'South Africa'}  
+34.35.51.184     2100   Google LLC                                 184.51.35.34.bc.googleusercontent.com                                  Google LLC                             {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.04363   'latitude': -26.20227   'country_code': 'ZA'   'country_name': 'South Africa'}  
+129.232.165.124  5985   xneelo-tscolo                              124.165.232.129.reverse.xneelo.net                                     Xneelo (Pty) Ltd                       {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.04363   'latitude': -26.20227   'country_code': 'ZA'   'country_name': 'South Africa'}  
+41.76.211.252    2100   Afrihost                                   linkiot.dedicated.co.za;Plumbum.dedicated.co.za;ffdb2.dedicated.co.za  Afrihost (Pty) Ltd                     {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.04363   'latitude': -26.20227   'country_code': 'ZA'   'country_name': 'South Africa'}  
+160.119.101.32   54321  DataKeepers (Pty) Ltd                                                                                             DataKeepers (Pty) Ltd                  {'city': 'Cape Town'      'region_code': 'WC'    'area_code': None   'longitude': 18.42322   'latitude': -33.92584   'country_code': 'ZA'   'country_name': 'South Africa'}  
+156.155.253.143  8081   Axxess Networks                                                                                                   DIAMATRIX C.C                          {'city': 'Johannesburg'   'region_code': 'GP'    'area_code': None   'longitude': 28.04363   'latitude': -26.20227   'country_code': 'ZA'   'country_name': 'South Africa'}  
+197.89.115.42    54321  Dimension Data                                                                                                    Dimension Data                         {'city': 'Cape Town'      'region_code': 'WC'    'area_code': None   'longitude': 18.42322   'latitude': -33.92584   'country_code': 'ZA'   'country_name': 'South Africa'} 
+
+
+(echo "IP,Port,os,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30) | column -s, -t
+(echo "IP,Port,os,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "ics country:ZA" --limit 30) | column -s, -t
+(echo "IP,Port,os,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "rdp country:ZA" --limit 30) | column -s, -t
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(firewall OR router OR Cisco OR Juniper OR MikroTik OR Fortinet) country:ZA" --limit 30
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(Synology OR QNAP OR 'Network Attached Storage') country:ZA" --limit 30
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "webcam country:ZA" --limit 30
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(printer OR copier) country:ZA" --limit 30
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(smart-tv OR smart-fridge OR kettle OR IoT) country:ZA" --limit 30
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(rdp OR router OR firewall OR NAS OR webcam OR printer OR 'smart-tv' OR 'smart-fridge') country:ZA" --limit 30
+(echo "IP,Port,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(rdp OR router OR firewall OR NAS OR webcam OR printer OR 'smart-tv' OR 'smart-fridge') country:ZA" --limit 30) | column -s, -t
+(echo "IP,Port,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(rdp OR router OR firewall OR NAS OR webcam OR printer OR 'smart-tv' OR 'smart-fridge') country:ZA" --limit 30) | column -s, -t
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(rdp OR router OR firewall OR NAS OR webcam OR printer OR 'smart-tv' OR 'smart-fridge') country:ZA" --limit 100 \
+| awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' \
+| column -s, -t
+shodan count "rdp country:ZA"
+shodan count "router country:ZA"
+shodan count "NAS country:ZA"
+(echo "IP,Count,Port,Org,Hostnames,ISP,Location"; \
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , \
+"(rdp OR router OR firewall OR NAS OR webcam OR printer OR 'smart-tv' OR 'smart-fridge' OR kettle) country:ZA" --limit 100 \
+| awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' \
+) | column -s, -t
+
+(echo "IP,Count,Port,OS,Org,Hostnames,ISP,Location"; \
+shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 \
+| awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' \
+) | column -s, -t
+
