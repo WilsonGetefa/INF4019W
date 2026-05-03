@@ -313,3 +313,29 @@ That’s the normal Git workflow.
 
 Force merging branches
 git pull --no-rebase
+
+--Wrong Identity and need to be correct
+your configuration file:
+    git config --global --edit
+After doing this, you may fix the identity used for this commit with:
+    git commit --amend --reset-author
+ 1 file changed, 3 deletions(-)
+
+verify
+git config --global --list
+
+Then run
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+Fix the latest commit
+git commit --amend --reset-author
+
+If already pushed then force
+git push --force
+
+Optional, set the identy per repositories
+git config user.name "Your Name"
+git config user.email "your.email@example.com"
+
+
