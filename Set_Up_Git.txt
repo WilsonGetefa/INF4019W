@@ -293,3 +293,16 @@ git fetch
 git fetch origin
 git diff
 git branch -a
+
+LOGS
+git log
+git log --oneline
+git log -p
+git log --oneline --graph --all
+git log -n 5
+git log --author="Your Name"
+git log path/to/file
+
+Last line
+git log -1
+git log --oneline --graph --decorate
