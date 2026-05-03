@@ -1,0 +1,162 @@
+Yes — **both port 1723 and port 8081 can be linked to OWASP Top 10 risks**, but not directly just because of the port number. The risk depends on **what service is running and how it’s configured**.
+
+Let’s break it down clearly:
+
+---
+
+## 🔹 Port 1723 (PPTP VPN)
+
+* Typically used for **PPTP (Point-to-Point Tunneling Protocol)** VPN
+* PPTP is **considered weak/obsolete**
+
+### ⚠️ OWASP Top 10 Links:
+
+* **A02:2021 – Cryptographic Failures**
+
+  * PPTP uses weak encryption (MS-CHAPv2 vulnerabilities)
+* **A05:2021 – Security Misconfiguration**
+
+  * Exposing PPTP to the internet without hardening
+* **A07:2021 – Identification and Authentication Failures**
+
+  * Weak authentication mechanisms
+
+👉 In your networking context (FortiGate / routers), **using PPTP is a red flag** — better to use:
+
+* L2TP/IPsec
+* OpenVPN
+* IPsec/IKEv2
+
+---
+
+## 🔹 Port 8081 (Alternate HTTP / Web App Port)
+
+* Often used for:
+
+  * Web applications
+  * Admin panels
+  * APIs
+
+### ⚠️ OWASP Top 10 Links:
+
+This one is **directly tied to OWASP Top 10**, depending on the app:
+
+* **A01:2021 – Broken Access Control**
+
+  * Exposed admin panel on 8081 without proper auth
+* **A03:2021 – Injection**
+
+  * SQL injection, command injection via web app
+* **A04:2021 – Insecure Design**
+
+  * Poor API design
+* **A05:2021 – Security Misconfiguration**
+
+  * Default credentials, open endpoints
+* **A06:2021 – Vulnerable and Outdated Components**
+
+  * Old frameworks running on that port
+* **A07:2021 – Authentication Failures**
+* **A09:2021 – Security Logging and Monitoring Failures**
+
+👉 Example:
+If you expose:
+
+```
+http://your-ip:8081/admin
+```
+
+Without:
+
+* authentication
+* HTTPS
+* firewall rules
+
+→ You are basically hitting multiple OWASP Top 10 risks at once.
+
+---
+
+## 🔥 Key Insight (Important)
+
+* **Ports themselves are NOT vulnerabilities**
+* The **service + configuration + exposure = vulnerability**
+
+---
+
+## ✅ Practical Security Advice (for your setup)
+
+Since you work with routers / FortiGate:
+
+* 🔒 Block unnecessary ports externally
+* 🔐 Replace PPTP (1723) immediately
+* 🌐 Put 8081 behind:
+
+  * VPN OR
+  * Reverse proxy (NGINX) with HTTPS + auth
+* 🛡️ Enable firewall policies + IPS
+* 📊 Monitor logs (especially for 8081 attacks)
+
+---
+
+## 💡 Simple Mapping Summary
+
+| Port | Service  | OWASP Risk Level                              |
+| ---- | -------- | --------------------------------------------- |
+| 1723 | PPTP VPN | ⚠️ High risk (crypto + auth issues)           |
+| 8081 | Web/App  | 🔥 Very high (depends on app vulnerabilities) |
+
+---
+
+If you want, I can:
+
+* Map this to **real firewall rules (FortiGate config)**
+* Or scan your open ports and show **actual OWASP risks in your network**
+
+Anser
+1723: PPTP VPN high risk
+8081: Website or Application very high risk
+
+
+---------------------------------------------------
+Yes — **OWASP Top 10** often maps down to **MITRE (Common Weakness Enumeration)**.
+
+For **port 1723** and **port 8081**, the port itself is not the CWE — the **weakness in the service exposed on that port** is.
+
+## Port 1723 (typically PPTP)
+
+Common CWE mappings:
+
+* **CWE-326** — weak legacy crypto.
+* **CWE-327** — common for older PPTP deployments.
+* **CWE-287** — weak auth handling or legacy authentication methods.
+
+This aligns mostly with **OWASP A02 (Cryptographic Failures)** and **A07 (Identification and Authentication Failures)**.
+
+---
+
+## Port 8081 (often web apps, admin panels, APIs)
+
+Typical CWE mappings depend on what is listening there:
+
+* **CWE-306** — exposed admin/API endpoint.
+* **CWE-862** — users can access functions they should not.
+* **CWE-89** — if backend input is not sanitized.
+* **CWE-78** — command execution via web input.
+* **CWE-798** — default credentials on admin interfaces.
+* **CWE-200** — config pages, tokens, internal data exposed.
+
+This commonly maps to **OWASP A01, A03, A05, and A07**.
+
+---
+
+## Quick practical way to think about it
+
+**Port → Service → Weakness (CWE) → Risk category (OWASP)**
+
+Example:
+
+**8081 → web admin portal → missing auth → CWE-306 → OWASP A01**
+
+---
+
+If you want, I can also give you a **network-engineer style table mapping ports 22, 80, 443, 1723, 8080, 8081, 161, 502 to both CWE and OWASP**, which is useful for audits and reports.
