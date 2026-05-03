@@ -62,6 +62,47 @@ shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "
 #
 shodan count "ics country:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "ics country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+shodan download ZA_ICS_30 "country:ZA (Siemens OR Schneider OR Modicon OR S7 OR BACnet OR Modbus OR PLC OR HMI OR SCADA)" --limit 30
+shodan download Downloads/INF4019W/ZA_ICS_30 "country:ZA (Siemens OR Schneider OR Modicon OR S7 OR BACnet OR Modbus OR PLC OR HMI OR SCADA)" --limit 30
+zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
+select(type=="object") |
+
+def type:
+  if (.product // "" | test("Siemens|Modicon|S7|PLC|BMX|AS-B"; "i")) then "PLC"
+  elif (.product // "" | test("SCADA|HMI|HikCentral|BACnet|MQTT|V700|V350"; "i")) then "SCADA"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  elif (
+    .port == 502 or
+    .port == 161 or
+    .port == 47808 or
+    .port == 1962 or
+    .port == 20256
+  ) then "POSSIBLE_ICS"
+  else "UNKNOWN"
+end;
+
+select(.ip_str != null) |
+{
+  ip: .ip_str,
+  type: type,
+  product: (.product // "unknown"),
+  port: (.port // 0)
+}
+'
+
+zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
+select(type=="object") |
+
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|PLC|BMX|AS-B"; "i")) then "PLC"
+  elif (.product // "" | test("SCADA|HMI|HikCentral|BACnet|MQTT|V700|V350"; "i")) then "SCADA"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  elif (.port == 502 or .port == 161 or .port == 47808 or .port == 1962 or .port == 20256) then "POSSIBLE_ICS"
+  else "UNKNOWN" end;
+
+select(.ip_str != null) |
+[.ip_str, classify, (.product // "unknown"), (.port // 0)] | @tsv
+' > Downloads/INF4019W/classified_ics.tsv
 
 #
 shodan count "rdp country:ZA"
@@ -100,4 +141,5 @@ zcat Downloads/25fecd7d-4a76-4ddd-8fa3-9bbd9d44c9d4.json.gz | jq -r '[.ip_str, .
 shodan download za_ics "ics country:ZA"
 shodan download Downloads/INF4019W/za_ics "ics country:ZA"
 Zcat Downloads/INF4019W/za_ics.json.gz | jq -r '[.ip_str, .port, .org, .hostnames[0], .isp, .location.city] | @csv' | column -s, -t
+
 
