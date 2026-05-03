@@ -182,10 +182,7 @@ If using HTTPS:
 ```bash
 git clone https://github.com/username/project-name.git
 ```
-
 This downloads the project to your Kali machine.
-
----
 
 # 🔹 Step 2 — Enter the project folder
 
