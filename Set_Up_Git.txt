@@ -1,3 +1,4 @@
+cd Pictures/MAIN/SCRIPTS/INF4019W
 
 
 Step-by-step guide to connect GitHub with Kali Linux and VS Code.

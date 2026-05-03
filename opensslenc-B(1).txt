@@ -1,3 +1,4 @@
+In OpenSSL, PEM (Privacy Enhanced Mail) is the default file format for storing and sending cryptographic keys, certificates, and other data
 
 ──(mk001㉿mikayili)-[~]
 └─$ sudo su 
