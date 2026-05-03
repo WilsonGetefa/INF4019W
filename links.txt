@@ -1,0 +1,8 @@
+ICS
+Port1723
+CVE
+https://www.cve.org/CVERecord/SearchResults?query=1723
+
+Port8081
+OWAPS
+https://owasp.org/search/?searchString=port+8081

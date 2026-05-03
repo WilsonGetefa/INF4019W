@@ -49,3 +49,55 @@ shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "
 | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' \
 ) | column -s, -t
 
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; \
+shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 \
+| sed 's/{/"/g; s/}/"/g; s/, /;/g' \
+| awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' \
+) | column -s, -t
+
+
+------------------
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "ics country:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "ics country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "rdp country:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "router country:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "(router OR firewall) country:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "NAS country:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "webcams countr:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "printers country:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#
+shodan count "(smart-tv OR smart-fridge OR kettle OR IoT) country:ZA"
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+
+#view Zfolder
+sudo apt install jq
+download direct from shodan website
+zcat Downloads/25fecd7d-4a76-4ddd-8fa3-9bbd9d44c9d4.json.gz | jq .
+zcat Downloads/25fecd7d-4a76-4ddd-8fa3-9bbd9d44c9d4.json.gz | jq -r '[.ip_str, .port, .org, .hostnames[0], .isp, .location.city] | @csv' | column -s, -t 
+
+shodan download za_ics "ics country:ZA"
+shodan download Downloads/INF4019W/za_ics "ics country:ZA"
+Zcat Downloads/INF4019W/za_ics.json.gz | jq -r '[.ip_str, .port, .org, .hostnames[0], .isp, .location.city] | @csv' | column -s, -t
+
