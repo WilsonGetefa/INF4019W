@@ -1,0 +1,44 @@
+IP: 102.130.118.167 | Type: UNKNOWN | Product: Samba 4.7.6-Ubuntu
+IP: 197.97.95.32 | Type: UNKNOWN | Product: unknown 
+IP: 196.14.132.165 | Type: UNKNOWN | Product: unknown 
+IP: 105.242.61.162 | Type: UNKNOWN | Product: CUPS (IPP) 1.5.4
+IP: 41.170.80.79 | Type: UNKNOWN | Product: Samba 4.3.11-Ubuntu
+IP: 105.30.240.108 | Type: UNKNOWN | Product: HP Printer Embedded Web Server 
+IP: 5.188.120.7 | Type: UNKNOWN | Product: Samba 4.10.16
+IP: 102.67.142.59 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.142.58 | Type: UNKNOWN | Product: unknown 
+IP: 110.238.74.184 | Type: UNKNOWN | Product: unknown 
+IP: 182.160.16.163 | Type: UNKNOWN | Product: unknown 
+IP: 197.245.178.241 | Type: UNKNOWN | Product: RICOH Co. Ltd. 
+IP: 129.151.181.12 | Type: UNKNOWN | Product: unknown 
+IP: 41.77.30.244 | Type: UNKNOWN | Product: CUPS (IPP) 2.3.1
+IP: 160.119.222.131 | Type: UNKNOWN | Product: Samba 4.3.11-Ubuntu
+IP: 102.135.142.155 | Type: UNKNOWN | Product: Kyocera Printer Panel 2V6_2000.002.201
+IP: 102.128.186.254 | Type: UNKNOWN | Product: unknown 
+IP: 156.38.198.98 | Type: UNKNOWN | Product: unknown 
+IP: 197.79.7.86 | Type: UNKNOWN | Product: Samba 3.5.4-4.1-2382-SUSE-SL11.3
+IP: 102.130.113.188 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.142.92 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.142.90 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.142.91 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.142.93 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.142.60 | Type: UNKNOWN | Product: unknown 
+IP: 41.193.39.221 | Type: UNKNOWN | Product: unknown 
+IP: 197.99.68.177 | Type: UNKNOWN | Product: unknown 
+IP: 102.33.108.66 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.138.139 | Type: UNKNOWN | Product: unknown 
+IP: 102.39.214.225 | Type: UNKNOWN | Product: unknown 
+IP: 41.161.63.109 | Type: UNKNOWN | Product: unknown 
+IP: 102.67.142.61 | Type: UNKNOWN | Product: unknown 
+IP: 102.222.248.60 | Type: UNKNOWN | Product: unknown 
+IP: 102.211.28.125 | Type: UNKNOWN | Product: unknown 
+IP: 129.151.190.49 | Type: UNKNOWN | Product: unknown 
+IP: 41.185.27.16 | Type: UNKNOWN | Product: Samba 3.6.3
+IP: 196.13.113.61 | Type: UNKNOWN | Product: unknown 
+IP: 105.242.61.162 | Type: UNKNOWN | Product: unknown 
+IP: 41.77.30.52 | Type: UNKNOWN | Product: CUPS (IPP) 2.3.1
+IP: 160.119.103.108 | Type: UNKNOWN | Product: unknown 
+IP: 102.132.154.81 | Type: UNKNOWN | Product: unknown 
+IP: 160.119.100.100 | Type: UNKNOWN | Product: unknown 
+IP: 102.211.28.209 | Type: UNKNOWN | Product: unknown 
+IP: 41.246.166.125 | Type: UNKNOWN | Product: Samba 3.4.2-1.1.3.1-2229-SUSE-SL11.2

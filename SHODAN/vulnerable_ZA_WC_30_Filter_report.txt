@@ -1,0 +1,53 @@
+
+IP: 20.87.81.1
+Hostnames: None
+Product: nginx 
+  - CVE-2013-2220 | CVSS: 7.5 | EPSS: 0.02798
+      Summary: Buffer overflow in the radius_get_vendor_attr function in the Radius extension before 1.2.7 for PHP allows remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via a large Vendor Specific Attributes (VSA) length value.
+      Reference: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=714362
+      Reference: http://pecl.php.net/package/radius/1.2.7
+      Reference: http://www.debian.org/security/2013/dsa-2726
+      Reference: https://github.com/LawnGnome/php-radius/commit/13c149b051f82b709e8d7cc32111e84b49d57234
+      Reference: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=714362
+      Reference: http://pecl.php.net/package/radius/1.2.7
+      Reference: http://www.debian.org/security/2013/dsa-2726
+      Reference: https://github.com/LawnGnome/php-radius/commit/13c149b051f82b709e8d7cc32111e84b49d57234
+  - CVE-2007-3205 | CVSS: 5.0 | EPSS: 0.00998
+      Summary: The parse_str function in (1) PHP, (2) Hardened-PHP, and (3) Suhosin, when called without a second parameter, might allow remote attackers to overwrite arbitrary variables by specifying variable names and values in the string to be parsed.  NOTE: it is not clear whether this is a design limitation of the function or a bug in PHP, although it is likely to be regarded as a bug in Hardened-PHP and Suhosin.
+      Reference: http://osvdb.org/39834
+      Reference: http://securityreason.com/securityalert/2800
+      Reference: http://www.acid-root.new.fr/advisories/14070612.txt
+      Reference: http://www.securityfocus.com/archive/1/471178/100/0/threaded
+      Reference: http://www.securityfocus.com/archive/1/471204/100/0/threaded
+      Reference: http://www.securityfocus.com/archive/1/471275/100/0/threaded
+      Reference: https://exchange.xforce.ibmcloud.com/vulnerabilities/34836
+      Reference: http://osvdb.org/39834
+      Reference: http://securityreason.com/securityalert/2800
+      Reference: http://www.acid-root.new.fr/advisories/14070612.txt
+      Reference: http://www.securityfocus.com/archive/1/471178/100/0/threaded
+      Reference: http://www.securityfocus.com/archive/1/471204/100/0/threaded
+      Reference: http://www.securityfocus.com/archive/1/471275/100/0/threaded
+      Reference: https://exchange.xforce.ibmcloud.com/vulnerabilities/34836
+  - CVE-2024-3566 | CVSS: 9.8 | EPSS: 0.0709
+      Summary: A command inject vulnerability allows an attacker to perform command injection on Windows applications that indirectly depend on the CreateProcess function when the specific conditions are satisfied.
+      Reference: https://flatt.tech/research/posts/batbadbut-you-cant-securely-execute-commands-on-windows/
+      Reference: https://kb.cert.org/vuls/id/123335
+      Reference: https://learn.microsoft.com/en-us/archive/blogs/twistylittlepassagesallalike/everyone-quotes-command-line-arguments-the-wrong-way
+      Reference: https://www.cve.org/CVERecord?id=CVE-2024-1874
+      Reference: https://www.cve.org/CVERecord?id=CVE-2024-22423
+      Reference: https://www.cve.org/CVERecord?id=CVE-2024-24576
+      Reference: https://www.kb.cert.org/vuls/id/123335
+      Reference: https://flatt.tech/research/posts/batbadbut-you-cant-securely-execute-commands-on-windows/
+      Reference: https://github.com/nu11secur1ty/Windows11Exploits/tree/main/2024/CVE-2024-3566
+      Reference: https://kb.cert.org/vuls/id/123335
+      Reference: https://learn.microsoft.com/en-us/archive/blogs/twistylittlepassagesallalike/everyone-quotes-command-line-arguments-the-wrong-way
+      Reference: https://www.cve.org/CVERecord?id=CVE-2024-1874
+      Reference: https://www.cve.org/CVERecord?id=CVE-2024-22423
+      Reference: https://www.cve.org/CVERecord?id=CVE-2024-24576
+      Reference: https://www.kb.cert.org/vuls/id/123335
+
+==================================================
+Total products: 50
+Vulnerable products: 1
+Non-vulnerable products: 49
+==================================================

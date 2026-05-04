@@ -1,0 +1,49 @@
+IP: 41.193.194.208 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 13.245.141.134 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 13.245.37.211 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 13.247.104.137 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 139.84.232.145 | Type: UNKNOWN | Product: unknown 
+IP: 13.247.99.235 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 13.244.203.188 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 13.247.223.60 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 13.247.87.42 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 102.39.200.51 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 102.39.137.32 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 139.84.232.145 | Type: UNKNOWN | Product: unknown 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 102.39.82.56 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 41.193.192.221 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 102.39.116.232 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 102.39.127.93 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 102.39.167.176 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 15.240.66.158 | Type: UNKNOWN | Product: Microsoft IIS httpd 
+IP: 16.28.107.140 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 102.39.24.4 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 13.245.29.43 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 41.157.201.44 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 102.39.27.0 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 105.247.121.123 | Type: UNKNOWN | Product: unknown 
+IP: 196.170.113.238 | Type: UNKNOWN | Product: Innbox Home Gateway firewall telnetd 
+IP: 41.193.216.101 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 196.3.174.57 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 13.244.153.67 | Type: UNKNOWN | Product: Huawei Technologies Co., Ltd. HG532e Huawei Model 
+IP: 41.193.217.202 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011
+IP: 102.39.25.22 | Type: UNKNOWN | Product: Huawei Home Gateway V100R001C01B011

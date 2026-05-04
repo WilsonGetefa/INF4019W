@@ -1,0 +1,62 @@
+
+IP: 165.73.53.149
+Hostnames: None
+Product: unknown 
+  - MS17-010 | CVSS: 8.8 | EPSS: 0.94318
+      Summary: This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.
+      Reference: https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+
+IP: 139.84.233.58
+Hostnames: None
+Product: unknown 
+  - MS17-010 | CVSS: 8.8 | EPSS: 0.94318
+      Summary: This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.
+      Reference: https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+
+IP: 4.168.232.167
+Hostnames: None
+Product: unknown 
+  - MS17-010 | CVSS: 8.8 | EPSS: 0.94318
+      Summary: This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.
+      Reference: https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+
+IP: 197.155.3.41
+Hostnames: None
+Product: unknown 
+  - MS17-010 | CVSS: 8.8 | EPSS: 0.94318
+      Summary: This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.
+      Reference: https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+
+IP: 139.84.231.98
+Hostnames: None
+Product: unknown 
+  - MS17-010 | CVSS: 8.8 | EPSS: 0.94318
+      Summary: This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.
+      Reference: https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010
+
+IP: 102.182.84.233
+Hostnames: None
+Product: unknown 
+  - CVE-2020-0796 | CVSS: 10.0 | EPSS: 0.94408
+      Summary: A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3.1.1 (SMBv3) protocol handles certain requests, aka 'Windows SMBv3 Client/Server Remote Code Execution Vulnerability'.
+      Reference: http://packetstormsecurity.com/files/156731/CoronaBlue-SMBGhost-Microsoft-Windows-10-SMB-3.1.1-Proof-Of-Concept.html
+      Reference: http://packetstormsecurity.com/files/156732/Microsoft-Windows-SMB-3.1.1-Remote-Code-Execution.html
+      Reference: http://packetstormsecurity.com/files/156980/Microsoft-Windows-10-SMB-3.1.1-Local-Privilege-Escalation.html
+      Reference: http://packetstormsecurity.com/files/157110/SMBv3-Compression-Buffer-Overflow.html
+      Reference: http://packetstormsecurity.com/files/157901/Microsoft-Windows-SMBGhost-Remote-Code-Execution.html
+      Reference: http://packetstormsecurity.com/files/158054/SMBleed-SMBGhost-Pre-Authentication-Remote-Code-Execution-Proof-Of-Concept.html
+      Reference: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796
+      Reference: http://packetstormsecurity.com/files/156731/CoronaBlue-SMBGhost-Microsoft-Windows-10-SMB-3.1.1-Proof-Of-Concept.html
+      Reference: http://packetstormsecurity.com/files/156732/Microsoft-Windows-SMB-3.1.1-Remote-Code-Execution.html
+      Reference: http://packetstormsecurity.com/files/156980/Microsoft-Windows-10-SMB-3.1.1-Local-Privilege-Escalation.html
+      Reference: http://packetstormsecurity.com/files/157110/SMBv3-Compression-Buffer-Overflow.html
+      Reference: http://packetstormsecurity.com/files/157901/Microsoft-Windows-SMBGhost-Remote-Code-Execution.html
+      Reference: http://packetstormsecurity.com/files/158054/SMBleed-SMBGhost-Pre-Authentication-Remote-Code-Execution-Proof-Of-Concept.html
+      Reference: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796
+      Reference: https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2020-0796
+
+==================================================
+Total products: 50
+Vulnerable products: 6
+Non-vulnerable products: 44
+==================================================
