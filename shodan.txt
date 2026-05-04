@@ -166,22 +166,36 @@ def classify:
 zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
 select(type=="object") |
 
-# classify ICS vs IT
 def classify:
   if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
   elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
   elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
   else "UNKNOWN" end;
 
+def ip_to_str:
+  if (.ip != null) then
+    # convert number to string
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
 {
-  ip: (.ip // .ip_str // "unknown"),  # <-- add IP here
+  ip: ip_to_str,
   product: (.product // "unknown"),
   version: (.version // ""),
   type: classify,
   cpes: (.cpe // [] + .cpe23 // []),
-  cves: (.vulns // [])  # or .vulnerabilities | keys
+  cves: (.vulns // [])
 }
 ' > Downloads/INF4019W/ZA_ICS_30_Filter.json
+
+
 
 #
 shodan count "rdp country:ZA"

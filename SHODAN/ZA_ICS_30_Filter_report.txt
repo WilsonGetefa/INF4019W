@@ -1,5 +1,5 @@
 
-IP: 1724995452
+IP: 102.209.87.124
 type: I, T
 Product: nginx 1.18.0
   - CVE-2023-44487 | CVSS: 7.5 | EPSS: 0.944
@@ -337,7 +337,7 @@ Note: Software versions which have reached End of Technical Support (EoTS) are n
       Reference: http://www.openwall.com/lists/oss-security/2025/02/05/8
       Reference: https://lists.debian.org/debian-lts-announce/2025/03/msg00017.html
 
-IP: 692873236
+IP: 41.76.104.20
 type: I, T
 Product: OpenSSH 8.7
   - CVE-2008-3844 | CVSS: 9.3 | EPSS: 0.02746
