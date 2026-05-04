@@ -203,7 +203,8 @@ shodan count "rdp country:ZA"
 
 #
 shodan count "router country:ZA"
-(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "http.title:"router" country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t 
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "Router country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
 
 #
 shodan count "(router OR firewall) country:ZA"
@@ -211,7 +212,7 @@ shodan count "(router OR firewall) country:ZA"
 
 #
 shodan count "NAS country:ZA"
-(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "NAS country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
 
 #
 shodan count "webcams countr:ZA"
