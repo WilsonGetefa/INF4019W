@@ -1,0 +1,4318 @@
+{
+  "ip": "102.67.141.42",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "159.138.165.145",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.231.147.151",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "139.84.230.202",
+  "product": "Nextcloud",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",shodan download Downloads/INF4019W/ZA_IOT_SSL "country:ZA (Siemens OR S7 OR PLC OR SCADA OR camera OR thermostat OR light) ssl:true" --limit 5000
+
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.232.157.218",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.244.225.90",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.84.48.7",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.232.181.74",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.87.81.1",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.244.37.65",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.87.219.227",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.222.179",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.19.58.145",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.29.233.7",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.149.36",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.29.228.74",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.96.198.190",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "152.111.195.55",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.178.156",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "152.111.14.140",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.33.57.18",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.178.154",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.178.157",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.178.155",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.38.211.147",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "164.151.137.72",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "4.222.216.69",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.255.118.43",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.234.28.238",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.22.44.150",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "45.220.167.101",
+  "product": "nginx",
+  "version": "1.25.5",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.155.253.171",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.243.160.74",
+  "product": "DrayTek Vigor Router",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.189.92.98",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.74.181.53",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.62.77",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "160.226.167.79",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.57.108",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "164.160.89.153",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.173.232",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.242.192.25",
+  "product": "Portainer",
+  "version": "2.39.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "166.85.17.67",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "2001:43f8:1f3:a00::11",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.209.119.98",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.76.213.178",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.247.49.148",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.15.190.221",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.181.233",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.149.69.118",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.180.109",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.66.108.41",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.218.213.61",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "40.127.1.56",
+  "product": "Microsoft IIS httpd",
+  "version": "10.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.149.73.18",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.177.115",
+  "product": "Portainer",
+  "version": "2.39.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.33.148.74",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "16.28.124.103",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.29.158.55",
+  "product": "Microsoft IIS httpd",
+  "version": "10.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.29.158.54",
+  "product": "Microsoft IIS httpd",
+  "version": "10.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.97.29",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.169.110",
+  "product": "Portainer",
+  "version": "2.33.6",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.176.230.146",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.41.65.252",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.39.102.49",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.246.76.157",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.65.108.235",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "84.8.134.235",
+  "product": "Portainer",
+  "version": "2.33.7",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.23.142.26",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.209.21.144",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.129.40.31",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.87.80.65",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "84.8.132.113",
+  "product": "Portainer",
+  "version": "2.33.5",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.76.109.15",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.255.58.185",
+  "product": "Portainer",
+  "version": "2.39.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.32.105",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.68.113.100",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.164.210.43",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.203.13.91",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.211.186.110",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.160.57.196",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "192.143.112.203",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.250.102",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "4.222.217.152",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.203.18.189",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.0.216.133",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.38.152.99",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.66.3.148",
+  "product": "Portainer",
+  "version": "2.33.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.98.163.220",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.197.214",
+  "product": "Portainer",
+  "version": "2.39.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.130.120.193",
+  "product": "Portainer",
+  "version": "2.33.5",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.212.146.2",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.134.128.77",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.211.28.148",
+  "product": "Portainer",
+  "version": "2.33.3",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.223.174.148",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.38.234.178",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.182.3",
+  "product": "Portainer",
+  "version": "2.33.2",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.30.26.23",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.29.90.77",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.183.37",
+  "product": "Portainer",
+  "version": "2.40.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.38.139.157",
+  "product": "Portainer",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.185.73.70",
+  "product": "nginx",
+  "version": "1.27.5",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.211.28.151",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.55.73",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.1.0.210",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.225.72",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.126.6",
+  "product": "Microsoft IIS httpd",
+  "version": "10.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.209.23.51",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.164.76.62",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.246.79.154",
+  "product": "nginx",
+  "version": "1.23.1",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.217.253.116",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.197.37",
+  "product": "Portainer",
+  "version": "2.33.6",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.149.69.129",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.6.196",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.30.243.178",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.4.68.240",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "192.142.53.10",
+  "product": "Portainer",
+  "version": "2.39.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.21.173.202",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.247.205.172",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.21.173.134",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "155.93.192.1",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.38.247.138",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.255.59.67",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "160.48.233.167",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.216.250.199",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.208.249.103",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "137.158.158.175",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.164.19.2",
+  "product": "Portainer",
+  "version": "2.39.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.25.175.18",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.210.146.135",
+  "product": "Apache httpd",
+  "version": "2.4.66",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.72.10.105",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.41.137.33",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.202.213.1",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.232.227.100",
+  "product": "Apache httpd",
+  "version": "2.4.6",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.30.48.51",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.164.242.120",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.9.55",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.131.101",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "4.168.229.24",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.255.59.30",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.202.86.47",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.6.197",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.202.213.3",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.60.146",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.232.227.108",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.37.207.243",
+  "product": "Microsoft IIS httpd",
+  "version": "10.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "16.28.125.172",
+  "product": "nginx",
+  "version": "1.18.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.148.29",
+  "product": "nginx",
+  "version": "1.29.8",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.51.51",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.130.118.219",
+  "product": "Portainer",
+  "version": "2.40.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.198.132.5",
+  "product": "Apache httpd",
+  "version": "2.4.66",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.244.162.198",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.224.10.193",
+  "product": "nginx",
+  "version": "1.29.8",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.127.121.102",
+  "product": "nginx",
+  "version": "1.17.7",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.56.225",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.245.52.204",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "165.90.33.141",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "139.84.227.108",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.181.142",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.196.245",
+  "product": "Portainer",
+  "version": "2.33.2",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "45.222.1.215",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.244.51.30",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.225.53.163",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.163.145",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.37.222.164",
+  "product": "Microsoft HTTPAPI httpd",
+  "version": "2.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.179.202",
+  "product": "Portainer",
+  "version": "2.33.7",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.203.1.155",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.165.95.81",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.1.63.15",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.38.140.250",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.162.25.6",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.11.233.16",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.29.243.111",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.5.88.14",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.132.201.77",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "192.142.53.249",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.255.2.186",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.133.103.254",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.79.81.190",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.6.208.103",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.30.15.61",
+  "product": "nginx",
+  "version": "1.18.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.222.28.9",
+  "product": "nginx",
+  "version": "1.17.7",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.131.102",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.29.243.115",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.67.141.41",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.211.28.50",
+  "product": "Portainer",
+  "version": "2.39.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.88.102",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.209.119.210",
+  "product": "Portainer",
+  "version": "2.39.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.189.92.102",
+  "product": "Apache httpd",
+  "version": "2.4.65",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.15.246.3",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.175.168",
+  "product": "Portainer",
+  "version": "2.33.3",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.8.109.1",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.132.211.106",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.178.158",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.247.21.181",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.198.128",
+  "product": "Portainer",
+  "version": "2.39.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "84.8.141.193",
+  "product": "Portainer",
+  "version": "2.33.2",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.0.163.157",
+  "product": "Portainer",
+  "version": "2.33.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.193.95.135",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.247.205.117",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.196.56",
+  "product": "Portainer",
+  "version": "2.33.7",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.65.111.163",
+  "product": "Nextcloud",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.198.166",
+  "product": "Portainer",
+  "version": "2.40.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.250.32.199",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.211.30.140",
+  "product": "Portainer",
+  "version": "2.33.2",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "2a05:f480:3000:236d:5400:5ff:fe9c:560f",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "160.119.222.136",
+  "product": "Portainer",
+  "version": "2.33.5",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.134.153.17",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.31.148.20",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.193.158.247",
+  "product": "nginx",
+  "version": "1.18.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.239.66.138",
+  "product": "Apache httpd",
+  "version": "2.4.52",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.214.228.236",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.197.78",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.224.243.136",
+  "product": "Nextcloud",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.5.216",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.155.183",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.169.36.115",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.221.254.4",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "4.168.194.6",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "155.93.234.251",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.149.77.128",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.203.16.12",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.233.231",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.182.31.20",
+  "product": "nginx",
+  "version": "1.17.7",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.247.54.51",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.247.143.186",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.246.103.145",
+  "product": "nginx",
+  "version": "1.25.5",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.135.142.250",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.118.173",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.141.80.129",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.246.12.106",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.72.159.82",
+  "product": "Apache httpd",
+  "version": "2.4.29",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.164.76.114",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.50.194.17",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.79.18.120",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.29.233.6",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.255.58.166",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.193.53.91",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.203.1.157",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.244.102.31",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.43.33",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.223.99.246",
+  "product": "DrayTek Vigor Router",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.243.236.110",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "139.84.242.171",
+  "product": "nginx",
+  "version": "1.24.0",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.131.15",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "139.84.227.125",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.203.3.180",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "5.83.146.240",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.66.198.70",
+  "product": "Portainer",
+  "version": "2.39.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.3.174",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.61.97.0",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.209.119.212",
+  "product": "Portainer",
+  "version": "2.33.7",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.207.182.95",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.22.194.208",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.159.52.112",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.36.112.221",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.41.208.197",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.184.173",
+  "product": "nginx",
+  "version": "1.18.0",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.6.208.132",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.73.217.53",
+  "product": "nginx",
+  "version": "1.17.7",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.76.208.69",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.216.250.208",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.232.227.99",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.246.252.210",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.114.43.23",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.44.197",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.189.78.135",
+  "product": "Apache httpd",
+  "version": "2.4.58",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.247.211.84",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "169.202.213.2",
+  "product": "Citrix Netscaler",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.246.180.45",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.50.198.190",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.242.148.143",
+  "product": "nginx",
+  "version": "1.26.2",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.39.149.206",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.208.248.162",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.247.235.190",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.247.91.139",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.87.216.182",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "4.221.168.98",
+  "product": "Apache httpd",
+  "version": "2.4.52",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "196.210.14.176",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.90.98",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "165.233.44.143",
+  "product": "Microsoft IIS httpd",
+  "version": "10.0",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "139.84.240.203",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.233.243.64",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.37.209.82",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "154.117.139.194",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.135.81.79",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "41.76.208.148",
+  "product": "Portainer",
+  "version": "2.33.3",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "13.245.168.36",
+  "product": "nginx",
+  "version": "1.23.1",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "105.233.36.38",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "34.35.110.135",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.103.130.26",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "160.119.248.100",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "20.164.79.46",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "197.189.234.168",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "156.155.253.209",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "102.211.205.188",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.151.176.78",
+  "product": "Portainer",
+  "version": "2.39.1",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "45.220.162.92",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "15.240.60.76",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "155.93.147.73",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "IT",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "TLSv1.1",
+    "TLSv1.2",
+    "-TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}
+{
+  "ip": "129.232.162.86",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "ssl_versions": [
+    "-TLSv1",
+    "-SSLv2",
+    "-SSLv3",
+    "-TLSv1.1",
+    "TLSv1.2",
+    "TLSv1.3"
+  ],
+  "ciphers": [],
+  "cves": []
+}

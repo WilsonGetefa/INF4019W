@@ -428,3 +428,45 @@ shodan download Downloads/INF4019W/za_ics "ics country:ZA"
 Zcat Downloads/INF4019W/za_ics.json.gz | jq -r '[.ip_str, .port, .org, .hostnames[0], .isp, .location.city] | @csv' | column -s, -t
 
 
+-------IoT
+shodan search --fields ip_str,port,org,hostnames,isp,location,product,version,ssl.versions,ssl.ciphers,ssl.vulns "country:ZA (Siemens OR S7 OR PLC OR SCADA OR camera OR thermostat OR light) ssl:true" --limit 100
+shodan download Downloads/INF4019W/ZA_IOT_SSL "country:ZA (Siemens OR S7 OR PLC OR SCADA OR camera OR thermostat OR light) ssl:true" --limit 100
+zcat Downloads/INF4019W/ZA_IOT_SSL.json.gz | jq -r '
+select(type=="object") |
+
+# classify device type
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker|camera|thermostat|light"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+# safe IP conversion
+def ip_to_str:
+  if (.ip != null) then
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
+# safely handle SSL fields
+def ssl_versions_safe: (.ssl.versions // []);
+def ssl_ciphers_safe: (.ssl.ciphers // [] | map(.name // "")); 
+def ssl_vulns_safe: (.ssl.vulns // []);
+
+{
+  ip: ip_to_str,
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  ssl_versions: ssl_versions_safe,
+  ciphers: ssl_ciphers_safe,
+   cves: (.vulns // [])
+}
+' > Downloads/INF4019W/ZA_IOT_SSL_Filter.json
+
