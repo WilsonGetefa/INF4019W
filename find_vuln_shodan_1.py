@@ -2,7 +2,7 @@
 import json
 
 # Path to your JSON file
-file_path = "product_cves_100.json"
+file_path = "ZA_ICS_30_Filter.json"
 
 # Function to safely parse JSON objects (one per line or multiple objects)
 def load_json_objects(file_path):
