@@ -1,0 +1,97 @@
+IP: 41.87.176.54 | Type: UNKNOWN | Product: unknown 
+IP: 110.238.74.184 | Type: UNKNOWN | Product: unknown 
+IP: 20.87.219.227 | Type: IT | Product: nginx 
+IP: 20.87.219.227 | Type: UNKNOWN | Product: unknown 
+IP: 105.30.26.24 | Type: PLC/ICS | Product: AS-B 24 Server 6.0.4.90
+IP: 197.155.3.41 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 110.238.74.184 | Type: UNKNOWN | Product:  
+IP: 110.238.74.184 | Type: UNKNOWN | Product: unknown 
+IP: 105.30.48.52 | Type: PLC/ICS | Product: AS-B 24 Server 6.0.4.90
+IP: 182.160.16.234 | Type: UNKNOWN | Product:  
+IP: 38.54.63.122 | Type: UNKNOWN | Product: Sophos SSL VPN User Portal 
+IP: 139.84.240.240 | Type: PLC/ICS | Product: Modicon M340 V2.50 https://www.se.com BMX P34 2020 M340-CPU Automation Controller 
+IP: 139.84.231.98 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 110.238.74.184 | Type: UNKNOWN | Product: unknown 
+IP: 196.213.184.49 | Type: UNKNOWN | Product: unknown 
+IP: 197.100.127.154 | Type: UNKNOWN | Product: unknown 
+IP: 156.38.245.50 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 197.234.88.166 | Type: UNKNOWN | Product: unknown 
+IP: 13.245.153.107 | Type: UNKNOWN | Product: unknown 
+IP: 13.245.153.107 | Type: UNKNOWN | Product: unknown 
+IP: 13.245.184.209 | Type: UNKNOWN | Product: unknown 
+IP: 41.144.159.223 | Type: SCADA/ICS | Product: V350-35-T2 
+IP: 102.214.233.8 | Type: SCADA/ICS | Product: V700-T20BJ 
+IP: 196.214.226.153 | Type: UNKNOWN | Product: unknown 
+IP: 102.141.143.2 | Type: UNKNOWN | Product: unknown 
+IP: 197.97.67.102 | Type: UNKNOWN | Product: unknown 
+IP: 41.169.4.170 | Type: UNKNOWN | Product: unknown 
+IP: 196.213.75.75 | Type: UNKNOWN | Product: unknown 
+IP: 102.33.221.114 | Type: UNKNOWN | Product: unknown 
+IP: 197.100.130.237 | Type: UNKNOWN | Product: unknown 
+IP: 154.117.132.26 | Type: UNKNOWN | Product: unknown 
+IP: 41.112.88.200 | Type: UNKNOWN | Product: unknown 
+IP: 197.100.126.73 | Type: UNKNOWN | Product: unknown 
+IP: 159.138.169.48 | Type: UNKNOWN | Product:  
+IP: 154.117.132.10 | Type: UNKNOWN | Product: unknown 
+IP: 196.33.98.234 | Type: UNKNOWN | Product: unknown 
+IP: 196.21.109.6 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 172.235.102.12 | Type: UNKNOWN | Product: Postfix smtpd 
+IP: 154.66.114.27 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 41.79.92.10 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 102.129.165.36 | Type: IT | Product: OpenSSH 8.4p1 Debian 5+deb11u6
+IP: 102.130.49.194 | Type: IT | Product: OpenSSH 9.2p1 Debian 2+deb12u3
+IP: 196.41.28.106 | Type: UNKNOWN | Product: DSC_1616E 189697
+IP: 41.185.26.191 | Type: IT | Product: OpenSSH 8.2p1 Ubuntu 4ubuntu0.13
+IP: 102.66.2.173 | Type: UNKNOWN | Product: Remote Desktop Protocol 
+IP: 196.41.122.205 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 102.223.98.227 | Type: UNKNOWN | Product: DSC_1616E 174695
+IP: 102.67.158.24 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 102.134.5.62 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 196.25.93.34 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 165.165.159.249 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 154.70.235.5 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 197.189.222.99 | Type: UNKNOWN | Product: unknown 
+IP: 41.72.131.250 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 154.0.169.18 | Type: IT | Product: Docker Registry HTTP API 
+IP: 196.251.63.117 | Type: UNKNOWN | Product: NiagaraAX Station 3.7.106.1
+IP: 13.245.167.202 | Type: IT | Product: nginx 
+IP: 139.84.240.240 | Type: UNKNOWN | Product: ILC 150 ETH 2770933
+IP: 110.238.74.184 | Type: UNKNOWN | Product: unknown 
+IP: 102.209.117.199 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 41.25.68.26 | Type: UNKNOWN | Product: unknown 
+IP: 34.35.165.168 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 102.64.22.58 | Type: UNKNOWN | Product: DSC_1616E 189697
+IP: 196.41.207.112 | Type: UNKNOWN | Product: unknown 
+IP: 105.246.231.42 | Type: UNKNOWN | Product: unknown 
+IP: 182.160.16.234 | Type: UNKNOWN | Product: unknown 
+IP: 38.54.63.182 | Type: UNKNOWN | Product: unknown 
+IP: 154.117.176.254 | Type: UNKNOWN | Product: unknown 
+IP: 139.84.226.222 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 13.245.152.81 | Type: UNKNOWN | Product: unknown 
+IP: 182.160.16.163 | Type: UNKNOWN | Product:  
+IP: 102.218.213.237 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 20.164.221.178 | Type: UNKNOWN | Product: unknown 
+IP: 196.31.254.5 | Type: UNKNOWN | Product: unknown 
+IP: 102.141.75.202 | Type: SCADA/ICS | Product: V700-T20BJ 
+IP: 13.245.201.252 | Type: UNKNOWN | Product: unknown 
+IP: 159.138.169.166 | Type: UNKNOWN | Product: unknown 
+IP: 154.73.190.165 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 182.160.16.234 | Type: UNKNOWN | Product: unknown 
+IP: 13.247.215.53 | Type: UNKNOWN | Product: unknown 
+IP: 159.138.169.166 | Type: UNKNOWN | Product:  
+IP: 102.37.140.133 | Type: IT | Product: OpenSSH 9.2p1 Debian 2+deb12u6
+IP: 159.138.169.48 | Type: PLC/ICS | Product: BMX P34 2020 V2.90 
+IP: 139.84.244.150 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 197.255.242.198 | Type: SCADA/ICS | Product: HikCentral Professional 1.1.1
+IP: 20.164.207.48 | Type: UNKNOWN | Product: Remote Desktop Protocol 
+IP: 105.247.208.83 | Type: UNKNOWN | Product: unknown 
+IP: 102.182.55.196 | Type: UNKNOWN | Product: V1210 
+IP: 102.37.18.234 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 41.222.121.197 | Type: PLC/ICS | Product: Siemens S7-300 
+IP: 160.0.199.192 | Type: UNKNOWN | Product: unknown 
+IP: 20.164.221.178 | Type: UNKNOWN | Product: unknown 
+IP: 192.143.115.178 | Type: UNKNOWN | Product: V1210 
+IP: 38.54.63.122 | Type: UNKNOWN | Product:  
+IP: 155.93.218.15 | Type: SCADA/ICS | Product: MQTT 
+IP: 102.182.229.66 | Type: UNKNOWN | Product: unknown 
+IP: 20.164.221.178 | Type: UNKNOWN | Product: unknown 

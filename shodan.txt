@@ -57,6 +57,7 @@ shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "
 
 
 ------------------
+zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq 'keys'
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
 
 #
@@ -64,6 +65,35 @@ shodan count "ics country:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "ics country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
 shodan download ZA_ICS_30 "country:ZA (Siemens OR Schneider OR Modicon OR S7 OR BACnet OR Modbus OR PLC OR HMI OR SCADA)" --limit 30
 shodan download Downloads/INF4019W/ZA_ICS_30 "country:ZA (Siemens OR Schneider OR Modicon OR S7 OR BACnet OR Modbus OR PLC OR HMI OR SCADA)" --limit 30
+shodan search --fields ip_str,port,org,hostnames,isp,location --separator , "(Siemens OR Schneider OR Modicon OR S7 OR BACnet OR Modbus OR PLC OR HMI OR SCADA) country:ZA" --limit 30
+
+zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
+select(type=="object") |
+
+# classify ICS vs IT
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|PLC|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+# safely get vulnerabilities keys
+def cves:
+  if has("vulns") and .vulns != null then
+    (.vulns | keys)
+  elif has("vulnerabilities") and .vulnerabilities != null then
+    (.vulnerabilities | keys)
+  else []
+  end;
+
+{
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cves: cves
+}
+' > Downloads/INF4019W/product_cves.json
+
 zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
 select(type=="object") |
 
@@ -103,6 +133,55 @@ def classify:
 select(.ip_str != null) |
 [.ip_str, classify, (.product // "unknown"), (.port // 0)] | @tsv
 ' > Downloads/INF4019W/classified_ics.tsv
+
+zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
+def risk:
+  if (.product|test("Siemens|Modicon|PLC|S7|AS-B|BMX";"i")) then "HIGH"
+  elif (.product|test("SCADA|HikCentral|V700|V350|MQTT";"i")) then "HIGH"
+  elif (.port==502 or .port==47808) then "HIGH"
+  elif (.port==22 or .port==443 or .port==80) then "MEDIUM"
+  else "UNKNOWN" end;
+
+---The best
+zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
+select(type=="object") |
+
+# classify ICS vs IT
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|PLC|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+{
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])  # or .vulnerabilities | keys
+}
+' > Downloads/INF4019W/product_cpes_cves.json
+
+--best2
+zcat Downloads/INF4019W/ZA_ICS_100.json.gz | jq -r '
+select(type=="object") |
+
+# classify ICS vs IT
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+{
+  ip: (.ip // .ip_str // "unknown"),  # <-- add IP here
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])  # or .vulnerabilities | keys
+}
+' > Downloads/INF4019W/product_cpes_cves_with_ip.json
 
 #
 shodan count "rdp country:ZA"

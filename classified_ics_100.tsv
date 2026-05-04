@@ -1,100 +1,44 @@
-41.87.176.54	UNKNOWN	unknown	unknown	unknown	541
-110.238.74.184	UNKNOWN	unknown	unknown	unknown	20121
-20.87.219.227	IT	nginx	unknown	unknown	443
-20.87.219.227	UNKNOWN	unknown	unknown	unknown	80
-105.30.26.24	PLC	AS-B 24	Server 6.0.4.90	unknown	47808
-197.155.3.41	PLC	Siemens S7-300	unknown	unknown	161
-159.138.172.99	IT	OpenSSH	8.8	unknown	22
-110.238.74.184	UNKNOWN		unknown	unknown	20547
-110.238.74.184	UNKNOWN	unknown	unknown	unknown	12549
-105.30.48.52	PLC	AS-B 24	Server 6.0.4.90	unknown	47808
-182.160.16.234	UNKNOWN		unknown	unknown	20547
-38.54.63.122	UNKNOWN	Sophos SSL VPN User Portal	unknown	unknown	12526
-139.84.240.240	PLC	Modicon M340	V2.50 https://www.se.com BMX P34 2020 M340-CPU Automation Controller 	unknown	502
-139.84.231.98	PLC	Siemens S7-300	unknown	unknown	161
-110.238.74.184	UNKNOWN	unknown	unknown	unknown	5914
-196.213.184.49	UNKNOWN	unknown	unknown	unknown	541
-197.100.127.154	UNKNOWN	unknown	unknown	unknown	541
-156.38.245.50	SCADA	HikCentral Professional	1.1.1	unknown	47808
-197.234.88.166	UNKNOWN	unknown	unknown	unknown	541
-13.245.153.107	UNKNOWN	unknown	unknown	unknown	80
-13.245.153.107	UNKNOWN	unknown	unknown	unknown	443
-13.245.184.209	UNKNOWN	unknown	unknown	unknown	443
-41.202.43.99	IT	Apache httpd	2.4.58	unknown	443
-41.144.159.223	SCADA	V350-35-T2	unknown	unknown	20256
-102.214.233.8	SCADA	V700-T20BJ	unknown	unknown	20256
-196.214.226.153	UNKNOWN	unknown	unknown	unknown	541
-102.141.143.2	UNKNOWN	unknown	unknown	unknown	4840
-197.97.67.102	UNKNOWN	unknown	unknown	unknown	541
-41.169.4.170	UNKNOWN	unknown	unknown	unknown	541
-196.213.75.75	UNKNOWN	unknown	unknown	unknown	541
-102.33.221.114	UNKNOWN	unknown	unknown	unknown	541
-197.100.130.237	UNKNOWN	unknown	unknown	unknown	541
-154.117.132.26	UNKNOWN	unknown	unknown	unknown	541
-41.112.88.200	UNKNOWN	unknown	unknown	unknown	541
-197.100.126.73	UNKNOWN	unknown	unknown	unknown	541
-159.138.169.48	UNKNOWN		unknown	unknown	20547
-154.117.132.10	UNKNOWN	unknown	unknown	unknown	541
-196.33.98.234	UNKNOWN	unknown	unknown	unknown	541
-196.21.109.6	PLC	Siemens S7-300	unknown	unknown	161
-172.235.102.12	UNKNOWN	Postfix smtpd	unknown	unknown	25
-154.66.114.27	SCADA	HikCentral Professional	1.1.1	unknown	47808
-41.79.92.10	SCADA	HikCentral Professional	1.1.1	unknown	47808
-102.129.165.36	IT	OpenSSH	8.4p1 Debian 5+deb11u6	Linux	22
-102.130.49.194	IT	OpenSSH	9.2p1 Debian 2+deb12u3	Linux	22
-196.41.28.106	POSSIBLE_ICS	DSC_1616E	189697	unknown	47808
-41.185.26.191	IT	OpenSSH	8.2p1 Ubuntu 4ubuntu0.13	Linux	22
-102.66.2.173	UNKNOWN	Remote Desktop Protocol	unknown	Windows (build 6.3.9600)	3389
-196.41.122.205	PLC	Siemens S7-300	unknown	unknown	161
-102.223.98.227	POSSIBLE_ICS	DSC_1616E	174695	unknown	47808
-102.67.158.24	SCADA	HikCentral Professional	1.1.1	unknown	47808
-102.134.5.62	SCADA	HikCentral Professional	1.1.1	unknown	47808
-196.25.93.34	SCADA	HikCentral Professional	1.1.1	unknown	47808
-165.165.159.249	SCADA	HikCentral Professional	1.1.1	unknown	47808
-154.70.235.5	SCADA	HikCentral Professional	1.1.1	unknown	47808
-197.189.222.99	UNKNOWN	unknown	unknown	unknown	1194
-41.72.131.250	SCADA	HikCentral Professional	1.1.1	unknown	47808
-154.0.169.18	IT	Docker Registry HTTP API	unknown	unknown	5000
-196.251.63.117	POSSIBLE_ICS	NiagaraAX Station	3.7.106.1	unknown	47808
-13.245.167.202	IT	nginx	unknown	unknown	443
-139.84.240.240	POSSIBLE_ICS	ILC 150 ETH	2770933	unknown	1962
-110.238.74.184	POSSIBLE_ICS	unknown	unknown	unknown	502
-102.209.117.199	PLC	Siemens S7-300	unknown	unknown	161
-41.25.68.26	UNKNOWN	unknown	unknown	unknown	541
-34.35.165.168	PLC	Siemens S7-300	unknown	unknown	161
-102.64.22.58	POSSIBLE_ICS	DSC_1616E	189697	unknown	47808
-196.41.207.112	UNKNOWN	unknown	unknown	unknown	21
-105.246.231.42	UNKNOWN	unknown	unknown	unknown	541
-182.160.16.234	UNKNOWN	unknown	unknown	unknown	8024
-38.54.63.182	UNKNOWN	unknown	unknown	unknown	8445
-154.117.176.254	UNKNOWN	unknown	unknown	unknown	541
-139.84.226.222	PLC	Siemens S7-300	unknown	unknown	161
-13.245.152.81	UNKNOWN	unknown	unknown	unknown	443
-182.160.16.163	UNKNOWN		unknown	unknown	20547
-102.218.213.237	SCADA	HikCentral Professional	1.1.1	unknown	47808
-20.164.221.178	UNKNOWN	unknown	unknown	unknown	113
-196.31.254.5	UNKNOWN	unknown	unknown	unknown	102
-102.141.75.202	SCADA	V700-T20BJ	unknown	unknown	20256
-13.245.201.252	UNKNOWN	unknown	unknown	unknown	211
-159.138.169.166	UNKNOWN	unknown	unknown	unknown	18081
-154.73.190.165	SCADA	HikCentral Professional	1.1.1	unknown	47808
-182.160.16.234	POSSIBLE_ICS	unknown	unknown	unknown	502
-13.247.215.53	UNKNOWN	unknown	unknown	unknown	51235
-159.138.169.166	UNKNOWN		unknown	unknown	20547
-102.37.140.133	IT	OpenSSH	9.2p1 Debian 2+deb12u6	Linux	22
-159.138.169.48	PLC	BMX P34 2020	V2.90 	unknown	502
-139.84.244.150	PLC	Siemens S7-300	unknown	unknown	161
-197.255.242.198	SCADA	HikCentral Professional	1.1.1	unknown	47808
-20.164.207.48	UNKNOWN	Remote Desktop Protocol	unknown	Windows (build 10.0.14393)	3389
-105.247.208.83	UNKNOWN	unknown	unknown	unknown	443
-102.182.55.196	POSSIBLE_ICS	V1210	unknown	unknown	20256
-102.37.18.234	PLC	Siemens S7-300	unknown	unknown	161
-102.222.20.201	IT	Apache httpd	2.4.55	unknown	80
-41.222.121.197	PLC	Siemens S7-300	unknown	unknown	161
-160.0.199.192	UNKNOWN	unknown	unknown	unknown	21
-20.164.221.178	UNKNOWN	unknown	unknown	unknown	1935
-192.143.115.178	POSSIBLE_ICS	V1210	unknown	unknown	20256
-38.54.63.122	UNKNOWN		unknown	unknown	20547
-155.93.218.15	SCADA	MQTT	unknown	unknown	1883
-102.182.229.66	UNKNOWN	unknown	unknown	unknown	22
-20.164.221.178	UNKNOWN	unknown	unknown	unknown	2121
+20.87.219.227   nginx   443     MEDIUM
+105.30.26.24    AS-B 24 47808   HIGH
+197.155.3.41    Siemens S7-300  161     HIGH
+159.138.172.99  OpenSSH 22      MEDIUM
+105.30.48.52    AS-B 24 47808   HIGH
+139.84.240.240  Modicon M340    502     HIGH
+139.84.231.98   Siemens S7-300  161     HIGH
+156.38.245.50   HikCentral Professional 47808   HIGH
+41.202.43.99    Apache httpd    443     MEDIUM
+41.144.159.223  V350-35-T2      20256   HIGH
+102.214.233.8   V700-T20BJ      20256   HIGH
+196.21.109.6    Siemens S7-300  161     HIGH
+154.66.114.27   HikCentral Professional 47808   HIGH
+41.79.92.10     HikCentral Professional 47808   HIGH
+102.129.165.36  OpenSSH 22      MEDIUM
+102.130.49.194  OpenSSH 22      MEDIUM
+196.41.28.106   DSC_1616E       47808   HIGH
+41.185.26.191   OpenSSH 22      MEDIUM
+196.41.122.205  Siemens S7-300  161     HIGH
+102.223.98.227  DSC_1616E       47808   HIGH
+102.67.158.24   HikCentral Professional 47808   HIGH
+102.134.5.62    HikCentral Professional 47808   HIGH
+196.25.93.34    HikCentral Professional 47808   HIGH
+165.165.159.249 HikCentral Professional 47808   HIGH
+154.70.235.5    HikCentral Professional 47808   HIGH
+41.72.131.250   HikCentral Professional 47808   HIGH
+196.251.63.117  NiagaraAX Station       47808   HIGH
+13.245.167.202  nginx   443     MEDIUM
+102.209.117.199 Siemens S7-300  161     HIGH
+34.35.165.168   Siemens S7-300  161     HIGH
+102.64.22.58    DSC_1616E       47808   HIGH
+139.84.226.222  Siemens S7-300  161     HIGH
+102.218.213.237 HikCentral Professional 47808   HIGH
+102.141.75.202  V700-T20BJ      20256   HIGH
+154.73.190.165  HikCentral Professional 47808   HIGH
+102.37.140.133  OpenSSH 22      MEDIUM
+159.138.169.48  BMX P34 2020    502     HIGH
+139.84.244.150  Siemens S7-300  161     HIGH
+197.255.242.198 HikCentral Professional 47808   HIGH
+102.37.18.234   Siemens S7-300  161     HIGH
+102.222.20.201  Apache httpd    80      MEDIUM
+41.222.121.197  Siemens S7-300  161     HIGH
+155.93.218.15   MQTT    1883    HIGH
+

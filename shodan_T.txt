@@ -1,0 +1,164 @@
+kaliwg@kali:~$ shodan host 20.164.221.178                                                                                                                                              
+20.164.221.178
+Hostnames:               websouthafricanorth02.southafricanorth.cloudapp.azure.com
+City:                    Johannesburg
+Country:                 South Africa
+Organization:            Microsoft Corporation
+Updated:                 2026-05-04T09:16:27.837563
+Number of open ports:    892
+Vulnerabilities:         CVE-2010-2068  CVE-2025-6075   CVE-2024-24795  CVE-2022-0391   CVE-2012-0053   CVE-2009-1535   CVE-2016-4450   CVE-2014-0118   CVE-2023-25690  CVE-2017-9798   CVE-2012-4557   CVE-2012-2969   CVE-2012-2968   CVE-2015-3183   CVE-2016-0772   CVE-2012-0883 CVE-2013-4365   CVE-2012-2967   CVE-2012-2966   CVE-2012-2965   CVE-2021-32791  CVE-2009-3720   CVE-2009-4490   CVE-2024-38476  CVE-2024-27316  CVE-2023-31122  CVE-2024-38475  CVE-2024-38472  CVE-2024-38473  CVE-2016-1000110        CVE-2009-0796   CVE-2024-9287CVE-2024-38477   CVE-2017-17522  CVE-2002-1717   CVE-2002-1718   CVE-2019-17567  CVE-2016-0742   CVE-2021-3618   CVE-2017-7679   CVE-2011-4415   CVE-2013-6438   CVE-2026-4519   CVE-2021-44790  CVE-2020-1927   CVE-2009-3560   CVE-2015-5652   CVE-2019-9948   CVE-2016-1247CVE-2016-2183    CVE-2014-1912   CVE-2021-32786  CVE-2004-0281   CVE-2020-9490   CVE-2014-4650   CVE-2007-4723   CVE-2023-40217  CVE-2024-7592   CVE-2011-3639   CVE-2019-18348  CVE-2016-4975   CVE-2020-13938  CVE-2022-48560  CVE-2023-26268  CVE-2025-58098  CVE-2022-48565CVE-2019-11072  CVE-2022-48566  CVE-2012-4360   CVE-2020-35452  CVE-2018-8007   CVE-2022-22719  CVE-2010-2087   CVE-2024-47252  CVE-2017-3169   CVE-2016-4472   CVE-2011-4317   CVE-2016-5387   CVE-2020-1934   CVE-2022-36760  CVE-2012-2687   CVE-2018-11769  CVE-2017-17663CVE-2016-0718   CVE-2014-0098   CVE-2018-11763  CVE-2012-3499   CVE-2018-1061   CVE-2018-1060   CVE-2009-2521   CVE-2023-36632  CVE-2019-10160  CVE-2012-0031   CVE-2019-9517   CVE-2019-0217   CVE-2019-0196   CVE-2021-33193  CVE-2019-0211   CVE-2008-1446   CVE-2013-5704CVE-2022-22707   CVE-2010-3972   CVE-2015-3200   CVE-2018-20852  CVE-2022-31813  CVE-2011-3368   CVE-2024-42516  CVE-2019-9636   CVE-2022-48564  CVE-2008-0455   CVE-2018-17189  CVE-2013-1753   CVE-2017-7529   CVE-2008-2462   CVE-2010-2730   CVE-2024-40898  CVE-2021-32792CVE-2010-1452   CVE-2025-59775  CVE-2023-45725  CVE-2014-7185   CVE-2019-16056  CVE-2009-4445   CVE-2011-0419   CVE-2025-65082  CVE-2024-39573  CVE-2021-26690  CVE-2019-13404  CVE-2019-0220   CVE-2013-7040   CVE-2023-27043  CVE-2013-7440   CVE-2017-9233   CVE-2024-38474CVE-2011-3192   CVE-2018-16845  CVE-2019-9947   CVE-2015-1283   CVE-2020-27619  CVE-2018-17188  CVE-2017-20005  CVE-2023-38709  CVE-2010-1623   CVE-2013-0941   CVE-2005-4360   CVE-2018-1312   CVE-2023-24329  CVE-2022-22720  CVE-2020-11993  CVE-2012-4558   CVE-2017-15710CVE-2011-3607   CVE-2014-0224   CVE-2012-4001   CVE-2014-0226   CVE-2014-4078   CVE-2022-22721  CVE-2006-20001  CVE-2019-10092  CVE-2013-0348   CVE-2019-9740   CVE-2017-15715  CVE-2019-10098  CVE-2018-20406  CVE-2022-29404  CVE-2018-1000030        CVE-2021-40438  CVE-2011-1176 CVE-2017-18207  CVE-2022-23943  CVE-2018-17199  CVE-2018-1301   CVE-2019-16935  CVE-2018-1303   CVE-2021-32785  CVE-2021-34798  CVE-2014-4616   CVE-2016-0747   CVE-2016-0746   CVE-2007-4559   CVE-2016-5636   CVE-2018-14647  CVE-2018-1000802        CVE-2013-1862CVE-2022-26377   CVE-2019-15903  CVE-2025-13836  CVE-2025-13837  CVE-2019-10081  CVE-2025-12084  CVE-2019-10082  CVE-2009-2940   CVE-2016-8743   CVE-2021-26691  CVE-2021-23017  CVE-2024-43204  CVE-2024-6232   CVE-2021-28667  CVE-2006-6578   CVE-2025-49630  CVE-2022-26488CVE-2019-5010   CVE-2015-1548   CVE-2025-12781  CVE-2018-1333   CVE-2012-3526   CVE-2021-3426   CVE-2013-1896   CVE-2016-8612   CVE-2014-0231   CVE-2009-2299   CVE-2018-19052  CVE-2019-9674   CVE-2021-3733   CVE-2025-66200  CVE-2011-3348   CVE-2009-4491   CVE-2017-12636CVE-2022-45061  CVE-2014-9365   CVE-2019-20372  CVE-2022-37436  CVE-2016-9063   CVE-2017-12635  CVE-2010-1899   CVE-2020-8492   CVE-2016-5699   CVE-2025-49812  CVE-2017-9788   CVE-2021-38295  CVE-2025-53020  CVE-2013-2765   CVE-2024-43394  CVE-2011-2688   CVE-2021-44224CVE-2015-0228   CVE-2022-28330  CVE-2017-1000158        CVE-2013-0942   CVE-2021-23336  CVE-2021-28861  CVE-2022-24706  CVE-2018-1302   CVE-2023-45802  CVE-2022-30556  CVE-2018-1283   CVE-2017-3167   CVE-2021-39275  CVE-2022-28615  CVE-2022-28614                        
+
+Ports:
+     11/tcp  
+        |-- HTTP title: 401 unauthorized
+     13/tcp  
+        |-- HTTP title: 401 unauthorized
+     15/tcp  
+        |-- HTTP title: 401 unauthorized
+     17/tcp  
+        |-- HTTP title: 401 unauthorized
+     19/tcp  
+     21/tcp  
+        |-- HTTP title: 401 unauthorized
+     22/tcp  
+        |-- HTTP title: 401 unauthorized
+     25/tcp  
+     37/tcp  
+        |-- HTTP title: 401 unauthorized
+     43/tcp  
+     51/tcp  
+        |-- HTTP title: 401 unauthorized
+     53/tcp  
+        |-- HTTP title: 401 unauthorized
+     70/tcp  
+     80/tcp gSOAP soap (2.7)
+        |-- HTTP title: 401 unauthorized
+     81/tcp nginx (1.8.0)
+        |-- HTTP title: 401 unauthorized
+     83/tcp  
+        |-- HTTP title: 401 unauthorized
+     84/tcp  
+        |-- HTTP title: 401 unauthorized
+     85/tcp  
+        |-- HTTP title: 401 unauthorized
+     88/tcp  
+        |-- HTTP title: 401 unauthorized
+     92/tcp  
+        |-- HTTP title: 401 unauthorized
+     96/tcp  
+        |-- HTTP title: 401 unauthorized
+     97/tcp  
+        |-- HTTP title: 401 unauthorized
+    100/tcp  
+        |-- HTTP title: 401 unauthorized
+    102/tcp  
+        |-- HTTP title: 401 unauthorized
+    104/tcp D-Link webcam http interface 
+        |-- HTTP title: 401 unauthorized
+    110/tcp D-Link webcam http interface 
+        |-- HTTP title: 401 unauthorized
+    113/tcp  
+        |-- HTTP title: 401 unauthorized
+    119/tcp  
+        |-- HTTP title: 401 unauthorized
+    143/tcp  
+        |-- HTTP title: 401 unauthorized
+    175/tcp  
+        |-- HTTP title: 401 unauthorized
+    177/tcp  
+        |-- HTTP title: 401 unauthorized
+    179/tcp  
+        |-- HTTP title: 401 unauthorized
+    190/tcp  
+        |-- HTTP title: 401 unauthorized
+    195/tcp  
+        |-- HTTP title: 401 unauthorized
+    211/tcp  
+        |-- HTTP title: 401 unauthorized
+    214/tcp  
+        |-- HTTP title: 401 unauthorized
+    221/tcp  
+        |-- HTTP title: 401 unauthorized
+    263/tcp  
+        |-- HTTP title: 401 unauthorized
+    264/tcp  
+        |-- HTTP title: 401 unauthorized
+    311/tcp  
+    340/tcp NETGEAR R8000P 
+        |-- HTTP title: 401 unauthorized
+    427/tcp  
+    442/tcp  
+        |-- HTTP title: 401 unauthorized
+    443/tcp  
+        |-- HTTP title: 401 unauthorized
+        |-- Cert Issuer: C=US, CN=R12, O=Let's Encrypt
+        |-- Cert Subject: CN=websouthafricanorth02.southafricanorth.cloudapp.azure.com
+        |-- SSL Versions: -SSLv2, -SSLv3, -TLSv1, -TLSv1.1, TLSv1.2, TLSv1.3
+    444/tcp  
+    447/tcp  
+        |-- HTTP title: 401 unauthorized
+    465/tcp  
+        |-- HTTP title: 401 unauthorized
+    480/tcp  
+        |-- HTTP title: 401 unauthorized
+    487/tcp  
+        |-- HTTP title: 401 unauthorized
+    491/tcp  
+        |-- HTTP title: 401 unauthorized
+    503/tcp  
+        |-- HTTP title: 401 unauthorized
+    513/tcp NETGEAR R8000P 
+        |-- HTTP title: 401 unauthorized
+    515/tcp  
+    541/tcp  
+        |-- HTTP title: 401 unauthorized
+    548/tcp  
+        |-- HTTP title: 401 unauthorized
+    554/tcp  
+    587/tcp  
+    591/tcp  
+        |-- HTTP title: 401 unauthorized
+    602/tcp  
+        |-- HTTP title: 401 unauthorized
+    631/tcp  
+        |-- HTTP title: 401 unauthorized
+    636/tcp  
+        |-- HTTP title: 401 unauthorized
+    666/tcp  
+        |-- HTTP title: 401 unauthorized
+    685/tcp  
+        |-- HTTP title: 401 unauthorized
+    785/tcp  
+        |-- HTTP title: 401 unauthorized
+    789/tcp  
+        |-- HTTP title: 401 unauthorized
+    800/tcp  
+        |-- HTTP title: 401 unauthorized
+    806/tcp  
+        |-- HTTP title: 401 unauthorized
+    833/tcp  
+        |-- HTTP title: 401 unauthorized
+    873/tcp  
+        |-- HTTP title: 401 unauthorized
+    993/tcp  
+        |-- HTTP title: 401 unauthorized
+    994/tcp  
+        |-- HTTP title: 401 unauthorized
+    995/tcp  
+        |-- HTTP title: 401 unauthorized
+   1002/tcp  
+        |-- HTTP title: 401 unauthorized
+   1013/tcp  
+        |-- HTTP title: 401 unauthorized
+   1024/tcp  
+        |-- HTTP title: 401 unauthorized
+   1025/tcp NETGEAR R8000P 
+        |-- HTTP title: 401 unauthorized
+   1026/tcp LiteSpeed httpd 
+        |-- HTTP title: 401 unauthorized
+   1063/tcp  
+        |-- HTTP title: 401 unauthorized
+   1080/tcp  
+   1099/tcp NETGEAR R8000P 
+        |-- HTTP title: 401 unauthorized
+   1153/tcp  
