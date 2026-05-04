@@ -160,10 +160,10 @@ def classify:
   cpes: (.cpe // [] + .cpe23 // []),
   cves: (.vulns // [])  # or .vulnerabilities | keys
 }
-' > Downloads/INF4019W/product_cpes_cves.json
+' > Downloads/INF4019W/ZA_ICS_30_Filter.json
 
 --best2
-zcat Downloads/INF4019W/ZA_ICS_100.json.gz | jq -r '
+zcat Downloads/INF4019W/ZA_ICS_30.json.gz | jq -r '
 select(type=="object") |
 
 # classify ICS vs IT
@@ -181,7 +181,7 @@ def classify:
   cpes: (.cpe // [] + .cpe23 // []),
   cves: (.vulns // [])  # or .vulnerabilities | keys
 }
-' > Downloads/INF4019W/product_cpes_cves_with_ip.json
+' > Downloads/INF4019W/ZA_ICS_30_Filter.json
 
 #
 shodan count "rdp country:ZA"

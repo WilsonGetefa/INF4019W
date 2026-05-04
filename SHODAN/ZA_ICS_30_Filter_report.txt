@@ -1,6 +1,6 @@
 
 IP: 1724995452
-Hostnames: None
+type: I, T
 Product: nginx 1.18.0
   - CVE-2023-44487 | CVSS: 7.5 | EPSS: 0.944
       Summary: The HTTP/2 protocol allows a denial of service (server resource consumption) because request cancellation can reset many streams quickly, as exploited in the wild in August through October 2023.
@@ -338,7 +338,7 @@ Note: Software versions which have reached End of Technical Support (EoTS) are n
       Reference: https://lists.debian.org/debian-lts-announce/2025/03/msg00017.html
 
 IP: 692873236
-Hostnames: None
+type: I, T
 Product: OpenSSH 8.7
   - CVE-2008-3844 | CVSS: 9.3 | EPSS: 0.02746
       Summary: Certain Red Hat Enterprise Linux (RHEL) 4 and 5 packages for OpenSSH, as signed in August 2008 using a legitimate Red Hat GPG key, contain an externally introduced modification (Trojan Horse) that allows the package authors to have an unknown impact.  NOTE: since the malicious packages were not distributed from any official Red Hat sources, the scope of this issue is restricted to users who may have obtained these packages through unofficial distribution points.  As of 20080827, no unofficial distributions of this software are known.

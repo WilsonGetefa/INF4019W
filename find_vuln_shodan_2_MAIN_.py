@@ -2,9 +2,9 @@
 import json
 
 # Path to your JSON file
-file_path = "product_cpes_cves_with_ip.json"
-vuln_file = "vulnerable_products_report.txt"
-non_vuln_file = "non_vulnerable_products_report.txt"
+file_path = "ZA_ICS_30_Filter.json"
+vuln_file = "SHODAN/vulnerable_ZA_ICS_30_Filter_report.txt"
+non_vuln_file = "SHODAN/non_vulnerable_ZA_ICS_30_Filter_report.txt"
 
 # Function to safely parse JSON objects (one per line or multiple objects)
 def load_json_objects(file_path):
