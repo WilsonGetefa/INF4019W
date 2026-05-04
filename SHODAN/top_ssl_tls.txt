@@ -1,0 +1,8 @@
+Top 6 Results for Facet: ssl.version
+tlsv1.2                          187,372
+tlsv1.3                          134,171
+tlsv1.1                           65,296
+tlsv1                             63,527
+sslv3                              4,714
+sslv2                                251
+

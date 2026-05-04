@@ -1,0 +1,498 @@
+{
+  "ip": "102.130.118.167",
+  "product": "Samba",
+  "version": "4.7.6-Ubuntu",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.97.95.32",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "196.14.132.165",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.242.61.162",
+  "product": "CUPS (IPP)",
+  "version": "1.5.4",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.170.80.79",
+  "product": "Samba",
+  "version": "4.3.11-Ubuntu",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "165.73.53.149",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": {
+    "MS17-010": {
+      "verified": true,
+      "cvss_version": 3,
+      "cvss_v2": 8.1,
+      "ranking_epss": 0.99943,
+      "cvss": 8.8,
+      "references": [
+        "https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
+      ],
+      "kev": true,
+      "summary": "This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.",
+      "epss": 0.94318
+    }
+  }
+}
+{
+  "ip": "105.30.240.108",
+  "product": "HP Printer Embedded Web Server",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "5.188.120.7",
+  "product": "Samba",
+  "version": "4.10.16",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "139.84.233.58",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": {
+    "MS17-010": {
+      "verified": true,
+      "cvss_version": 3,
+      "cvss_v2": 8.1,
+      "ranking_epss": 0.99943,
+      "cvss": 8.8,
+      "references": [
+        "https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
+      ],
+      "kev": true,
+      "summary": "This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.",
+      "epss": 0.94318
+    }
+  }
+}
+{
+  "ip": "4.168.232.167",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": {
+    "MS17-010": {
+      "verified": true,
+      "cvss_version": 3,
+      "cvss_v2": 8.1,
+      "ranking_epss": 0.99943,
+      "cvss": 8.8,
+      "references": [
+        "https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
+      ],
+      "kev": true,
+      "summary": "This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.",
+      "epss": 0.94318
+    }
+  }
+}
+{
+  "ip": "197.155.3.41",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": {
+    "MS17-010": {
+      "verified": true,
+      "cvss_version": 3,
+      "cvss_v2": 8.1,
+      "ranking_epss": 0.99943,
+      "cvss": 8.8,
+      "references": [
+        "https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
+      ],
+      "kev": true,
+      "summary": "This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.",
+      "epss": 0.94318
+    }
+  }
+}
+{
+  "ip": "102.67.142.59",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.142.58",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "139.84.231.98",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": {
+    "MS17-010": {
+      "verified": true,
+      "cvss_version": 3,
+      "cvss_v2": 8.1,
+      "ranking_epss": 0.99943,
+      "cvss": 8.8,
+      "references": [
+        "https://docs.microsoft.com/en-us/security-updates/securitybulletins/2017/ms17-010"
+      ],
+      "kev": true,
+      "summary": "This security update resolves vulnerabilities in Microsoft Windows. The most severe of the vulnerabilities could allow remote code execution if an attacker sends specially crafted messages to a Microsoft Server Message Block 1.0 (SMBv1) server. This security update is rated Critical for all supported releases of Microsoft Windows.",
+      "epss": 0.94318
+    }
+  }
+}
+{
+  "ip": "110.238.74.184",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "182.160.16.163",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.245.178.241",
+  "product": "RICOH Co. Ltd.",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "129.151.181.12",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.77.30.244",
+  "product": "CUPS (IPP)",
+  "version": "2.3.1",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "160.119.222.131",
+  "product": "Samba",
+  "version": "4.3.11-Ubuntu",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.135.142.155",
+  "product": "Kyocera Printer Panel",
+  "version": "2V6_2000.002.201",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.128.186.254",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "156.38.198.98",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.79.7.86",
+  "product": "Samba",
+  "version": "3.5.4-4.1-2382-SUSE-SL11.3",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.130.113.188",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.142.92",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.142.90",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.142.91",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.142.93",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.142.60",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.182.84.233",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": {
+    "CVE-2020-0796": {
+      "verified": true,
+      "cvss_version": 3.0,
+      "cvss_v2": 7.5,
+      "ranking_epss": 0.99978,
+      "summary": "A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3.1.1 (SMBv3) protocol handles certain requests, aka 'Windows SMBv3 Client/Server Remote Code Execution Vulnerability'.",
+      "cvss": 10.0,
+      "references": [
+        "http://packetstormsecurity.com/files/156731/CoronaBlue-SMBGhost-Microsoft-Windows-10-SMB-3.1.1-Proof-Of-Concept.html",
+        "http://packetstormsecurity.com/files/156732/Microsoft-Windows-SMB-3.1.1-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/156980/Microsoft-Windows-10-SMB-3.1.1-Local-Privilege-Escalation.html",
+        "http://packetstormsecurity.com/files/157110/SMBv3-Compression-Buffer-Overflow.html",
+        "http://packetstormsecurity.com/files/157901/Microsoft-Windows-SMBGhost-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/158054/SMBleed-SMBGhost-Pre-Authentication-Remote-Code-Execution-Proof-Of-Concept.html",
+        "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796",
+        "http://packetstormsecurity.com/files/156731/CoronaBlue-SMBGhost-Microsoft-Windows-10-SMB-3.1.1-Proof-Of-Concept.html",
+        "http://packetstormsecurity.com/files/156732/Microsoft-Windows-SMB-3.1.1-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/156980/Microsoft-Windows-10-SMB-3.1.1-Local-Privilege-Escalation.html",
+        "http://packetstormsecurity.com/files/157110/SMBv3-Compression-Buffer-Overflow.html",
+        "http://packetstormsecurity.com/files/157901/Microsoft-Windows-SMBGhost-Remote-Code-Execution.html",
+        "http://packetstormsecurity.com/files/158054/SMBleed-SMBGhost-Pre-Authentication-Remote-Code-Execution-Proof-Of-Concept.html",
+        "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2020-0796"
+      ],
+      "kev": true,
+      "epss": 0.94408
+    }
+  }
+}
+{
+  "ip": "41.193.39.221",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.99.68.177",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.33.108.66",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.138.139",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.39.214.225",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.161.63.109",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.67.142.61",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.222.248.60",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.211.28.125",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "129.151.190.49",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.185.27.16",
+  "product": "Samba",
+  "version": "3.6.3",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "196.13.113.61",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.242.61.162",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.77.30.52",
+  "product": "CUPS (IPP)",
+  "version": "2.3.1",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "160.119.103.108",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.132.154.81",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "160.119.100.100",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.211.28.209",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.246.166.125",
+  "product": "Samba",
+  "version": "3.4.2-1.1.3.1-2229-SUSE-SL11.2",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}

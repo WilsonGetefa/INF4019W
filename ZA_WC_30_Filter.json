@@ -1,0 +1,492 @@
+{
+  "ip": "41.135.122.34",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.134.154.110",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "196.50.198.170",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.245.46.194",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.144.159.76",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "15.240.69.169",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.82.209.125",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.82.209.125",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.169.57.13",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [
+    "cpe:/a:jquery:jquery:3.5.1"
+  ],
+  "cves": []
+}
+{
+  "ip": "129.232.181.74",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.36.152.62",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.243.120.248",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "165.73.66.165",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "160.226.205.199",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.212.61.41",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "13.246.39.12",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "154.127.120.50",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "15.240.4.64",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "169.0.143.161",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.24.10.110",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.216.77.110",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "168.253.93.40",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "156.155.250.138",
+  "product": "SonicWALL SSL-VPN http proxy",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [
+    "cpe:/o:sonicwall:sonicos"
+  ],
+  "cves": []
+}
+{
+  "ip": "154.126.209.33",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.91.167.204",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.135.122.34",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.224.46.201",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "20.87.81.1",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "cpes": [
+    "cpe:/a:f5:nginx",
+    "cpe:/a:php:php:8.3.29"
+  ],
+  "cves": {
+    "CVE-2013-2220": {
+      "verified": false,
+      "ranking_epss": 0.86166,
+      "cvss_v2": 7.5,
+      "cvss_version": 2.0,
+      "summary": "Buffer overflow in the radius_get_vendor_attr function in the Radius extension before 1.2.7 for PHP allows remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via a large Vendor Specific Attributes (VSA) length value.",
+      "references": [
+        "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=714362",
+        "http://pecl.php.net/package/radius/1.2.7",
+        "http://www.debian.org/security/2013/dsa-2726",
+        "https://github.com/LawnGnome/php-radius/commit/13c149b051f82b709e8d7cc32111e84b49d57234",
+        "http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=714362",
+        "http://pecl.php.net/package/radius/1.2.7",
+        "http://www.debian.org/security/2013/dsa-2726",
+        "https://github.com/LawnGnome/php-radius/commit/13c149b051f82b709e8d7cc32111e84b49d57234"
+      ],
+      "epss": 0.02798,
+      "cvss": 7.5
+    },
+    "CVE-2007-3205": {
+      "verified": false,
+      "ranking_epss": 0.77069,
+      "cvss_v2": 5.0,
+      "cvss_version": 2.0,
+      "summary": "The parse_str function in (1) PHP, (2) Hardened-PHP, and (3) Suhosin, when called without a second parameter, might allow remote attackers to overwrite arbitrary variables by specifying variable names and values in the string to be parsed.  NOTE: it is not clear whether this is a design limitation of the function or a bug in PHP, although it is likely to be regarded as a bug in Hardened-PHP and Suhosin.",
+      "references": [
+        "http://osvdb.org/39834",
+        "http://securityreason.com/securityalert/2800",
+        "http://www.acid-root.new.fr/advisories/14070612.txt",
+        "http://www.securityfocus.com/archive/1/471178/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/471204/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/471275/100/0/threaded",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/34836",
+        "http://osvdb.org/39834",
+        "http://securityreason.com/securityalert/2800",
+        "http://www.acid-root.new.fr/advisories/14070612.txt",
+        "http://www.securityfocus.com/archive/1/471178/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/471204/100/0/threaded",
+        "http://www.securityfocus.com/archive/1/471275/100/0/threaded",
+        "https://exchange.xforce.ibmcloud.com/vulnerabilities/34836"
+      ],
+      "epss": 0.00998,
+      "cvss": 5.0
+    },
+    "CVE-2024-3566": {
+      "verified": false,
+      "ranking_epss": 0.91556,
+      "cvss_v2": null,
+      "cvss_version": 3.0,
+      "summary": "A command inject vulnerability allows an attacker to perform command injection on Windows applications that indirectly depend on the CreateProcess function when the specific conditions are satisfied.",
+      "references": [
+        "https://flatt.tech/research/posts/batbadbut-you-cant-securely-execute-commands-on-windows/",
+        "https://kb.cert.org/vuls/id/123335",
+        "https://learn.microsoft.com/en-us/archive/blogs/twistylittlepassagesallalike/everyone-quotes-command-line-arguments-the-wrong-way",
+        "https://www.cve.org/CVERecord?id=CVE-2024-1874",
+        "https://www.cve.org/CVERecord?id=CVE-2024-22423",
+        "https://www.cve.org/CVERecord?id=CVE-2024-24576",
+        "https://www.kb.cert.org/vuls/id/123335",
+        "https://flatt.tech/research/posts/batbadbut-you-cant-securely-execute-commands-on-windows/",
+        "https://github.com/nu11secur1ty/Windows11Exploits/tree/main/2024/CVE-2024-3566",
+        "https://kb.cert.org/vuls/id/123335",
+        "https://learn.microsoft.com/en-us/archive/blogs/twistylittlepassagesallalike/everyone-quotes-command-line-arguments-the-wrong-way",
+        "https://www.cve.org/CVERecord?id=CVE-2024-1874",
+        "https://www.cve.org/CVERecord?id=CVE-2024-22423",
+        "https://www.cve.org/CVERecord?id=CVE-2024-24576",
+        "https://www.kb.cert.org/vuls/id/123335"
+      ],
+      "epss": 0.0709,
+      "cvss": 9.8
+    }
+  }
+}
+{
+  "ip": "154.73.97.157",
+  "product": "Apache httpd",
+  "version": "",
+  "type": "IT",
+  "cpes": [
+    "cpe:/a:apache:http_server"
+  ],
+  "cves": []
+}
+{
+  "ip": "41.77.206.107",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "154.117.163.114",
+  "product": "DrayTek Vigor Router",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.180.61.166",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.244.37.65",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "110.238.74.184",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "139.84.232.145",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [
+    "cpe:/a:apache:http_server",
+    "cpe:/a:highcharts:highcharts",
+    "cpe:/a:jquery:jquery"
+  ],
+  "cves": []
+}
+{
+  "ip": "20.87.219.227",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "cpes": [
+    "cpe:/a:f5:nginx",
+    "cpe:/a:varnish-software:varnish_cache:5.2",
+    "cpe:/a:varnish-software:varnish_cache_plus"
+  ],
+  "cves": []
+}
+{
+  "ip": "102.37.222.179",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "cpes": [
+    "cpe:/a:f5:nginx"
+  ],
+  "cves": []
+}
+{
+  "ip": "169.0.61.125",
+  "product": "Hikvision IP Camera",
+  "version": "3.5.35",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.133.64.14",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.19.58.145",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "196.15.253.188",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "41.192.25.106",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "196.15.249.130",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.246.129.82",
+  "product": "Hikvision IP Camera",
+  "version": "4.1.50",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "105.29.233.7",
+  "product": "nginx",
+  "version": "",
+  "type": "IT",
+  "cpes": [
+    "cpe:/a:f5:nginx"
+  ],
+  "cves": []
+}
+{
+  "ip": "102.36.11.157",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "197.100.250.50",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "154.127.120.50",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "102.248.7.95",
+  "product": "Hikvision IP Camera",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}
+{
+  "ip": "110.238.74.184",
+  "product": "unknown",
+  "version": "",
+  "type": "UNKNOWN",
+  "cpes": [],
+  "cves": []
+}

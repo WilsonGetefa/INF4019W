@@ -200,31 +200,222 @@ def ip_to_str:
 #
 shodan count "rdp country:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "rdp country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+shodan download Downloads/INF4019W/ZA_RDP_30 "country:ZA rdp" --limit 50
+zcat Downloads/INF4019W/ZA_RDP_30.json.gz | jq -r '
+select(type=="object") |
+
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+def ip_to_str:
+  if (.ip != null) then
+    # convert number to string
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
+{
+  ip: ip_to_str,
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])
+}
+' > Downloads/INF4019W/ZA_RDP_30_Filter.json
 
 #
 shodan count "router country:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "http.title:"router" country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t 
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "Router country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+shodan download Downloads/INF4019W/ZA_NI_30 "country:ZA router" --limit 50
+zcat Downloads/INF4019W/ZA_NI_30.json.gz | jq -r '
+select(type=="object") |
 
-#
-shodan count "(router OR firewall) country:ZA"
-(echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+def ip_to_str:
+  if (.ip != null) then
+    # convert number to string
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
+{
+  ip: ip_to_str,
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])
+}
+' > Downloads/INF4019W/ZA_NI_30_Filter.json
+
 
 #
 shodan count "NAS country:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "NAS country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+shodan download Downloads/INF4019W/ZA_NAS_30 "country:ZA NAS" --limit 50
+zcat Downloads/INF4019W/ZA_NAS_30.json.gz | jq -r '
+select(type=="object") |
+
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+def ip_to_str:
+  if (.ip != null) then
+    # convert number to string
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
+{
+  ip: ip_to_str,
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])
+}
+' > Downloads/INF4019W/ZA_NAS_30_Filter.json
 
 #
 shodan count "webcams countr:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+shodan download Downloads/INF4019W/ZA_WC_30 "country:ZA camera" --limit 50
+zcat Downloads/INF4019W/ZA_WC_30.json.gz | jq -r '
+select(type=="object") |
+
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+def ip_to_str:
+  if (.ip != null) then
+    # convert number to string
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
+{
+  ip: ip_to_str,
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])
+}
+' > Downloads/INF4019W/ZA_WC_30_Filter.json
+
 
 #
 shodan count "printers country:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+shodan download Downloads/INF4019W/ZA_PR_30 "country:ZA printer" --limit 50
+zcat Downloads/INF4019W/ZA_PR_30.json.gz | jq -r '
+select(type=="object") |
+
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+def ip_to_str:
+  if (.ip != null) then
+    # convert number to string
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
+{
+  ip: ip_to_str,
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])
+}
+' > Downloads/INF4019W/ZA_PR_30_Filter.json
 
 #
 shodan count "(smart-tv OR smart-fridge OR kettle OR IoT) country:ZA"
 (echo "IP,Count,IP,Port,OS,Org,Hostnames,ISP,Location"; shodan search --fields ip_str,port,os,org,hostnames,isp,location --separator , "IoT country:ZA" --limit 30 | sed 's/{/"/g; s/}/"/g; s/, /;/g' | awk -F, '{count[$1]++; info[$1]=$0} END {for (ip in count) print ip "," count[ip] "," info[ip]}' ) | column -s, -t
+shodan download Downloads/INF4019W/ZA_SH_30 "country:ZA home gateway" --limit 50
+zcat Downloads/INF4019W/ZA_SH_30.json.gz | jq -r '
+select(type=="object") |
+
+def classify:
+  if (.product // "" | test("Siemens|Modicon|S7|BMX|AS-B"; "i")) then "PLC/ICS"
+  elif (.product // "" | test("SCADA|HikCentral|V700|V350|MQTT"; "i")) then "SCADA/ICS"
+  elif (.product // "" | test("nginx|OpenSSH|Apache|Windows|Ubuntu|Docker"; "i")) then "IT"
+  else "UNKNOWN" end;
+
+def ip_to_str:
+  if (.ip != null) then
+    # convert number to string
+    ( .ip / 16777216 | floor | tostring ) + "." +
+    ( (.ip / 65536) % 256 | floor | tostring ) + "." +
+    ( (.ip / 256) % 256 | floor | tostring ) + "." +
+    ( .ip % 256 | floor | tostring )
+  elif (.ip_str != null) then
+    .ip_str
+  else
+    "unknown"
+  end;
+
+{
+  ip: ip_to_str,
+  product: (.product // "unknown"),
+  version: (.version // ""),
+  type: classify,
+  cpes: (.cpe // [] + .cpe23 // []),
+  cves: (.vulns // [])
+}
+' > Downloads/INF4019W/ZA_SH_30_Filter.json
+
 
 #view Zfolder
 sudo apt install jq
