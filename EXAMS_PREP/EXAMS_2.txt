@@ -1,0 +1,177 @@
+EXAMS Prep
+MK
+read the kali Linux and Kazam file
+
+dpkg -l | wc -l
+
+---------
+
+apt       → Modern package manager for installing/updating software on Debian/Kali
+apt-get   → Older low-level package manager command used in scripts
+
+wget      → Download files from the internet via URL
+
+pip       → Install Python packages (usually Python 2 or system default)
+pip3      → Install Python 3 packages
+
+python2   → Run Python 2 interpreter (legacy/old scripts)
+python3   → Run Python 3 interpreter (modern/default)
+
+git       → Clone/download source code from GitHub repositories
+
+nano      → Simple terminal text editor
+vim       → Advanced terminal text editor
+
+chmod     → Change file permissions
+chown     → Change file ownership
+
+ls        → List files/directories
+cd        → Change directory
+pwd       → Show current directory
+
+cp        → Copy files
+mv        → Move/rename files
+rm        → Delete files
+
+mkdir     → Create directory
+rmdir     → Remove empty directory
+
+cat       → Display file contents
+less      → Read files page-by-page
+
+grep      → Search text/patterns inside files
+find      → Search for files/directories
+
+sudo      → Run command as administrator/root
+su        → Switch user/root shell
+
+systemctl → Manage Linux services
+service   → Start/stop services (older method)
+
+tar       → Compress/extract .tar archives
+unzip     → Extract .zip files
+
+curl      → Transfer/download data from URLs/APIs
+
+ssh       → Remote login to another machine
+scp       → Securely copy files over SSH
+
+netstat   → View network connections (older)
+ss        → Modern network socket viewer
+
+ping      → Test network connectivity
+ifconfig  → Show network interfaces (older)
+ip        → Modern network configuration tool
+
+ps        → Show running processes
+top       → Live process monitor
+kill      → Terminate process by PID
+
+history   → Show command history
+clear     → Clear terminal screen
+
+-------------------------------------------------------------------------------
+
+Linux libraries on the internet are mainly stored in these places:
+| Place                                                                 | Purpose                            |
+| --------------------------------------------------------------------- | ---------------------------------- |
+| [GitHub](https://github.com?utm_source=chatgpt.com)                   | Source code repositories           |
+| [GitLab](https://gitlab.com?utm_source=chatgpt.com)                   | Open-source project hosting        |
+| [PyPI](https://pypi.org?utm_source=chatgpt.com)                       | Python libraries/packages          |
+| [Debian Packages](https://packages.debian.org?utm_source=chatgpt.com) | Debian/Kali package repository     |
+| [Kali Repository](https://http.kali.org?utm_source=chatgpt.com)       | Official Kali package mirrors      |
+| [SourceForge](https://sourceforge.net?utm_source=chatgpt.com)         | Older open-source software hosting |
+| [CPAN](https://www.cpan.org?utm_source=chatgpt.com)                   | Perl libraries                     |
+| [RubyGems](https://rubygems.org?utm_source=chatgpt.com)               | Ruby libraries                     |
+| [npm](https://www.npmjs.com?utm_source=chatgpt.com)                   | JavaScript/Node.js packages        |
+| [Maven Central](https://mvnrepository.com?utm_source=chatgpt.com)     | Java libraries                     |
+
+
+Package managers are tools that automatically:
+
+Download software
+Install dependencies
+Update packages
+Remove software
+
+Common Linux/Kali package managers:
+| Package Manager| Used For                          |
+| --------------| ---------------------------------- |
+| apt           | Debian/Kali/Ubuntu packages        |
+| apt-get       | Older Debian package manager       |
+| dpkg          | Low-level .deb package installer   |
+| pip           | Python packages                    |
+| pip3          | Python 3 packages                  |
+| npm           | JavaScript/Node.js packages        |
+| gem           | Ruby packages                      |
+| cargo         | Rust packages                      |
+| snap          | Universal Linux packages           |
+| flatpak       | Sandboxed Linux apps               |
+| yum           | RHEL/CentOS packages               |
+| dnf           | Modern Fedora/RHEL package manager |
+| pacman        | Arch Linux packages                |
+| zypper        | openSUSE packages                  |
+
+
+/lib
+/lib64
+/usr/lib
+/usr/lib64
+/usr/local/lib
+
+------------------------------------------------------------
+In Linux/Kali, libraries are stored in specific system directories (folders).
+
+Common library locations:
+Example:
+/lib
+/lib64
+/usr/lib
+/usr/lib64
+/usr/local/lib
+
+Python libraries:
+Example:
+/usr/lib/python3/
+/usr/local/lib/python3.x/
+/home/user/.local/lib/
+
+What each location means
+| Directory        | Purpose                                       |
+| ---------------- | --------------------------------------------- |
+| /lib           | Essential system libraries needed for booting |
+| /lib64         | 64-bit system libraries                       |
+| /usr/lib       | Most installed application libraries          |
+| /usr/local/lib | Libraries installed manually from source      |
+| /usr/share     | Shared program data (not binary libs)         |
+
+Example library files
+Example:
+/usr/lib/libssl.so
+/usr/lib/x86_64-linux-gnu/libcrypto.so
+/lib/x86_64-linux-gnu/libc.so.6
+
+Find a library
+Example:
+find /usr/lib -name "libssl"
+
+Check where a command gets libraries
+Example:
+ldd /bin/ls
+
+Shows linked libraries used by the program.
+
+Search all library cache
+Example:
+ldconfig -p
+
+Displays registered shared libraries.
+
+Important Linux library extension
+Example:
+.so  → Shared Object library
+
+Similar to:
+Example:
+.dll in Windows
+.dylib in macOS
