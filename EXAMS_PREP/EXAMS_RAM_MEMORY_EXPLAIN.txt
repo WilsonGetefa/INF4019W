@@ -1,0 +1,268 @@
+In your forensic context, “RAM” and “memory” are often used interchangeably, but technically they are not exactly the same thing.
+
+---
+
+# 1. RAM vs Memory — Basic Difference
+
+| Term   | Meaning                                                         |
+| ------ | --------------------------------------------------------------- |
+| RAM    | Physical hardware chips storing temporary data                  |
+| Memory | Broader term covering all addressable memory used by the system |
+
+---
+
+# 2. RAM (Random Access Memory)
+
+RAM is the actual physical hardware installed in the computer.
+
+Examples:
+
+* 4 GB DDR3
+* 16 GB DDR4
+* laptop memory modules
+
+RAM stores:
+
+* running programs
+* open documents
+* active browser sessions
+* live operating system data
+
+RAM is:
+
+* volatile
+* erased when power is lost
+
+---
+
+# 3. Memory (Broader Concept)
+
+“Memory” includes more than physical RAM.
+
+In Windows forensic analysis, memory can include:
+
+| Type           | Description               |
+| -------------- | ------------------------- |
+| Physical RAM   | Real RAM chips            |
+| Virtual memory | Address space abstraction |
+| Pagefile       | Disk-backed memory        |
+| Kernel memory  | OS memory regions         |
+| Process memory | Application memory        |
+| Cache memory   | Temporary cached data     |
+| GPU memory     | Graphics memory           |
+
+So:
+
+* RAM is a type of memory
+* memory is the larger concept
+
+---
+
+# 4. In Your Memory Dump
+
+Your file:
+
+```text id="l1e6uo"
+AdamFTriage.mem
+```
+
+is commonly called:
+
+* RAM dump
+* memory dump
+* physical memory image
+
+All are mostly referring to:
+
+* captured physical RAM contents
+
+---
+
+# 5. What Volatility Actually Analyzes
+
+Volatility 3 interprets:
+
+* physical RAM pages
+* virtual memory mappings
+* kernel structures
+* process address spaces
+
+Example from your output:
+
+```text id="mzc6b9"
+DTB 0x187000
+```
+
+The DTB allows conversion between:
+
+* virtual memory
+* physical RAM
+
+---
+
+# 6. Physical RAM vs Virtual Memory
+
+This is the most important distinction in forensics.
+
+## Physical RAM
+
+Actual hardware addresses:
+
+```text id="vtxztu"
+0x00000000 -> physical RAM
+```
+
+Captured directly from:
+
+* DIMMs
+* system memory
+
+---
+
+## Virtual Memory
+
+Each process thinks it owns memory:
+
+```text id="v0c0ut"
+chrome.exe -> virtual addresses
+```
+
+Windows maps:
+
+* virtual addresses
+* into physical RAM
+
+using:
+
+* page tables
+* DTB/CR3
+
+---
+
+# 7. Example From Your Image
+
+You had:
+
+```text id="imzglg"
+layer_name WindowsIntel32e
+```
+
+This means:
+
+* 64-bit virtual memory translation
+
+and:
+
+```text id="76cm7u"
+DTB 0x187000
+```
+
+means:
+
+* page tables used to map virtual memory into physical RAM
+
+---
+
+# 8. Why This Matters in Forensics
+
+Investigators analyze memory because RAM contains:
+
+* live processes
+* decrypted data
+* active malware
+* network connections
+* credentials
+
+Disk forensics alone may miss:
+
+* injected malware
+* unpacked malware
+* live encryption keys
+* running commands
+
+---
+
+# 9. What Is NOT Usually in RAM Dumps
+
+A RAM dump usually does NOT contain:
+
+* full hard drive contents
+* all deleted files
+* complete long-term history
+
+unless:
+
+* cached
+* paged into RAM
+* recently used
+
+---
+
+# 10. Simple Analogy
+
+Think of a computer like this:
+
+| Component   | Analogy           |
+| ----------- | ----------------- |
+| Hard drive  | Filing cabinet    |
+| RAM         | Desk workspace    |
+| CPU         | Worker            |
+| Memory dump | Photo of the desk |
+
+The desk (RAM):
+
+* shows what was actively being used
+
+The filing cabinet (disk):
+
+* stores long-term information
+
+---
+
+# 11. In Your Investigation
+
+Your `.mem` file is:
+
+* primarily a physical RAM capture
+* containing active system memory
+
+But Volatility reconstructs:
+
+* virtual memory structures
+* process memory
+* kernel memory
+
+from that RAM image.
+
+---
+
+# 12. Key Forensic Terms
+
+| Term            | Meaning                     |
+| --------------- | --------------------------- |
+| RAM dump        | Raw physical memory capture |
+| Memory image    | Snapshot of system memory   |
+| Virtual memory  | Per-process logical memory  |
+| Physical memory | Real RAM addresses          |
+| Pagefile        | Disk extension of RAM       |
+| Address space   | Memory view of a process    |
+
+---
+
+# 13. Most Accurate Forensic Interpretation
+
+Your file:
+
+```text id="5qg4z8"
+AdamFTriage.mem
+```
+
+is best described as:
+
+> “A physical memory (RAM) acquisition of a Windows 7 SP1 x64 system captured on March 22, 2019.”
+
+So:
+
+* RAM = hardware memory
+* Memory = broader operating-system memory ecosystem
+* Your dump = physical RAM snapshot reconstructed into logical memory structures by Volatility

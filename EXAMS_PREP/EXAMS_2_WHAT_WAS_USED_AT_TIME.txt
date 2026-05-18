@@ -1,17 +1,41 @@
-Is it possible to find which software the user was using at that time?
-Yes — absolutely. That is one of the main goals of memory forensics using tools like Volatility 3 and Volatility 2.
-From a RAM image, you can often determine:
-- which applications were running
-- what documents were open
-- browser activity
-- chat sessions
-- command history
-- malware execution
-- USB devices
-- network connections
-- decrypted data in memory
-- clipboard contents
-- passwords/tokens (sometimes)
+The possibility to find which software the user was using at that time of Captured whic is one of the main goals of memory forensics using tools 
+like Volatility 3 and Volatility 2.
+From a RAM image, we can often determine:
+| Investigation Goal              | Volatility 3 Command                                   | Volatility 2 Command             | Short Explanation                                                           |
+| ------------------------------- | ------------------------------------------------------ | -------------------------------- | --------------------------------------------------------------------------- |
+| Which applications were running |  windows.pslist  /  windows.pstree                     |  pslist  /  pstree               | Shows active processes like  chrome.exe,   winword.exe,   powershell.exe .  |
+| What documents were open        |  windows.handles                                       |  handles                         | Reveals files opened by applications such as  .docx,   .pdf,   .xlsx .      |
+| Browser activity                |  windows.pslist,   windows.netscan,   windows.dlllist  |  pslist,   netscan,   dlllist    | Identifies browsers, visited sessions, and active web connections.          |
+| Chat sessions                   |  windows.pslist,   windows.handles                     |  pslist,   handles               | Detects chat apps like  Skype,   Teams,   Discord,  or open chat databases. |
+| Command history                 |  windows.cmdline,   windows.consoles                   |  cmdline,   consoles             | Recovers executed commands and console history from CMD/PowerShell.         |
+| Malware execution               |  windows.malfind                                       |  malfind                         | Detects injected code, shellcode, and suspicious memory regions.            |
+| USB devices                     |  windows.registry.printkey                             |  printkey                        | Extracts USB insertion history from Windows Registry.                       |
+| Network connections             |  windows.netstat,   windows.netscan                    |  connscan,   netscan             | Shows active/recent network sessions and remote IP addresses.               |
+| Decrypted data in memory        |  windows.memmap,   windows.dumpfiles                   |  memdump,   procdump             | Dumps process memory where decrypted content may exist temporarily.         |
+| Clipboard contents              |  windows.clipboard  *(if supported)*                   |  clipboard  *(plugin-dependent)* | Recovers copied text/data from the Windows clipboard.                       |
+| Passwords/tokens (sometimes)    |  windows.lsadump,   windows.hashdump                   |  lsadump,   hashdump             | Extracts password hashes, credentials, and authentication tokens.           |
+ 
+
+1. Find Running Software /  Which applications were running
+The first step is usually the pslist which shows the active processes:
+#Volatility 3
+python3 vol.py -f AdamFTriage.mem windows.pslist
+
+#Volatility 2
+python2 vol.py --profile=Win7SP1x64 -f AdamFTriage.mem pslist
+
+This shows active processes such as:
+| Process        | Meaning               |
+| -------------- | --------------------- |
+| chrome.exe     | Google Chrome open    |
+| firefox.exe    | Firefox running       |
+| outlook.exe    | Email client          |
+| winword.exe    | Microsoft Word        |
+| putty.exe      | SSH session           |
+| cmd.exe        | Command prompt        |
+| powershell.exe | PowerShell            |
+| wireshark.exe  | Packet capture        |
+| malware.exe    | Suspicious executable |
 
 EXAMPLE VOL3
 kaliwg@kali:~$ sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem windows.pslist
@@ -46,94 +70,38 @@ Offset(V)          Name                    PID   PPID   Thds     Hnds   Sess  Wo
 0xfffffa8005259060 wininit.exe             380    324      3       78      0      0 2019-03-22 05:31:58 UTC+0000                                 
 0xfffffa8005268b30 winlogon.exe            416    364      3      110      1      0 2019-03-22 05:31:58 UTC+0000                                 
 0xfffffa8005680910 services.exe            476    380     12      224      0      0 2019-03-22 05:31:59 UTC+0000                                 
-0xfffffa80056885e0 lsass.exe               484    380      7      650      0      0 2019-03-22 05:32:00 UTC+0000  
-
-
-1. Find Running Software
-The first step is usually:
-#Volatility 3
-
-python3 vol.py -f AdamFTriage.mem windows.pslist
-```
-
-#Volatility 2
-
-```bash id="u3i3dq"
-python2 vol.py --profile=Win7SP1x64 -f AdamFTriage.mem pslist
-```
-
-This shows active processes such as:
-
-| Process        | Meaning               |
-| -------------- | --------------------- |
-| chrome.exe     | Google Chrome open    |
-| firefox.exe    | Firefox running       |
-| outlook.exe    | Email client          |
-| winword.exe    | Microsoft Word        |
-| putty.exe      | SSH session           |
-| cmd.exe        | Command prompt        |
-| powershell.exe | PowerShell            |
-| wireshark.exe  | Packet capture        |
-| malware.exe    | Suspicious executable |
-
----
+0xfffffa80056885e0 lsass.exe               484    380      7      650      0      0 2019-03-22 05:32:00 UTC+0000 
 
 2. Find Hidden or Injected Malware
-
 Very important forensic step:
-
-```bash id="n67x44"
+#Volatility 3
 windows.malfind
-```
 
-or in Volatility 2:
-
-```bash id="35s8t4"
+#Volatility 2:
 malfind
-```
 
 This detects:
-
-injected code
-reflective DLL injection
-shellcode
-process hollowing
-
----
+- injected code
+- reflective DLL injection
+- shellcode
+- process hollowing
 
 3. Command History
+You can recover terminal activity with CMD history
 
-You can recover terminal activity.
-
-#CMD history
-
-```bash id="azm0u7"
-windows.cmdline
-```
-
-and:
-
-```bash id="krv5lg"
-windows.consoles
-```
+#Volatility 3
+windows.cmdline or windows.consoles
 
 This may reveal:
-
-```text id="umv6hb"
-ipconfig
-net user
-ping
-whoami
-passwords
-malware commands
-```
-
----
+- ipconfig
+- net user
+- ping
+- whoami
+- passwords
+- malware commands
 
 4. Browser Activity
-
 You can identify browsers from processes:
-
 | Browser Process | Browser           |
 | --------------- | ----------------- |
 | chrome.exe      | Google Chrome     |
@@ -141,27 +109,19 @@ You can identify browsers from processes:
 | iexplore.exe    | Internet Explorer |
 
 Then investigate:
-
-history files
-cache
-network sockets
-URLs in memory
+- history files
+- cache
+- network sockets
+- URLs in memory
 
 Useful plugins:
+- netscan
+- dlllist
+- handles
+- yarascan
 
-```bash id="h8i8d4"
-netscan
-dlllist
-handles
-yarascan
-```
-
----
-
-5. Open Documents
-
+5. Open Documents /  What documents were open
 If the user had documents open, you may see:
-
 | Process      | Software             |
 | ------------ | -------------------- |
 | winword.exe  | Microsoft Word       |
@@ -169,87 +129,52 @@ If the user had documents open, you may see:
 | acrord32.exe | Adobe Acrobat Reader |
 
 Then:
-
-inspect handles
-dump process memory
-recover document names
+- inspect handles
+- dump process memory
+- recover document names
 
 Example:
-
-```bash id="e03kj8"
 windows.handles
-```
-
----
 
 6. Network Connections
-
 This reveals internet/software activity.
-
 #Volatility 3
-
-```bash id="k0nt0f"
-windows.netstat
-```
-
-or
-
-```bash id="lw5r5y"
-windows.netscan
-```
-
+windows.netstat or windows.netscan
 This may show:
-
-remote IPs
-malware C2 servers
-web sessions
-VPN activity
-RDP sessions
-
----
+- remote IPs
+- malware C2 servers
+- web sessions
+- VPN activity
+- RDP sessions
 
 7. User Activity Timeline
-
 You can reconstruct:
-
-logons
-executed applications
-opened files
-browser usage
-USB insertion
-malware execution
+- logons
+- executed applications
+- opened files
+- browser usage
+- USB insertion
+- malware execution
 
 Plugins:
-
-```bash id="jlwmfm"
-timeliner
-userassist
-shimcache
-```
-
----
+- timeliner
+- userassist
+- shimcache
 
 8. GUI Applications Running at Capture Time
-
 Memory images are especially powerful because they capture:
-
-LIVE applications
-unsaved data
-active sessions
+- LIVE applications
+- unsaved data
+- active sessions
 
 You may recover:
-
 chat messages
-unsaved Notepad text
-passwords in memory
-clipboard contents
-
----
+- unsaved Notepad text
+- passwords in memory
+- clipboard contents
 
 9. Detect Remote Access Tools
-
 Look for:
-
 | Process        | Meaning                   |
 | -------------- | ------------------------- |
 | teamviewer.exe | TeamViewer                |
@@ -257,87 +182,52 @@ Look for:
 | putty.exe      | PuTTY                     |
 | mstsc.exe      | Remote Desktop Connection |
 
----
-
 10. Recommended Investigation Workflow
-
 For your image:
-
 #Step 1 — Process list
-
-```bash id="mpnlcb"
 windows.pslist
-```
 
 #Step 2 — Tree relationships
-
-```bash id="8u5u9e"
 windows.pstree
-```
 
 #Step 3 — Network connections
-
-```bash id="4rxuwl"
 windows.netscan
-```
 
 #Step 4 — Malicious injections
-
-```bash id="fjlwmj"
 windows.malfind
-```
 
 #Step 5 — Command history
-
-```bash id="h2p0ha"
 windows.consoles
-```
 
 #Step 6 — Loaded DLLs
-
-```bash id="dkmfc8"
 windows.dlllist
-```
-
----
 
 11. Example of What You Might Discover
-
 Example forensic findings:
-
-```text id="4m7z8s"
-chrome.exe       -> browsing activity
-outlook.exe      -> email usage
-putty.exe        -> SSH connections
-cmd.exe          -> command execution
-truecrypt.exe    -> encrypted volumes
-wireshark.exe    -> packet captures
-powershell.exe   -> scripts executed
-```
-
----
+- chrome.exe       -> browsing activity
+- outlook.exe      -> email usage
+- putty.exe        -> SSH connections
+- cmd.exe          -> command execution
+- truecrypt.exe    -> encrypted volumes
+- wireshark.exe    -> packet captures
+- powershell.exe   -> scripts executed
 
 12. Very Important Reality
-
 RAM only shows:
-
-what existed during capture time
-
-NOT:
-
-entire historical usage
-
-If the program:
-
-was closed long ago
-memory overwritten
-
-then evidence may disappear.
+what existed during capture time not entire historical usage
+If the program was closed long ago memory overwritten then evidence may disappear.
 
 But memory is extremely valuable because it preserves:
+- live state
+- decrypted information
+- volatile evidence
 
-live state
-decrypted information
-volatile evidence
 
-
+| Command                   | One-line Explanation                                                | Small Example Output                                                | What It Means                                                        |
+| ------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| windows.malware.malfind | Detects suspicious/injected code inside running processes.            | explorer.exe PID 1204 Vad 0x401000 PAGE_EXECUTE_READWRITE MZ Header | Possible malware injection or process hollowing inside explorer.exe. |
+| windows.cmdline         | Shows command-line arguments used to start processes.                 | cmd.exe PID 2100 C:\Windows\System32\cmd.exe /c whoami              | User or malware executed the whoami command.                         |
+| windows.consoles        | Recovers command prompt console history and typed commands.           | dir, ipconfig, net user hacker pass123                              | Reveals commands typed by the user or attacker.                      |
+| windows.handles         | Lists files, registry keys, mutexes, and objects opened by processes. | WINWORD.EXE -> C:\Users\Adam\Documents\Report.docx                  | Microsoft Word had Report.docx open.                                 |
+| windows.netstat         | Displays active network connections linked to processes.              | chrome.exe 192.168.1.5:49721 -> 142.250.190.78:443 ESTABLISHED      | Chrome was connected to a remote HTTPS server.                       |
+| windows.netscan         | Scans memory for current and recently closed network connections.     | powershell.exe TCPv4 10.0.0.5:4444 -> 8.8.8.8:80                    | PowerShell communicated externally; possibly suspicious.             |

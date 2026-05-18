@@ -1,0 +1,21 @@
+The South African government does not officially certify or "authorise" specific third-party digital forensic software, such as the Volatility framework. 
+Instead of endorsing particular brands, South African law enforcement strictly regulates the processes, methodology, and qualifications required to ensure 
+digital evidence is admissible in court.
+
+How the Law Evaluates Forensic Tools
+South African legislation—principally the Cybercrimes Act 19 of 2020 and the Electronic Communications and Transactions Act—mandates that all digital forensic tools 
+and practices meet specific criteria to be legally valid:
+- Integrity and Reliability: The digital forensic tool used (such as Volatility) must preserve the authenticity and integrity of the digital data. It must not alter or 
+corrupt the data being investigated.
+- Auditable and Repeatable Procedures: According to the South African Police Service (SAPS) guidelines, any actions taken when accessing or extracting evidence must 
+be recorded and audited. An independent third party must be able to repeat the forensic process and achieve the exact same result.
+- Investigator Authorization: While the tool itself does not require government authorization, the person conducting the investigation must be a certified digital 
+forensic examiner or a technical expert officially designated/authorised to assist a police official during search and seizure operations.
+
+Use of Memory Forensics
+Because RAM contains volatile data that is easily lost when a device loses power, memory forensics tools like Volatility are widely utilized by incident response teams 
+and digital forensic practitioners to uncover runtime artifacts (e.g., active network connections, running processes, injected malware). While investigators in 
+South Africa frequently use this open-source tool for memory analysis, it is simply the chosen medium to access the digital evidence. The admissibility of that evidence 
+always relies on the examiner's ability to prove strict adherence to the chain of custody and accepted forensic methodologies.
+
+For official rules and standard operating procedures regarding evidence collection, you can review the SAPS Standard Operating Procedures on Cybercrimes.
