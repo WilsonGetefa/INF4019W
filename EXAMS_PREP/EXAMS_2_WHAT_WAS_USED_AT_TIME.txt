@@ -13,6 +13,41 @@ From a RAM image, you can often determine:
 - clipboard contents
 - passwords/tokens (sometimes)
 
+EXAMPLE VOL3
+kaliwg@kali:~$ sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem windows.pslist
+[sudo] password for kaliwg: 
+Volatility 3 Framework 2.28.0
+Progress:  100.00               PDB scanning finished                        
+PID     PPID    ImageFileName   Offset(V)       Threads Handles SessionId       Wow64   CreateTime      ExitTime        File output
+
+4       0       System  0xfa8003c72b30  87      547     N/A     False   2019-03-22 05:31:55.000000 UTC  N/A     Disabled
+252     4       smss.exe        0xfa8004616040  2       30      N/A     False   2019-03-22 05:31:55.000000 UTC  N/A     Disabled
+332     324     csrss.exe       0xfa80050546b0  10      516     0       False   2019-03-22 05:31:58.000000 UTC  N/A     Disabled
+372     364     csrss.exe       0xfa800525a9e0  11      557     1       False   2019-03-22 05:31:58.000000 UTC  N/A     Disabled
+380     324     wininit.exe     0xfa8005259060  3       78      0       False   2019-03-22 05:31:58.000000 UTC  N/A     Disabled
+416     364     winlogon.exe    0xfa8005268b30  3       110     1       False   2019-03-22 05:31:58.000000 UTC  N/A     Disabled
+476     380     services.exe    0xfa8005680910  12      224     0       False   2019-03-22 05:31:59.000000 UTC  N/A     Disabled
+484     380     lsass.exe       0xfa80056885e0  7       650     0       False   2019-03-22 05:32:00.000000 UTC  N/A     Disabled
+492     380     lsm.exe 0xfa8005696b30  10      155     0       False   2019-03-22 05:32:00.000000 UTC  N/A     Disabled
+592     476     svchost.exe     0xfa80056e1060  9       375     0       False   2019-03-22 05:32:01.000000 UTC  N/A     Disabled
+672     476     svchost.exe     0xfa800570d060  7       341     0       False   2019-03-22 05:32:02.000000 UTC  N/A     Disabled
+764     476     svchost.exe     0xfa800575e5b0  20      447     0       False   2019-03-22 05:32:02.000000 UTC  N/A     Disabled
+796     476     svchost.exe     0xfa8005775b30  15      368     0       False   2019-03-22 05:32:03.000000 UTC  N/A     Disabled
+
+EXAMPLE VOL2
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 pslist
+Volatility Foundation Volatility Framework 2.6.1
+Offset(V)          Name                    PID   PPID   Thds     Hnds   Sess  Wow64 Start                          Exit                          
+------------------ -------------------- ------ ------ ------ -------- ------ ------ ------------------------------ ------------------------------
+0xfffffa8003c72b30 System                    4      0     87      547 ------      0 2019-03-22 05:31:55 UTC+0000                                 
+0xfffffa8004616040 smss.exe                252      4      2       30 ------      0 2019-03-22 05:31:55 UTC+0000                                 
+0xfffffa80050546b0 csrss.exe               332    324     10      516      0      0 2019-03-22 05:31:58 UTC+0000                                 
+0xfffffa800525a9e0 csrss.exe               372    364     11      557      1      0 2019-03-22 05:31:58 UTC+0000                                 
+0xfffffa8005259060 wininit.exe             380    324      3       78      0      0 2019-03-22 05:31:58 UTC+0000                                 
+0xfffffa8005268b30 winlogon.exe            416    364      3      110      1      0 2019-03-22 05:31:58 UTC+0000                                 
+0xfffffa8005680910 services.exe            476    380     12      224      0      0 2019-03-22 05:31:59 UTC+0000                                 
+0xfffffa80056885e0 lsass.exe               484    380      7      650      0      0 2019-03-22 05:32:00 UTC+0000  
+
 
 1. Find Running Software
 The first step is usually:
@@ -304,3 +339,5 @@ But memory is extremely valuable because it preserves:
 live state
 decrypted information
 volatile evidence
+
+
