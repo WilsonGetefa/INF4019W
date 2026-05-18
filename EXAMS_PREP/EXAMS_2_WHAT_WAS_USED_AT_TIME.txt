@@ -72,7 +72,141 @@ Offset(V)          Name                    PID   PPID   Thds     Hnds   Sess  Wo
 0xfffffa8005680910 services.exe            476    380     12      224      0      0 2019-03-22 05:31:59 UTC+0000                                 
 0xfffffa80056885e0 lsass.exe               484    380      7      650      0      0 2019-03-22 05:32:00 UTC+0000 
 
-2. Find Hidden or Injected Malware
+2. Open Documents /  What documents were open; If the user had documents open, you may see: Reveals files opened by applications such as  .docx,   .pdf,   .xlsx.
+| Process      | Software             |
+| ------------ | -------------------- |
+| winword.exe  | Microsoft Word       |
+| excel.exe    | Microsoft Excel      |
+| acrord32.exe | Adobe Acrobat Reader |
+
+Then:
+- inspect handles
+- dump process memory
+- recover document names
+
+Example:
+windows.handles
+windows.dlllist
+
+Dump any excel file:
+sudo stringds /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "\.xlsx|\.xls"
+sudo stringds /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "xlsx|xls|csv"
+sudo stringds /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "Worksheet|Sheets\\(|ActiveWorkbook|Count"
+Visited: Bob@file:///C:/Users/Bob/Documents/EmployeeDocuments/EmployeeInformation.xlsx
+
+This is a file 0x120196 File
+Output
+Offset(V)             Pid             Handle             Access Type             Details
+------------------ ------ ------------------ ------------------ ---------------- -------
+0xfffffa8003c72b30      4                0x4           0x1fffff Process          System(4)
+0xfffff8a000061bb0      4                0x8            0x2001f Key              MACHINE\SYSTEM\CONTROLSET001\CONTROL\HIVELIST
+0xfffff8a000008060      4                0xc            0xf000f Directory        GLOBAL??
+0xfffffa8004078800   1272              0x9c0           0x12019f File             \Device\HarddiskVolume2\Users\Bob\AppData\Local\Microsoft\Office\OTele\excel.exe.db
+0xfffff8a00238aa30   1272              0x9c8            0xf003f Key              MACHINE\SOFTWARE\MICROSOFT\WINDOWS NT\CURRENTVERSION\TIME ZONES\EASTERN STANDARD TIME\DYNAMIC DST
+0xfffff8a002386fa0   1272              0x9cc            0xf003f Key              MACHINE\SOFTWARE\MICROSOFT\WINDOWS NT\CURRENTVERSION\TIME ZONES\EASTERN STANDARD TIME\DYNAMIC DST
+
+Table Explanation
+| Column      | Meaning                                            | Example                  | What It Tells You                                 |
+| ----------- | -------------------------------------------------- | ------------------------ | ------------------------------------------------- |
+|  Offset(V)  | Virtual memory address of the handle object in RAM |  0xfffffa8004078800      | Where the object exists in kernel memory          |
+|  Pid        | Process ID owning the handle                       |  1272                    | Which process opened or used the object           |
+|  Handle     | Internal handle number used by the process         |  0x9c0                   | Unique identifier for the open object             |
+|  Access     | Permission mask granted to the handle              |  0x12019f                | What the process can do (read/write/full control) |
+|  Type       | Type of Windows kernel object                      |  File ,  Key ,  Event    | What kind of object is being accessed             |
+|  Details    | Actual object path/name                            |  C:\Users\Bob\file.docx  | Exact file, registry key, mutex, pipe, etc.       |
+
+Access Mask Reference Table (Handles)
+| Access Mask  | Meaning                | Permissions (simplified)                     | Typical Interpretation                             |
+| ------------ | ---------------------- | -------------------------------------------- | -------------------------------------------------- |
+|  0x12019f    | Standard file access   | Read + Write + Execute + Query info          | Normal application file usage (open/read/write)    |
+|  0x1f0003    | Limited control access | Read + Synchronize + minimal write/control   | Often system/service-level access, partial control |
+|  0xf003f     | Full access            | Read + Write + Execute + Delete + All rights | **Full control over object (very powerful)**       |
+|  0x100000    | Synchronize only       | Sync/Wait operations                         | Used for thread/process coordination               |
+|  0x120089    | Read-only access       | Read + Query information                     | Safe viewing of files or registry keys             |
+|  0x0012019f  | Extended file access   | Read + Write + Append + Execute              | Similar to 0x12019f but with extended flags        |
+|  0x000f0000  | Generic all            | All standard rights                          | Often used internally for mapping full control     |
+|  0x00020000  | Generic write          | Write access only                            | Modify file or registry values                     |
+|  0x00010000  | Generic read           | Read-only access                             | No modification allowed                            |
+|  0x00000001  | Query state            | Minimal access                               | Check status without changes                       |
+
+Access Mask Meanings Here
+| Access     | Meaning                        |
+| ---------- | ------------------------------ |
+|  0xf037f   | High/full GUI access           |
+|  0x1f0001  | Synchronization/control access |
+|  0x120089  | Read/query file access         |
+|  0x20019   | Registry read/query access     |
+|  0x804     | ETW registration permissions   |
+
+Important Handle Types (Forensics)
+| Type            | Meaning                        | Example             | Forensic Importance                |
+| --------------- | ------------------------------ | ------------------- | ---------------------------------- |
+|  File           | Opened file on disk            |  report.docx        | Shows files actively used          |
+|  Key            | Windows Registry key           |  HKLM\Software\...  | Reveals configuration access       |
+|  Process        | Another running process        |  lsass.exe          | Malware may access other processes |
+|  Thread         | Running thread object          | Thread ID           | Thread injection or execution      |
+|  Event          | Synchronization object         | unnamed event       | Process/thread communication       |
+|  Mutant         | Mutex object                   |  Global\ABC123      | Malware often uses mutexes         |
+|  Semaphore      | Synchronization counter object | semaphore           | Multi-thread coordination          |
+|  Section        | Shared memory region           | memory section      | DLL/shared memory injection        |
+|  Token          | Security token                 | access token        | User privileges or impersonation   |
+|  Desktop        | GUI desktop object             |  WinSta0\Default    | Interactive logged-in sessions     |
+|  WindowStation  | GUI session manager            |  WinSta0            | User desktop environment           |
+|  Directory      | Object Manager directory       |  \BaseNamedObjects  | System object organization         |
+|  SymbolicLink   | Windows symbolic link          |  \KnownDlls         | Internal OS redirections           |
+|  Port           | IPC communication port         | ALPC/RPC            | Inter-process communication        |
+|  Job            | Process grouping object        | Job object          | Sandboxing or grouped processes    |
+|  Timer          | Timer object                   | kernel timer        | Scheduled activity                 |
+|  IoCompletion   | Async I/O completion port      | I/O object          | High-performance applications      |
+|  Driver         | Loaded kernel driver           |  .sys driver        | Rootkits or drivers                |
+|  Device         | Hardware device object         |  \Device\Harddisk0  | Disk/device access                 |
+|  ALPC Port      | Advanced Local Procedure Call  | RPC communication   | Windows internal messaging         |
+
+Additional Handle Types Explained
+| Type              | Example              | Meaning                                                                | Forensic Importance                                         |
+| ----------------- | -------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------- |
+|  Directory        |  KnownDlls           | Windows Object Manager directory containing shared system DLL mappings | Normal system behavior; malware may abuse DLL loading paths |
+|  File             |  \Windows\System32   | Open file/folder handle to System32 directory                          | Process accessing core Windows system files                 |
+|  ALPC Port        |  ConsoleLPC-...      | Advanced Local Procedure Call communication channel                    | Used for Windows internal IPC (process communication)       |
+|  WindowStation    |  WinSta0             | Interactive Windows GUI session                                        | Indicates process has access to user desktop/session        |
+|  Desktop          |  Default             | Default interactive desktop object                                     | Process can interact with visible desktop/UI                |
+|  Key              |  MACHINE\SYSTEM\...  | Registry key handle                                                    | Process reading/modifying registry configuration            |
+|  EtwRegistration  | *(blank details)*    | Event Tracing for Windows registration object                          | Process registered for Windows event logging/tracing        |
+
+
+Most Important Types During Investigations
+| Type      | Why Important                                         |
+| --------- | ----------------------------------------------------- |
+|  File     | Reveals opened documents, malware files, logs         |
+|  Key      | Registry persistence, installed software, USB history |
+|  Process  | Process injection or credential theft                 |
+|  Token    | Privilege escalation evidence                         |
+|  Mutant   | Malware identification                                |
+|  Section  | Shared memory/code injection                          |
+|  Driver   | Kernel malware/rootkits                               |
+|  Port     | IPC or malware communication                          |
+
+3. Browser Activity: Identifies browsers, visited sessions, and active web connections. 
+You can identify browsers from processes:
+| Browser Process | Browser           |
+| --------------- | ----------------- |
+| chrome.exe      | Google Chrome     |
+| firefox.exe     | Mozilla Firefox   |
+| iexplore.exe    | Internet Explorer |
+
+Then investigate:
+- history files
+- cache
+- network sockets
+- URLs in memory
+
+Useful plugins:
+- netscan
+- dlllist
+- handles
+- yarascan
+
+4. Find Hidden or Injected Malware
 Very important forensic step:
 #Volatility 3
 windows.malfind
@@ -99,42 +233,6 @@ This may reveal:
 - whoami
 - passwords
 - malware commands
-
-4. Browser Activity
-You can identify browsers from processes:
-| Browser Process | Browser           |
-| --------------- | ----------------- |
-| chrome.exe      | Google Chrome     |
-| firefox.exe     | Mozilla Firefox   |
-| iexplore.exe    | Internet Explorer |
-
-Then investigate:
-- history files
-- cache
-- network sockets
-- URLs in memory
-
-Useful plugins:
-- netscan
-- dlllist
-- handles
-- yarascan
-
-5. Open Documents /  What documents were open
-If the user had documents open, you may see:
-| Process      | Software             |
-| ------------ | -------------------- |
-| winword.exe  | Microsoft Word       |
-| excel.exe    | Microsoft Excel      |
-| acrord32.exe | Adobe Acrobat Reader |
-
-Then:
-- inspect handles
-- dump process memory
-- recover document names
-
-Example:
-windows.handles
 
 6. Network Connections
 This reveals internet/software activity.
