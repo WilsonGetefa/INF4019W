@@ -308,4 +308,40 @@ Name                                                  Pid   PPid   Thds   Hnds T
 . 0xfffffa80042ab620:conhost.exe                     1008    372      2     55 2019-03-22 05:34:12 UTC+0000
 . 0xfffffa8005c1ab30:conhost.exe                     4656    372      2     49 2019-03-22 05:35:36 UTC+0000
  0xfffffa8005be12c0:FileZilla Serv                   1996   1860      3     99 2019-03-22 05:32:12 UTC+0000
-                                                                       
+
+                                                                                           
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 netscan | grep3496  
+Volatility Foundation Volatility Framework 2.6.1
+grep3496: command not found
+^C^[[A                                                                                                                                                                                                                                            
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 netscan | grep 3496
+Volatility Foundation Volatility Framework 2.6.1
+0x13e397190        TCPv4    10.0.0.101:49217               10.0.0.106:4444      ESTABLISHED      3496     UWkpjFjDzM.exe 
+                                                                                                                                                                                                                                            
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 netscan | grep 5116
+Volatility Foundation Volatility Framework 2.6.1
+0x13e258010        UDPv4    127.0.0.1:55560                *:*                                   5116     wscript.exe    2019-03-22 05:35:32 UTC+0000
+                                                                                                                                                                                                                                            
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 netscan | grep 3952
+Volatility Foundation Volatility Framework 2.6.1
+0x13ebcdef0        TCPv4    0.0.0.0:80                     0.0.0.0:0            LISTENING        3952     hfs.exe        
+                                                                                                                                                                                                                                            
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 cmdline | grep wsc         
+Volatility Foundation Volatility Framework 2.6.1
+wscript.exe pid:   5116
+Command line : "C:\Windows\System32\wscript.exe" //B //NOLOGO %TEMP%\vhjReUDEuumrX.vbs
+                                                                                                                                                                                                                                            
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 cmdline | grep UWkpjFjDzM
+Volatility Foundation Volatility Framework 2.6.1
+UWkpjFjDzM.exe pid:   3496
+Command line : "C:\Users\Bob\AppData\Local\Temp\rad93398.tmp\UWkpjFjDzM.exe" 
+                                                                                                                                                                                                                                            
+kaliwg@kali:~$ sudo  python2 volatility/vol.py -f /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem --profile=Win7SP1x64 cmdline | grep cmd         
+Volatility Foundation Volatility Framework 2.6.1
+cmd.exe pid:   1408
+Command line : "C:\Windows\System32\cmd.exe" 
+cmd.exe pid:   4660
+Command line : C:\Windows\system32\cmd.exe
+                                                                                                                                                                                                                                            
+kaliwg@kali:~$ 
+                                                                    
