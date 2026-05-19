@@ -89,9 +89,9 @@ windows.handles
 windows.dlllist
 
 Dump any excel file:
-sudo stringds /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "\.xlsx|\.xls"
-sudo stringds /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "xlsx|xls|csv"
-sudo stringds /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "Worksheet|Sheets\\(|ActiveWorkbook|Count"
+sudo strings /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "\.xlsx|\.xls"
+sudo strings /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "xlsx|xls|csv"
+sudo strings /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem | grep -Ei "Worksheet|Sheets\\(|ActiveWorkbook|Count"
 Visited: Bob@file:///C:/Users/Bob/Documents/EmployeeDocuments/EmployeeInformation.xlsx
 
 This is a file 0x120196 File
@@ -206,6 +206,18 @@ Useful plugins:
 - handles
 - yarascan
 
+5. GUI Applications Running at Capture Time
+Memory images are especially powerful because they capture:
+- LIVE applications
+- unsaved data
+- active sessions
+
+You may recover:
+chat messages
+- unsaved Notepad text
+- passwords in memory
+- clipboard contents
+
 4. Find Hidden or Injected Malware
 Very important forensic step:
 #Volatility 3
@@ -220,7 +232,7 @@ This detects:
 - shellcode
 - process hollowing
 
-3. Command History
+5. Command History
 You can recover terminal activity with CMD history
 
 #Volatility 3
@@ -258,18 +270,6 @@ Plugins:
 - timeliner
 - userassist
 - shimcache
-
-8. GUI Applications Running at Capture Time
-Memory images are especially powerful because they capture:
-- LIVE applications
-- unsaved data
-- active sessions
-
-You may recover:
-chat messages
-- unsaved Notepad text
-- passwords in memory
-- clipboard contents
 
 9. Detect Remote Access Tools
 Look for:
