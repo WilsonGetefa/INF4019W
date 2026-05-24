@@ -1,0 +1,17 @@
+Terminology
+The System is the ensambly of people, organisation, application, hardware, clients, user, product, all are part of the system, that within the whole systems each component describe erlier are sub-system by its own.
+A subject can be a physical person.
+A person can also be a legal firm.
+Principal can be a person or an equipment, or the card, or a deputy, or a complex role.
+Secrecy is a technical term – mechanisms limiting the number of principals who can access information
+Privacy means control of your own secrets
+Confidentiality is an obligation to protect someone else’s secrets 
+Anonymity from not being able to identify subjects to not being able to link their actions
+Object’s integrity lies in not having been altered since the last authorized modification
+Authentication has two common means an object has integrity plus freshness or You are speaking to the right principal 
+A trusted system or component is one that can break my security policy. I am going to use Number 2 – the defense industry definition. A GCHQ person selling keys to the Russians is trusted but not trustworthy. (Let’s assume their actions are unauthorized).
+A security policy is a succinct statement of protection goals – typically less than a page of a normal language
+"Succinct" means to express something clearly and briefly, using as few words as possible without losing the core meaning
+A protection profile is a detailed statement of protection goals – typically dozens of pages of semi-formal language 
+A security target is a detailed statement of protection goals applied to a particular system – and may be hundreds of pages of specification for both functionality and testing. 
+A cybersecurity policy is a formal document that defines the rules, expectations, and overall strategy an organization uses to protect its digital assets, data, and systems from unauthorized access and cyber threats
