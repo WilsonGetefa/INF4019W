@@ -49,7 +49,7 @@ kaliwg@kali:~$
 
 ----------------------------------------------------------------------------------------------------------------------------------
 ===================================================================================================================================
-You analyzed the same memory image with two different versions of the Volatility framework:
+Analyzing the same memory image with two different versions of the Volatility framework:
 
 Volatility 3 (windows.info)
 Volatility 2 (imageinfo)
@@ -58,34 +58,21 @@ Both outputs are highly consistent, which is a good sign that the memory image i
 1. File Being Analyzed
 
 Memory dump:
-bash
 /home/kaliwg/Downloads/AdamFTriage/AdamFTriage.mem
 
-This is likely:
-a full physical RAM acquisition
-from a Windows 7 x64 machine
-captured on 22 March 2019
+This is likely a full physical RAM acquisition from a Windows 7 x64 machine captured on 22 March 2019
 
 2. Volatility 3 Output Analysis
 Command:
-bash
 sudo python3 volatility3/vol.py -f AdamFTriage.mem windows.info
 
-This plugin extracts:
-kernel information
-OS metadata
-architecture
-memory translation details
+This plugin extracts the kernel information of the OS metadata architecture with memory translation details
 
 3. Volatility 2 Output Analysis
 Command:
-bash
 sudo python2 volatility/vol.py -f AdamFTriage.mem imageinfo
 
-This plugin:
-tries to determine the correct Windows profile
-locates KDBG structures
-identifies architecture and service pack
+This plugin tries to determine the correct Windows profile and locates KDBG structures with identifies architecture and service pack
 
 4. Detailed Field-by-Field Comparison
 | Item         | Volatility 3            | Volatility 2 | Meaning                        |
@@ -102,52 +89,44 @@ identifies architecture and service pack
 
 Everything matches correctly.
 
-5. Important Technical Details
-Kernel Base
-text
+5. Important Technical Details of the Kernel Base
 Kernel Base 0xf80002808000
 
 This is the base address where the Windows kernel (ntoskrnl.exe) was loaded.
 Useful for:
-kernel debugging
-malware analysis
-rootkit detection
-symbol resolution
+- kernel debugging
+- malware analysis
+- rootkit detection
+- symbol resolution
 
 6. DTB (Directory Table Base)
-text
 DTB 0x187000
 
-The DTB is the CR3 register value.
-This is extremely important because it:
-
-maps virtual memory to physical memory
-allows Volatility to reconstruct processes
-enables page translation
+The DTB is the CR3 register value. This is extremely important because it:
+- maps virtual memory to physical memory
+- allows Volatility to reconstruct processes
+- enables page translation
 
 Matching DTB in both frameworks confirms:
-memory translation is correct
-image is not corrupted
+- memory translation is correct
+- image is not corrupted
 
 7. KDBG Structure
-text
 KDBG 0xf800029f80a0
 
 KDBG = Kernel Debugger Data Block.
 This structure contains:
-process lists
-loaded modules
-kernel structures
-active threads
+- process lists
+- loaded modules
+- kernel structures
+- active threads
 
 This is one of the most critical forensic structures in Windows memory analysis.
-
 The fact that both tools locate the same KDBG strongly indicates:
-the dump is intact
-profile detection is accurate
+- the dump is intact
+- profile detection is accurate
 
 8. Windows Build Information
-text
 7601.18741.amd64fre.win7sp1_gdr.
 
 Breakdown:
@@ -159,67 +138,47 @@ Breakdown:
 | fre       | Free build (not debug build) |
 | gdr       | General Distribution Release |
 
-This corresponds to:
-Windows 7 SP1
-production/public release system
+This corresponds to Windows 7 SP1 production/public release system
 
 9. PE Timestamp
-text
 PE TimeDateStamp Tue Feb 3 02:25:01 2015
-
 This timestamp belongs to the Windows kernel image.
 
 Useful for:
-identifying patch level
-malware masquerading checks
-kernel tampering detection
+- identifying patch level
+- malware masquerading checks
+- kernel tampering detection
 
-This suggests:
-the kernel was compiled around Feb 2015
-likely patched around that timeframe
+This suggests that the kernel was compiled around Feb 2015 and likely patched around that timeframe
 
 10. Machine Type
-text
 MachineType 34404
 
 Decimal 34404 = hexadecimal 0x8664
 That means:
-text
 IMAGE_FILE_MACHINE_AMD64
 
-Which confirms:
-x64 architecture
+Which confirms x64 architecture
 
 11. Service Pack
-text
 CSDVersion 1
 CSD = Client Service Descriptor.
-Value 1 means:
-
-Service Pack 1 installed
+Value 1 means Service Pack 1 installed
 
 12. Time Analysis
 UTC Time
-text
 2019-03-22 05:46:00 UTC
 
 Local Time
-text
 2019-03-22 01:46:00 -0400
 
-This means the original machine timezone was likely:
-Eastern Daylight Time (EDT)
-UTC-4
-Potentially:
-US East Coast
-parts of Canada
-Caribbean regions
+This means the original machine timezone was likely Eastern Daylight Time (EDT) UTC-4
+Potentially US East Coast and parts of Canada and Caribbean regions
 
 13. Memory Layer Analysis
 Volatility 3:
-text
-layer_name WindowsIntel32e
-memory_layer FileLayer
+- layer_name WindowsIntel32e
+- memory_layer FileLayer
 
 Meaning:
 | Layer           | Purpose                |
@@ -228,46 +187,37 @@ Meaning:
 | WindowsIntel32e | x64 paging translation |
 
 Intel32e:
-Intel x64 paging mode
-long mode addressing
+- Intel x64 paging mode
+- long mode addressing
 
 14. Processor Information
-text
-KeNumberProcessors 2
-
-and
-text
-KPCR for CPU 0
-KPCR for CPU 1
+- KeNumberProcessors 2
+- KPCR for CPU 0
+- KPCR for CPU 1
 
 This means:
-system had 2 logical CPUs
-separate Processor Control Regions exist
+- system had 2 logical CPUs
+- dseparate Processor Control Regions exist
 
 Could mean:
-dual-core CPU
-single CPU with hyperthreading
-VM with 2 vCPUs
+- dual-core CPU
+- single CPU with hyperthreading
+- VM with 2 vCPUs
 
 15. Suggested Profiles (Volatility 2)
-text
 Suggested Profile(s):
-Win7SP1x64
-Win7SP0x64
-Win2008R2...
+- Win7SP1x64
+- Win7SP0x64
+- Win2008R2...
 
 Why multiple suggestions?
-Because:
-Windows 7 SP1 x64 and Windows Server 2008 R2 share kernel similarities
-profile matching is heuristic-based in Volatility 2
+Because Windows 7 SP1 x64 and Windows Server 2008 R2 share kernel similarities profile matching is heuristic-based in Volatility 2
 
 Best profile here:
-bash
 --profile=Win7SP1x64
 
 16. Why Volatility 3 Is Better
 Volatility 3 improvements:
-
 | Feature         | Volatility 2 | Volatility 3      |
 | --------------- | ------------ | ----------------- |
 | Profiles        | Manual       | Automatic symbols |
@@ -278,25 +228,7 @@ Volatility 3 improvements:
 
 Volatility 2 is now mostly legacy.
 
-17. Your Initial Error
-You ran:
-bash
-python2 vol.py
-
-Error:
-text
-can't open file 'vol.py'
-
-Because:
-the file wasn't in the current directory
-
-Correct command:
-bash
-python2 volatility/vol.py
-
-which you fixed correctly.
-
-18. What This Tells You About the Target System
+17. What This Tells You About the Target System
 The target machine was likely:
 
 | Property               | Value            |
@@ -309,82 +241,72 @@ The target machine was likely:
 | Kernel                 | Feb 2015 patched |
 | Memory image integrity | Good             |
 
-19. Recommended Next Forensic Steps
+18. Recommended Next Forensic Steps
 Now you should extract:
 
 Running processes
 Volatility 3
-bash
 python3 vol.py -f AdamFTriage.mem windows.pslist
 
 Volatility 2
-bash
 python2 vol.py --profile=Win7SP1x64 -f AdamFTriage.mem pslist
 
 Network connections
-bash
 windows.netstat
 
-bash
 netscan
 Malicious processes
 
-bash
 malfind
 Very important.
 
 Command history
-bash
 cmdline
 consoles
 
 DLL injection
-bash
 ldrmodules
 dlllist
 
 Registry analysis
-bash
 printkey
 hivelist
 
-20. Most Important Forensic Indicators So Far
+19. Most Important Forensic Indicators So Far
 The strongest validated indicators are:
-Valid KDBG
-Correct DTB
-Consistent timestamps
-Matching architecture
-Valid kernel symbols
-Proper paging translation
+- Valid KDBG
+- Correct DTB
+- Consistent timestamps
+- Matching architecture
+- Valid kernel symbols
+- Proper paging translation
 
 This means:
-the dump is trustworthy
-analysis can proceed reliably
-hidden processes/rootkits can now be investigated accurately
+- the dump is trustworthy
+- analysis can proceed reliably
+- hidden processes/rootkits can now be investigated accurately
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 ===========================================================================================================================================================
-what the defirence is with when the image was installed?
+what the defirence is with or when the image was installed?
 when the image was captured? 
 which year the image is belong or build?
 
-There are three different timestamps/concepts in your output, and they mean very different things.
+There are three different timestamps/concepts in the output, and they mean very different things.
 1. When the Memory Image Was Captured
 This is the moment the RAM dump was taken from the running computer.
 From your output:
 SystemTime      2019-03-22 05:46:00+00:00
 Image date and time : 2019-03-22 05:46:00 UTC+0000
-This means:
-The memory acquisition happened on 22 March 2019 At 05:46 UTC So the RAM snapshot belongs to a live system running in March 2019.
+This means the memory acquisition happened on 22 March 2019 At 05:46 UTC So the RAM snapshot belongs to a live system running in March 2019.
 
 2. Windows Build / OS Release Year
 From:
 NTBuildLab 7601.18741.amd64fre.win7sp1_gdr.
 
 and
-
-NtMajorVersion 6
-NtMinorVersion 1
+- NtMajorVersion 6
+- NtMinorVersion 1
 
 This identifies:
 | Value | Meaning                    |
@@ -402,9 +324,7 @@ This is NOT the memory capture time.
 It is the compile/build timestamp embedded in the Windows kernel executable (ntoskrnl.exe)
 Meaning that the installed Windows kernel(updated or last update) was compiled/patched around: 3 February 2015
 
-This usually indicates:
-the system received Windows updates around 2015
-or the installed kernel version dates from 2015
+This usually indicates the system received Windows updates around 2015 or the installed kernel version dates from 2015
 
 4. Difference Between These Times
 | Timestamp           | Meaning                                          | Your Value |
@@ -414,21 +334,18 @@ or the installed kernel version dates from 2015
 | Memory Capture Time | When RAM was dumped from the machine             | Mar 2019   |
 
 5. Was Windows Installed in 2015 or 2019?
-Your output does **NOT*directly show:
-Windows installation date
-Only:
-OS version
-kernel build date
-memory capture date
+Your output does **NOT*directly show Windows installation date, only:
+- OS version
+- kernel build date
+- memory capture date
 
 To find actual installation time, you would investigate:
-registry hives
-event logs
-filesystem timestamps
+- registry hives
+- event logs
+- filesystem timestamps
 
 Possible commands:
 Volatility 3
-bash
 windows.registry.hivelist
 windows.registry.printkey
 
@@ -452,25 +369,18 @@ So in forensic reporting, you would normally say:
 > “This memory image was captured from a Windows 7 SP1 x64 system on 22 March 2019.”
 
 7. Most Accurate Interpretation
+Your system likely was Originally installed sometime after:
+- 2011 (Windows 7 SP1 release)
+- Patched at least until February 2015
 
-Your system likely was:
-Originally installed sometime after:
-
-2011 (Windows 7 SP1 release)
-Patched at least until:
-February 2015
-Still running when memory was captured:
-
-March 2019
-So:
-the OS generation is 2011-era
-the active system snapshot is from 2019
-the kernel binary build is from 2015
+Still running when memory was captured March 2019:
+- the OS generation is 2011-era
+- the active system snapshot is from 2019
+- the kernel binary build is from 2015
 
 --------------------------------------------------------------------------------------------------------------------------------------
 ======================================================================================================================================
 Here are the major Microsoft Windows versions from Windows XP onward, including their core NT version numbers, build numbers, and release years.
-
 Windows Build / OS Release Timeline
 | Windows Version          | NT Version | Common Build | Release Year |
 | ------------------------ | ---------- | ------------ | ------------ |
