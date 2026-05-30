@@ -15,3 +15,6 @@ A security policy is a succinct statement of protection goals – typically less
 A protection profile is a detailed statement of protection goals – typically dozens of pages of semi-formal language 
 A security target is a detailed statement of protection goals applied to a particular system – and may be hundreds of pages of specification for both functionality and testing. 
 A cybersecurity policy is a formal document that defines the rules, expectations, and overall strategy an organization uses to protect its digital assets, data, and systems from unauthorized access and cyber threats
+
+---
+De
