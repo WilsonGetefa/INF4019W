@@ -250,12 +250,9 @@ from that RAM image.
 ---
 
 # 13. Most Accurate Forensic Interpretation
-
 Your file:
-
-```text id="5qg4z8"
 AdamFTriage.mem
-```
+
 
 is best described as:
 

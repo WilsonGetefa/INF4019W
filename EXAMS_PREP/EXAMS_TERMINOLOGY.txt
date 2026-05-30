@@ -17,4 +17,6 @@ A security target is a detailed statement of protection goals applied to a parti
 A cybersecurity policy is a formal document that defines the rules, expectations, and overall strategy an organization uses to protect its digital assets, data, and systems from unauthorized access and cyber threats
 
 ---
-De
+Digital Forensics
+What is Forensic Science? applied the science Forensic in digital environment.
+Digital Forensics and cyber forensic are part of forensic science.

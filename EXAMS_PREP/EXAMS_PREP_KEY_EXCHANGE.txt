@@ -1,0 +1,276 @@
+In asymmetric cryptography (public/private key systems), the process is:
+- The private key is generated first (randomly)
+- The public key is mathematically derived from the private key
+- But it is designed so thaty ou cannot reverse the public key to get the private key
+So:
+✔ Private key → used to generate public key
+❌ Public key does NOT generate private key
+❌ Neither “creates” the other in a reversible way
+Private key  ──(math function)──> Public key
+
+In symmetric cryptography, there is no public/private key pair.
+- There is only one shared secret key
+- The same key is used for both encryption and decryption
+- Both parties must already know the same secret key
+
+Key K
+   ↓
+Encrypt(M, K) → Ciphertext
+   ↓
+Decrypt(Ciphertext, K) → M
+
+Who creates what?
+- One side generates the secret key (randomly or via key exchange)
+- Then that same key is shared securely with the other side
+
+But:
+- The key is not split into public/private parts
+- It is just one shared secret
+⚠️ Main challenge The hardest part is:
+How do both sides safely get the same key without someone stealing it?
+That’s why systems like HTTPS use:
+- asymmetric crypto (RSA/ECC) to exchange the key
+- then switch to symmetric crypto (AES) for speed
+
+| Purpose          | Key Used        |
+| ---------------- | --------------- |
+| Sign by A        | A's private key |
+| Verify signature | A's public key  |
+| Encrypt for B    | B's public key  |
+| Decrypt by B     | B's private key |
+
+Ciphers (Encryption algorithms) These are used to hide data and later recover it using a key.
+    pupose to encrypt data that will be send out ron device A to device B, later use the same cipher type to decrypt
+- AES (Advanced Encryption Standard), Symmetric cipher (same key for encrypt/decrypt), Used in: Wi-Fi (WPA2/WPA3), banking, HTTPS
+- RSA: Used in: secure key exchange, digital signatures (not for large data encryption), Asymmetric cipher (public/private key pair)
+- ChaCha20: Symmetric cipher
+- Blowfish
+- Twofish
+- DES (Data Encryption Standard)
+- 3DES (Triple DES)
+- ECC (Elliptic Curve Cryptography)
+
+Hash Functions: These are used to convert data into a fixed fingerprint (no recovery possible). 
+    purpose to create digital signature - not sent out from the entity
+- SHA-256: Used in: blockchain, signatures, TLS
+- SHA-1
+- SHA-3
+- SHA-224
+- SHA-384
+- SHA-512
+- MD5 (old, insecure)
+- BLAKE2
+- BLAKE3
+
+Key difference (simple)
+| Type   | Can reverse? | Purpose                  |
+| ------ | ------------ | ------------------------ |
+| Cipher | ✔ Yes        | Hide + recover data      |
+| Hash   | ❌ No         | Fingerprint / integrity |
+
+A
+WHAT A DOES:
+1. A writes the message
+M = "This is for you"
+
+2. A hashes the message
+H = SHA256(M)
+This produces something like:
+[9f7a...ab12 (the actual hash is much longer)}
+
+3. A signs the hash
+A does:
+Signature = Sign(A_private_key, H):
+- The private key is not attached to the message.
+- The private key never leaves A's computer.
+- The result is a signature that can later be verified using A's public key.
+- A does not add the private key. A adds the signature, which is a piece of data computed using the private key (Message + Signature).
+- The signature is usually a sequence of bytes (often represented as hexadecimal or Base64 text). 
+    It looks like random data, for example:
+
+Message:
+"This is for you"
+
+H = SHA256(M)
+This produces something like:
+9f7a...ab12 (the actual hash is much longer)
+[Signature:
+7F3A91C4E8D2...}
+
+The signature is the result of a mathematical operation involving:
+- The hash of the message
+- A's private key
+
+AT THIS STAGE ANYONE WITH A'S PUBLIC KEY CAN VERIFY IT.
+--> BUT A wants only B to be able to read the message.
+↓
+4. A encrypts the message for B
+More precisely:
+Ciphertext = Encrypt(B_public_key, M)
+Only B can decrypt it because only B has: B_private_key
+
+Ciphertext = Encrypt(B_public_key, [M, A_Signature])
+- M is included in plaintext form inside the encryption
+- The hash (H = SHA256(M)) is only used to create the signature
+- B will recover M after decryption and then recompute the hash to verify integrity
+
+Why not encrypt the hash instead of M?
+Because:
+- The hash alone is not the message
+- B needs the actual message to read it and verify it
+- The signature already “binds” the hash to A’s private key
+
+5. A sends
+{Ciphertext, Signature}
+
+---------------------
+A
+M = "This is for you"
+        ↓
+H = SHA256(M)
+        ↓
+A_Signature = Sign(H, A_private_key)
+        ↓
+Ciphertext = Encrypt(B_public_key, [M, A_Signature])
+        ↓
+Send: Ciphertext
+---------------------
+B
+Ciphertext
+        ↓
+Decrypt using B_private_key
+        ↓
+[M, A_Signature]
+        ↓
+H = SHA256(M)
+        ↓
+Verify(A_Signature, H, A_public_key)
+---------------------
+Sometimes the sender's certificate/public key is also sent.
+
+B
+WHAT B DOES
+
+1. B decrypts: Ciphertext → Decrypt using B_private_key
+B uses B_private_key to decrypt.
+M = Decrypt(B_private_key, Ciphertext)
+[M, A_Signature] = Decrypt(B_private_key, Ciphertext)
+
+Now B can read: This is the first moment B can read the entire message.
+"This is for you"
+
+This only works if the Ciphertext was encrypted with B’s matching public key
+If ciphertext is wrong/tampered Decryption fails OR produces garbage data
+
+[M, A_Signature]
+This is not “computed” — it is revealed after successful decryption.
+
+If decryption succeeds → B literally obtains:
+- M (message)
+- A_Signature
+If decryption fails → B never reaches this step
+
+2. B hashes the decrypted message
+H1 = SHA256(M)
+B computes this himself.
+
+Why? To verify the message wasn't changed.
+- B is not given H
+- B recomputes it from the received message
+
+B creates his own hash from the plaintext message M, but only after decrypting it.
+
+3. B verifies the A_signature
+B never sees A's private key.
+B has A_public_key and receives A_Signature
+
+Then B performs:
+Verify(A_public_key, A_Signature)
+Verify(A_Signature, B_Hash, A_public_key)
+
+This verifies that the signature could only have been created by someone possessing A's private key.
+The A_signature is a cryptographic proof that allows B to verify that the message was signed by A 
+    and has not been modified.
+
+4. B compares hashes
+Verify(A_Signature, SHA256(M), A_public_key) = TRUE
+Verify(Sign(SHA256(M), A_private_key), SHA256(M), A_public_key) = TRUE
+
+Check: does Signature match H using A_public_key?
+The signature corresponds to the hash of the message under A’s public key. B recomputes SHA256(M), 
+    and verification succeeds if the signature was created using A’s private key over that same hash.
+
+Conceptually:
+H1 = SHA256(received_message)
+H2 = hash recovered/checked from signature
+
+
+Then:
+H1 == H2
+If true:
+ Message wasn't modified.
+ Signature is valid.
+ Message came from A.
+
+Your question: How does B know which cipher to use?
+Good question.
+Usually the protocol specifies it. For example:
+- RSA2048
+- SHA256
+- AES256GCM   or
+
+- ECDSA
+- ECDH
+- AES256GCM
+
+B knows because:
+1. The application/protocol defines it.
+2. Or the message contains metadata saying which algorithms were used.
+3. Or the certificate indicates the signature algorithm.
+
+Examples:
+- HTTPS/TLS
+- PGP
+- SSH
+
+all negotiate algorithms before data is exchanged.
+Your question: Do A and B have to know the same hash?
+Yes.
+Both sides must know:
+SHA256
+
+If A uses SHA256 and B uses SHA1 the hashes won't match and signature verification fails.
+Complete picture
+A:
+Message
+  ↓
+SHA256
+  ↓
+Sign with A_private_key
+  ↓
+Encrypt message with B_public_key
+  ↓
+Send Ciphertext + Signature
+
+
+B:
+Receive Ciphertext + Signature
+  ↓
+Decrypt using B_private_key
+  ↓
+Read message
+  ↓
+SHA256(message)
+  ↓
+Verify Signature using A_public_key
+  ↓
+Compare hashes
+  ↓
+Valid or Invalid
+
+
+One final correction: when people say "decrypt with the public key" while discussing signatures, 
+they are usually simplifying how RSA signatures work mathematically. In modern cryptography, think of it as:
+Encryption: Public key → Private key
+Signature: Private key → Public key verification
+That mental model is much safer and closer to how real systems operate today.
