@@ -1,0 +1,835 @@
+Systems Theory views an organization as a collection of interconnected components that work together to achieve a goal. 
+A problem in one component can affect the entire system.
+
+The theory suggests that security incidents are not caused by one factor alone but by interactions between different parts of the system.
+
+
+            tool
+              ↑
+              /\
+             /  \
+            /    \
+           ↙      ↘
+  Subject /←______→\Object
+         /          \
+        /            \
+       ↙              ↘
+Rules /←______←→______→\division of labor
+           community
+---------------------------------------------------------------------------------------------------
+A simple way to distinguish these theories is to ask:
+>   "What is the main thing this theory pays attention to?"
+
+| Theory                              | Focuses On                                                              | Core Idea                                                                                                       |
+| ----------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+|   Systems Thinking                  | The entire cybersecurity system and the relationships between its parts | Security outcomes result from interactions among people, technology, processes, policies, and the environment.  |
+|   Socio-Technical Systems Theory    | The relationship between people and technology                          | Security is achieved when human needs and technical controls are aligned.                                       |
+|   Activity Theory                   | Human activities, tasks, and work practices                             | Security behavior is shaped by how people use tools within rules, communities, and organizational contexts.     |
+|   General Deterrence Theory (GDT)   | Human behavior and punishment                                           | People are less likely to violate security policies when they believe violations will be detected and punished. |
+|   Economic Theory of IS Security    | Costs, benefits, risks, and incentives                                  | Organizations make security decisions by weighing the costs of controls against expected security benefits.     |
+
+1. Systems Thinking
+Focus: The whole security ecosystem. Instead of looking at one component, Systems Thinking looks at:
+* People
+* Technology
+* Policies
+* Processes
+* Management
+* External threats
+
+- Main Question is How do all parts of the system interact to produce security outcomes?
+- Example:
+A ransomware attack occurs.
+
+Systems Thinking asks:
+* Was user training adequate?
+* Were backups available?
+* Were patches applied?
+* Was management involved?
+* Were warning signs ignored?
+
+The focus is on   relationships and interactions.
+
+2. Socio-Technical Systems Theory
+- Focus: People and technology working together.  
+This theory assumes that neither technology nor people alone can create security.
+
+- Main Question is Are the human and technical systems properly aligned?
+- Example
+
+An organization deploys Multi-Factor Authentication (MFA).
+Socio-Technical Theory asks:
+* Can employees use MFA easily?
+* Does MFA fit work processes?
+* Do users understand its purpose?
+* Does it improve security without reducing productivity?
+
+The focus is on the interaction between humans and technology  .
+
+A. (Bostrom & Heinen Model)
+Focus: This theory focuses on the joint interaction between:
+- People (users, attackers, IT staff)
+- Technology (systems, tools, security controls)
+- Structure (management, policies, hierarchy)
+- Tasks (work processes and goals)
+
+Security is NOT just technical — it emerges when all four components are aligned.
+B. Model Diagram
+
+                STRUCTURE
+        (Policies, Management, Rules)
+                 ↑     ↓
+
+   PEOPLE  ↔  TECHNOLOGY  ↔  TASKS
+ (Users)       (Systems)     (Work goals)
+                 ↓     ↑
+
+C. How it explains IS Security
+A cybersecurity incident happens when there is misalignment:
+* Strong firewall (technology)
+* Weak training (people)
+* Poor policies (structure)
+* High workload pressure (tasks)
+
+Result: user bypasses security controls → breach occurs
+
+D. Critical Analysis (Modern IS Security)
+Strengths:
+* Very relevant for modern hybrid work environments
+* Explains human error, insider threats, phishing
+* Supports security awareness programs
+* Recognizes usability vs security conflict
+
+E. Weaknesses
+* Hard to measure “alignment” scientifically
+* Overly broad (everything becomes part of the system)
+* Less predictive (explains problems better than predicting them)
+
+F. Modern relevance
+Highly applicable to:
+* Cloud security
+* Remote work security
+* Zero Trust environments
+* Insider threat management
+
+3. Activity Theory
+Focus: Human activities and work practices.
+Activity Theory examines what people are trying to achieve and how security affects their work.
+- Main Question is How do users interact with tools, rules, and communities while performing tasks?
+- Example
+An employee stores passwords in a spreadsheet.
+
+Activity Theory asks:
+* What task was the employee trying to complete?
+* What tools were available?
+* What rules existed?
+* Why did the employee bypass secure methods?
+
+The focus is on   real-world human behavior during work activities  .
+
+A. (Engeström Model)
+Focus: Focuses on human activity in context, especially:
+> How people use tools under rules, community pressure, and division of labor.
+It explains real-world behavior, not just system design.
+
+B. Model Diagram
+
+                 OBJECT (Goal)
+                      ▲
+                      │
+ SUBJECT ─── TOOLS ───┼─── OUTCOME
+ (User)      (Tech)   │
+                      ▼
+
+ RULES ─── COMMUNITY ─── DIVISION OF LABOUR
+
+C. Meaning of components
+* Subject → user (employee, student, hacker)
+* Object → goal (send email, access data)
+* Tools → systems (email, apps, security tools)
+* Rules → policies (password rules, security policies)
+* Community → organization environment
+* Division of Labour → roles (IT vs users)
+* Outcome → result (secure or breached system)
+
+D. How it explains IS Security
+Security failures happen due to contradictions:
+Example contradiction:
+* Employee goal: finish work quickly
+* Security rule: verify every attachment
+
+Conflict = unsafe shortcut behavior
+
+D. Critical Analysis
+Strengths
+* Excellent for explaining user behavior
+* Strong in phishing, password misuse, social engineering
+* Captures work pressure vs security tension
+
+Weaknesses
+* Complex model (hard to apply in practice)
+* Weak focus on technical system design
+* Difficult to quantify contradictions
+
+Modern relevance
+Very strong for:
+* Phishing attacks
+* BYOD (Bring Your Own Device)
+* Remote work behavior
+* Security compliance research
+
+4. General Deterrence Theory (GDT)
+Focus: Compliance through punishment.
+This theory assumes people make decisions based on perceived consequences.
+
+- Main Question is Will the fear of punishment discourage security violations?
+- Example
+Employees are prohibited from sharing passwords.
+
+GDT asks:
+* Are violations monitored?
+* Will employees be caught?
+* How severe is the punishment?
+* Do employees believe punishment will occur?
+
+The focus is on   deterring undesirable behavior  .
+
+A. (Straub Model)
+Focus
+Focuses on preventing misuse through fear of punishment
+> People avoid wrongdoing if they believe they will be caught and punished.
+
+B. Straub Model Diagram
+
+ SECURITY CONTROLS
+ (Monitoring, Logging)
+          ↓
+ PERCEIVED CERTAINTY
+ (Chance of being caught)
+          ↓
+ PERCEIVED SEVERITY
+ (How harsh punishment is)
+          ↓
+      COMPLIANCE
+ (Reduced violations)
+
+C. Key variables
+* Certainty → Will I get caught?
+* Severity → What punishment will I get?
+* Celerity → How fast will I be punished?
+
+D. How it explains IS Security
+Employees may:
+* Share passwords
+* Click phishing links
+* Bypass controls
+
+IF:
+* Monitoring is weak
+* Punishment is unclear
+* Enforcement is inconsistent
+
+then violations increase
+
+E. Critical Analysis
+Strengths
+* Simple and practical
+* Useful for policy enforcement
+* Works in corporate governance
+
+Weaknesses
+* Assumes humans are rational (often false)
+* Ignores emotions, fatigue, and mistakes
+* Weak against external attackers (hackers don’t fear internal punishment)
+* Limited effectiveness for insider threats in modern culture
+
+F. Modern relevance
+Still used in:
+* Security policies
+* Compliance enforcement
+* Audit systems
+* Corporate governance
+
+BUT:
+Less effective alone in modern cybersecurity → must be combined with awareness training and usability design.
+
+
+5. Economic Theory of IS Security
+- Focus: Costs, benefits, risk, and investment decisions.  
+Security is viewed as an economic decision.
+
+- Main Question Is the investment in security worth the cost?
+- Example
+A company considers spending $1 million on a new security solution.
+
+Economic Theory asks:
+* How much risk will it reduce?
+* What losses can be prevented?
+* Is the investment financially justified?
+* Is there a cheaper alternative?
+
+The focus is on   optimizing security investments and resource allocation  .
+
+A. (Ross Anderson – Security Economics)
+Focuses on: Security as a problem of cost, incentives, and resource allocation
+
+Security decisions are economic decisions.
+B. Core Model
+ COST OF SECURITY CONTROL
+          vs
+ EXPECTED LOSS FROM ATTACK
+
+or:
+Risk = Probability × Impact
+
+B. Key idea (Ross Anderson)
+Organizations do NOT fail because of lack of technology.
+They fail because:
+* Security incentives are misaligned
+* Costs are externalized
+* People underinvest in protection
+
+C. How it explains IS Security
+Example:
+A hospital does not invest in:
+* MFA
+* Staff training
+* Advanced email filtering
+
+Why?
+* Too expensive
+* Benefits are not immediate
+* Risk is underestimated
+
+After ransomware attack → huge financial loss
+
+D. Critical Analysis
+A. Strengths
+* Very realistic for business decisions
+* Strong for budgeting and risk analysis
+* Explains underinvestment in cybersecurity
+* Useful for policy and governance
+
+C. Weaknesses
+* Reduces human behavior to money decisions
+* Ignores culture and psychology
+* Hard to predict attacker behavior
+* Does not explain accidental errors well
+
+D. Modern relevance
+Extremely important for:
+* Cyber insurance
+* Risk management
+* Security investment decisions
+* Enterprise cybersecurity strategy
+
+``Quick Memory Trick``
+Think of each theory as looking at cybersecurity through a different lens:
+
+| Theory                             | What It Primarily Looks At |
+| ---------------------------------- | -------------------------- |
+|   Systems Thinking                 | The whole system           |
+|   Socio-Technical Systems Theory   | People + Technology        |
+|   Activity Theory                  | Human work activities      |
+|   General Deterrence Theory        | Punishment and compliance  |
+|   Economic Theory of IS Security   | Cost, risk, and value      |
+
+- One Security Incident, Five Different Questions
+Imagine an employee clicks a phishing email.
+*   Systems Thinking:   What system failures allowed this to happen?
+*   Socio-Technical Systems Theory:   Was there a mismatch between the user and the security technology?
+*   Activity Theory:   What work activity led the employee to click the email?
+*   General Deterrence Theory:   Did the employee fear consequences for unsafe behavior?
+*   Economic Theory of IS Security:   Was enough investment made in training and security controls?
+
+These different questions show exactly what each theory focuses on.
+Final Comparison (Exam-Ready)
+
+| Theory                          | Main Focus                        | Core Question                     | Modern Strength                        |
+| ------------------------------- | --------------------------------- | --------------------------------- | -------------------------------------- |
+| Socio-Technical Systems         | People + Tech + Structure + Tasks | Are system components aligned?    | Very strong in modern enterprises      |
+| Activity Theory                 | Human actions in context          | Why do users behave unsafely?     | Strong for phishing & usability issues |
+| General Deterrence Theory       | Punishment & compliance           | Will users fear consequences?     | Moderate (needs support)               |
+| Economic Theory (Ross Anderson) | Cost & incentives                 | Is security worth the investment? | Very strong in management decisions    |
+
+Final Critical Insight
+Modern cybersecurity problems cannot be explained by only ONE theory:
+
+* Systems Theory → explains system-wide failures
+* Socio-Technical → explains misalignment
+* Activity Theory → explains user behavior
+* Deterrence Theory → explains compliance
+* Economic Theory → explains investment decisions
+
+That is why researchers combine them to fully understand cyber security incidents like phishing, ransomware, 
+and insider threats.
+
+-------------
+BLUEPRINT TEMPLATE
+1. Systems Thinking Blueprint (IS Security)
+How to structure your answer
+A. Start with definition
+Systems Thinking views IS security as a whole system of interrelated components 
+(people, technology, processes, policies, environment).
+
+B. Identify system components in the case
+Write:
+* People (users, attackers, IT staff)
+* Technology (firewalls, email systems, cloud, antivirus)
+* Processes (authentication, incident response)
+* Policies (security rules, access control)
+* Environment (cyber threats, regulations)
+
+C. Draw system interaction (very important)
+
+Environment → Organization System → Output
+                 ↑        ↓
+        People ↔ Technology ↔ Processes ↔ Policies
+                 ↓
+             Feedback (incidents, logs)
+
+D. Apply to the case
+Ask:
+* What failed in the system?
+* Which components interacted badly?
+* Where did feedback fail?
+
+Example phrase:
+The breach occurred due to failure in coordination between human, technical, and process components.
+
+E. Solution (system-wide fix)
+* Improve training
+* Improve security tools
+* Improve monitoring
+* Improve governance
+
+F. Key exam sentence
+> Security failure is an emergent property of system interaction failure, not a single point failure.
+
+2. Socio-Technical Systems Blueprint (Bostrom & Heinen)
+Focus
+Alignment between:
+* People
+* Technology
+* Structure
+* Tasks
+
+Model (must draw)
+
+        STRUCTURE
+   (Policies, Management)
+
+PEOPLE ↔ TECHNOLOGY ↔ TASKS
+
+Steps to answer
+A. Define theory
+> Security depends on alignment between social and technical systems.
+
+B. Identify components in case
+* People → users, staff
+* Technology → systems used
+* Structure → management, policies
+* Tasks → work being done
+
+C. Analyse alignment
+Ask:
+* Is technology easy to use?
+* Do policies match real work?
+* Are users trained?
+* Does structure support security?
+
+D. 4. Identify misalignment (VERY IMPORTANT)
+Write:
+> There is a mismatch between ______ and ______.
+Example: Strong security system BUT weak user training
+
+E. Solution
+* Improve usability
+* Improve training
+* Align policies with workflow
+* Joint optimization (people + tech)
+
+F. Key exam sentence
+> Security failure occurs due to misalignment between social and technical subsystems.
+
+3. Activity Theory Blueprint (Engeström Model)
+Focus: Human activity in context (work behaviour + tools + rules)
+
+Model (must draw)
+
+                OBJECT
+                 ▲
+                 │
+ SUBJECT ── TOOLS │── OUTCOME
+                 │
+ RULES ─ COMMUNITY ─ DIVISION OF LABOUR
+
+Steps to answer
+A. Define theory
+> Activity Theory explains how people use tools under rules and social context to achieve goals.
+
+B. Fill components from case
+* Subject → user
+* Object → goal (task)
+* Tools → email, systems
+* Rules → policies
+* Community → organisation
+* Division of labour → roles
+* Outcome → result (success or breach)
+
+C. Identify contradictions (CORE MARKS AREA)
+Ask:
+What conflicts exist?
+Examples:
+* Speed vs security
+* Productivity vs control
+* Usability vs policy
+
+D. Explain behavior
+> Users bypass security because it conflicts with work goals.
+
+E. Solution
+* Reduce contradictions
+* Integrate security into workflow
+* Improve tool design
+* Align rules with real work
+
+E. Key exam sentence
+> Security failure arises from contradictions within the activity system.
+
+4. General Deterrence Theory Blueprint (Straub Model)
+Focus
+Fear of punishment → compliance
+Model
+
+Security Controls
+      ↓
+Perceived Certainty (caught?)
+      ↓
+Perceived Severity (punishment)
+      ↓
+Compliance / Non-compliance
+
+Steps to answer
+A. Define theory
+> People comply with security rules if they believe violations will be detected and punished.
+
+B. Apply to case
+Ask:
+* Are actions monitored?
+* Are violations detected?
+* Are punishments clear?
+* Are rules enforced?
+
+C. Analyse failure
+Write:
+> Low perceived certainty/severity leads to non-compliance.
+
+D. Solution
+* Increase monitoring
+* Strong audit systems
+* Clear punishment policies
+* Fast enforcement
+
+E. Key exam sentence
+> Security improves when perceived certainty and severity of punishment increase.
+
+5. Economic Theory of IS Security (Ross Anderson)
+Focus
+Cost vs benefit of security investment
+
+Model
+
+Cost of Security Controls
+          vs
+Expected Loss from Attack
+
+Steps to answer
+A. Define theory
+> Security decisions are economic trade-offs between cost and risk.
+
+B. Identify costs and risks
+* Cost of prevention (training, tools)
+* Cost of attack (data loss, downtime, fines)
+
+C. Apply formula
+
+Risk = Probability × Impact
+
+D. Analyse decision
+Ask:
+* Did the organization underinvest?
+* Was risk underestimated?
+* Were incentives misaligned?
+
+E. Solution
+* Invest in high ROI security controls
+* Perform risk assessment
+* Improve budgeting decisions
+
+F. Key exam sentence
+> Security failure occurs due to suboptimal investment in security relative to expected risk.
+
+FINAL EXAM STRATEGY (VERY IMPORTANT)
+When you get a case study, ALWAYS do this:
+Step 1: Identify theory lens
+* Systems → whole system
+* Socio-technical → people + tech
+* Activity → human behaviour
+* Deterrence → punishment
+* Economic → cost/risk
+
+Step 2: Draw model (instant marks)
+
+Step 3: Apply to case (map components)
+
+Step 4: Identify failure type
+* Misalignment (socio-technical)
+* Contradiction (activity)
+* Weak deterrence (GDT)
+* Poor investment (economic)
+* System failure (systems thinking)
+
+Step 5: Recommend solution
+
+ONE-LINE MEMORY TRICK
+* Systems Thinking → “Whole system failed”
+* Socio-Technical → “People + tech not aligned”
+* Activity Theory → “Work conflict caused behavior”
+* GDT → “No fear of punishment”
+* Economic Theory → “Bad investment decision”
+---------------------------------------------------------------------------------------------------------
+CASE STUDY
+---------------------------------------------------------------------------------------------------------
+Case Study: Ransomware Attack at a Hospital
+Background
+A large hospital relies on an Information System (IS) to manage:
+* Patient records
+* Medical equipment
+* Billing systems
+* Staff communication
+* Appointment scheduling
+
+One day, a staff member receives a phishing email disguised as a patient document. 
+The employee opens the attachment, which installs ransomware. The attackers encrypt patient records and demand payment. 
+The hospital cannot access critical information for several days, causing delays in patient care and financial losses.
+
+Applying Different IS Security Theories
+Although the same incident occurred, each theory explains it differently.
+
+1. Systems Thinking Perspective
+Focus: The entire security ecosystem and how its components interact.
+How Systems Thinking Sees the Problem?
+
+The ransomware attack was not caused by a single employee mistake.
+Instead, it resulted from failures across multiple interconnected parts of the system.
+
+Components Involved
+| Component   | Possible Failure                              |
+| ----------- | --------------------------------------------- |
+| People      | Employee clicked the malicious email          |
+| Technology  | Email filter failed to detect the threat      |
+| Processes   | No effective phishing reporting process       |
+| Policies    | Security policies not enforced                |
+| Management  | Inadequate security oversight                 |
+| Environment | Attackers exploited current ransomware trends |
+
+Questions Asked
+* How did the email reach the employee?
+* Why was the malware not detected?
+* Why was the employee vulnerable?
+* Were backups available?
+* How did management monitor security risks?
+
+Conclusion
+The attack occurred because the entire security system failed collectively.
+
+Recommended Solution
+* Improve staff training
+* Strengthen email security
+* Enhance monitoring systems
+* Improve incident response processes
+* Increase management involvement
+
+2. Socio-Technical Systems Theory Perspective
+Focus: The interaction between people and technology.
+How Socio-Technical Theory Sees the Problem
+
+Security failed because the social system and technical system were not aligned.
+Social System
+* Doctors
+* Nurses
+* Administrative staff
+* IT personnel
+
+Technical System
+* Email systems
+* Antivirus software
+* Authentication systems
+* Network security tools
+
+Analysis
+The hospital may have installed security tools, but employees did not fully understand how to identify phishing emails.
+
+The technology existed, but users could not effectively work with it.
+Questions Asked
+* Was the email security system user-friendly?
+* Did employees receive adequate training?
+* Did security controls support daily work activities?
+* Were users involved when security solutions were implemented?
+
+Conclusion
+The breach resulted from poor alignment between human behavior and security technologies.
+
+Recommended Solution
+* Improve usability of security controls
+* Increase security awareness training
+* Design technology around user needs
+* Encourage collaboration between IT and staff
+
+3. Activity Theory Perspective
+Focus
+Human activities, tools, rules, and work practices.
+
+Activity System
+| Component          | Example                                    |
+| ------------------ | ------------------------------------------ |
+| Subject            | Hospital employee                          |
+| Object             | Process patient information quickly        |
+| Tools              | Email software and computer system         |
+| Rules              | Security policies and email procedures     |
+| Community          | Staff, patients, IT department             |
+| Division of Labour | IT secures systems; staff provide services |
+| Outcome            | Ransomware infection                       |
+
+Analysis
+The employee's primary goal was to process patient information efficiently.
+The phishing email appeared legitimate and related to daily work activities.
+
+Contradictions Identified
+Subject vs Rules
+The employee was expected to follow security procedures but also respond quickly to work requests.
+
+Subject vs Tools
+The email system did not clearly indicate the message was malicious.
+
+Object vs Security
+Productivity demands conflicted with careful security checks.
+
+Questions Asked
+* What was the employee trying to achieve?
+* How did the work environment influence behavior?
+* What tools were used?
+* Which rules conflicted with work objectives?
+
+Conclusion
+The breach occurred because work practices and security requirements conflicted.
+
+Recommended Solution
+* Integrate security into daily workflows
+* Reduce conflicts between productivity and security
+* Improve tool design
+* Clarify responsibilities
+
+4. General Deterrence Theory Perspective
+Focus Compliance through the fear of punishment.
+
+How GDT Sees the Problem
+Employees may ignore security rules if they believe there are no consequences.
+
+Analysis
+The hospital had security policies, but staff may not have taken them seriously because:
+* Violations were rarely monitored
+* Penalties were unclear
+* Enforcement was inconsistent
+
+Questions Asked
+* Did employees know the consequences of policy violations?
+* Were violations monitored?
+* Was punishment certain?
+* Was punishment severe enough?
+
+Key Concepts
+Certainty
+Would unsafe actions be detected?
+
+Severity
+Would there be serious consequences?
+
+Celerity
+Would punishment occur quickly?
+
+Conclusion
+Weak deterrence reduced compliance with security policies.
+
+Recommended Solution
+* Monitor policy violations
+* Clearly communicate consequences
+* Consistently enforce security rules
+* Conduct compliance audits
+
+5. Economic Theory of IS Security Perspective
+Focus Costs, risks, benefits, and security investment decisions.
+How Economic Theory Sees the Problem
+The attack occurred because the organization did not invest optimally in cybersecurity.
+
+Analysis
+Before the attack:
+* Employee training budget was limited
+* Advanced email filtering was considered too expensive
+* Backup systems were inadequate
+
+Management attempted to reduce costs.
+After the attack:
+* Ransom payment
+* System recovery costs
+* Operational disruption
+* Reputational damage
+
+The total loss exceeded the cost of preventive controls.
+Questions Asked
+* What was the cost of prevention?
+* What was the expected loss from a ransomware attack?
+* Were security investments economically justified?
+* Was the risk assessment accurate?
+
+Example
+| Item                        | Cost       |
+| --------------------------- | ---------- |
+| Security awareness training | $20,000    |
+| Advanced email filtering    | $50,000    |
+| Attack recovery costs       | $1,000,000 |
+
+The hospital saved $70,000 but lost $1,000,000.
+
+Conclusion
+The organization underinvested in cybersecurity relative to the risk.
+
+Recommended Solution
+* Conduct cost-benefit analysis
+* Increase investment in preventive controls
+* Prioritize high-impact security measures
+* Calculate Return on Security Investment (ROSI)
+
+
+6. Comparison of Theories Applied to the Same Incident
+
+| Theory                             | Focus                     | Explanation of the Ransomware Attack                                           |
+| ---------------------------------- | ------------------------- | ------------------------------------------------------------------------------ |
+|   Systems Thinking                 | Entire security system    | Multiple interconnected failures caused the breach                             |
+|   Socio-Technical Systems Theory   | People and technology     | Human behavior and security technologies were not aligned                      |
+|   Activity Theory                  | Human work activities     | Work demands and security requirements conflicted                              |
+|   General Deterrence Theory        | Punishment and compliance | Employees lacked sufficient motivation to comply with security policies        |
+|   Economic Theory of IS Security   | Costs and benefits        | The hospital underinvested in security controls compared to the potential risk |
+
+7. Final Insight
+
+Notice how the same ransomware attack has five different explanations :
+*   Systems Thinking:   "The system failed."
+*   Socio-Technical Theory:   "People and technology were not aligned."
+*   Activity Theory:   "Work activities conflicted with security requirements."
+*   General Deterrence Theory:   "Policy enforcement and deterrence were weak."
+*   Economic Theory:   "Security investment decisions were inadequate."
+
+This is exactly why theories are useful in cybersecurity research: they provide different lenses for understanding 
+the same security problem and lead to different recommendations for improvement.

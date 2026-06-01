@@ -1,0 +1,104 @@
+Security Models, Frameworks, and Standards — One-Line Summaries
+
+| Framework / Model                                   | What it is used for (summary)                                                                           |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| Trusted Computer System Evaluation Criteria (TCSEC) | Evaluates and classifies the security level of computer systems, primarily focusing on confidentiality. |
+| Bell-LaPadula Model                                 | Protects confidential information by preventing unauthorized disclosure of data.                        |
+| Biba Model                                          | Protects data integrity by preventing unauthorized modification or corruption of information.           |
+| Clark-Wilson Model                                  | Ensures data integrity in business systems through separation of duties and controlled transactions.    |
+| Chinese Wall Model                                  | Prevents conflicts of interest by restricting access to competing organizations' sensitive information. |
+| SANS Institute DFIR                                 | Provides methodologies for Digital Forensics and Incident Response during cybersecurity incidents.      |
+| OWASP                                               | Improves web application security through standards, tools, and best practices.                         |
+| CVE                                                 | Provides unique identifiers for publicly known security vulnerabilities.                                |
+| CVSS                                                | Measures and ranks the severity of security vulnerabilities.                                            |
+| CWE                                                 | Catalogs common software and hardware security weaknesses.                                              |
+| National Vulnerability Database                     | Maintains a searchable database of vulnerabilities, CVEs, and CVSS scores.                              |
+| OpenSAMM                                            | Assesses and improves the maturity of secure software development practices.                            |
+| OWASP SAMM                                          | Helps organizations build and measure software security programs.                                       |
+| BSIMM                                               | Benchmarks software security initiatives against industry practices.                                    |
+| COSO Enterprise Risk Management Framework           | Provides an enterprise-wide approach for identifying, assessing, and managing risk.                     |
+| BCG Growth-Share Matrix                             | Helps organizations prioritize products and investments based on market growth and share.               |
+| COBRA                                               | Performs structured information security risk assessments using questionnaires and expert input.        |
+| I2S2 Model                                          | Aligns information security strategy with organizational goals and objectives.                          |
+| ISO/IEC 27005                                       | Provides guidelines for information security risk management within an ISMS.                            |
+| NIST SP 800-30                                      | Offers a structured method for identifying, analyzing, and evaluating cybersecurity risks.              |
+| OCTAVE Allegro                                      | Conducts asset-focused risk assessments based on organizational information assets.                     |
+| FAIR                                                | Quantifies cyber risk in financial terms to support business decisions.                                 |
+
+Bell-LaPadula vs Biba (Exam Summary)
+
+| Bell-LaPadula                       | Biba                                             |
+| ----------------------------------- | ------------------------------------------------ |
+| Focuses on Confidentiality          | Focuses on Integrity                             |
+| Prevents data disclosure            | Prevents data corruption                         |
+| No Read Up                          | No Read Down                                     |
+| No Write Down                       | No Write Up                                      |
+| Used in military/classified systems | Used in banking, finance, and commercial systems |
+
+Memory Trick
+- Bell-LaPadula = Keep secrets secret (Confidentiality)  
+- Biba = Keep data correct (Integrity)  
+
+- Bell:   No Read Up, No Write Down
+- Biba:   No Read Down, No Write Up (opposite of Bell)
+
+RISK MANAGEMENT
+POLICIES
+Types of Security Policies:
+• Military (governmental) security policy: Policy primarily protecting confidentiality
+• Commercial security policy: Policy primarily protecting integrity
+• Confidentiality policy: Policy protecting only confidentiality
+• Integrity policy: Policy protecting only integrity
+
+King III
+Use: A corporate governance framework that provides principles for leadership, risk management, compliance, sustainability, and IT governance.
+
+IT Governance Focus:
+* IT should align with business objectives.
+* Board is responsible for IT governance.
+* IT risks must be managed.
+* Information assets must be protected.
+
+King IV
+Use: The successor to King III, providing a more outcomes-based approach to corporate governance.
+
+IT Governance Focus:
+* Technology and information are strategic organizational assets.
+* Board oversees technology and information governance.
+* Cybersecurity, privacy, digital transformation, and data governance are emphasized.
+* Integrates governance with value creation and organizational performance.
+
+King III vs King IV
+| Aspect           | King III                            | King IV                                                        |
+| ---------------- | ----------------------------------- | -------------------------------------------------------------- |
+| Approach         | "Apply or Explain"                  | "Apply and Explain"                                            |
+| IT Focus         | IT Governance                       | Technology and Information Governance                          |
+| Scope            | Primarily IT management and control | Broader digital, information, cyber, and technology governance |
+| Governance Style | Compliance-oriented                 | Outcomes-oriented                                              |
+| Release Year     | 2009                                | 2016                                                           |
+
+One-Line Exam Summary
+| Framework | Summary                                                                                                                     |
+| --------- | --------------------------------------------------------------------------------------------------------------------------- |
+| King III  | Establishes principles for corporate governance and board responsibility for IT governance.                                 |
+| King IV   | Provides an outcomes-based governance framework emphasizing technology, information, cybersecurity, and digital governance. |
+
+Quick Memory Tip
+
+* King III = IT Governance
+* King IV = Technology & Information Governance (broader and modernized)
+
+For South African IT governance exams, **King IV** is generally the current and preferred framework.
+
+One-Line Exam Summaries
+| Framework                   | One-line Summary                                                                                                  |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| PMBOK                       | A project management standard that provides best practices, processes, and knowledge areas for managing projects. |
+| Project Management Triangle | A project management model used to balance scope, time, and cost constraints.                                     |
+
+Memory Tip
+- PMBOK = How to manage a project
+- PMT = What constraints must be balanced in a project (Scope, Time, Cost)
+
+PMBOK is a complete project management framework, while PMT is a simple project constraint model.
+

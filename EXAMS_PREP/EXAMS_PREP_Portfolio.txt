@@ -1,0 +1,27 @@
+Explain this deeper
+Exective needs to drive the Cybercrimes
+
+Evaluate the case study as a manager as well
+
+Exective governance of IT
+The common message, is that the executive responsability to manage cybersecurity
+What role manager are praying here: It is the executive responsability to manage the IP security
+Framework for Ensuring effective IT Governance:
+- IT Balance Score Card(Norton and Kaplan) - The vision and strategy in the middle - Here we are talking about Management
+* Financial perspective
+* Customer
+* Internal business
+* Innovation and Learning
+Answer all these questions can be found by examining the objectives, measures, targets and initiatives
+## Convert to the IT BSC
+* Shareholders needs: It contribution to the Shareholders needs
+* Customers: IT satisfy individual Customer
+* Internal business: IT internal business performance
+* Learning & Growth: Innovation & Learning, research, etc
+Business contribution of IT use each measurement explain the Goal, Objective and measure, Target/initiative
+
+- Portofolio Analysis, what does it teach us, tell us?
+BCG Growth-Share Matrix
+The executive give the Risk appetite(what can be done) and Risk tollarance(what they can allow)
+
+

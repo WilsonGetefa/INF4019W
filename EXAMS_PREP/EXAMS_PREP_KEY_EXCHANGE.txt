@@ -1,3 +1,51 @@
+| Feature         | Certificate                                | Private Key                          |
+| --------------- | ------------------------------------------ | ------------------------------------ |
+| Content         | Public key + metadata + signature          | Secret key                           |
+| Sharing         | Public                                     | Private (keep secret!)               |
+| Use             | Verify identity, encrypt messages to owner | Decrypt messages, sign data          |
+| Encryption Type | Usually asymmetric (RSA/ECC)               | Matches certificate’s asymmetric key |
+
+
+Factors that influence the encryption:
+- Key length
+- algorithm
+- Management Policies
+
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-A.pem
+        ↓
+Generate RSA key pair
+        ↓
+Select two large random primes (p, q) internally
+        ↓
+Compute n = p × q
+        ↓
+Compute φ(n) = (p − 1)(q − 1)
+        ↓
+Set public exponent e = 3
+        ↓
+Compute private exponent d = e⁻¹ mod φ(n)
+        ↓
+Private key stored in privkey-A.pem (includes n and d)
+        ↓
+Public key derivable from private key (n, e)
+
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-A.pem
+Important note about e = 3, It works, but is less safe in modern practice, Most systems use: e = 65537
+
+pkeyopt are options that we can use to create the key
+- rsa_keygen_bits: Strength(-pkeyopt rsa_keygen_bits:2048 Sets the RSA key size to 2048 bits.)
+- rsa_keygen_pubexp: Exponent(-pkeyopt rsa_keygen_pubexp:65537 Sets the RSA public exponent to 65537.)
+- -out: destination file to PEM format (Privacy Enhanced Mail)
+- rsa_keygen_primes: Set the prime factors(-pkeyopt rsa_keygen_primes:2 Sets the number of prime 
+                    factors used to generate the RSA key.)
+
+You are NOT manually creating p, q, or d OpenSSL does everything internally
+You only control:
+- key size (2048 bits)
+- public exponent (3)
+
+Privacy Enhanced Mail (PEM). PEM is a file format that may consist of a certificate for private/public key.
+
 In asymmetric cryptography (public/private key systems), the process is:
 - The private key is generated first (randomly)
 - The public key is mathematically derived from the private key
@@ -73,12 +121,13 @@ WHAT A DOES:
 1. A writes the message
 M = "This is for you"
 
-2. A hashes the message
+2. A hashes the message: A one-way function that converts data into a fixed-length fingerprint (no recovery of original data).
 H = SHA256(M)
 This produces something like:
 [9f7a...ab12 (the actual hash is much longer)}
 
-3. A signs the hash
+3. A signs the hash: The digital signature is the encrypted Hash
+        A cryptographic proof created with a private key to verify authenticity and integrity of data.
 A does:
 Signature = Sign(A_private_key, H):
 - The private key is not attached to the message.
@@ -104,7 +153,7 @@ The signature is the result of a mathematical operation involving:
 AT THIS STAGE ANYONE WITH A'S PUBLIC KEY CAN VERIFY IT.
 --> BUT A wants only B to be able to read the message.
 ↓
-4. A encrypts the message for B
+4. A encrypts the message for B: The process of converting readable data (plaintext) into unreadable form using a key(B_public_key).
 More precisely:
 Ciphertext = Encrypt(B_public_key, M)
 Only B can decrypt it because only B has: B_private_key
@@ -120,7 +169,7 @@ Because:
 - B needs the actual message to read it and verify it
 - The signature already “binds” the hash to A’s private key
 
-5. A sends
+5. A sends: Ciphertext(The unreadable output produced after encryption.)
 {Ciphertext, Signature}
 
 ---------------------
@@ -151,7 +200,7 @@ Sometimes the sender's certificate/public key is also sent.
 B
 WHAT B DOES
 
-1. B decrypts: Ciphertext → Decrypt using B_private_key
+1. B decrypts: Ciphertext → Decrypt using B_private_key: The process of converting encrypted data back into readable form using a key(B_private_key).
 B uses B_private_key to decrypt.
 M = Decrypt(B_private_key, Ciphertext)
 [M, A_Signature] = Decrypt(B_private_key, Ciphertext)
@@ -170,6 +219,15 @@ If decryption succeeds → B literally obtains:
 - A_Signature
 If decryption fails → B never reaches this step
 
+Both the message and the signature are protected inside the ciphertext.
+When B decrypts:
+M = Decrypt(B_private_key, Ciphertext):
+
+[M, A_Signature] = Decrypt(B_private_key, Ciphertext)
+        ↓
+[M, A_Signature]
+B gets both back, the message M and the A digital signature A_Signature
+
 2. B hashes the decrypted message
 H1 = SHA256(M)
 B computes this himself.
@@ -184,7 +242,7 @@ B creates his own hash from the plaintext message M, but only after decrypting i
 B never sees A's private key.
 B has A_public_key and receives A_Signature
 
-Then B performs:
+Then B performs: use A_public_key to decrypt A digital signature(A_Signature)
 Verify(A_public_key, A_Signature)
 Verify(A_Signature, B_Hash, A_public_key)
 
@@ -274,3 +332,161 @@ they are usually simplifying how RSA signatures work mathematically. In modern c
 Encryption: Public key → Private key
 Signature: Private key → Public key verification
 That mental model is much safer and closer to how real systems operate today.
+
+-------------------------------------------------------A
+
+M = "This is for you" 
+        ↓
+        ↓ (Create the original message)
+        ↓
+H = SHA256(M)
+        ↓
+        ↓(Create a fixed-size hash/fingerprint of the message)
+        ↓
+A_Signature = Sign(H, A_private_key)
+        ↓
+        ↓(Use A's private key to create a digital signature proving
+            the holder of A_private_key approved this message) which is the encrypted Hash
+        ↓
+Ciphertext = Encrypt(B_public_key, [M, A_Signature])
+        ↓
+(Encrypt both the message and signature using B's public key
+so only B can read them)
+
+Send: Ciphertext
+        ↓
+(Transmit the encrypted data across the network)
+
+------------------------------------------------------------
+
+B
+
+Ciphertext
+        ↓
+(Receive the encrypted data)
+
+Decrypt using B_private_key
+        ↓
+(Only B can decrypt because only B has B_private_key)
+
+[M, A_Signature]
+        ↓
+(Recover the original message and A's signature)
+
+H = SHA256(M)
+        ↓
+(Recompute the hash of the received message)
+
+Verify(A_Signature, H, A_public_key)
+        ↓
+(Check whether the signature was created by the private key
+that corresponds to A_public_key)
+
+Result = VALID
+        ↓
+(B concludes:
+ - The message was not modified (integrity)
+ - The signer possessed A_private_key (authentication)
+ - If A_public_key is trusted as belonging to A,
+   then A signed the message)
+
+OR
+
+Result = INVALID
+        ↓
+(B concludes:
+ - The message was altered, or
+ - The signature is fake, or
+ - The wrong public key was used)
+
+STEPS
+OPENSSL
+
+
+So when OpenSSL outputs a private key, 
+it is effectively outputting both the private and public components contained in that key structure.
+A private key file inherently contains:
+- The private key values
+- The corresponding public key values
+
+DIGITAL_SIGNATURE
+mkdir Test_SIG
+cd Test_SIG
+A - STEPS
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out pvt_k-A.pem
+ls -l
+cat pvt_k-A.pem | less
+cat pvt_k-A.pem > pvt_k_SIG-A-base64encode.txt
+openssl pkey -in pvt_k-A.pem -text | less
+openssl pkey -in pvt_k-A.pem -text > pvt_k_SIG-A-actualvalues.txt
+openssl pkey -in pvt_k-A.pem -out pub_k-A.pem -pubout
+ls
+cat pub_k-A.pem
+openssl pkey -in pub_k-A.pem -pubin -text
+
+B - STEPS
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out pvt_k-B.pem
+ls -l
+cat pvt_k-B.pem | less
+cat pvt_k-B.pem > pvt_k_SIG-B-base64encode.txt
+openssl pkey -in pvt_k-B.pem -text | less
+openssl pkey -in pvt_k-B.pem -text > pvt_k_SIG-B-actualvalues.txt
+openssl pkey -in pvt_k-B.pem -out pub_k-B.pem -pubout
+ls
+cat pub_k-B.pem
+openssl pkey -in pub_k-B.pem -pubin -text
+
+openssl dgst -sha1 messageAB.txt
+openssl dgst -sha1 -sign pvt_k-A.pem -out signature.bin messageAB.txt
+
+-------------------------------------------
+mkdir EXAM
+A
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out EX_pvt-A.pem
+openssl pkey -in EX_pvt-A.pem -out EX_pub-A.pem -pubout
+B
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out EX_pvt-B.pem
+openssl pkey -in EX_pvt-B.pem -out EX_pub-B.pem -pubout
+
+- A sending
+vi messageAB.txt
+Content of the message in messageAB.txt  is;
+"Hi this is a message about our secrets. NO one should evr get to know them"
+or echo 'Hi this is a message about our secrets. NO one should evr get to know them' > messageAB.txt
+
+- Create the Hash SHA1
+    openssl dgst -sha1 messageAB.txt
+        SHA1(messageAB.txt)= 294f11ebb7f49a5b08a584c18d9c26a2cb9cfdb5
+- Create the digital signature(crypted hash) create the signature BIN file
+    openssl dgst -sha1 -sign EX_pvt-A.pem -out signature.bin messageAB.txt
+   ls -l
+- A Encryption (Digital signature and Plaine text message) create the cipher BIN file
+    openssl pkeyutl -encrypt -in messageAB.txt -pubin -inkey EX_pub-B.pem  -out ciphertext.bin
+- B Decryption and reading
+    openssl pkeyutl -decrypt -in ciphertext.bin -inkey EX_pvt-B.pem -out received-message.txt
+- Compare and Check both files
+    cat received-message.txt
+    diff received-message.txt messageAB.txt
+- verify the digital signature ( from A only once) using A's public key and hash created by B using the same message
+  (A sent, remember the Hash was included in the digital signature)
+    openssl dgst -sha1 -verify pubkey-A.pem -signature signature.bin received-message.txt
+
+| Command                                               | Output file created |
+| ----------------------------------------------------- | ------------------- |
+|  openssl dgst -sha1 -sign ... -out signature.bin ...  |  signature.bin      |
+|  openssl pkeyutl -encrypt ... -out ciphertext.bin     |  ciphertext.bin     |
+|  openssl dgst -sha1 messageAB.txt                     | No file created     |
+
+------------------------------------
+
+openssl pkey -in EX_pvt-A.pem -out EX_pub-A.pem -pubout
+Using -pubout strips away the private component and outputs only the public part
+
+The -text option prints human-readable details about the key only the private
+openssl rsa -in EX_pvt-A.key -text -noout
+
+Only public information is displayed:
+openssl rsa -in EX_pvt-A.key -pubout -text
+
+Extract a public key from an RSA private key:
+openssl rsa -in EX_pvt-A.key -pubout -out EX_pub-A.pem
