@@ -1,0 +1,152 @@
+
+
++------+------+
+| Task |      |
++------+------+
+|      |      |
++------+------+
+|      |      |
++------+------+
+
+Activity on node
+• The Earliest start time - the earliest time a task (activity) can start
+• The latest start time – latest time a task (activity) can start.
+• The Earliest Finish time - the Earliest time this task (activity) can finish
+
++------+------+
+|  A   |      |
++------+------+
+|      |   6  |
++------+------+
+|      |      |
++------+------+
+       |
+       v
+       |                +------+------+         +------+------+
+       |                |  B   |      |         |  E   |      |
+       |+------+------> +------+------+ ------> +------+------+
+       |                |      |   7  |         |      |  7   |
+       |                +------+------+         +------+------+
+       |                |      |      |         |      |      |
+       |                +------+------+         +------+------+
+       |                    |                   ↑   |
+       |                    v                   |   |
+       |                +------+------+ --------|   |
+       |                |   C  |      |             |
+       |--------------> +------+------+             |
+       |                |      |   8  |             |
+       |                +------+------+             |
+       |                |      |      |             |
+       |                +------+------+             |
+       |                                            | 
+       |                                            v
+       |                +------+------+         +------+------+
+       |                |   D  |      |         |  F   |      |
+       |--------------> +------+------+ ------> +------+------+
+                        |      |    5 |         |      |   7  |
+                        +------+------+         +------+------+
+                        |      |      |         |      |      |
+                        +------+------+         +------+------+
+
+                +------+
+                |act(x)|
+                +------+
+Yes — here is a clean Activity-on-Node (AON) network diagram for your data.
+A - 
+B - 
+C A 
+D B 
+E B 
+F B 
+G C,D 
+H F 
+I F 
+What are the paths through the network? 
+What is the critical path and duration? 
+Draw the network diagram?
+A = 5 
+B = 4 
+C = 2 
+D = 1
+E = 5 
+F = 5 
+G = 4 
+H = 3 
+I = 2
+
+1) Activity network (AON structure)
+Dependencies:
+* A → C
+* B → D, E, F
+* C & D → G
+* F → H, I
+* E, G, H, I are end activities
+
+AON diagram (text form):
+Start
+ ├── A(5) ──→ C(2) ──┐
+ │                   │
+ │                   ├──→ G(4) ──→ Finish
+ │                   │
+ └── B(4) ──→ D(1) ──┘
+      │
+      ├──→ E(5) ───────────────→ Finish
+      │
+      ├──→ F(5) ──→ H(3) ───────→ Finish
+      │           └─→ I(2) ─────→ Finish
+
+2) All possible paths through the network
+We list complete start-to-finish paths:
+1. A → C → G
+   Duration = 5 + 2 + 4 = 11
+
+2. B → D → G (joins with C at G requirement)
+   Duration = 4 + 1 + 4 = 9
+
+3. B → F → H
+   Duration = 4 + 5 + 3 = 12
+
+4. B → F → I
+   Duration = 4 + 5 + 2 = 11
+
+5. B → E
+   Duration = 4 + 5 = 9
+
+3) Critical Path
+The longest path determines project duration.
+B → F → H = 12 (longest)
+
+So:
+✅Critical Path: B → F → H
+
+⏱ Project Duration: 12 time units
+4) Key insight
+Even though A → C → G is fairly long (11), it is not critical because it finishes earlier than the B–F–H chain.
+The bottleneck is clearly the branch through F and H.
+
+Step 1
+• Identify all tasks
+• Determine task dependencies
+• Draw and label each task (e.g. for each ID enter an appropriate identification number)
+• Enter the task duration for each task
+
+Step 2 – Enter the Earliest Start (moving from left to right)
+1. Task A earliest start is Zero (0)
+2. Task B earliest start = Earliest start (Task A) + Duration of Task A
+3. Task E: If a successor task has more than one predecessor task, use the highest Earliest start of the predecessor tasks.
+    Hence for Task E, Earliest start for B = 6, earliest start for C =
+6, THEREFORE Earliest start for E will be 14
+
+Step 3 – Determining Latest start time & the Critical Path (moving from right to left)
+• Determine the Earliest finish time for the right-most task. In our case this will be Task F = 21 + DURATION = 21 + 7 = 28.
+• Determine the Latest start for the right-most task by subtracting its duration from the Earliest Finish
+• Task F latest start = 28 – 7 = 21
+• Latest start for Task E = Latest start Task F – duration of Task E, 21 – 7 = 1
+
+The earliest you can complete the full tasks is equal to the latest you can complete the project
+The latest you can complete the project is 
+The latest you can start the last task
+
+What is the critical path, or the longest path?
+How many task got flot, or can we delay without affecting to total time of the project"28"? Any task that can be delay or any task that are not on the longest path
+You can delay task B by one day without affecting the ending of the project which is 28 days

@@ -1,0 +1,76 @@
+FORENSIC SCIENCE
+Here are concise two-line cybersecurity-focused explanations for each forensic science principle:
+
+1. Principles of Identity, Uniqueness, and Individuality
+Every digital artifact (file, device, log, or network trace) has unique characteristics that can help identify its source.
+In cybersecurity, investigators use these unique attributes to link evidence to a specific system, user, or incident.
+
+2. Principle of Exchange(There is a change when there is interacts)
+Whenever a cybercriminal interacts with a system, both the attacker and the system leave traces of that interaction.
+Examples include log entries, malware artifacts, IP addresses, and modified files left behind during an attack.
+
+3. Principle of Comparison
+Digital evidence must be compared with known standards or reference data to determine similarities or differences.
+For example, malware samples, file hashes, or network traffic patterns are compared to identify threats.
+
+4. Principle of Linkage
+Different pieces of digital evidence can be connected to establish relationships between events, systems, and individuals.
+Investigators may link IP addresses, user accounts, devices, and timestamps to reconstruct a cyberattack.
+
+5. Principle of Probability
+Conclusions in digital investigations are often based on the likelihood that evidence supports a particular event or action.
+For example, multiple matching indicators increase the probability that a specific user performed an activity.
+
+6. Principle of Progressive Change
+Digital evidence can change over time due to system activity, updates, overwriting, or user actions.
+Cybersecurity investigators must collect and preserve evidence quickly to prevent loss or alteration.
+
+7. Principle of Analysis
+Digital evidence should be examined using systematic, scientific, and repeatable methods.
+This ensures that findings are accurate, reliable, and admissible in legal or organizational investigations.
+
+DIGITAL FORENSIC
+Here are some key **Digital Forensics Theories/Principles** with brief cybersecurity-focused explanations:
+
+1. Principle of Evidence Integrity
+Digital evidence must remain unchanged from the time it is collected until it is presented.
+Investigators use hashing and proper handling procedures to prove that evidence has not been altered.
+
+2. Principle of Preservation
+Potential digital evidence must be protected from modification, deletion, or contamination.
+This includes creating forensic copies and isolating affected systems during an investigation.
+
+3. Principle of Documentation
+Every action taken during the investigation must be recorded accurately and completely.
+Proper documentation ensures transparency, repeatability, and legal admissibility of the findings.
+
+4. Principle of Repeatability
+Another qualified investigator should be able to follow the same process and obtain similar results.
+This increases the reliability and credibility of the forensic investigation.
+
+5. Principle of Chain of Custody
+A documented record must show who collected, handled, transferred, and analyzed the evidence.
+This proves the evidence was securely managed and not tampered with.
+
+6. Principle of Authentication
+Digital evidence must be verified as genuine and linked to its original source.
+Techniques such as hash verification help confirm authenticity.
+
+7. Principle of Minimization of Handling
+Investigators should interact with original evidence as little as possible.
+Forensic images and copies are analyzed instead of the original data to prevent accidental changes.
+
+8. Principle of Objectivity
+Digital forensic examinations must be based on facts and evidence rather than assumptions or opinions.
+Investigators should present unbiased findings supported by technical analysis.
+
+9. Principle of Reconstruction
+Digital evidence should be used to recreate the sequence of events that occurred during an incident.
+Logs, timestamps, and system artifacts help investigators understand how an attack happened.
+
+10. Principle of Attribution
+Investigators attempt to determine who was responsible for a digital action or cyberattack.
+Evidence such as user accounts, devices, IP addresses, and activity logs may help establish responsibility.
+
+Decimal: 65, HEX: 41, Char: A
+Decimal: 97, HEX: 61, Char: a

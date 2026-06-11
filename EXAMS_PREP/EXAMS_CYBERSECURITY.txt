@@ -1,0 +1,120 @@
+Cybersecurity
+Block1
+|-LT ---System Security (Systems Access, Control & IS Security Threat Modelling)
+|     |__Few concepts to define:
+|     |     |__Threats, Security Policy, Crypto, access control
+|     |     |__Terminology1, System
+|     |     |__Terminology2 like subject, person, principal
+|     |     |__Terminology3 like Secrecy, Privacy, confidentiality
+|     |     |__Terminology4 like Anonymity, object’s, Authentication
+|     |     |__Terminology5 like Trust
+|     |     |__Terminology6 like Policy, Security policy, protection profile. security target
+|     |     |__Levels of information, secret --> confidential --> Unclassified
+|     |     |__Security Model Bell-LaPadula/Chinese Wall Model/MLS(Multilateral Security): Top Secret --> Secret --> confidential --> Open
+|     |     |__System Access: Authentication
+|     |        |__Authentication Methods: identification, Authentication, Authorisation, Accountability
+|     |        |__Methods of Credential Management Systems (CMS)
+|     |           |__Strong Authentication
+|     |           |__Identity/ID Managemen
+|     |           |__Profiles updates
+|     |           |__Directories/Directories Role in ID managemen
+|     |           |__Meta and Virtual Directories
+|     |           |__Web Access management
+|     |           |__Password Management/Single Sign On/Account Management Software
+|     |           |__Federation (I hate this word)
+|     |           |__Biometrics/ Crossover Error Rate (CER)* stated as a percentage that represents the point at which the false rejection rate equals the false positive rat
+|     |           |__Several Attack on password: Passwords and the OS, System password protection
+|     |           |__Other Types of Authentication: Digital Signature/Passphrase
+|     |           |__Memory Cards/Smart Card
+|     |--INF4019W System Management
+|           |__Define What is System Management? (Case Study)
+|           |__Balancing Risk and Reward 
+|           |__Organizational Issues
+|           |__Methodology of the system Design: Top-Down Design, Iterative Design
+|           |__Lessons from Safety-Critical Systems, define with security policy
+|           |__Bug Fixes steps
+|           |__Control Tuning and Corporate Governanc (controling internal)
+|           |__Evolving Environments and the Tragedy of the Commons/ Organizational Change
+|           |__Risk Management calculate the risk
+|
+|-ZR ---Information Security Policy Development
+|     |__Security Policy, Describe and Policy
+|           |__Security Models
+|           |__Trust System
+|           |__ A secure system is a system that starts in an authorized state and cannot enter an unauthorized state
+|           |__Security Policy-Terminologies, types: Military, Commercial, Confidentiality, Integrity
+|           |__Principle of Easiest Penetration, the weakest poin is the principle of easiest penetration, consider all
+|           |__Attribute and Protection
+|           |    |__Vulnerabilities (Computing resource/Vulnerability)
+|           |    |__Confidentiality(Data/Software)
+|           |    |__Integrity(Data/Software)
+|           |    |__Availability(Data/Software)
+|           |    |__Authentication(Data/Software)
+|           |    |__Non-repudiation(Data/Software)
+|           |__Methods of Defense: Encryption
+|           |    |__Encryption
+|           |    |__Software Control
+|           |    |__ Physical and Hardware Controls
+|           |__Elements of Security policy and Security mechanism, Confidentiality, Integrity, Availability
+|           |__Types of Access Control, Discretionary Access Control (DAC, IBAC), Mandatory Access Control (MAC)
+|           |__Security Mechanisms: Entity or procedure that enforces some part of the security policy
+|           |__Systems Security Policy Models is a model that represents a particular policy or set of policies
+|           |__Systems security Policy Models (fomal model, TCSEC, DoD)
+|              |__The Military Security Policy(unclassified, restricted, confidential, secret, top secret)
+|              |__Bell-La Padula(Top Secret, Secret, Confidential, Unclassified)
+|              |__Military and Non-military: Toward Integrity 
+|              |__The Biba Model
+|              |__The Clark-Wilson Mode, each part check on the other and does the part of responsability
+|              |__Chinese Wall Mode, Check on the conflicting interests
+|
+|-MK ---Systems Thinking, IS security theories
+|     |  |__What is a System?
+|     |  |__What is a theory?
+|     |  |__What is a system theory?
+|     |  |__What is Systems Thinking?
+|     |  |__Information Systems security Theories
+|     |     |__Socio-Technical Systems Theory
+|     |     |__Activity Theory
+|     |     |__General Deterrence Theory
+|     |-Linux/Unix Operating System
+|     |  |__What is an Operating System?
+|     |  |__Operating System Concept
+|     |  |__Kali Linux
+|     |     |__What is Kali linux
+|     |     |__Kernel
+|     |     |__Overview of the Kernel Structure, five main subsystems
+|     |        |__Process Schedule
+|     |        |__Memory Manager
+|     |        |__Virtual File System (VFS)
+|     |        |__Network Interface (NET)
+|     |        |__Inter-Process Communication (IPC) 
+|     |-A Control System
+|     |  |__Why we need controls
+|     |  |__Basic Control concepts
+|     |  |  |__Feedback control loops and system operation
+|     |  |  |__Feedforward control System
+|     |  |__What is Internal control?
+|     |  |  |__Internal Control – What is to be attained (Objectives)
+|     |  |__Controls – Means to attain goals
+|     |  |__General & application controls
+|     |  |__General Controls within IT Environments
+|     |  |__Five Interrelated Components of Internal Contro
+|     |-Volatility Plugins/commands
+|     |-Linux Commands
+|
+|-PT ---Academic Writing
+|     |  |__The KEY take-aways 
+|     |  |__PART 1 – WHAT IS ACADEMIC WRITING?
+|
+
+Block2
+LT
+MK
+LZ
+
+
+
+Exams1
+LT
+MK
+LZ

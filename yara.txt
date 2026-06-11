@@ -108,21 +108,21 @@ yara sqlite_malware.yar win11dump.mem
 
 ### 🔹 Explanation
 
-1. **Meta Section**
+1. Meta Section
 
-   * `description` → explains what this rule detects
-   * `score` → high priority (100)
+   *description → explains what this rule detects
+   *score → high priority (100)
 
-2. **Strings Section**
+2. Strings Section
 
-   * `$sqlite_header` → detects a **SQLite database header** (`SQLite format 3`)
-   * `$keyword1, $keyword2, $keyword3` → typical strings malware might store in SQLite for configs, credentials, or C2 info
+   *$sqlite_header → detects a SQLite database header (SQLite format 3)
+   *$keyword1, $keyword2, $keyword3 → typical strings malware might store in SQLite for configs, credentials, or C2 info
 
-3. **Condition Section**
+3. Condition Section
 
-   * `filesize > 50KB` → avoids small harmless SQLite files
-   * `$sqlite_header` → ensures it’s a SQLite DB
-   * `any of ($keyword1, $keyword2, $keyword3)` → at least one suspicious malware keyword
+   *filesize > 50KB → avoids small harmless SQLite files
+   *$sqlite_header → ensures it’s a SQLite DB
+   *any of ($keyword1, $keyword2, $keyword3) → at least one suspicious malware keyword
 
 
 rule SQLiteHunter : sqlite
@@ -155,4 +155,9 @@ Offset  PID     CreateTime      PPID    ImageFileName   SessionId       Threads 
 53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00 SQLite format 3.
 0x1ef81769f98   2688    2018-06-08 00:12:35.000000 UTC  716     MsMpEng.exe     0       34      SQLiteHunter    $hex_string
 53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00 SQLite format 3.
+
+Complex Rule --
+sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem windows.vadyarascan --yara-file "SQLiteHunter.yar"
+Single String --
+sudo python3 volatility3/vol.py -f /home/kaliwg/Downloads/windump/WinDump.mem windows.vadyarascan --yara-rule="53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00"
 
