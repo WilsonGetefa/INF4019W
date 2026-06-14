@@ -71,6 +71,17 @@ This process is strictly a one-way function; you cannot reverse-engineer the ori
    = SHA-3: The latest family member, based on a completely different internal design (the Keccak permutation), 
         used as a highly secure alternative to SHA-2.
 
+📤 The Sender
+   1. Message: Has the raw message ready to send.
+   2. Hash(Key + Message): Combines the message and runs them together through a hashing algorithm (like SHA-256/MD5).
+   3. Send: Transmits the unencrypted raw message paired directly with the Hash, like SHA-256/MD5.
+
+📥 The Receiver
+   1. Receive: Gets the raw message and the attached fingerprint over the network.
+   2. Read and Separate: Reads the plaintext message normally, but slides the received fingerprint to the side.
+   3. Take Message + Hash: Takes that plaintext message and runs it through the exact same hashing algorithm using the exact same secret key.
+   4. Compare: Compares the newly calculated fingerprint with the one sent by the sender. If they are a 100% exact match, 
+    the identity of the sender and the integrity of the data are officially verified.
 
 2. Authentication (Verifying Identity)
 Authentication ensures that the sender of a message is truly who they claim to be, preventing impersonation and tampering.
@@ -115,9 +126,129 @@ These are symmetric algorithms, meaning the exact same secret key is used to loc
     of data and supports key lengths of 128, 192, and 256 bits. AES is highly efficient in both hardware and software, 
     and there are no known practical attacks against it when properly implemented.
 
+A username/password by itself is not encryption. It is an authentication method that proves the user's identity.
+
+The actual VPN encryption is usually handled separately, most commonly using:
+- Asymmetric cryptography (certificates and public/private keys) to establish a secure connection and verify the identities of the client and server.
+- Diffie-Hellman (DH) key exchange to securely generate and exchange a shared secret key over an insecure network without transmitting the key itself.
+- Symmetric cryptography (such as AES) to encrypt and decrypt the VPN traffic after the connection is established.
+
+Therefore, a username/password login does not automatically mean symmetric or asymmetric encryption.
+
+Certificate-based OpenVPN (most common):
+- The server has a digital certificate and private key.
+- Clients verify the server's certificate to ensure they are connecting to a trusted server.
+- Clients may also have their own certificates for mutual authentication.
+- Username/password credentials may be used as an additional authentication factor.
+
+This setup uses asymmetric cryptography for authentication, Diffie-Hellman for secure key exchange, and symmetric encryption (AES, etc.) for protecting the VPN tunnel.
+OpenVPN uses username/passwords to authenticate users and verify their identity before access is granted. It then uses asymmetric cryptography (digital certificates and 
+    public/private keys) to establish trust between the client and server. During the connection process, Diffie-Hellman is used to securely create a shared secret key. 
+    Once the connection is established, OpenVPN uses symmetric encryption, typically AES, to efficiently encrypt and decrypt all data transmitted through the VPN tunnel.
+
+Diffie-Hellman (DH) is a key exchange algorithm used in cybersecurity to allow two parties to securely create a shared secret key over an insecure network.
+The shared secret is then used as a symmetric encryption key (such as AES) to encrypt communications, without ever transmitting the key itself across the network.
+In VPNs like OpenVPN, Diffie-Hellman helps the client and server securely agree on encryption keys before the VPN tunnel is established.
+It provides secure key exchange and supports Perfect Forward Secrecy (PFS) when using ephemeral keys, meaning past communications remain secure even if a 
+    long-term key is later compromised.
+
+The Affine Cipher is a classical symmetric encryption algorithm used to encrypt messages directly using a mathematical substitution formula. Diffie-Hellman is a modern 
+    key exchange algorithm that does not encrypt data itself but allows two parties to securely generate a shared secret key, which can then be used by encryption algorithms 
+    such as AES.
+
+1. Symmetric Encryption
+Symmetric encryption is a method of protecting data where the same secret key is used for both encryption and decryption.
+
+How it works:
+1. Alice and Bob agree on a secret key.
+2. Alice encrypts the message using the secret key.
+3. The encrypted message (ciphertext) is sent to Bob.
+4. Bob uses the same secret key to decrypt the ciphertext back into the original message.
+
+Example:-->
+Plaintext:      HELLO
+Secret Key:     K123
+Encrypt --> Ciphertext: X7P9Q
+Decrypt using K123 --> HELLO
+
+Characteristics:
+- Uses one shared key.
+- Very fast and efficient.
+- Suitable for encrypting large amounts of data.
+- The biggest challenge is securely sharing the secret key.
+
+Common Symmetric Algorithms:
+- DES (obsolete)
+- 3DES (deprecated)
+- AES (current standard)
+
+Real-World Use
+After an OpenVPN connection is established, AES is typically used to encrypt all VPN traffic because it is fast and secure.
+
+2. Asymmetric Encryption
+Asymmetric encryption uses two different keys:
+- Public Key – shared openly.
+- Private Key – kept secret.
+
+The keys are mathematically related. How it works:
+1. Bob creates a public key and a private key.
+2. Bob shares his public key with everyone.
+3. Alice encrypts a message using Bob's public key.
+4. Bob decrypts the message using his private key.
+
+Example:
+Bob's Public Key  --> Shared publicly
+Bob's Private Key --> Secret
+
+Alice encrypts with Public Key
+           ↓
+Encrypted Message
+           ↓
+Bob decrypts with Private Key
+
+Characteristics:
+- Uses two keys instead of one.
+- More secure for exchanging information over untrusted networks.
+- Slower than symmetric encryption.
+- Solves the key-distribution problem.
+
+Common Asymmetric Algorithms
+- RSA
+- ECC
+- Diffie-Hellman (used for key exchange rather than direct encryption)
+
+Real-World Use
+In OpenVPN:
+- Certificates use asymmetric cryptography to establish trust.
+- Diffie-Hellman securely exchanges key material.
+- AES then encrypts the actual VPN data.
+
+Comparison
+| Feature          | Symmetric Encryption | Asymmetric Encryption               |
+| ---------------- | -------------------- | ----------------------------------- |
+| Number of keys   | One shared key       | Public key + Private key            |
+| Speed            | Fast                 | Slower                              |
+| Main purpose     | Encrypt data         | Authentication, trust, key exchange |
+| Key distribution | Difficult            | Easier                              |
+| Examples         | AES, DES, 3DES       | RSA, ECC                            |
+| OpenVPN use      | Encrypts VPN traffic | Certificates and key exchange       |
+
+Simple Memory Trick, Think of it like a safe:
+
+Symmetric Encryption:
+- One key locks the safe.
+- The same key unlocks the safe.
+
+Asymmetric Encryption
+- One key locks the safe (public key).
+- A different key unlocks the safe (private key).
+
+That's why modern systems such as OpenVPN, HTTPS, and SSH typically use both:
+1. Asymmetric cryptography to establish trust and exchange keys.
+2. Symmetric cryptography (AES) to encrypt the actual data efficiently.
+
 Part 2: Mapping Cryptography to the OSI Model Layers
 Security protocols integrate these cryptographic building blocks at different stages of network communication.
-
 | OSI Layer | Layer Name   | Primary Security Protocols Involved    | Cryptographic Primitives Used                                                     |
 |-----------|--------------|----------------------------------------|-----------------------------------------------------------------------------------|
 | Layer 7   | Application  | HTTPS, SSH, S/MIME, PGP, DNSSEC        | RSA, DSA (for handshake); AES (for payload); SHA-256 (for integrity)              |

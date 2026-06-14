@@ -1,91 +1,61 @@
-| Feature         | Certificate                                | Private Key                          |
-| --------------- | ------------------------------------------ | ------------------------------------ |
-| Content         | Public key + metadata + signature          | Secret key                           |
-| Sharing         | Public                                     | Private (keep secret!)               |
-| Use             | Verify identity, encrypt messages to owner | Decrypt messages, sign data          |
-| Encryption Type | Usually asymmetric (RSA/ECC)               | Matches certificate’s asymmetric key |
+The Affine Cipher is not used in digital signatures.
+Why not?
+The Affine Cipher is a classical symmetric substitution cipher used for simple encryption of letters. 
+It works by applying a mathematical formula to each character:
 
+E(x)=(ax + b) bmod 26
 
-Factors that influence the encryption:
-- Key length
-- algorithm
-- Management Policies
+Its purpose is:
+- Encrypt plaintext into ciphertext.
+- Decrypt ciphertext back into plaintext.
 
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-A.pem
+It does not provide:
+- Authentication
+- Integrity
+- Non-repudiation
+- Digital signatures
+
+What is used in digital signatures?
+Digital signatures use:
+
+1. Hash functions
+   - SHA-256
+   - SHA-512
+
+2. Asymmetric cryptography
+   - RSA
+   - ECC
+   - DSA
+
+Example:
+M = This is for you
         ↓
-Generate RSA key pair
+H = SHA-256(M)
         ↓
-Select two large random primes (p, q) internally
+Signature = Sign(H, A_private_key)
         ↓
-Compute n = p × q
-        ↓
-Compute φ(n) = (p − 1)(q − 1)
-        ↓
-Set public exponent e = 3
-        ↓
-Compute private exponent d = e⁻¹ mod φ(n)
-        ↓
-Private key stored in privkey-A.pem (includes n and d)
-        ↓
-Public key derivable from private key (n, e)
+Verify(Signature, H, A_public_key)
 
-openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -pkeyopt rsa_keygen_pubexp:3 -out privkey-A.pem
-Important note about e = 3, It works, but is less safe in modern practice, Most systems use: e = 65537
 
-pkeyopt are options that we can use to create the key
-- rsa_keygen_bits: Strength(-pkeyopt rsa_keygen_bits:2048 Sets the RSA key size to 2048 bits.)
-- rsa_keygen_pubexp: Exponent(-pkeyopt rsa_keygen_pubexp:65537 Sets the RSA public exponent to 65537.)
-- -out: destination file to PEM format (Privacy Enhanced Mail)
-- rsa_keygen_primes: Set the prime factors(-pkeyopt rsa_keygen_primes:2 Sets the number of prime 
-                    factors used to generate the RSA key.)
+---
 
-You are NOT manually creating p, q, or d OpenSSL does everything internally
-You only control:
-- key size (2048 bits)
-- public exponent (3)
+### Comparison
 
-Privacy Enhanced Mail (PEM). PEM is a file format that may consist of a certificate for private/public key.
+| Feature                  | Affine Cipher              | Digital Signature          |
+| ------------------------ | -------------------------- | -------------------------- |
+| Purpose                  | Encryption                 | Authentication + Integrity |
+| Type                     | Classical symmetric cipher | Asymmetric cryptography    |
+| Uses hash functions      | No                         | Yes                        |
+| Uses public/private keys | No                         | Yes                        |
+| Provides confidentiality | Yes (weakly)               | No                         |
+| Provides integrity       | No                         | Yes                        |
+| Provides authentication  | No                         | Yes                        |
+| Used in modern systems   | No                         | Yes                        |
 
-In asymmetric cryptography (public/private key systems), the process is:
-- The private key is generated first (randomly)
-- The public key is mathematically derived from the private key
-- But it is designed so thaty ou cannot reverse the public key to get the private key
-So:
-✔ Private key → used to generate public key
-❌ Public key does NOT generate private key
-❌ Neither “creates” the other in a reversible way
-Private key  ──(math function)──> Public key
+### Exam-ready answer
 
-In symmetric cryptography, there is no public/private key pair.
-- There is only one shared secret key
-- The same key is used for both encryption and decryption
-- Both parties must already know the same secret key
+> **No, the Affine Cipher is not used in digital signatures. The Affine Cipher is a classical encryption algorithm used for confidentiality, whereas digital signatures use hash functions and asymmetric cryptography (such as RSA, DSA, or ECC) to provide authentication, integrity, and non-repudiation.**
 
-Key K
-   ↓
-Encrypt(M, K) → Ciphertext
-   ↓
-Decrypt(Ciphertext, K) → M
-
-Who creates what?
-- One side generates the secret key (randomly or via key exchange)
-- Then that same key is shared securely with the other side
-
-But:
-- The key is not split into public/private parts
-- It is just one shared secret
-⚠️ Main challenge The hardest part is:
-How do both sides safely get the same key without someone stealing it?
-That’s why systems like HTTPS use:
-- asymmetric crypto (RSA/ECC) to exchange the key
-- then switch to symmetric crypto (AES) for speed
-
-| Purpose          | Key Used        |
-| ---------------- | --------------- |
-| Sign by A        | A's private key |
-| Verify signature | A's public key  |
-| Encrypt for B    | B's public key  |
-| Decrypt by B     | B's private key |
 
 Ciphers (Encryption algorithms) These are used to hide data and later recover it using a key.
     pupose to encrypt data that will be send out ron device A to device B, later use the same cipher type to decrypt
@@ -172,29 +142,152 @@ Because:
 5. A sends: Ciphertext(The unreadable output produced after encryption.)
 {Ciphertext, Signature}
 
----------------------
-A
+FULL CONCEPTS---------------------
+DIGITAL Signature=====================
+A(Sender)
+
 M = "This is for you"
         ↓
-H = SHA256(M)
+H = SHA-256(M)  -- used to ensure integrity of the message before signing
         ↓
-A_Signature = Sign(H, A_private_key)
+A_Signature = Sign(H, A_private_key)   -- Integrity + Authentication (digital signature using private key)
         ↓
-Ciphertext = Encrypt(B_public_key, [M, A_Signature])
+Ciphertext = Encrypt(B_public_key, [M, A_Signature])   -- Confidentiality
         ↓
 Send: Ciphertext
 ---------------------
-B
+B(Receiver)
+
 Ciphertext
         ↓
-Decrypt using B_private_key
+Decrypt using B_private_key   -- Confidentiality
         ↓
 [M, A_Signature]
         ↓
-H = SHA256(M)
+H = SHA-256(M)  -- used to ensure integrity of the message before signing
         ↓
-Verify(A_Signature, H, A_public_key)
+Verify(A_Signature, H, A_public_key)   -- Integrity + Authentication check
+
+SYMMETRIC========================================
+A (Sender)
+
+M = "This is for you"
+        ↓
+Diffie-Hellman Key Exchange (with B)
+        ↓
+Shared Secret Key generated (no key transmitted)
+        ↓
+K = Derived symmetric session key (from shared secret)
+        ↓
+HMAC = HMAC(M, K)   -- Authentication + Integrity
+        ↓
+Ciphertext = Encrypt(M, K)   -- Confidentiality (AES-style)
+        ↓
+Send: Ciphertext + HMAC
 ---------------------
+B (Receiver)
+
+Ciphertext + HMAC
+        ↓
+Diffie-Hellman Key Exchange (with A)
+        ↓
+Same Shared Secret Key generated
+        ↓
+K = Derived symmetric session key
+        ↓
+M = Decrypt(Ciphertext, K)   -- Confidentiality
+        ↓
+HMAC' = HMAC(M, K)
+        ↓
+Compare HMAC' with received HMAC
+        ↓
+If match → Integrity + Authentication confirmed
+------------------------
+Diffie-Hellman is used first to securely generate a shared secret between sender and receiver, 
+which is then used as the symmetric key for encryption and HMAC-based authentication.
+- Key exchange algorithm
+- Used to create shared secret securely
+- Basis for symmetric encryption keys
+- Often used in TLS, SSH, VPNs
+
+Diffie-Hellman is a key exchange algorithm that is implemented within secure protocols such as TLS/SSL, SSH, and IPsec. 
+These protocols manage the exchange of public values, authentication of participants, and integration of the resulting 
+shared secret into symmetric encryption keys.
+DH = math for shared secret, protocol = rules for how it is exchanged
+-----------------------------
+In the TLS handshake, Diffie-Hellman is used after server authentication to securely generate a shared secret between 
+client and server. This secret is then used to derive symmetric session keys for encryption (AES) and integrity protection (HMAC),
+ enabling secure communication over an untrusted network.
+
+--------------------------------------------------------
+ASYMMETRIC=======================================
+A (Sender)
+
+M = "This is for you"
+        ↓
+Ciphertext = Encrypt(B_public_key, M)   -- Confidentiality
+        ↓
+A_Signature = Sign(SHA-256(M), A_private_key)   -- Integrity + Authentication
+        ↓
+Send: Ciphertext + A_Signature
+---------------------
+B (Receiver)
+Ciphertext + A_Signature
+        ↓
+M = Decrypt(B_private_key, Ciphertext)   -- Confidentiality
+        ↓
+H = SHA-256(M)
+        ↓
+Verify(A_Signature, H, A_public_key)   -- Integrity + Authentication check
+---------------------
+OpenVPN Cryptographic Model==========================================
+A (Client)
+
+M = "VPN data / login request"
+        ↓
+Verify Server Certificate (B_public_key)   -- Authentication of server (Asymmetric)
+        ↓
+Diffie-Hellman Key Exchange (with Server)
+        ↓
+Shared Secret Generated (no key transmitted)
+        ↓
+K = Derived AES Session Key
+        ↓
+User sends Username + Password   -- User Authentication
+        ↓
+HMAC = HMAC(M, K)   -- Integrity + Authentication (data level)
+        ↓
+Ciphertext = Encrypt(M, K)   -- Confidentiality (AES)
+        ↓
+Send: Ciphertext + HMAC + Credentials
+---------------------
+B (OpenVPN Server)
+
+Ciphertext + HMAC + Username/Password
+        ↓
+Verify Username + Password   -- User Authentication
+        ↓
+Diffie-Hellman Key Exchange (with Client)
+        ↓
+Same Shared Secret Generated
+        ↓
+K = Derived AES Session Key
+        ↓
+M = Decrypt(Ciphertext, K)   -- Confidentiality
+        ↓
+HMAC' = HMAC(M, K)
+        ↓
+Compare HMAC' with received HMAC
+        ↓
+If match → Integrity + Authentication confirmed
+        ↓
+Allow VPN access
+---------------------
+OpenVPN uses asymmetric cryptography (certificates) to verify server identity, Diffie-Hellman to securely generate a shared secret, 
+symmetric encryption (AES) to protect data, and HMAC to ensure integrity and authentication of transmitted packets.
+-----------------------------------
+------------------------------------------------
+---------------------------------------------------------
 Sometimes the sender's certificate/public key is also sent.
 
 B
