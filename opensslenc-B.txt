@@ -92,6 +92,7 @@ confident that your data's going to end up on the other side of the wire uncorru
 ┌──(root💀mikayili)-[/home/mk001]
 └─# openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8 -a
 
+
 enc = encoding with ciphers (please see manual for enc,  type without quotes "man enc"
 des-cbc = DES in CBC mode
 DES = Data Encryption Standard. CBC =Cipher Block Chaining Mode (Multiples of 64 bits are enciphered at a time.
@@ -142,6 +143,8 @@ k) Now let us suppose it was sent and received by one student. That student woul
                                                                                         
 ┌──(root💀mikayili)-[/home/mk001]
 └─# openssl enc -des-cbc -d -in  ciphertext.enc -out received.txt -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8 -a
+
+
 
 l) let us list the files in the folder to see the decrypted document is produced. Yes, received.txt is there. Note also the size.
    it is of the same size like the original secret document "studentps.txt"

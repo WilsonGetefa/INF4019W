@@ -5,6 +5,7 @@ sudo ddrescue -d -r3 /dev/sdc /mnt/recovery_drive/toshiba.img /mnt/recovery_driv
 
 sudo ddrescue -d -r1 -n /dev/sdc /mnt/recovery_drive/toshiba.img /mnt/recovery_drive/toshiba.log
 
+<<<<<<< HEAD
 Logical reasoning is the cognitive process of forming conclusions based on a set of premises or information. It involves analyzing information, identifying relationships, and drawing sensible conclusions. Logical reasoning can be categorized into two main types: deductive reasoning, which draws specific conclusions from general principles, and inductive reasoning, which makes generalizations based on specific observations 
 Wikipedia
 Wikipedia
@@ -27,3 +28,10 @@ The fundamental concept of risk assessment is to use analytic and
 structured processes to capture information, perceptions and evidence relating what is at
 stake, the potential for desirable and undesirable events, and a measure of the likely outcomes
 and impact
+=======
+
+
+/home/kaliwg/Downloads/windump/WinDump.mem
+
+python3 -f /volatility3/vol.py /home/kaliwg/Downloads/windump/WinDump.mem windows.info.Info
+>>>>>>> 301cf4d (Refactor code structure for improved readability and maintainability)
