@@ -1,0 +1,68 @@
+Methodologicaly
+Scientificaly
+Based on evidence
+Referebces/Citing the Case Study
+
+SECTION A
+i)-systems theory and other security theories. This question tests your understanding and application of theory to practic
+How can the Social-Technical theory guide the development of good security practices at XYX?
+Socio-technical (STS) Systems Theory was initially coined by Eric Trist and Fred Emery,  The theory basically discusses that organizational systems are composed of social systems and technical systems, which are independent and interactive. Technical system component of the theory is basically deals with the processes and task inside the organisation as well as the technology that us required to transform the inputs into outputs(Bostromand and Heinen 1977)
+It should pay attention to the interrelatedness of the these components for better utilisation of the resources
+Make sure you enphinsise the focus of the social-technical theory
+
+How can the activity theory theory guide the development of good security practices at XYX?
+Activity Theory proposes that human activity aims at accomplishing certain outcomes through the help of artifacts and other resources. Fundamental pricincilples of the theory includes that the activity is the basic unit of analysis. The activities have a history and development process, and the activities includes mediatory artifacts, in accordance to Engestrom's 1987
+The activity theory has been used to understans non-compliance with security rules/regulations, contradictory tensions in payroll systems which compromise security. Formal security structures clash with human behaviors which affect information security practices.
+Make sure you enphinsise the focus of the activity theory
+
+How can the general deterrence theory theory guide the development of good security practices at XYX?
+General Deterrence Theory is basically adopted from the discipline of criminology. The
+focus of this theory is disincentives and sanctions against a criminal act (Cohen & Na
+gin , 1978).
+• According to this theory, information systems security measures and actions are able
+to deter potential computer security abusers from commit ting an illegal act (Bagchi &
+Ud o, 2003). As mentioned above, disincentives are an important way of discoursing
+such activities. The disincentives can be represented as two sub-constructs, which are
+the certainty of sanctions and the severity of sanctions (Cohen &Nagin, 1978). Th is
+means that the risk of the punishment and the harshness of the punishment will inhibit
+the potential criminals from committing the insecure act
+Make sure you enphinsise the focus of the general deterrence theory
+
+How can the Economic theory of IS security theory guide the development of good security practices at XYX?
+s the threat of `Internet hacking‘ really that serious, or is it
+mostly just scaremongering by equipment vendors?
+• These kind of concerns have led to a rapidly growing
+interest in `security economics‘.
+The Economic theory of IS security
+Ross Anderson
+ Why Information Security is Hard - An Economic
+Perspective was the paper that got information
+security people thinking about the subject.
+ Briefly explain how Anderson applies economic
+analysis to explain many phenomena that
+security people have found to be pervasive but
+perplexing
+ e.g. Why do mass-market software products such as
+Windows contain so many security bugs? Why are
+their security mechanisms so difficult to manage?
+Economic Barriers to IS security
+• Information Asymmetries
+• Externalities
+• Liability Dumping
+• Lack of diversity
+• Fragmentation of Legislation and Law
+enforcement
+Make sure you enphinsise the focus of the Economic theory
+
+ii)-Modular Arithmetic -this question will test your understanding of the principles and steps followed in encryption and decryption. 
+Students will be required to explain the above.
+iii) Project management for digital/cyber forensics. The network diagram if set may be hand drawn. Please remember to hand in the diagram.
+iv)Information security planning: Portfolio analysis & IT balance score card/Project management
+
+SECTION B
+i)-Risk management
+ii)-Security policy & software
+
+SECTION C
+i)-Encryption
+ii)-Protocol

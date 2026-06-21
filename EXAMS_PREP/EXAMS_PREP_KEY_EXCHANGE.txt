@@ -2,8 +2,7 @@ The Affine Cipher is not used in digital signatures.
 Why not?
 The Affine Cipher is a classical symmetric substitution cipher used for simple encryption of letters. 
 It works by applying a mathematical formula to each character:
-
-E(x)=(ax + b) bmod 26
+E(x)=(ax + b) mod 26
 
 Its purpose is:
 - Encrypt plaintext into ciphertext.
@@ -17,7 +16,6 @@ It does not provide:
 
 What is used in digital signatures?
 Digital signatures use:
-
 1. Hash functions
    - SHA-256
    - SHA-512
@@ -36,10 +34,7 @@ Signature = Sign(H, A_private_key)
         ↓
 Verify(Signature, H, A_public_key)
 
-
----
-
-### Comparison
+Comparison
 
 | Feature                  | Affine Cipher              | Digital Signature          |
 | ------------------------ | -------------------------- | -------------------------- |
@@ -52,10 +47,9 @@ Verify(Signature, H, A_public_key)
 | Provides authentication  | No                         | Yes                        |
 | Used in modern systems   | No                         | Yes                        |
 
-### Exam-ready answer
-
-> **No, the Affine Cipher is not used in digital signatures. The Affine Cipher is a classical encryption algorithm used for confidentiality, whereas digital signatures use hash functions and asymmetric cryptography (such as RSA, DSA, or ECC) to provide authentication, integrity, and non-repudiation.**
-
+Exam-ready answer
+The Affine Cipher is not used in digital signatures. The Affine Cipher is a classical encryption algorithm used for confidentiality, 
+whereas digital signatures use hash functions and asymmetric cryptography (such as RSA, DSA, or ECC) to provide authentication, integrity, and non-repudiation.
 
 Ciphers (Encryption algorithms) These are used to hide data and later recover it using a key.
     pupose to encrypt data that will be send out ron device A to device B, later use the same cipher type to decrypt
@@ -81,10 +75,10 @@ Hash Functions: These are used to convert data into a fixed fingerprint (no reco
 - BLAKE3
 
 Key difference (simple)
-| Type   | Can reverse? | Purpose                  |
-| ------ | ------------ | ------------------------ |
-| Cipher | ✔ Yes        | Hide + recover data      |
-| Hash   | ❌ No         | Fingerprint / integrity |
+| Type   | Can reverse? | Purpose                 |
+| ------ | ------------ | ------------------------|
+| Cipher | ✔ Yes       | Hide + recover data      |
+| Hash   | ❌ No        | Fingerprint / integrity |
 
 A
 WHAT A DOES:
@@ -225,9 +219,11 @@ A (Sender)
 
 M = "This is for you"
         ↓
-Ciphertext = Encrypt(B_public_key, M)   -- Confidentiality
+SHA-256(M)
         ↓
 A_Signature = Sign(SHA-256(M), A_private_key)   -- Integrity + Authentication
+        ↓
+Ciphertext = Encrypt(B_public_key, M)   -- Confidentiality
         ↓
 Send: Ciphertext + A_Signature
 ---------------------
@@ -354,7 +350,6 @@ The signature corresponds to the hash of the message under A’s public key. B r
 Conceptually:
 H1 = SHA256(received_message)
 H2 = hash recovered/checked from signature
-
 
 Then:
 H1 == H2
@@ -492,16 +487,24 @@ Result = INVALID
  - The signature is fake, or
  - The wrong public key was used)
 
-STEPS
+Kali-Linux -- STEPS
 OPENSSL
-
-
 So when OpenSSL outputs a private key, 
 it is effectively outputting both the private and public components contained in that key structure.
 A private key file inherently contains:
 - The private key values
 - The corresponding public key values
 
+echo -e "Hi Students, this file contains our secret passwords and user names. \n We need to encrypt it today." > studentps.txt
+cat /dev/urandom | head -1 > randombytes.bin
+xxd randombytes.bin | head -1 
+openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8
+xxd -b ciphertext.enc
+openssl enc -des-cbc -in studentps.txt -out ciphertext.enc -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8 -a
+cat ciphertext.enc
+openssl enc -des-cbc -d -in  ciphertext.enc -out received.txt -nosalt -iv 0000000000000000 -K 1e6c4c47474171d8 -a
+cat received.txt
+--------
 DIGITAL_SIGNATURE
 mkdir Test_SIG
 cd Test_SIG

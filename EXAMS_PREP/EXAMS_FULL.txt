@@ -2,9 +2,11 @@
 -------------------------------
 System Theory
 ----------------------------
-Modulo is the operation of finding the Remainder when you divide numbers by a fixed "modulus" m”, the focus is on the remainde
+Modulo is the operation of finding the Remainder when you divide numbers by a fixed "modulus" m (the number used in the operation)”, 
+the focus is on the remainde
 In the Congruence Modulo notation, the parentheses are used – e.g. 15 ≡ 3(mod 12)
-Modulo is the operation of finding the remainder, 15 modulo 12 or 15/12
+Modulo is an operator (abbreviated as mod) and refers to the operation of finding the remainder after division, 15 modulo 12 or 15/12
+
 12 is the modulus
 Hour Mod 12 --> 0/12
  0/12 = 0 remainder 0
@@ -16,6 +18,7 @@ Hour Mod 12 --> 0/12
 
 Two triangles are congruent if they have the exact same shape and size.
 The focus is on the remainder when you work on certain modular, in this case
+Congruent = means exactly the same (identical)
 Congruence modulo m is an equivalence relation, where the remainder of two integers divided in a modulus are the same like 3/12 and 15/12
 Therefore, if two integers a and b are congruent modulo M, it means they have the same remainder
 under modulo m. You can also state it this way: Two INTEGERS a and b, are said to be congruent modulo M, if their difference (i.e., a-b), is evenly divisible
@@ -29,6 +32,8 @@ k, (6 = 2 + 4k => 6 - 2 = 4k ==> k = 1). The answer is 1 and 1 is an integer. Th
 
 A B C D E F G H I J K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z
 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+
+Bézout's identity theory (also called Bézout's lemma), is a tool used to solve Linear congruences. It is also used to find the multiplicative inverse of an integer
 
 USING SHIFT CIPHER METHOD
 EXERCISE 1
@@ -78,8 +83,8 @@ Affine Cipher
 
 2. Find the inverse of a
    using:
-   ax + my = 1
-   ax + 26y = 1
+   ax + my = 1 other use you can write as mx + ay
+   ax + 26y = 1 or you can write as mx + 26y
 
 3. Let:
    c = a⁻¹ (mod 26)
@@ -149,6 +154,15 @@ Q = ciphertext letter
 26 = alphabet size (modulus)
 
 -----------------------
+Property
+1. b and c are equivalent modulo m, if and only if (b − c)/m is an integer. The number m is called the modulus, 
+  and the statement "b is congruent to c (modulo m)" is written mathematically as
+  b ≡ c (mod m)
+  Another way to present this, b ≡ c( mod m) (by the definition of congruence) is m|(b − c). m|(b − c) is read as m "evenly divides” in b-c.
+  e.g.:(15 - 3)/12 this equal to 1
+2. Let b and c be integers, and let m be a positive integer. Then b ≡ c (mod m) if and only if b mod m = c mod m.
+
+--------------------------------------
 The only evidence on the exam come from the case study, "as they add"
 --------------------------------------------------------------------------
 Digital Forensic Science

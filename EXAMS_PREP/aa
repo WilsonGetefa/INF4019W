@@ -4,3 +4,26 @@ sudo ddrescue -f -n /dev/sda /mnt/recovery_drive/toshiba.img /mnt/recovery_drive
 sudo ddrescue -d -r3 /dev/sdc /mnt/recovery_drive/toshiba.img /mnt/recovery_drive/toshiba.log
 
 sudo ddrescue -d -r1 -n /dev/sdc /mnt/recovery_drive/toshiba.img /mnt/recovery_drive/toshiba.log
+
+Logical reasoning is the cognitive process of forming conclusions based on a set of premises or information. It involves analyzing information, identifying relationships, and drawing sensible conclusions. Logical reasoning can be categorized into two main types: deductive reasoning, which draws specific conclusions from general principles, and inductive reasoning, which makes generalizations based on specific observations 
+Wikipedia
+Wikipedia
++2
+. It is a fundamental skill for effective thinking, helping individuals evaluate the truth of statements and their implications
+
+A cognitive process is a mental activity that allows humans to acquire, process, store, and use information to understand and interact with the world.
+Cognitive processes encompass the mental operations that underlie thinking, learning, memory, problem-solving, and decision-making, forming the foundation of human thought and behavior 
+biologyinsights.com
+biologyinsights.com
++1
+. These processes begin when sensory information is received from the environment and continue as the brain interprets, organizes, and integrates it to guide behavior 
+biologyinsights.com
+biologyinsights.com
+. They enable individuals to focus on relevant stimuli, connect new information with prior knowledge, and adapt to new situations 
+biologyinsights.com
+biologyinsights.com
++1
+The fundamental concept of risk assessment is to use analytic and
+structured processes to capture information, perceptions and evidence relating what is at
+stake, the potential for desirable and undesirable events, and a measure of the likely outcomes
+and impact
