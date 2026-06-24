@@ -314,9 +314,9 @@ OpenVPN is a comprehensive security protocol suite. It does not rely on just one
 ------------------------------
 ## Summary Matrix
 
-| Security Pillar | MD5 (Config Example) | OpenVPN Suite (with AES-128-CBC) |
-|---|---|---|
-| Integrity (Data Unaltered) | Yes (Via basic checksum) | Yes (Via secure HMAC)|
-| Authentication (Identity Verified) | No | Yes (Via RSA/DSA Certificates & User/Pass) |
-| Confidentiality (Data Secret) | No | Yes (Via AES-128-CBC Encryption) |
+| Security Pillar                    | MD5 (Config Example)     | OpenVPN Suite (with AES-128-CBC)           |
+|------------------------------------|--------------------------|--------------------------------------------|
+| Integrity (Data Unaltered)         | Yes (Via basic checksum) | Yes (Via secure HMAC)                      |
+| Authentication (Identity Verified) | No                       | Yes (Via RSA/DSA Certificates & User/Pass) |
+| Confidentiality (Data Secret)      | No                       | Yes (Via AES-128-CBC Encryption)           |
 
