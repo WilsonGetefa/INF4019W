@@ -1,0 +1,131 @@
+Paul Mockapetris in 1984, he released RFCs 882 and 883, which described the Domain Name System.
+These RFCs were superseded by RFCs 1034 and 1035, the current specifications of the Domain Name System.
+The core specifications for the Domain Name System (DNS) are defined by RFC 1034 (Concepts and Facilities) and RFC 1035 (Implementation and Specification), published in 1987. Rather than a single document, dozens of later updates and extensions continuously modify DNS, such as RFC 2181 for clarifications and RFC 8499 for terminology.
+RFC 2181: Clarifies specific ambiguities in the original core specification.
+RFC 3596: Adds support for IPv6 address records (AAAA).
+RFC 8499: Updates and standardizes official DNS terminology
+RFC 4033: Introduces the security components and requirements.
+RFC 4034: Defines the security resource records (RRSIG, DNSKEY, DS, NSEC).
+RFC 4035: Explains modifications to the protocol for server and client operations
+RFC 5155: Introduces NSEC3 to prevent zone walking by hashing data.
+RFC 6698: Defines DANE, linking TLS certificates directly to DNSSEC records.
+RFC 9904: Establishes modern cryptographic algorithm requirements for signatures.
+
+ARCHITECTURE
+System to connect to internet - no users-VPN access - direct breakout
+System to connect to internet - with user-VPN access - direct breakout
+System to connect to client_own_data_server - client_own_server_access - with direct breakout
+System to connect to client_own_data_server - client_own_server_access - with limited_direct breakout
+System to connect to client_own_data_server - client_own_server_access - client_manage what site_access
+
+**DoH (DNS over HTTPS)**, **DoT (DNS over TLS)**, **DNSCrypt**, **DNSSEC**, and **Quad9** address different aspects of DNS security and privacy. Traditional DNS (port 53) sends queries and responses in plaintext, so anyone on the path (ISP, public Wi-Fi, etc.) can see the domains you look up and potentially tamper with answers.
+
+### DoH (DNS over HTTPS)
+DoH encrypts DNS queries and responses by wrapping them in HTTPS (usually HTTP/2 or HTTP/3) and sending them over port 443 to a compatible resolver. It looks like ordinary web traffic.
+
+**Advantages**:
+- Strong privacy against network observers (ISPs, Wi-Fi operators, censors) who cannot easily read the domains.
+- Hard to block selectively because it shares port 443 with normal HTTPS traffic.
+- Built-in browser support (Chrome, Firefox, Edge, Safari, etc.) and growing OS support.
+- Helps resist simple DNS-based censorship and spoofing on the path to the resolver.
+- Authentication of the resolver via TLS certificates.
+
+**Disadvantages**:
+- Centralizes queries at the chosen DoH provider (who can still see everything).
+- Can bypass local network controls, parental filters, or enterprise DNS policies.
+- Slightly higher overhead than plain DNS (HTTP headers + TLS); usually negligible with multiplexing.
+- Harder for network admins to monitor or troubleshoot.
+- Requires trusting the resolver and the CA system.
+
+### DoT (DNS over TLS)
+DoT encrypts DNS queries and responses inside a TLS tunnel, typically on the dedicated port 853. It is simpler than DoH (no HTTP layer).
+
+**Advantages**:
+- Encrypts the client-to-resolver hop, protecting against eavesdropping and on-path tampering.
+- Clear separation: easy for network administrators to identify, allow, or block via port.
+- Supported at the OS level on modern systems (Android 9+, iOS/macOS, Windows 11, Linux systemd-resolved, etc.).
+- Generally lower protocol overhead than DoH.
+- Provides authentication of the resolver via TLS certificates.
+
+**Disadvantages**:
+- Easily blocked by dropping port 853 (common in restrictive networks).
+- Visible on the wire as DoT traffic.
+- Requires a full TLS stack; bootstrap can involve an initial plaintext DNS lookup for the resolver hostname.
+- Less widely supported in browsers (they prefer DoH).
+- Same centralization and trust issues as DoH regarding the chosen resolver.
+
+**DoH vs DoT summary**: Both encrypt the last mile to the recursive resolver. DoH is harder to block and better for hostile networks; DoT is more transparent and manageable for enterprises.
+
+### DNSCrypt
+DNSCrypt is a specialized protocol (originating around 2011, with later anonymized extensions) that encrypts and authenticates DNS traffic between client and resolver using elliptic-curve cryptography (e.g., X25519 + XChaCha20-Poly1305). It does not rely on the traditional TLS/CA system and can run on various ports (often 443 or 53). Anonymized DNSCrypt adds relays so the resolver does not see the client IP.
+
+**Advantages**:
+- Encrypts and authenticates queries/responses; protects against eavesdropping and spoofing.
+- No insecure bootstrap and no dependence on the CA system (uses pre-shared or signed public keys).
+- Low overhead, supports zero-RTT in some cases, and native parallelism.
+- Supports anonymized relays that hide the client IP from the final resolver.
+- Resistant to some amplification and fragmentation attacks; smaller attack surface than full TLS in some implementations.
+- Works with existing DNS infrastructure on the same ports/IPs in many cases.
+
+**Disadvantages**:
+- Not an IETF standard (no official RFC); lower mainstream adoption than DoH/DoT.
+- Requires a DNSCrypt-aware client (e.g., dnscrypt-proxy) and supporting resolvers.
+- Traffic can still be fingerprintable in some configurations.
+- Fewer large public providers compared with DoH/DoT; ecosystem is smaller.
+- Configuration is more involved than enabling DoH in a browser.
+
+### DNSSEC (DNS Security Extensions)
+DNSSEC adds cryptographic signatures to DNS records themselves (using public-key cryptography). Validating resolvers can verify that answers come from the legitimate zone owner and have not been altered. It is about *integrity and authenticity of the data*, not encryption of the queries.
+
+**Advantages**:
+- Protects against cache poisoning, spoofing, and response forgery for signed zones.
+- Creates a chain of trust from the root downward.
+- Enables related technologies such as DANE (certificate pinning via DNS).
+- Works independently of the transport (plain DNS, DoH, DoT, etc.).
+
+**Disadvantages**:
+- Does **not** encrypt queries or responses—observers can still see the domains.
+- Complex key management (ZSK/KSK rotation, DS records at the parent, signature lifetimes).
+- Misconfiguration can make a domain unreachable (SERVFAIL) for validating resolvers.
+- Larger response sizes, which can worsen UDP fragmentation or amplification risks if not handled carefully.
+- Slow adoption; many domains and some resolvers still do not fully support validation.
+- Does not protect against all attacks (e.g., compromised registrars or BGP hijacks of the authoritative servers).
+
+**Important distinction**: DNSSEC authenticates the *content*; DoH/DoT/DNSCrypt protect the *channel* to the recursive resolver. They complement each other.
+
+### Quad9
+Quad9 is a free public recursive DNS resolver (primary address 9.9.9.9, secondary 149.112.112.112 and others) operated by a Swiss non-profit foundation. It focuses on security and privacy. The default service blocks domains associated with malware, phishing, botnets, etc., by consulting multiple threat-intelligence feeds. It supports plain DNS, DoT, DoH, DNSCrypt, and DNSSEC validation. An unfiltered option (e.g., 9.9.9.10) exists.
+
+**Advantages**:
+- Strong malware/phishing blocking at the DNS level (blocks resolution of known-bad domains).
+- Privacy-oriented: no logging of client IP addresses; Swiss jurisdiction with strict privacy laws; non-profit (no advertising motive).
+- Supports encrypted transports (DoT/DoH/DNSCrypt) and DNSSEC validation.
+- Global anycast network with many locations for good performance and resilience.
+- Free and simple to use (just change DNS settings).
+
+**Disadvantages**:
+- Occasional false positives (legitimate domains blocked by threat feeds); limited easy allowlisting on the free service.
+- Still a centralized third-party resolver—you trust Quad9 with your query data (even if they claim not to log IPs).
+- Latency can be slightly higher than pure speed-focused resolvers (e.g., Cloudflare 1.1.1.1) in some regions due to the extra threat checks.
+- Blocking is domain-level only; it does not inspect URLs, content, or encrypted traffic beyond DNS.
+- Does not replace a full security stack (firewall, antivirus, VPN, etc.).
+
+### SNI and ECH in Relation to These Technologies
+**SNI (Server Name Indication)** is a TLS extension sent in the ClientHello during the HTTPS handshake. It tells the server which hostname the client wants so the correct certificate can be presented (necessary when many sites share one IP). In classic TLS (including TLS 1.3 without protections), SNI is sent in **plaintext**. Even if DNS is fully encrypted with DoH/DoT/DNSCrypt, an observer who sees the TLS connection can still read the destination domain from the SNI field.
+
+**ECH (Encrypted Client Hello)**, the successor to the earlier ESNI proposal, encrypts most or all of the ClientHello (including the real SNI) using a public key published by the server. The key is typically distributed via DNS HTTPS/SVCB records. The client sends an outer (cover) ClientHello with a generic public name and an encrypted inner ClientHello containing the real SNI and other sensitive parameters. The server decrypts the inner hello if it supports ECH.
+
+**How they interact**:
+- Encrypted DNS (DoH, DoT, DNSCrypt) hides the domain during the *lookup* phase. Without it, the DNS query itself reveals the name even if SNI is encrypted.
+- ECH hides the domain during the subsequent *TLS handshake*. Without ECH, SNI still leaks the name even if DNS is encrypted.
+- Ideal combination for maximum privacy: encrypted DNS + ECH (plus ideally DNSSEC for integrity of the ECH key records). Many modern browsers (Chrome, Firefox, etc.) support ECH when the server publishes the necessary records and the client is using a supporting encrypted DNS path.
+- Limitations of ECH: Not yet universal (requires server support and correct DNS records); fallback behavior exists; IP addresses can still reveal popular sites if they are not heavily shared; some middleboxes or networks may interfere.
+- Quad9 and other privacy-focused resolvers support the encrypted DNS transports that make ECH more practical and secure (by protecting the key fetch).
+
+In short:
+- Use **DoH or DoT** (or DNSCrypt) to protect the DNS lookup.
+- Use **DNSSEC** for authenticity of DNS answers (and ECH keys).
+- Use **Quad9** (or similar) if you want a privacy-respecting resolver with built-in threat blocking.
+- Use **ECH** (when available) to close the remaining SNI leak in TLS.
+
+These technologies are complementary rather than mutually exclusive. For strongest practical privacy against passive network observers, combine encrypted DNS with ECH where possible. None of them hide your IP address or encrypt the actual content of websites—that still requires HTTPS (already widespread) plus a VPN or similar for broader traffic protection.

@@ -69,3 +69,20 @@ sudo apt install codeoss y
 
  code → Microsoft build (extensions marketplace full)
  codeoss → Opensource build (limited marketplace)
+
+
+# Create the keyrings directory if it doesn't exist
+sudo mkdir -p /etc/apt/keyrings
+
+# Import Microsoft's signing key
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc gpg --dearmor sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+
+# Download the VS Code .deb package
+wget -O vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+
+# Install the package
+sudo apt install ./vscode.deb
+
+# Fix any missing dependencies if needed
+sudo apt --fix-broken install
+

@@ -1,0 +1,435 @@
+After reading the assignment brief, **I would not put everything in the appendices**. This is a professional consultancy report, so the examiner expects to see key technical deliverables **in the report itself**, with appendices used for detailed supporting documentation.
+
+Here's how I would structure it.
+
+---
+
+# Main Report
+
+## Title Page
+
+## Table of Contents
+
+## 1. Introduction
+
+* Purpose
+* Scope
+* Assumptions
+
+---
+
+# Task 1 – Network Security Risk Assessment
+
+### 1.1 Current Environment
+
+Brief description of CapeBridge.
+
+### 1.2 Risk Assessment
+
+Table of six vulnerabilities.
+
+### 1.3 Risk Matrix
+
+**Include the risk matrix here** because it is part of your analysis.
+
+Example:
+
+| Vulnerability         | Likelihood | Impact | Risk     |
+| --------------------- | ---------- | ------ | -------- |
+| Shared Admin Accounts | High       | High   | Critical |
+| Guest Wi-Fi           | High       | High   | Critical |
+| No IDS                | Medium     | High   | High     |
+
+### 1.4 POPIA Analysis
+
+### 1.5 Unknown Device Incident
+
+---
+
+# Task 2 – Firewall Architecture Redesign
+
+This is where many students make a mistake.
+
+The assignment **specifically asks for a network diagram**.
+
+Therefore include:
+
+**Figure 2.1 Current Network**
+
+*(diagram)*
+
+Discuss it.
+
+Then
+
+**Figure 2.2 Proposed Network**
+
+*(diagram)*
+
+Discuss it.
+
+These **must be in the report** because they are being assessed.
+
+---
+
+Then include your firewall rules.
+
+Not 20 pages of rules.
+
+Just enough to explain your design.
+
+Example
+
+| Rule | Source     | Destination      | Port | Action |
+| ---- | ---------- | ---------------- | ---- | ------ |
+| 1    | Internet   | Web Server       | 443  | Allow  |
+| 2    | Internet   | Internal Network | Any  | Deny   |
+| 3    | Guest VLAN | Internal Network | Any  | Deny   |
+
+The assignment asks for
+
+> minimum of eight representative rules
+
+Those eight rules belong **in the report** because they are one of the assessed deliverables.
+
+---
+
+# Task 3
+
+## IDS/IPS
+
+Sensor placement
+
+Again...
+
+Include the sensor placement diagram in the report.
+
+Not in the appendix.
+
+---
+
+## Host Hardening
+
+Include tables.
+
+Example
+
+| Server | Priority | Action | Reason |
+| ------ | -------- | ------ | ------ |
+
+---
+
+# Conclusion
+
+---
+
+# References
+
+---
+
+# Appendices
+
+Now put the supporting material here.
+
+Example
+
+---
+
+Appendix A
+
+Detailed Current Network Diagram
+(full page)
+
+---
+
+Appendix B
+
+Detailed Proposed Network Diagram
+(with IP addresses, VLAN numbers etc.)
+
+---
+
+Appendix C
+
+Complete Firewall Rule Set
+
+Instead of only 8 rules, maybe 20–30 rules.
+
+---
+
+Appendix D
+
+Complete Risk Assessment Matrix
+
+If yours is larger than the one shown in the report.
+
+---
+
+Appendix E
+
+Audit Checklist
+
+---
+
+Appendix F
+
+Asset Inventory
+
+---
+
+Appendix G
+
+Incident Response Flowchart
+
+---
+
+## A good rule
+
+Ask yourself:
+
+> **Can the examiner understand my recommendation without opening the appendix?**
+
+If **No**, then it belongs in the **main report**.
+
+If **Yes**, then it can go into the **appendix**.
+
+---
+
+## For your assignment specifically
+
+| Item                          | Main Report | Appendix                  |
+| ----------------------------- | ----------- | ------------------------- |
+| Risk Matrix                   | ✅ Yes       | Optional detailed version |
+| Current Network Diagram       | ✅ Yes       | Larger version            |
+| Proposed Network Diagram      | ✅ Yes       | Larger version            |
+| Firewall Rule Table (8 rules) | ✅ Yes       | Full rule set             |
+| IDS Sensor Diagram            | ✅ Yes       | Detailed version          |
+| Host Hardening Tables         | ✅ Yes       | Detailed checklists       |
+| Asset Inventory               | ❌ No        | ✅ Yes                     |
+| Switch Port List              | ❌ No        | ✅ Yes                     |
+| VLAN Configuration Details    | Summary     | ✅ Full table              |
+| IP Addressing Scheme          | ❌ No        | ✅ Yes                     |
+| Backup Schedule               | Summary     | ✅ Full schedule           |
+
+### Based on the marking guide, I would expect a report of approximately:
+
+* **Main report:** 15–20 pages containing all the assessed content (including diagrams and representative firewall rules).
+* **Appendices:** 5–10 pages of supporting technical documentation.
+
+This approach aligns with both **APA 6** formatting (appendices contain supplementary material) and the expectations of a professional network security consultancy report, where key deliverables are presented and explained in the main document.
+This assignment is essentially asking you to produce **two documents in one report**:
+
+1. A **technical consultancy report** (Tasks 1–3).
+2. A **business executive summary** (Task 4).
+
+The executive summary is not an introduction or conclusion—it is a standalone section written for the board of directors.
+
+## Recommended report structure (APA 6)
+
+1. Title Page
+2. Table of Contents (if required)
+3. **Executive Summary (Task 4)** *(400–600 words)*
+4. Introduction
+5. Task 1: Network Security Risk Assessment
+6. Task 2: Firewall Architecture Redesign
+7. Task 3: Intrusion Detection, Prevention & Host Hardening
+8. Conclusion
+9. References
+10. Appendices
+
+---
+
+## Why put the Executive Summary first?
+
+This follows professional consultancy report practice. Executives typically read the summary before deciding whether to read the technical report. The marking guide also states:
+
+> "The executive summary is a standalone document."
+
+That means it should:
+
+* stand on its own,
+* avoid technical jargon,
+* summarise the key findings and recommendations,
+* be understandable without reading the rest of the report.
+
+---
+
+## What each section should contain
+
+### Executive Summary (400–600 words)
+
+Audience: Board of Directors
+
+Include:
+
+* Current security risks in plain English.
+* Why these risks matter to the business.
+* The three highest-priority recommendations.
+* POPIA implications.
+* Estimated cost/implementation effort (high level).
+* Business benefits.
+
+Avoid:
+
+* Firewall ports.
+* IDS/IPS terminology without explanation.
+* Technical configurations.
+
+---
+
+### Introduction
+
+Audience: Technical reader (IT Officer and assessor)
+
+Include:
+
+* Purpose.
+* Scope.
+* Assumptions.
+* Methodology.
+
+Approximately 1 page.
+
+---
+
+### Task 1
+
+Include:
+
+* Risk assessment table.
+* Risk matrix.
+* Discussion.
+* POPIA analysis.
+* Rogue device case study.
+
+---
+
+### Task 2
+
+Include:
+
+* Current network diagram.
+* Proposed network diagram.
+* Firewall architecture.
+* Firewall rule tables.
+* Discussion.
+
+---
+
+### Task 3
+
+#### Part A
+
+Include:
+
+* IDS/IPS recommendation.
+* Sensor placement diagram.
+* Attack scenarios.
+* Trade-offs.
+
+#### Part B
+
+Include:
+
+* Hardening plan.
+* Authentication policy.
+* Services to disable.
+* Backup strategy.
+
+---
+
+### Conclusion
+
+One page summarising:
+
+* Overall security posture.
+* Benefits of implementing the recommendations.
+* Remaining risks.
+
+---
+
+### References
+
+APA 6 format.
+
+---
+
+### Appendices
+
+Include only supporting documentation.
+
+For example:
+
+**Appendix A**
+
+* Full current network topology.
+
+**Appendix B**
+
+* Full proposed topology.
+
+**Appendix C**
+
+* Complete firewall rule set.
+
+**Appendix D**
+
+* Detailed risk matrix.
+
+**Appendix E**
+
+* Asset inventory.
+
+**Appendix F**
+
+* Audit checklist.
+
+**Appendix G**
+
+* Backup schedule.
+
+---
+
+## A professional report outline
+
+```text
+Title Page
+
+Table of Contents
+
+Executive Summary
+
+1. Introduction
+
+2. Task 1
+   2.1 Current Environment
+   2.2 Risk Assessment
+   2.3 Risk Matrix
+   2.4 POPIA Analysis
+   2.5 Rogue Device Incident
+
+3. Task 2
+   3.1 Current Network Architecture
+   3.2 Proposed Firewall Architecture
+   3.3 Firewall Rule Tables
+   3.4 Guest Wi-Fi Segmentation
+
+4. Task 3
+   4.1 IDS/IPS Strategy
+   4.2 Sensor Placement
+   4.3 Attack Detection
+   4.4 Host Hardening
+   4.5 Backup & Recovery
+
+5. Conclusion
+
+References
+
+Appendix A
+Appendix B
+Appendix C
+Appendix D
+Appendix E
+```
+
+This structure closely matches what a cybersecurity consultancy would deliver to a client while also satisfying the assignment requirements and APA 6 conventions.

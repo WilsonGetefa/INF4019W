@@ -1,0 +1,279 @@
+For an assignment like **Network Security Audit & Hardening Plan**, your appendices should contain **supporting evidence** rather than discussion or analysis. The analysis, recommendations, and justification belong in the main body, while detailed supporting material goes into the appendices.
+
+Here are appropriate appendices for your assignment.
+
+| Appendix   | What to Include                            | Required?              |
+| ---------- | ------------------------------------------ | ---------------------- |
+| Appendix A | Network topology diagram (current network) | Yes, if you create one |
+| Appendix B | Proposed hardened network topology         | Yes                    |
+| Appendix C | Risk assessment matrix                     | Recommended            |
+| Appendix D | Security audit checklist                   | Recommended            |
+| Appendix E | Firewall rule recommendations              | Optional               |
+| Appendix F | VLAN design                                | Recommended            |
+| Appendix G | Incident response flowchart                | Optional               |
+| Appendix H | Asset inventory                            | Optional               |
+| Appendix I | Security policy checklist                  | Optional               |
+
+## Example Appendix A
+
+### Current Network Topology
+
+This appendix can include a diagram showing:
+
+* Internet
+* Border firewall
+* Core switch
+* Client Records Server
+* File Server
+* Web Server
+* VoIP
+* Printers
+* Staff PCs
+* Guest Wi-Fi (currently on same VLAN)
+* Remote VPN users
+
+You can create this using Microsoft Visio, Draw.io, Lucidchart, or PowerPoint.
+
+---
+
+## Example Appendix B
+
+### Proposed Hardened Network
+
+Include a revised network diagram showing:
+
+* Internet
+* Next-generation firewall
+* IDS/IPS
+* Separate VLANs
+
+  * Management VLAN
+  * Server VLAN
+  * Staff VLAN
+  * Voice VLAN
+  * Guest Wi-Fi VLAN
+* DMZ for public web server
+* VPN with MFA
+* SIEM or centralized logging (if recommended)
+
+---
+
+## Example Appendix C
+
+### Risk Assessment Matrix
+
+| Asset                 | Threat              | Vulnerability                | Likelihood | Impact | Risk Rating |
+| --------------------- | ------------------- | ---------------------------- | ---------- | ------ | ----------- |
+| Client Records Server | Data breach         | Shared administrator account | High       | High   | Critical    |
+| VPN                   | Credential theft    | No MFA                       | High       | High   | Critical    |
+| Wi-Fi                 | Unauthorized access | Guest Wi-Fi on internal VLAN | High       | High   | Critical    |
+| Firewall              | External attack     | Default configuration        | Medium     | High   | High        |
+
+---
+
+## Example Appendix D
+
+### Network Security Audit Checklist
+
+| Item                     | Status  | Evidence                     |
+| ------------------------ | ------- | ---------------------------- |
+| Firewall reviewed        | No      | Default configuration        |
+| IDS installed            | No      | None present                 |
+| IPS installed            | No      | None present                 |
+| MFA enabled              | No      | VPN only uses passwords      |
+| Guest VLAN isolated      | No      | Same VLAN as staff           |
+| Admin accounts separated | No      | Shared administrator account |
+| Logging enabled          | Partial | Not centrally monitored      |
+| Rogue device detection   | No      | Device only unplugged        |
+
+---
+
+## Example Appendix E
+
+### Sample Firewall Rules
+
+| Priority | Source     | Destination      | Service           | Action |
+| -------- | ---------- | ---------------- | ----------------- | ------ |
+| 1        | Internet   | Web Server       | HTTPS             | Allow  |
+| 2        | Internet   | Internal Network | Any               | Deny   |
+| 3        | Guest VLAN | Internal VLAN    | Any               | Deny   |
+| 4        | Staff VLAN | File Server      | SMB               | Allow  |
+| 5        | VPN Users  | Internal Servers | Required Services | Allow  |
+
+---
+
+## Example Appendix F
+
+### VLAN Segmentation Plan
+
+| VLAN    | Purpose            |
+| ------- | ------------------ |
+| VLAN 10 | Staff Workstations |
+| VLAN 20 | Servers            |
+| VLAN 30 | Guest Wi-Fi        |
+| VLAN 40 | VoIP               |
+| VLAN 50 | Management         |
+
+---
+
+## Example Appendix G
+
+### Incident Response Workflow
+
+A simple flowchart could show:
+
+```
+Suspicious Device Detected
+          ↓
+Disconnect Device
+          ↓
+Preserve Evidence
+          ↓
+Notify IT Officer
+          ↓
+Investigate Logs
+          ↓
+Identify Source
+          ↓
+Contain Threat
+          ↓
+Recover Systems
+          ↓
+Lessons Learned
+```
+
+---
+
+## How to Refer to Appendices in Your Report
+
+In your report, refer to appendices where relevant. For example:
+
+* "The current network topology is shown in **Appendix A**."
+* "The proposed segmented network architecture is illustrated in **Appendix B**."
+* "The risk assessment is presented in **Appendix C**."
+* "The complete audit checklist is provided in **Appendix D**."
+
+---
+
+## Order of Your Paper (APA 6)
+
+1. Title Page
+2. Table of Contents (if required by your lecturer)
+3. Introduction
+4. Network Security Audit
+5. Findings
+6. Hardening Plan
+7. Prioritised Recommendations
+8. Conclusion
+9. References
+10. **Appendix A – Current Network Topology**
+11. **Appendix B – Proposed Hardened Network**
+12. **Appendix C – Risk Assessment Matrix**
+13. **Appendix D – Security Audit Checklist**
+14. **Appendix E – Firewall Rules (optional)**
+15. **Appendix F – VLAN Design**
+16. **Appendix G – Incident Response Flowchart (optional)**
+
+For this assignment, **Appendices A–D** would be considered the core supporting materials. They provide evidence for your audit and recommendations without interrupting the flow of the main report, and they demonstrate professional documentation expected in a network security consultancy report.
+
+Yes—but with one important distinction.
+
+**Only detailed supporting material goes into the appendices.** If a diagram or table is essential for understanding your discussion, you should include it in the main body and, if needed, provide a larger or more detailed version in the appendix.
+
+For your assignment, here's what I would recommend:
+
+| Item                               | Main Body                         | Appendix                            |
+| ---------------------------------- | --------------------------------- | ----------------------------------- |
+| Current network topology           | ✓ Small, referenced in discussion | ✓ Full-size version (optional)      |
+| Proposed hardened network topology | ✓ Yes                             | ✓ Full-size version (optional)      |
+| Firewall rule set (20+ rules)      | Summary only                      | ✓ Full rule table                   |
+| VLAN configuration table           | Summary                           | ✓ Complete table                    |
+| Risk assessment matrix             | ✓ Yes (important)                 | Optional full version if very large |
+| Audit checklist                    | Brief summary                     | ✓ Complete checklist                |
+| Incident response flowchart        | ✓ If discussed                    | ✓ Full version if detailed          |
+| Asset inventory                    | No                                | ✓                                   |
+| Switch port inventory              | No                                | ✓                                   |
+| VPN configuration details          | No                                | ✓                                   |
+| Password policy                    | Summary                           | ✓ Full policy (if created)          |
+
+### Think of it this way
+
+Your **main report** tells the story:
+
+> "The guest Wi-Fi currently shares the same VLAN as internal systems, creating the risk of lateral movement. The proposed design separates guest traffic into VLAN 30 (see Figure 3)."
+
+Then, in the appendix, you include the detailed technical documentation:
+
+* Complete network diagram
+* VLAN numbering
+* IP addressing
+* Firewall rules
+* Switch configuration
+* Port assignments
+
+---
+
+### A professional consultancy report usually looks like this:
+
+**Section 4: Findings**
+
+**Figure 1. Current Network Topology**
+
+*(A clear, half-page diagram)*
+
+Discussion...
+
+---
+
+**Section 5: Hardening Plan**
+
+**Figure 2. Proposed Hardened Network**
+
+*(A clear, half-page diagram)*
+
+Discussion...
+
+---
+
+**Appendix A**
+
+Current Network Topology (full-page, detailed)
+
+**Appendix B**
+
+Proposed Hardened Network (full-page, detailed)
+
+**Appendix C**
+
+Complete Firewall Rules
+
+| Rule | Source     | Destination      | Service | Action |
+| ---- | ---------- | ---------------- | ------- | ------ |
+| 1    | Internet   | Web Server       | HTTPS   | Allow  |
+| 2    | Guest VLAN | Internal Network | Any     | Deny   |
+| ...  | ...        | ...              | ...     | ...    |
+
+**Appendix D**
+
+VLAN Configuration
+
+| VLAN | Name       | Purpose            |
+| ---- | ---------- | ------------------ |
+| 10   | Staff      | Employee devices   |
+| 20   | Servers    | Internal servers   |
+| 30   | Guest      | Guest Wi-Fi        |
+| 40   | Voice      | VoIP               |
+| 50   | Management | Network management |
+
+---
+
+### For your assignment
+
+Since this is a **Network Security Audit & Hardening Plan**, your lecturer will likely expect to see diagrams **within the report** because they are central to your analysis. Then use the appendices for the detailed technical versions and supporting documentation.
+
+A good balance would be:
+
+* **Main body:** 2–4 key figures (current topology, proposed topology, risk matrix, incident response flowchart) that you discuss directly.
+* **Appendices:** Detailed versions of those diagrams, complete firewall rules, VLAN tables, audit checklist, and any other technical documentation.
+
+This approach aligns with APA 6 guidance while also matching the style of a professional cybersecurity consultancy report.

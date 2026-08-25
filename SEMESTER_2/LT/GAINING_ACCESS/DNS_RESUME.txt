@@ -1,0 +1,867 @@
+Resolve-DnsName facebook.com
+Resolve-DnsName facebook.com -server d.ns.facebook.com
+dig facebook.com
+nslookup facebook.com
+nslookup -type=NS facebook.com
+nslookup www.facebook.com a.ns.facebook.com
+Resolve-DnsName facebook.com
+nslookup -debug -type=NS facebook.com. 192.168.1.1
+nslookup -debug -type=NS facebook.com. a.ns.facebook.com
+
+There is one global hierarchical DNS namespace for the public internet, 
+structured as an inverted tree that starts at a single unlabelled Root (.) at the top.
+
+Everything is nested into
+Note: While private networks or corporate environments can set up isolated 
+internal or "split-brain" DNS namespaces, the global internet relies on this single 
+shared hierarchical tree.
+That make like each organisation can have their own namespace but while from internet perspective
+There is only one giant namespace starting from the root(.)
+
+ECH with DNS, SNI hello can be seen; this will show the domain that you are going to.
+ECH is supposed to hide but does not
+Your browser DNS settings can be changed if not managed by the organisation,
+VPN does hide the DNS hello message
+Through TLS hello, this is still visible even over DNS_HTTPS
+DNS can be hide but not SNI, only via VPN this can be hide
+TLS queries can not been hide, even the latest
+
+DNS: decides where the user should connect
+CDN: actually delivers the content
+
+RRSET - where there are two records
+Subzone - redirect zone from the main zone
+
+Every FQDN is made of domain labels arranged in a hierarchical structure. Each label is separated by a dot, 
+and each part helps the Domain Name System understand where a host or service belongs.
+A complete FQDN may include: www.blog.example.com.
+- Hostname (www or mail or ftp)
+- Subdomain (blog)
+- Second-level domain (example)
+- Top-level domain (com)
+- Trailing dot (.) - DNS root
+
+mail.example.com. is valid FQDN formats include:
+<host_name>.<top_level_domain_name>, such as example.com
+<host_name>.<second_level_domain_name>.<top_level_domain_name>, such as mail.example.com.
+
+DNS over TLS (DoT) is a security protocol that encrypts your device's Domain Name System queries using Transport Layer Security
+* **DoT (DNS over TLS):** Encrypts DNS queries using TLS, usually on **port 853**.
+* **DoH (DNS over HTTPS):** Encrypts DNS queries inside HTTPS, usually on **port 443**.
+* **DNSSEC:** **Authenticates DNS responses** to prevent DNS spoofing/tampering; it **does not encrypt** DNS queries.
+* **DNSCrypt:** Encrypts and authenticates DNS traffic between the client and resolver using the **DNSCrypt protocol**.
+* **Quad9:** A **public DNS resolver service** (`9.9.9.9`) that provides security features such as **malicious-domain blocking**, with support for encrypted DNS.
+
+**Simple distinction:**
+**DoT/DoH/DNSCrypt = protect DNS traffic** 🔒
+**DNSSEC = verify DNS authenticity** ✅
+**Quad9 = a DNS resolver/service that can provide these protections**.
+
+In short: Both encrypt DNS, but DoT uses dedicated DNS traffic (853), while DoH uses HTTPS (443) and is generally harder to distinguish from regular web traffic.
+
+If you're comparing **DoT, DoH, DNSSEC, DNSCrypt, and Quad9**:
+
+| Technology   | Hides SNI? | Why                                                             |
+| ------------ | ---------- | --------------------------------------------------------------- |
+| **DoT**      | ❌ No       | Encrypts DNS, but not the HTTPS connection's SNI                |
+| **DoH**      | ❌ No       | Encrypts DNS queries, but normal HTTPS SNI can still be visible |
+| **DNSSEC**   | ❌ No       | Provides DNS authentication, not encryption                     |
+| **DNSCrypt** | ❌ No       | Encrypts DNS traffic, not TLS SNI                               |
+| **Quad9**    | ❌ No       | It is a DNS resolver; using Quad9 does not by itself hide SNI   |
+
+**Important:** **DNS encryption ≠ SNI encryption.**
+
+To hide the destination hostname in the TLS handshake, you need **ECH (Encrypted Client Hello)**. With ECH, the **SNI is encrypted** (more precisely, the `ClientHello` containing the real server name is encrypted).
+
+**Example:**
+
+`PC → DoH/DoT → DNS Resolver` 🔒
+`PC → HTTPS website → SNI visible unless ECH is used` 👁️
+
+So, **ECH is the technology you should look at for SNI privacy**, not DoT/DoH/DNSSEC.
+
+ECH is implemented **in the TLS/HTTPS connection**, not inside DNS itself.
+
+A simplified flow is:
+
+**Without ECH:**
+
+```text
+PC
+ │
+ ├── DNS → DoH/DoT → DNS Resolver
+ │
+ └── TLS → Website
+             └── SNI exposed
+```
+
+**With ECH:**
+
+```text
+PC
+ │
+ ├── DNS → DoH/DoT → DNS Resolver
+ │
+ └── TLS + ECH → Website
+                  └── Real SNI encrypted 🔒
+```
+
+### Where ECH fits
+
+```text
+Application:       HTTPS
+                     │
+TLS:             ┌───┴───┐
+                 │  ECH  │  ← SNI protected here
+                 └───┬───┘
+                     │
+Transport:          TCP/QUIC
+                     │
+DNS:          DoH / DoT / DNSCrypt
+                     │
+Resolver:          Quad9
+```
+
+So you can use them **together**:
+
+**DoH/DoT → protects DNS queries**
+**DNSSEC → validates DNS authenticity**
+**ECH → protects the hostname/SNI during TLS**
+**Quad9 → provides the DNS resolver**
+
+ECH therefore complements DoH/DoT rather than replacing them.
+
+
+Python
+dns monitor and SNI monitor script from my PC
+
+DDOS attack (distributed Denial of Service)
+- Sync flood (only do 2 steps handshake syn/ack)
+- HTTP FLOOD (open a webpage of the server and constatantly refresh the page) - HTTP floods can be harder
+DOS comes from one source
+SYN flood
+    ↓
+TCP / network connection layer
+
+HTTP flood
+    ↓
+HTTP / application layer
+
+DNS gets the client to the CDN; the CDN/WAF protects and filters the traffic; the origin is kept isolated behind them.
+The origin firewall is configured so that only the CDN infrastructure can reach the origin.
+So even if an attacker knows the origin's address, direct traffic is rejected.
+
+Rate limitting, server accept a certain amont of the request
+Webapplication firewall
+Loadbalancer
+
+DNS handshake (PC search testweb.com) without any cache
+- Own Browser/OS cache
+- Then OS Host files
+- ISP DNS Resolver
+- Root server (.)
+- TLD server  (e.g. .com, .fr)
+- authoritative Server (respond with the IP of testweb.com)
+- testweb.com server response
+
+**ECH (Encrypted Client Hello) *does* hide the real SNI from network observers when it is properly supported and used.** Your notes contain some accurate observations mixed with incomplete or outdated understandings of how it works.
+
+### How ECH actually works
+- The client builds two ClientHellos:
+  - **ClientHelloOuter** (sent in cleartext): Contains a *public/cover* SNI (often a generic name belonging to the CDN or hosting provider, e.g. `cloudflare-ech.com`). This is what passive observers (ISP, network monitors, etc.) see.
+  - **ClientHelloInner** (encrypted): Contains the *real* destination SNI plus other sensitive fields (ALPN, etc.). Only the server that holds the corresponding private key can decrypt it.
+- The encryption key for the inner ClientHello is published by the server in DNS (HTTPS/SVCB records). Clients normally fetch this via encrypted DNS (DoH/DoT) so the key distribution itself is not visible in cleartext.
+- Result: On-path observers see traffic going to the public name / shared IP, not the specific site the user intended. This is the privacy goal of ECH.
+
+Packet captures and testbeds consistently show the real hostname replaced by the outer/public name when ECH is active.
+
+### Where the limitations and common confusions come from
+- **ECH is not universal.** Both the browser *and* the server/CDN must support it. Many sites still do not publish ECH configs, so the connection falls back to ordinary TLS with cleartext SNI. Adoption has grown (especially on major CDNs), but it is far from complete.
+- **Outer SNI is still visible.** That is by design. The outer name is deliberately generic so that many real sites can hide behind the same public name (creating an anonymity set).
+- **IP address remains visible.** If a site has a unique IP, the destination can still be inferred regardless of SNI/ECH.
+- **DNS must also be protected.** Plain DNS queries reveal the domain before the TLS handshake even starts. DoH/DoT + ECH together close both major leaks. DNS-over-HTTPS alone does *not* hide the SNI; that is why ECH exists.
+- **Organisation-managed networks** can still force their own DNS, block DoH, or inspect/terminate TLS (corporate proxies, etc.). Browser DNS settings can be overridden in managed environments.
+- **VPN / full tunnel** hides everything (DNS + TLS handshake + destination IP from the local network) because the traffic never leaves the encrypted tunnel in a form the local observer can parse. ECH only protects the TLS metadata; a VPN protects the entire path.
+
+### Summary of your points
+| Claim | Reality |
+|-------|---------|
+| “ECH with DNS, SNI hello can be seen” | Only the *outer* (public) SNI is visible. The real one is encrypted. |
+| “ECH is supposed to hide but does not” | It *does* hide the real SNI when both ends support it. Incomplete adoption is the main practical gap. |
+| DNS can be hidden but not SNI | Incorrect once ECH is active. DoH hides DNS; ECH hides the real SNI. |
+| Only VPN hides SNI | VPN is more comprehensive, but ECH specifically targets and encrypts the SNI field. |
+| “TLS queries cannot be hidden, even the latest” | The sensitive parts of the ClientHello *are* hidden by ECH. The outer handshake is still visible by design. |
+
+ECH is now an official standard (RFC 9849) and is the successor to the earlier ESNI effort. It closes the long-standing plaintext-SNI leak in TLS 1.3, but it is not a complete anonymity solution on its own—combine it with encrypted DNS and, when stronger protection is needed, a VPN.
+
+
+**The outer SNI (and the ClientHelloOuter) is still sent in cleartext by design.** That is why you still see *a* hostname in the TLS “hello” message even when ECH is working.
+
+### Why this happens
+
+ECH does **not** encrypt the entire first TLS message. It uses a split design:
+
+1. **ClientHelloOuter** – sent in **plaintext**
+   - Contains a *public / cover* SNI (for example `cloudflare-ech.com` or another generic name published by the server/CDN).
+   - Also contains the encrypted inner ClientHello as an extension.
+   - This is what network observers, ISPs, or packet captures see.
+
+2. **ClientHelloInner** – **encrypted**
+   - Contains the *real* destination SNI you actually want to reach.
+   - Only the server that holds the matching private key can decrypt it.
+
+So the “hello” is still exposed, but the sensitive part (the real domain) is hidden inside the encrypted extension. What you see is deliberately a non-sensitive public name.
+
+### Why the protocol keeps an outer cleartext SNI
+
+- **Compatibility**: Existing servers, load balancers, and middleboxes expect a normal TLS ClientHello with an SNI. Sending a completely empty or missing SNI would break many deployments.
+- **Routing / key selection**: In multi-tenant setups (CDNs, shared hosting) the outer SNI tells the client-facing server which ECH configuration/key to try.
+- **Graceful fallback**: If the server cannot decrypt the inner ClientHello (wrong key, outdated config, etc.), it can still complete a normal handshake using the outer public name and present a valid certificate for that name.
+- **Anonymity set**: Many real sites share the same outer public name. Observers only learn “someone is talking to this CDN/provider”, not which specific site.
+
+### Bottom line
+
+- You will **always** see *some* SNI in the clear when looking at the TLS handshake.
+- With working ECH that SNI is the **public/cover name**, not the real destination.
+- The real destination is encrypted and only visible to the intended server.
+
+That is why tools still show an SNI “hello” even when ECH is active — the protocol intentionally leaves a harmless outer name visible so the rest of the internet infrastructure continues to work.
+
+                    Internet
+                       |
+              ┌────────┴────────┐
+              │                 │
+          SYN Flood         HTTP Flood
+              │                 │
+              └────────┬────────┘
+                       v
+              Upstream DDoS
+                 mitigation
+                       |
+                       v
+                 ┌─────────┐
+                 │   DNS   │
+                 └────┬────┘
+                      |
+                      v
+              ┌──────────────┐
+              │ CDN / Edge   │
+              │              │
+              │ DDoS filter  │
+              │ WAF          │
+              │ Rate limit   │
+              └──────┬───────┘
+                     |
+                     | clean traffic
+                     v
+                ┌──────────┐
+                │   WAF /  │
+                │Firewall  │
+                └────┬─────┘
+                     |
+                     v
+                ┌──────────┐
+                │  Origin  │
+                └──────────┘
+
+Upstream mitigation → stop huge traffic volumes before they reach you.
+Edge filtering → inspect/filter traffic at the CDN before it reaches the origin.
+SYN flood → attacks the TCP connection establishment layer.
+HTTP flood → attacks the application/HTTP layer.
+
+These technologies fit mainly around the **DNS resolution/security layer**. They don't replace the CDN, WAF, or DDoS protection we discussed.
+
+A useful architecture is:
+
+```text
+                         USER
+                           |
+                           | HTTPS request
+                           v
+                    ┌──────────────┐
+                    │   DNS        │
+                    │   Resolution │
+                    └──────┬───────┘
+                           |
+              +------------+-------------+
+              |            |             |
+             DoT          DoH         DNSCrypt
+              |            |             |
+              +------------+-------------+
+                           |
+                           v
+                  ┌─────────────────┐
+                  │ DNS Resolver    │
+                  │ e.g. Quad9      │
+                  └────────┬────────┘
+                           |
+                           v
+                  Authoritative DNS
+                           |
+                           | DNS response
+                           v
+                    CDN IP / endpoint
+                           |
+                           v
+                    ┌────────────┐
+                    │ CDN / WAF  │
+                    └─────┬──────┘
+                          |
+                          v
+                       Origin
+```
+
+But there's an important distinction between **DoT/DoH/DNSCrypt, DNSSEC, and Quad9**.
+
+### 1. DoT — DNS over TLS
+
+**DoT protects the DNS communication channel.**
+
+Normally:
+
+```text
+User → DNS resolver
+       DNS query
+```
+
+With DoT:
+
+```text
+User
+  |
+  | encrypted TLS connection
+  v
+DNS Resolver
+```
+
+So someone monitoring the network has a harder time seeing the DNS queries.
+
+**Purpose:** confidentiality and integrity of the connection to the resolver.
+
+---
+
+### 2. DoH — DNS over HTTPS
+
+DoH does essentially the same broad job—protecting DNS queries—but sends DNS through **HTTPS**.
+
+```text
+User
+  |
+  | HTTPS
+  v
+DoH Resolver
+```
+
+This can make DNS traffic blend in with ordinary HTTPS traffic.
+
+**DoT vs DoH:**
+
+|                      | DoT                   | DoH                   |
+| -------------------- | --------------------- | --------------------- |
+| Transport            | TLS                   | HTTPS                 |
+| Typical port         | 853                   | 443                   |
+| Encrypts DNS traffic | Yes                   | Yes                   |
+| Main purpose         | Private DNS transport | Private DNS transport |
+
+---
+
+### 3. DNSCrypt
+
+DNSCrypt is another protocol designed to **authenticate and encrypt DNS communication between a client and a DNS resolver**.
+
+Conceptually:
+
+```text
+Client
+   |
+   | encrypted/authenticated DNS
+   v
+DNSCrypt Resolver
+```
+
+So you can think of DoT, DoH and DNSCrypt as **different ways of protecting the path between the DNS client and resolver**.
+
+---
+
+### 4. DNSSEC
+
+DNSSEC is different.
+
+It isn't primarily about hiding the DNS query.
+
+Instead, DNSSEC allows a resolver to verify:
+
+> **"Did this DNS answer really come from the legitimate DNS zone, and was it modified?"**
+
+For example, suppose you ask:
+
+```text
+www.example.com → 203.0.113.10
+```
+
+DNSSEC provides cryptographic signatures that allow validating resolvers to verify the authenticity of the DNS data.
+
+So:
+
+```text
+DoT / DoH / DNSCrypt
+        ↓
+Protect the DNS communication channel
+
+DNSSEC
+        ↓
+Protect/authenticate the DNS data itself
+```
+
+They can therefore be used **together**.
+
+---
+
+### 5. Quad9
+
+**Quad9 is not a protocol.**
+
+It's a **public DNS resolver service**.
+
+So your computer could be configured to use Quad9 as its DNS resolver, while the connection to Quad9 could use a supported encrypted DNS protocol.
+
+Conceptually:
+
+```text
+Your computer
+      |
+      | DoH / DoT
+      v
+   Quad9
+      |
+      | DNS resolution + security filtering
+      v
+Authoritative DNS
+```
+
+Quad9 is also known for blocking domains associated with known malicious activity.
+
+---
+
+# Now connect this to your CDN/DDoS architecture
+
+This is where it becomes easier to understand:
+
+```text
+                     USER
+                       |
+                       |
+              1. DNS resolution
+                       |
+          ┌────────────┴────────────┐
+          │ DoH / DoT / DNSCrypt    │
+          │                         │
+          v                         │
+    DNS Resolver                    │
+     (e.g. Quad9)                   │
+          |                         │
+          | DNSSEC validation       │
+          v                         │
+   Authoritative DNS <──────────────┘
+          |
+          | "CDN endpoint/IP"
+          v
+     ┌─────────────┐
+     │ CDN / Edge  │
+     │             │
+     │ DDoS        │
+     │ WAF         │
+     │ Rate Limit  │
+     └──────┬──────┘
+            |
+            | Clean traffic
+            v
+        ┌────────┐
+        │ Origin │
+        └────────┘
+```
+
+### And during a DDoS attack
+
+The layers have different jobs:
+
+| Technology                   | What it protects                                                 |
+| ---------------------------- | ---------------------------------------------------------------- |
+| **DoT**                      | DNS query transport                                              |
+| **DoH**                      | DNS query transport                                              |
+| **DNSCrypt**                 | DNS query transport                                              |
+| **DNSSEC**                   | Authenticity/integrity of DNS data                               |
+| **Quad9**                    | DNS resolution + malicious-domain blocking                       |
+| **DNS/CDN routing**          | Gets users to an appropriate CDN                                 |
+| **CDN**                      | Absorbs/distributes traffic                                      |
+| **WAF**                      | Filters malicious HTTP requests                                  |
+| **Rate limiting**            | Controls excessive requests                                      |
+| **Upstream DDoS mitigation** | Filters very large attacks before they reach your infrastructure |
+| **Origin firewall**          | Prevents attackers bypassing the CDN                             |
+
+### One subtle but important point
+
+**DoH/DoT don't protect your website from an HTTP flood.**
+
+For example:
+
+```text
+Attacker
+   |
+   | millions of HTTPS requests
+   v
+CDN/WAF  ← DDoS protection happens here
+   |
+   v
+Origin
+```
+
+DoH/DoT are about **how DNS queries are transported**:
+
+```text
+Client ── encrypted DNS ──> Resolver
+```
+
+They aren't a mechanism for protecting the actual web traffic:
+
+```text
+Client ── HTTPS ──> www.example.com
+```
+That's the job of your **CDN, WAF, DDoS protection, rate limiting, and origin security**.
+
+---------
+Yes. Once you add **VPN connectivity**, you introduce another security boundary. The main thing to protect is the **VPN gateway/tunnel and the users/devices behind it**.
+
+A useful architecture is:
+
+```text
+                    Internet
+                       |
+                 ┌─────┴─────┐
+                 │   DDoS    │
+                 │ Protection│
+                 └─────┬─────┘
+                       |
+                 ┌─────▼─────┐
+                 │    VPN    │
+                 │  Gateway  │
+                 └─────┬─────┘
+                       |
+                 Encrypted tunnel
+                       |
+              ┌────────▼────────┐
+              │ Internal Network│
+              │                 │
+              │ Apps / Servers  │
+              │ Databases       │
+              └─────────────────┘
+```
+
+## Main attacks to expect
+
+### 1. Credential attacks
+
+Probably one of the biggest practical risks.
+
+An attacker may try:
+
+```text
+Attacker
+   |
+   | stolen username/password
+   | password spraying
+   | credential stuffing
+   v
+VPN Gateway
+```
+
+**Protect with:**
+
+* MFA
+* Strong authentication
+* Certificate/device authentication where appropriate
+* Account lockout/risk-based controls
+* Rate limiting
+* Monitoring failed logins
+* Disable unused accounts
+* Conditional access/device posture
+
+**MFA is particularly important** because a stolen VPN password shouldn't automatically give an attacker internal access.
+
+---
+
+### 2. VPN gateway DDoS
+
+The VPN gateway is exposed to the Internet, so it can be targeted directly.
+
+```text
+Attackers
+   |||||||||||||||
+   vvvvvvvvvvvvvvv
+┌──────────────────┐
+│   VPN Gateway    │
+└──────────────────┘
+```
+
+An attacker could try to exhaust:
+
+* Bandwidth
+* CPU
+* Memory
+* Connection/session capacity
+* Authentication resources
+
+**Protect with upstream DDoS protection**, traffic filtering, rate limiting, and redundant VPN gateways.
+
+This is one place where your earlier **"upstream mitigation"** concept fits.
+
+---
+
+### 3. Exploiting the VPN software
+
+A VPN appliance/gateway is effectively an Internet-facing server.
+
+If there's a vulnerability in the VPN software:
+
+```text
+Internet
+   |
+   v
+VPN Gateway
+   |
+   X  vulnerability
+   |
+Internal network
+```
+
+This can be extremely serious because compromise of the gateway can provide a path into the internal network.
+
+**Protect with:**
+
+* Rapid patching
+* Supported VPN software/appliances
+* Vulnerability scanning
+* Secure configuration
+* Restrict management interfaces
+* IDS/IPS
+* Continuous monitoring
+* Minimize exposed services
+
+---
+
+### 4. Attacker gets VPN access and moves laterally
+
+This is probably the most important **post-compromise** scenario.
+
+Imagine an employee's VPN credentials are compromised:
+
+```text
+Attacker
+   |
+   | stolen credentials + MFA bypass
+   v
+VPN
+   |
+   v
+Internal network
+   |
+   +----> Application server
+   |
+   +----> File server
+   |
+   +----> Database
+   |
+   +----> Admin systems
+```
+
+If the VPN gives broad network access, the attacker can potentially move around.
+
+So don't think:
+
+> "VPN = trusted user."
+
+Instead:
+
+> **VPN = authenticated entry point, but the user should still have limited authorization.**
+
+Use:
+
+* Network segmentation
+* Least privilege
+* Role-based access
+* Application-level authorization
+* Separate admin networks
+* Internal firewalls
+* Zero-trust principles
+
+---
+
+### 5. Malware from a VPN-connected device
+
+Suppose an employee's laptop is infected:
+
+```text
+Employee laptop
+      |
+      | VPN
+      v
+Internal network
+      |
+      v
+Malware attempts
+lateral movement
+```
+
+The VPN encrypts the connection, but **encryption doesn't make the device trustworthy**.
+
+Protect with:
+
+* EDR/endpoint protection
+* Device posture checks
+* OS/security patching
+* Network segmentation
+* Internal IDS/IPS
+* Least privilege
+* Restrict VPN access to managed devices
+
+---
+
+### 6. Man-in-the-middle / certificate attacks
+
+With properly implemented modern VPN protocols, the tunnel is cryptographically protected.
+
+But you still need to protect:
+
+* Server certificates/keys
+* Client certificates
+* Authentication credentials
+* VPN configuration
+* Certificate authority/private keys
+
+An attacker who can compromise the authentication infrastructure can potentially undermine the trust model.
+
+---
+
+### 7. DNS attacks through the VPN
+
+This connects directly to your previous DNS discussion.
+
+When connected to a corporate VPN, the client may be configured to use **corporate DNS**:
+
+```text
+Laptop
+   |
+   | VPN tunnel
+   v
+Corporate DNS
+   |
+   v
+Internal services
+```
+
+This allows things like:
+
+```text
+database.internal.company
+vpn.company
+jira.internal.company
+```
+
+You need to protect that internal DNS infrastructure as well.
+
+You can use DNS security controls such as:
+
+* DNSSEC where appropriate
+* Secure DNS transport
+* DNS logging/monitoring
+* Split-horizon DNS
+* Restrict who can query internal DNS
+* Prevent unauthorized DNS changes
+
+---
+
+# Where everything fits together
+
+Now your architecture is becoming something like this:
+
+```text
+                         INTERNET
+                            |
+              ┌─────────────┴─────────────┐
+              |                           |
+           Website                     VPN Users
+              |                           |
+              v                           v
+       ┌─────────────┐             ┌─────────────┐
+       │ DNS / CDN   │             │ VPN Gateway │
+       │             │             │             │
+       │ DDoS        │             │ MFA         │
+       │ WAF         │             │ Rate Limit  │
+       │ Edge Filter │             │ VPN Crypto  │
+       └──────┬──────┘             └──────┬──────┘
+              |                           |
+              |                           | VPN Tunnel
+              |                           |
+              |                    ┌──────▼──────┐
+              |                    │   Firewall  │
+              |                    └──────┬──────┘
+              |                           |
+              |                    ┌──────▼──────┐
+              |                    │ Segmentation│
+              |                    └──────┬──────┘
+              |                           |
+              └──────────────┐      ┌────┴───────────┐
+                             |      |                |
+                          ┌──▼──┐ ┌─▼────┐       ┌──▼────┐
+                          │ Web │ │ Apps │       │  DB   │
+                          └─────┘ └──────┘       └───────┘
+```
+
+## The security model to remember
+
+There are **different attacks at different layers**:
+
+| Layer            | Example attack         | Main protection                            |
+| ---------------- | ---------------------- | ------------------------------------------ |
+| DNS              | DNS spoofing/poisoning | DNSSEC, secure DNS architecture            |
+| DNS transport    | DNS interception       | DoT / DoH / DNSCrypt                       |
+| Network          | DDoS                   | Upstream mitigation, CDN                   |
+| TCP              | SYN flood              | DDoS protection, SYN protection            |
+| HTTP             | HTTP flood             | CDN, WAF, rate limiting                    |
+| VPN              | Credential attack      | MFA, strong authentication                 |
+| VPN              | Gateway DDoS           | Upstream DDoS protection                   |
+| VPN              | VPN vulnerability      | Patching, hardening                        |
+| Endpoint         | Malware                | EDR, device posture                        |
+| Internal network | Lateral movement       | Segmentation, least privilege              |
+| Application      | Unauthorized access    | Authentication + authorization             |
+| Database         | Data theft             | DB access controls, encryption, monitoring |
+
+The **big architectural principle** is:
+
+> **Don't let the VPN become a tunnel directly into the entire corporate network.**
+
+Instead, authenticate the user/device, determine **what they're allowed to access**, and then enforce those permissions with segmentation and application-level controls.
+
+In DNS, they are **very different**:
+
+* **`testme.example.com`** → a **hostname/subdomain (FQDN)**. DNS can resolve this name to an IP address.
+
+  * Example: `testme.example.com → 192.168.1.10`
+
+* **`example.com/testme`** → **not a DNS name**. The `/testme` part is a **URL path**, handled by the web server.
+
+  * DNS only resolves `example.com → IP`
+  * The web server then handles `/testme`.
+
+So:
+
+```text
+testme.example.com
+└─────── DNS/FQDN ───────┘
+
+https://example.com/testme
+       └─ DNS ─┘ └─ URL path ─┘
+```
+
+**Simple rule:**
+**DNS deals with domain/hostnames; HTTP/HTTPS deals with paths such as `/testme`.**

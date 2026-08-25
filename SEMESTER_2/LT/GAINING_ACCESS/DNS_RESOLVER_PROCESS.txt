@@ -1,0 +1,102 @@
+**Corrected DNS resolution flow for `testweb.com` (no caches at any level)**
+
+1. **Browser / Application**  
+   Checks its own DNS cache → miss
+
+2. **Operating System**  
+   Checks its DNS cache → miss  
+   Checks the hosts file → miss
+
+3. **Client → Recursive Resolver**  
+   Client sends the query for `testweb.com` (A/AAAA) to the configured recursive resolver (ISP DNS or public resolver such as 8.8.8.8 / 9.9.9.9 / etc.)
+
+4. **Recursive Resolver → Root server (`.`)**  
+   Recursive resolver queries a root server  
+   Root server replies with a referral to the `.com` TLD name servers
+
+5. **Recursive Resolver → TLD server (`.com`)**  
+   Recursive resolver queries a `.com` TLD server  
+   TLD server replies with a referral to the authoritative name servers for `testweb.com`
+
+6. **Recursive Resolver → Authoritative server**  
+   Recursive resolver queries one of the authoritative name servers for `testweb.com`  
+   Authoritative server replies with the IP address (A/AAAA record) of `testweb.com`
+
+7. **Recursive Resolver → Client**  
+   Recursive resolver returns the IP address to the client
+
+8. **Client → `testweb.com` web server** (after DNS is finished)  
+   Client opens a TCP connection to the obtained IP and receives the HTTP/HTTPS response from the web server
+
+**Notes**
+- Steps 1–7 are pure DNS.  
+- Step 8 is the subsequent connection to the website (not part of the DNS process).  
+- In real life the recursive resolver almost always performs steps 4–6 iteratively; the client only talks to the recursive resolver.
+
+
+**DNS Resolution Flow for `testweb.com` (no cache)**
+
+```
+Browser / Application
+        │
+        │ 1. Check own DNS cache → MISS
+        ▼
+Operating System
+        │
+        │ 2. Check OS DNS cache → MISS
+        │ 3. Check hosts file → MISS
+        ▼
+Client ──────────────────────────────────────► Recursive Resolver
+        │                                         (ISP / 8.8.8.8 / 9.9.9.9 …)
+        │                                         │
+        │                                         │ 4. Query Root server (.)
+        │                                         ▼
+        │                                      Root Server (.)
+        │                                         │
+        │                                         │ Referral → .com TLD servers
+        │                                         ▼
+        │                                      TLD Server (.com)
+        │                                         │
+        │                                         │ Referral → Authoritative NS
+        │                                         ▼
+        │                                   Authoritative Server
+        │                                   (for testweb.com)
+        │                                         │
+        │                                         │ 5. Returns IP address
+        │                                         │    of testweb.com
+        │                                         ▼
+        │◄────────────────────────────────── Recursive Resolver
+        │  6. Returns IP address
+        ▼
+Client
+        │
+        │ 7. Connects to the IP
+        ▼
+testweb.com Web Server
+        │
+        │ 8. Sends HTTP/HTTPS response
+        ▼
+Client receives the website
+```
+
+**Simplified vertical version**
+
+```
+Browser cache          → MISS
+OS cache               → MISS
+Hosts file             → MISS
+        ↓
+Recursive Resolver
+        ↓
+Root server (.)        → referral to .com
+        ↓
+TLD server (.com)      → referral to Authoritative NS
+        ↓
+Authoritative Server   → returns IP of testweb.com
+        ↓
+Recursive Resolver     → returns IP to Client
+        ↓
+Client connects to IP  → receives website from testweb.com
+```
+
+Would you like a Mermaid diagram version as well (for easier rendering in some tools)?

@@ -1,0 +1,107 @@
+No, South African law does not require Internet Service Providers (ISPs) to keep DNS logs or track the specific websites you visit. [1, 2] 
+While the country has strict data retention laws, they focus primarily on user identity and connection metadata rather than active web browsing histories. [2, 3, 4] 
+## What the Law Actually Requires
+The legal obligations of South African ISPs are governed by three core pieces of legislation:
+
+* [RICA](https://www.verifynow.co.za/how-to-comply-with-rica-in-south-africa-a-comprehensive-guide) (Regulation of Interception of Communications and Provision of Communication-Related Information Act): This requires ISPs to collect and store customer identity information (like names, ID numbers, and addresses) and connection metadata (such as the IP address assigned to you and session durations). It requires the storage of connection metadata for 3 to 5 years, but this explicitly excludes a user's granular browsing history or DNS requests. [2, 3, 5, 6] 
+* ECT Act (Electronic Communications and Transactions Act): Section 78 of this Act explicitly states that ISPs have no general obligation to monitor the data they transmit or store. They are not required to police their networks for unlawful activities. [2, 7, 8, 9] 
+* [Cybercrimes Act](https://www.michalsons.com/focus-areas/cybercrime-law-around-the-world/cybercrimes-act-south-africa): ISPs are only required to preserve specific data if they receive an expedited preservation order from law enforcement regarding an active cybercrime investigation. They do not need to log traffic routinely. [10, 11, 12] 
+
+## The Role of Privacy Law (POPIA)
+According to the [Internet Service Providers' Association (ISPA) of South Africa](https://techcentral.co.za/your-isp-monitoring-your-online-activity/234972/), any collection of user data must comply with the Protection of Personal Information Act (POPIA). Because DNS logs track your personal internet behavior, keeping them without a specific, lawful business purpose would actually breach POPIA privacy rules. [2, 13] 
+If you are trying to maximize your online privacy or are curious about how to protect your network traffic, let me know if you would like info on setting up a VPN or switching to encrypted DNS providers (like DNS-over-HTTPS).
+
+[1] [https://security.stackexchange.com](https://security.stackexchange.com/questions/48364/can-isps-log-ip-connections)
+[2] [https://mybroadband.co.za](https://mybroadband.co.za/news/internet/514673-the-truth-about-internet-providers-spying-in-south-africa.html)
+[3] [https://freedomhouse.org](https://freedomhouse.org/country/south-africa/freedom-net/2021)
+[4] [https://www.whistleout.com.au](https://www.whistleout.com.au/Broadband/Guides/mandatory-data-retention-what-you-need-to-know)
+[5] [https://www.cyberghostvpn.com](https://www.cyberghostvpn.com/privacyhub/global-data-retention-laws/)
+[6] [https://ispa.org.za](https://ispa.org.za/press-releases/internet-browsing-history-is-private-property-says-ispa/)
+[7] [https://www.gov.za](https://www.gov.za/sites/default/files/gcis_document/201409/26768.pdf)
+[8] [https://www.ellipsis.co.za](http://www.ellipsis.co.za/isp-issues/limitation-of-liability-for-isp-activites/)
+[9] [https://www.lawexplorer.co.za](https://www.lawexplorer.co.za/retentionguide/default.aspx?Page=BusinessCase)
+[10] [https://cybercrimesact.co.za](https://cybercrimesact.co.za/section-41-expedited-preservation-of-data-direction/)
+[11] [https://www.michalsons.com](https://www.michalsons.com/focus-areas/cybercrime-law-around-the-world/cybercrimes-act-south-africa)
+[12] [https://techcentral.co.za](https://techcentral.co.za/your-isp-monitoring-your-online-activity/234972/)
+[13] [https://ispa.org.za](https://ispa.org.za/press-releases/do-isps-collect-information-about-online-activities/)
+
+If an ISP logs your DNS traffic without your explicit consent or a direct legal mandate, they are violating South African privacy law. [1] 
+Under the [Protection of Personal Information Act (POPIA)](https://popia.co.za/section-14-retention-and-restriction-of-records/), web browsing histories and DNS queries constitute personal info because they track user behavior. [2, 3] 
+------------------------------
+## Are they violating the law if they log it?
+Yes, they are in breach of POPIA if they log this data by default. [4] 
+
+* Storage Limitation: Section 14 of POPIA dictates that personal records must not be kept longer than necessary to achieve the specific purpose for which they were collected. [5, 6] 
+* No Statutory Requirement: Because RICA and the Cybercrimes Act do not require general internet history logging, an ISP has no lawful basis to routinely collect your DNS queries unless you specifically ask them to. [2, 7] 
+* Penalties: Unlawful processing can lead to enforcement notices, heavy administrative fines up to R10 million, or imprisonment from the Information Regulator. [4] 
+
+------------------------------
+## If a contract is signed to save logs, must the duration be mentioned?
+Yes, the contract must explicitly state the retention duration. [8] 
+POPIA allows data collection if it is stipulated by a contract or backed by explicit, voluntary consent. However, you cannot just write a blank check to store data forever. The agreement must outline exactly how long the records will be kept. If a fixed time is tough to predict, it must explicitly describe the criteria used to determine when the data will be permanently destroyed (e.g., "for 12 months after account termination"). [2, 6, 7, 8] 
+------------------------------
+## How should the contract be structured?
+For a DNS logging agreement to be legally enforceable in South Africa, it must incorporate specific components to comply with both POPIA and general contract law: [9] 
+
+* Clear, Specific Purpose: It must explicitly state why the traffic is being logged (e.g., for workplace network security, corporate parental controls, or specialized IT diagnostics). [10] 
+* Defined Deletion Protocol: It must explain the exact method used to securely destroy or anonymise the logs once the retention duration lapses, ensuring they cannot be reconstructed. [11, 12] 
+* Security Safeguards: The ISP or corporate entity must legally guarantee that they have strict technical protocols in place to protect your logs from data leaks or hacking. [13] 
+* Voluntary Consent: The signee must have the legal capacity to act, and the agreement must be entirely consensual—not hidden in fine-print terms of service. [7, 14] 
+
+Are you looking at this from a consumer perspective regarding your own privacy, or are you designing an IT/corporate policy to log employee network traffic? If you specify, I can give you advice tailored exactly to that setup.
+
+[1] [https://kinginvestigators.co.za](https://kinginvestigators.co.za/can-a-private-investigator-get-phone-records/)
+[2] [https://www.popiaready.co.za](https://www.popiaready.co.za/blog/popia-data-retention-period)
+[3] [https://pagelschulenburg.co.za](https://pagelschulenburg.co.za/understanding-data-protection-law-in-south-africa/)
+[4] [https://www.contractguard.co.za](https://www.contractguard.co.za/blog/popia-compliance-contracts-south-africa)
+[5] [https://www.masthead.co.za](https://www.masthead.co.za/newsletter/manage-personal-information-like-a-pro-retention-destruction-and-deletion/)
+[6] [https://popia.co.za](https://popia.co.za/section-14-retention-and-restriction-of-records/)
+[7] [https://www.glacierinsights.co.za](https://www.glacierinsights.co.za/blog/articles/popia-explained-part-11)
+[8] [https://www.masthead.co.za](https://www.masthead.co.za/newsletter/manage-personal-information-like-a-pro-retention-destruction-and-deletion/)
+[9] [https://www.genieai.co](https://www.genieai.co/en-za/template/event-confidentiality-agreement)
+[10] [https://mjkinc.co.za](https://mjkinc.co.za/popia/purpose-and-retention)
+[11] [https://www.eccogta.gov.za](https://www.eccogta.gov.za/wp-content/uploads/2025/06/Personal-Information-Retention-Handling-Guidelines-2024-2025.pdf)
+[12] [https://docs.askyazi.com](https://docs.askyazi.com/security/data-retention-policy)
+[13] [https://www.polity.org.za](https://www.polity.org.za/article/data-breach-reporting-responsibilities-and-penalties-in-south-africa-what-businesses-need-to-know-2026-01-28)
+[14] [https://www.mpc.law.za](https://www.mpc.law.za/OurInsights/ArticleDetail.aspx?Title=How%20valid%20is%20signing%20an%20agreement%20electronically?)
+
+For public internet use, network providers can keep your identity and connection time records, but they are strictly violating the law if they log your specific web browsing history or DNS requests without a clear, lawful justification. [1, 2, 3, 4] 
+If a provider is caught unlawfully logging your personal data, any official administrative fine issued is paid directly to the government body, not to the user. [5, 6] 
+------------------------------
+## What Can Be Kept vs. What Violates the Law
+When you connect to a public Wi-Fi network (such as at a coffee shop, airport, or hotel) or use public infrastructure, the law divides data into two distinct categories: [7] 
+
+* What they CAN keep legally: To comply with South African law, providers must log connection metadata. This includes your phone number or email used to sign in, the device’s MAC address, the exact time you connected, and the public IP address assigned to you. This is standard and completely legal. [1, 8, 9, 10] 
+* What VIOLATES the law: The provider cannot log the specific web pages you open, your search queries, or your DNS traffic. Tracking your specific browsing habits on a public network without a specific, narrow security purpose and explicit consent directly breaches the [Protection of Personal Information Act (POPIA)](https://popia.co.za/section-109-administrative-fines/). [1, 2, 11, 12] 
+
+------------------------------
+## Who Gets Paid the Fine Money?
+If the provider violates POPIA and gets caught, the financial penalty follows two completely separate legal tracks: [13] 
+## 1. The Administrative Fine goes to the Government [13] 
+The official POPIA administrative fine (which can reach up to R10 million) is issued by the Information Regulator. By law, this money must be paid directly into South Africa's National Revenue Fund. The government keeps this money to fund the state; the affected user does not receive a single cent of this specific fine. [5, 13, 14] 
+## 2. The Civil Damages go to the User [14] 
+While you do not get a piece of the government's fine, Section 99 of POPIA gives you the right to sue the provider in a civil court for financial damages. [13, 14] 
+
+* To get paid directly, you (the data subject) must institute a civil lawsuit against the provider.
+* You can demand compensation for any direct financial loss, distress, or reputational harm caused by their illegal logging or subsequent data exposure. [13, 14, 15, 16] 
+
+Are you currently dealing with a specific public network provider that you suspect is actively tracking your data? If you'd like, I can explain how to file an official complaint with the Information Regulator or how to use tools like encrypted DNS to completely block them from seeing your traffic. [15, 17, 18] 
+
+[1] [https://ispa.org.za](https://ispa.org.za/press-releases/do-isps-collect-information-about-online-activities/)
+[2] [https://www.facebook.com](https://www.facebook.com/groups/ZAGAMINGALLIANCE/posts/4608421379172290/)
+[3] [https://www.facebook.com](https://www.facebook.com/Norton/posts/ever-heard-of-onion-sites-they-live-on-the-dark-web-but-not-all-are-risky-our-bl/1340208041473862/)
+[4] [https://www.youtube.com](https://www.youtube.com/watch?v=ND3bFbCDwZw)
+[5] [https://www.michalsons.com](https://www.michalsons.com/blog/infringement-notice-from-the-information-regulator-what-now/53696)
+[6] [https://caseguard.com](https://caseguard.com/articles/data-security-and-public-body-records-in-michigan/)
+[7] [https://id.digitaledgedc.com](https://id.digitaledgedc.com/compliance/uu-pdp)
+[8] [https://www.bbc.com](https://www.bbc.com/news/world-us-canada-37875696)
+[9] [https://tegant.com](https://tegant.com/articles/can-your-internet-provider-see-your-history/)
+[10] [https://www.youtube.com](https://www.youtube.com/watch?v=ND3bFbCDwZw)
+[11] [https://security.stackexchange.com](https://security.stackexchange.com/questions/92532/what-can-my-isp-see-in-their-log-files-if-i-use-google-dns)
+[12] [https://adguard-vpn.com](https://adguard-vpn.com/en/blog/can-the-wi-fi-owner-see-what-i-search-for.html)
+[13] [https://celagenix.com](https://celagenix.com/insights/information-regulator-popia-enforcement-penalties/)
+[14] [https://popiachecklist.co.za](https://popiachecklist.co.za/popia-non-compliance/)
+[15] [https://werksmans.com](https://werksmans.com/i-will-never-get-caught-the-consequences-of-non-compliance-with-popia/)
+[16] [https://monolith.law](https://monolith.law/en/internet/disclosure-of-the-senders-information)
+[17] [https://www.clearcomply.co.za](https://www.clearcomply.co.za/blog/popia-fines-south-africa-real-cases)
+[18] [https://ssd.eff.org](https://ssd.eff.org/vi/module/understanding-and-circumventing-network-censorship)

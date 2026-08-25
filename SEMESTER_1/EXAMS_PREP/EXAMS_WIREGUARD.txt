@@ -1,0 +1,455 @@
+WIREGUARD
+
+Curve25519 is an elliptic curve specifically designed for public-key cryptography. It was created by cryptographer Daniel J. Bernstein in 2005 to provide a secure, fast, and implementation-friendly alternative to older public-key systems like RSA.
+
+Unlike RSA, which relies on multiplying large prime numbers and the difficulty of factoring them, Curve25519 relies on the elliptic curve discrete logarithm problem (ECDLP).
+
+
+
+RSA vs. Curve25519
+
+RSA
+
+text
+Choose two large primes (p, q)
+        ↓
+n = p × q
+        ↓
+Public key = (n, e)
+        ↓
+Private key = d
+        ↓
+Security depends on:
+Difficulty of factoring n
+
+
+Hard problem: Integer Factorization Problem
+
+
+
+Curve25519
+
+text
+Generate random 32-byte private key
+        ↓
+Clamp the private key
+        ↓
+Private scalar
+        ↓
+Multiply by Curve25519 base point
+        ↓
+Public key
+
+
+Hard problem: Elliptic Curve Discrete Logarithm Problem (ECDLP)
+
+
+
+What is an elliptic curve?
+
+An elliptic curve is a set of points that satisfy a mathematical equation.
+
+Curve25519 uses the curve:
+
+[
+y^2 = x^3 + 486662x^2 + x
+]
+
+over a finite field with
+
+[
+2^{255}-19
+]
+
+possible values (hence the name 25519).
+
+Instead of working with ordinary real numbers, all calculations are performed modulo the prime number:
+
+[
+2^{255}-19
+]
+
+This creates a finite mathematical space suitable for cryptography.
+
+
+
+How are keys generated?
+
+Step 1
+
+Generate a random 32-byte number.
+
+Example:
+
+text
+011011010100...
+
+
+This becomes the private key after a small adjustment called clamping.
+
+
+
+Step 2
+
+Use scalar multiplication.
+
+text
+Private key × Base Point
+        ↓
+Curve25519 mathematics
+        ↓
+Public key
+
+
+The base point is a fixed, publicly known point on the curve.
+
+
+
+Step 3
+
+The result is another point on the curve.
+
+text
+Private key
+        ↓
+Scalar multiplication
+        ↓
+Public key
+
+
+Only the public key is shared.
+
+
+
+Why can't someone recover the private key?
+
+Suppose Alice computes:
+
+text
+Public Key = Private Key × Base Point
+
+
+Everyone knows:
+
+- Base Point ✔
+- Public Key ✔
+
+But nobody knows:
+
+- Private Key ✖
+
+Recovering the private key from the public key requires solving the elliptic curve discrete logarithm problem, for which no practical algorithm is known using classical computers.
+
+
+
+Why is it called Curve25519?
+
+- Curve → It is an elliptic curve.
+- 255 → It uses approximately 255-bit numbers.
+- 19 → The finite field is based on the prime (2^{255} - 19).
+
+
+
+Why does WireGuard use it?
+
+WireGuard uses Curve25519 because it offers several practical advantages:
+
+- Strong security with a 32-byte key.
+- Fast key generation and key exchange.
+- Efficient software performance, including on mobile and embedded devices.
+- Resistance to many implementation pitfalls, such as timing attacks, because it was designed for constant-time implementations.
+- Simple API, reducing opportunities for configuration errors.
+
+
+
+RSA vs. Curve25519 at a glance
+
+| Feature                  | RSA                                        | Curve25519                                    |
+| ------------------------ | ------------------------------------------ | --------------------------------------------- |
+| Mathematical basis       | Integer factorization                      | Elliptic curve discrete logarithm             |
+| Typical public key size  | 2048–4096 bits                             | 256 bits (32 bytes)                           |
+| Typical private key size | 2048–4096 bits                             | 256 bits (32 bytes)                           |
+| Key generation           | Slow                                       | Very fast                                     |
+| Operations               | Modular exponentiation                     | Elliptic curve scalar multiplication          |
+| Used by                  | Traditional TLS, OpenVPN certificates, SSH | WireGuard, modern TLS, Signal, Noise Protocol |
+
+In WireGuard, Curve25519 is used for key agreement (specifically, Elliptic Curve Diffie–Hellman, or ECDH). It allows two peers to independently derive the same shared secret without ever transmitting that secret over the network. That shared secret is then used to derive symmetric encryption keys for protecting VPN traffic.
+
+
+WireGuard uses a completely different cryptographic design from OpenVPN.
+
+OpenVPN commonly uses RSA (or ECDSA) certificates as part of a PKI, while WireGuard uses Curve25519 key pairs directly. There are no certificates, no certificate authority (CA), and no RSA math.
+
+The WireGuard process looks like this:
+
+text
+wg genkey > privatekey
+        ↓
+Generate a random 32-byte private key
+        ↓
+Interpret it as a Curve25519 private scalar
+        ↓
+Clamp the scalar (required by Curve25519)
+        ↓
+Store private key in privatekey
+        ↓
+wg pubkey < privatekey > publickey
+        ↓
+Perform Curve25519 scalar multiplication
+        ↓
+Public key = private scalar × Curve25519 base point
+        ↓
+Store public key in publickey
+
+
+Or in more detail:
+
+text
+wg genkey
+        ↓
+Generate 32 cryptographically secure random bytes
+        ↓
+Clamp bits according to Curve25519 specification
+        ↓
+Private key (32 bytes)
+
+                │
+
+                ▼
+
+wg pubkey
+        ↓
+Take private key
+        ↓
+Compute
+
+Public Key = Private Key × Base Point (Curve25519)
+
+        ↓
+Output 32-byte public key
+
+
+Comparison
+
+| OpenVPN (RSA)              | WireGuard (Curve25519)           |
+| -------------------------- | -------------------------------- |
+| Generate primes p and q    | Generate 32 random bytes         |
+| Compute modulus n = p×q    | No modulus                       |
+| Choose public exponent e   | No public exponent               |
+| Compute private exponent d | No modular inverse               |
+| Public key = (n,e)         | Public key = scalar × base point |
+| Uses certificates          | No certificates                  |
+| Usually PKI with CA        | Simple public/private key pairs  |
+
+Mathematical difference
+
+RSA (OpenVPN):
+
+text
+Choose p, q
+        ↓
+n = p × q
+        ↓
+φ(n) = (p−1)(q−1)
+        ↓
+Choose e
+        ↓
+d = e⁻¹ mod φ(n)
+
+
+WireGuard (Curve25519):
+
+text
+Random 32-byte number
+        ↓
+Clamp bits
+        ↓
+Private scalar
+        ↓
+Multiply by Curve25519 base point
+        ↓
+Public key
+
+
+WireGuard's approach is much simpler because it relies on the hardness of the elliptic curve discrete logarithm problem rather than the integer factorization problem used by RSA. As a result, key generation is faster, keys are much smaller (32 bytes instead of a 2048-bit RSA key), and no certificate infrastructure is required.
+
+
+Here's a comparison of how OpenVPN (using RSA certificates) and WireGuard (using Curve25519) achieve the four core security goals.
+
+| Security Property               | OpenVPN (RSA + TLS)                                                  | WireGuard                                                             |
+| - | -- |  |
+| Confidentiality                 | AES-256-GCM or ChaCha20-Poly1305 encrypts data after TLS handshake   | ChaCha20 encrypts all traffic                                         |
+| Integrity                       | HMAC or AEAD authentication tag (e.g., GCM tag) detects modification | Poly1305 authentication tag detects modification                      |
+| Authentication                  | X.509 certificates signed by a CA (RSA/ECDSA) authenticate peers     | Public keys identify peers directly (no certificates)                 |
+| Key Exchange                    | TLS handshake using RSA/ECDHE generates session keys                 | NoiseIK protocol using Curve25519 performs authenticated key exchange |
+| Forward Secrecy                 | Yes, when ECDHE is used (recommended)                                | Yes, built in via ephemeral Curve25519 keys                           |
+| Certificate Authority           | Required in most deployments                                         | Not required                                                          |
+| Public Key Infrastructure (PKI) | Yes                                                                  | No                                                                    |
+
+
+
+1. Confidentiality
+
+OpenVPN
+
+text
+RSA certificate
+        ↓
+TLS handshake
+        ↓
+Exchange symmetric session key
+        ↓
+AES-256-GCM encrypts VPN traffic
+
+
+- RSA is not used to encrypt all VPN traffic.
+- RSA authenticates the handshake.
+- After authentication, a fast symmetric cipher such as AES-256-GCM or ChaCha20-Poly1305 encrypts the data.
+
+
+
+WireGuard
+
+text
+Private key
+        ↓
+Curve25519 key exchange
+        ↓
+Shared secret
+        ↓
+ChaCha20 encrypts VPN packets
+
+
+WireGuard always uses ChaCha20, which is efficient in software and performs well even on devices without AES hardware acceleration.
+
+
+
+2. Integrity
+
+Integrity ensures packets are not altered during transmission.
+
+OpenVPN
+
+
+Encrypted packet
+        ↓
+HMAC or GCM authentication tag
+        ↓
+Receiver verifies tag
+        ↓
+Accept or discard packet
+
+
+If even one bit changes, verification fails and the packet is discarded.
+
+
+
+WireGuard
+
+
+Encrypted packet
+        ↓
+Poly1305 MAC
+        ↓
+Receiver verifies MAC
+        ↓
+Accept or discard
+
+
+WireGuard combines ChaCha20 with Poly1305, forming the authenticated encryption scheme ChaCha20-Poly1305.
+
+
+
+3. Authentication
+
+Authentication verifies the identity of the communicating peers.
+
+OpenVPN
+
+
+Certificate Authority
+        ↓
+Signs server certificate
+        ↓
+Signs client certificate
+        ↓
+TLS verifies certificate chain
+        ↓
+Identity confirmed
+
+
+Authentication depends on a Public Key Infrastructure (PKI). Trust is established through certificates issued by a trusted CA.
+
+
+
+WireGuard
+
+
+Generate key pair
+        ↓
+Exchange public keys
+        ↓
+Each peer stores trusted public keys
+        ↓
+Incoming packets accepted only
+if signed with matching private key
+
+
+There are no certificates. A peer is authenticated simply because it proves possession of the private key corresponding to a configured public key.
+
+
+
+4. Forward Secrecy
+
+Forward secrecy protects past sessions if a long-term private key is compromised later.
+
+OpenVPN
+
+
+RSA certificate
+        ↓
+ECDHE exchange
+        ↓
+Temporary session key
+        ↓
+Old traffic remains protected
+
+
+Modern OpenVPN deployments use ECDHE, which provides forward secrecy.
+
+
+
+WireGuard
+
+
+Long-term identity key
+        ↓
+Ephemeral Curve25519 exchange
+        ↓
+Fresh session keys
+        ↓
+Automatic forward secrecy
+
+
+Forward secrecy is built into the NoiseIK protocol used by WireGuard.
+
+
+
+Overall Comparison
+
+| Property                 | OpenVPN                                              | WireGuard                     |
+|  | - | -- |
+| Confidentiality          | AES-256-GCM or ChaCha20-Poly1305 after TLS handshake | ChaCha20-Poly1305             |
+| Integrity                | HMAC or AEAD authentication tag                      | Poly1305 authentication tag   |
+| Authentication           | X.509 certificates (RSA/ECDSA)                       | Static Curve25519 public keys |
+| Key Exchange             | TLS with ECDHE                                       | NoiseIK with Curve25519       |
+| Forward Secrecy          | Yes (when ECDHE is enabled)                          | Yes (built in)                |
+| PKI Required             | Yes                                                  | No                            |
+| Configuration Complexity | Higher (CA, certificates, revocation)                | Lower (exchange public keys)  |
+
+Summary
+
+Both OpenVPN and WireGuard provide strong confidentiality, integrity, authentication, and forward secrecy when configured according to current best practices. The main difference lies in how authentication is managed:
+
+- OpenVPN authenticates peers through a certificate-based PKI using TLS, making it well suited to environments that need centralized certificate management and revocation.
+- WireGuard authenticates peers by directly trusting configured public keys and uses the NoiseIK protocol with Curve25519 to derive session keys, resulting in a simpler design with less configuration overhead.

